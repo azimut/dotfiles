@@ -40,6 +40,22 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
+-- Subtle hacker theme
+-- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
+
+theme.bg_normal     = "#00000088"
+theme.bg_focus      = "#2f4f4f"
+theme.bg_urgent     = "#8b0000"
+
+theme.fg_normal     = "#f5deb3"
+theme.fg_focus      = "#ffa500"
+theme.fg_urgent     = "#ffff00"
+
+theme.border_width  = 1
+theme.border_normal = "#2f4f4f"
+theme.border_focus  = "#ffa500"
+theme.border_marked = "#8b0000"
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "nano"
@@ -83,7 +99,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 shi", "五 go", "六 roku", "七 shichi", "八 hachi", "九 kyu", "十 ju"}, s, layouts[1])
+    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
 end
 -- }}}
 
@@ -110,7 +126,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock(" %b %d, %H:%M ")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
