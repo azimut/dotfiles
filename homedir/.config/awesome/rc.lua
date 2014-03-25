@@ -42,9 +42,10 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
+theme.font          = "sans 8"
 
-theme.bg_normal     = "#00000088"
-theme.bg_focus      = "#2f4f4f"
+theme.bg_normal     = "#00000077"
+theme.bg_focus      = "#a8a8a844"
 theme.bg_urgent     = "#8b0000"
 
 theme.fg_normal     = "#f5deb3"
@@ -243,6 +244,11 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end),
 --    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
+-- hide bar
+-- https://wiki.archlinux.org/index.php/awesome
+    awful.key({ modkey }, "b", function ()
+        mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+    end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
