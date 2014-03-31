@@ -17,12 +17,12 @@ URxvt*borderLess: false
 ! teh transparency stuff
 URxvt*inheritPixmap: true
 URxvt*tintColor: white
-URxvt*shading: 15
+URxvt*shading: 8
  
 ! geometry and font
 URxvt*geometry: 84×24
 !URxvt*font:               xft:Terminus:antialias=false:pixelsize=9:12
-!urxvt*font:       xft:Terminus:antialias=false:7
+urxvt*font:       xft:ohsnap:antialias=false:7
 !URxvt*font: xft:Inconsolata\ for\ Powerline:pixelsize=12
 !URxvt.font: xft:Source Code Pro Medium for Powerline
 !URxvt*font: xft:terminus:antialias=false:pixelsize=12

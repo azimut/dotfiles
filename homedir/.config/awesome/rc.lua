@@ -42,11 +42,13 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
-theme.font          = "sans 8"
+theme.font          = "ohsnap 8"
 
 theme.bg_normal     = "#00000077"
-theme.bg_focus      = "#a8a8a844"
+theme.bg_systray    = "#000000"
+theme.bg_focus      = "#000000"
 theme.bg_urgent     = "#8b0000"
+theme.bg_minimize   = "#00000077"
 
 theme.fg_normal     = "#f5deb3"
 theme.fg_focus      = "#ffa500"
