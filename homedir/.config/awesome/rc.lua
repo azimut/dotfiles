@@ -182,6 +182,7 @@ mytasklist.buttons = awful.util.table.join(
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
+    mypromptbox[s].prompt = ' Run: '
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -283,18 +284,20 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",
+              function () mypromptbox[mouse.screen]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
+                  awful.prompt.run({ prompt = " Run Lua code: " },
                   mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
+                  awful.util.eval,
+		  nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     awful.key({ modkey }, "s",
         function ()
-            awful.prompt.run({ prompt = "Search: "},
+            awful.prompt.run({ prompt = " Search: "},
                 mypromptbox[mouse.screen].widget,
                 function (find)
                     awful.util.spawn("xdotool search --name "..find.." windowactivate", false)
