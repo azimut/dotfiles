@@ -60,7 +60,7 @@ theme.border_focus  = "#ffa500"
 theme.border_marked = "#8b0000"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "lxterminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -395,6 +395,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true } }
 }
 -- }}}
 
@@ -469,4 +471,7 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+--awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88")
+awful.util.spawn_with_shell("pgrep nm-applet || nm-applet")
+awful.util.spawn_with_shell("sh ~/.fehbg")
 -- }}}
