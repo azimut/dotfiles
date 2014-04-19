@@ -59,6 +59,9 @@ theme.border_normal = "#2f4f4f"
 theme.border_focus  = "#ffa500"
 theme.border_marked = "#8b0000"
 
+theme.bg_systray    = theme.bg_normal
+theme.fg_systray    = theme.bg_normal
+
 -- This is used later as the default terminal and editor to run.
 terminal = "lxterminal"
 editor = os.getenv("EDITOR") or "nano"
@@ -269,6 +272,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "w", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('sh ~/projects/scripts/scripts/lockme.sh') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -287,14 +291,14 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "r",
               function () mypromptbox[mouse.screen]:run() end),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = " Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval,
-		  nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end),
+--    awful.key({ modkey }, "x",
+--              function ()
+--                  awful.prompt.run({ prompt = " Run Lua code: " },
+--                  mypromptbox[mouse.screen].widget,
+--                  awful.util.eval,
+--		  nil,
+--                  awful.util.getdir("cache") .. "/history_eval")
+--              end),
     awful.key({ modkey }, "s",
         function ()
             awful.prompt.run({ prompt = " Search: "},
@@ -472,6 +476,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 --awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88")
-awful.util.spawn_with_shell("pgrep nm-applet || nm-applet")
+--awful.util.spawn_with_shell("pgrep nm-applet || nm-applet")
+awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
 awful.util.spawn_with_shell("sh ~/.fehbg")
 -- }}}
