@@ -105,7 +105,8 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
+--    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
+    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
 end
 -- }}}
 
@@ -475,8 +476,9 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
---awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88")
---awful.util.spawn_with_shell("pgrep nm-applet || nm-applet")
-awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
+
 awful.util.spawn_with_shell("sh ~/.fehbg")
+awful.util.spawn_with_shell("xset -b") -- disable beep
+awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
+awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
 -- }}}
