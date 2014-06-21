@@ -213,7 +213,7 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
 --    left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
-    left_layout:add(mylayoutbox[s])
+--    left_layout:add(mylayoutbox[s])
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
@@ -233,7 +233,7 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+--    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
