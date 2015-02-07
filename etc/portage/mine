@@ -1,0 +1,3 @@
+media-video/mplayer -cdparanoia -cdio -cddb -blueray -a52 -aalib -bl -bluray -zoran -speex -rtc -png -pnm -rar -targa -ftp -gif -ipv6 -joystick -jack -jpeg -gsm -fbcon -encode -dvd -dvdnav -md5sum -lirc -lzo -xscreensaver -v4l -vdpau -cpudetection -faac -xvid -x264
+net-misc/tigervnc server
+www-plugins/adobe-flash cpu_flags_x86_sse2
