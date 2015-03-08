@@ -1,6 +1,7 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local lain = require("lain")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
@@ -42,9 +43,10 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
-theme.font          = "ohsnap 8"
+--theme.font          = "ohsnap 8"
+theme.font          = "gohufont 8"
 
-theme.bg_normal     = "#00000077"
+theme.bg_normal     = "#000000aa"
 theme.bg_systray    = "#000000"
 theme.bg_focus      = "#000000"
 theme.bg_urgent     = "#8b0000"
@@ -52,23 +54,33 @@ theme.bg_minimize   = "#00000077"
 
 --theme.fg_normal     = "#f5deb3"
 --theme.fg_normal = "#8ED5E1"
-theme.fg_normal = "#00ffff"
+--theme.fg_normal = "#00ffff" -- tron
+theme.fg_normal = "#ae837a"
 --theme.fg_focus      = "#ffa500"
-theme.fg_focus      = "#8EFFE1"
+--theme.fg_focus      = "#8EFFE1" --tron
+theme.fg_focus = "#a04363"
 theme.fg_urgent     = "#ffff00"
 
 theme.border_width  = 1
-theme.border_normal = "#2f4f4f"
+--theme.border_normal = "#2f4f4f" -- tron
+theme.border_normal = "#000000"
 --theme.border_focus  = "#ffa500"
 --theme.border_focus  = "#8EFFE1"
-theme.border_focus  = "#00ffff"
+--theme.border_focus  = "#00ffff" -- tron
+theme.border_focus  = "#ffffff"
 theme.border_marked = "#8b0000"
 
 theme.bg_systray    = theme.bg_normal
 theme.fg_systray    = theme.bg_normal
 
+bar_position 	= "bottom"
+tag_count		= 4
+tag_icon 		= "◊"
+tag_icon_active = "◆"
+
 -- This is used later as the default terminal and editor to run.
-terminal = "lxterminal"
+terminal = "urxvt"
+--terminal = "lxterminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -83,10 +95,21 @@ modkey = "Mod4"
 local layouts =
 {
 --    awful.layout.suit.floating,
-    awful.layout.suit.tile,
+--    awful.layout.suit.tile,
 --    awful.layout.suit.tile.left,
 --    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+--    awful.layout.suit.tile.top,
+  lain.layout.uselesstile,
+--  lain.layout.uselesstile.left,
+  lain.layout.uselesstile.top,
+--  lain.layout.uselesstile.bottom,
+--  lain.layout.uselessfair,
+--  lain.layout.uselessfair.horizontal,
+--  lain.layout.termfair,
+--  lain.layout.centerfair,
+--  lain.layout.centerwork,
+--  lain.layout.uselesspiral,
+--  lain.layout.uselesspiral.dwindle,
 --    awful.layout.suit.fair,
 --    awful.layout.suit.fair.horizontal,
 --    awful.layout.suit.spiral,
@@ -110,8 +133,9 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
---    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
-    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
+    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
+--    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
+--    tags[s] = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, s, layouts[1])
 end
 -- }}}
 
@@ -207,7 +231,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -396,14 +420,15 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
+--    { rule = { class = "MPlayer" },
+--      properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "feh" },
-      properties = { floating = true } },
+    { rule = { name = "fake" },
+      properties = { floating = true, above = true, sticky = true, skip_taskbar = true, width = 450, height = 250, x = 919, y = 200
+                   } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
@@ -414,77 +439,102 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c, startup)
-    -- Enable sloppy focus
-    c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
-            client.focus = c
-        end
-    end)
 
-    if not startup then
-        -- Set the windows at the slave,
-        -- i.e. put it at the end of others instead of setting it master.
-        -- awful.client.setslave(c)
+dynamic_tagging = function() 
+	for s = 1, screen.count() do
+		-- get a list of all tags 
+		local atags = awful.tag.gettags(s)
+		-- set the standard icon
+		for i, t in ipairs(atags) do
+			t.name = tag_icon
+		end
 
-        -- Put windows in a smart way, only if they does not set an initial position.
-        if not c.size_hints.user_position and not c.size_hints.program_position then
-            awful.placement.no_overlap(c)
-            awful.placement.no_offscreen(c)
-        end
-    end
+		-- get a list of all running clients
+		local clist = client.get(s)
+		for i, c in ipairs(clist) do
+			-- get the tags on which the client is displayed
+			local ctags = c:tags()
+			for i, t in ipairs(ctags) do
+				-- set active icon
+				t.name = tag_icon_active
+			end
+		end
+	end
+end 
 
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        -- buttons for the titlebar
-        local buttons = awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                )
+ client.connect_signal("manage", function (c, startup)
+     -- Enable sloppy focus
+     c:connect_signal("mouse::enter", function(c)
+         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+             and awful.client.focus.filter(c) then
+             client.focus = c
+         end
+     end)
+ 
+     if not startup then
+         -- Set the windows at the slave,
+         -- i.e. put it at the end of others instead of setting it master.
+         -- awful.client.setslave(c)
+ 
+         -- Put windows in a smart way, only if they does not set an initial position.
+         if not c.size_hints.user_position and not c.size_hints.program_position then
+             awful.placement.no_overlap(c)
+             awful.placement.no_offscreen(c)
+         end
+     end
+ 
+     local titlebars_enabled = false
+     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
+         -- buttons for the titlebar
+         local buttons = awful.util.table.join(
+                 awful.button({ }, 1, function()
+                     client.focus = c
+                     c:raise()
+                     awful.mouse.client.move(c)
+                 end),
+                 awful.button({ }, 3, function()
+                     client.focus = c
+                     c:raise()
+                     awful.mouse.client.resize(c)
+                 end)
+                 )
+ 
+         -- Widgets that are aligned to the left
+         local left_layout = wibox.layout.fixed.horizontal()
+         left_layout:add(awful.titlebar.widget.iconwidget(c))
+         left_layout:buttons(buttons)
+ 
+         -- Widgets that are aligned to the right
+         local right_layout = wibox.layout.fixed.horizontal()
+         right_layout:add(awful.titlebar.widget.floatingbutton(c))
+         right_layout:add(awful.titlebar.widget.maximizedbutton(c))
+         right_layout:add(awful.titlebar.widget.stickybutton(c))
+         right_layout:add(awful.titlebar.widget.ontopbutton(c))
+         right_layout:add(awful.titlebar.widget.closebutton(c))
+ 
+         -- The title goes in the middle
+         local middle_layout = wibox.layout.flex.horizontal()
+         local title = awful.titlebar.widget.titlewidget(c)
+         title:set_align("center")
+         middle_layout:add(title)
+         middle_layout:buttons(buttons)
+ 
+         -- Now bring it all together
+         local layout = wibox.layout.align.horizontal()
+         layout:set_left(left_layout)
+         layout:set_right(right_layout)
+         layout:set_middle(middle_layout)
+ 
+         awful.titlebar(c):set_widget(layout)
+     end
+ end)
+ 
+ client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 
-        -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
-
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
-
-        -- The title goes in the middle
-        local middle_layout = wibox.layout.flex.horizontal()
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:set_align("center")
-        middle_layout:add(title)
-        middle_layout:buttons(buttons)
-
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(middle_layout)
-
-        awful.titlebar(c):set_widget(layout)
-    end
-end)
-
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 awful.util.spawn_with_shell("sh ~/.fehbg")
+awful.util.spawn_with_shell("pgrep mpd || mpd &")
 awful.util.spawn_with_shell("xset -b") -- disable beep
 awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
 awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
