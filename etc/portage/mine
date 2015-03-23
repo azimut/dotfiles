@@ -1,6 +1,10 @@
 media-sound/ncmpcpp visualizer curl
-media-video/mplayer -cdparanoia -cdio -cddb -blueray -a52 -aalib -bl -bluray -zoran -speex -rtc -png -pnm -rar -targa -ftp -gif -ipv6 -joystick -jack -jpeg -gsm -fbcon -encode -dvd -dvdnav -md5sum -lirc -lzo -xscreensaver -v4l -vdpau -cpudetection -faac -xvid -x264
+media-video/mplayer -cdparanoia -cdio -cddb -blueray -a52 -aalib -bl -bluray -zoran -speex -rtc -png -pnm -rar -targa -ftp -gif -ipv6 -joystick -jack -jpeg -gsm -fbcon -encode -dvd -dvdnav -md5sum -lirc -lzo -xscreensaver v4l -vdpau -cpudetection -faac -xvid -x264
 net-misc/tigervnc server
 www-plugins/adobe-flash cpu_flags_x86_sse2 -kde
 media-video/mpv -bluray -cdio -dvb -dvd -jack -joystick -jpeg -quvi  -v4l -xscrensaver -libav
 media-sound/mpd -ipv6 -zeroconf sqlite id3tag curl -libav
+net-im/bitlbee -ipv6 -msn -nss -oscar plugins skype -yahoo jabber
+xfce-base/thunar -dbus -libnotify -pcre -startup-notification -udisks -xfce_plugins_trash
+media-gfx/gimp -aalib -alsa -bzip2 -dbus -mng -pdf postscript -python -python_targets_python2_7 -udev -wmf -xpm
+media-libs/gegl -libav
