@@ -3,9 +3,9 @@ media-sound/ncmpcpp visualizer curl
 media-sound/mpd -ipv6 -zeroconf sqlite id3tag curl -libav
 
 # Video
-media-video/mplayer -cdparanoia -cdio -cddb -blueray -a52 -aalib -bl -bluray -zoran -speex -rtc -png -pnm -rar -targa -ftp -gif -ipv6 -joystick -jack -jpeg -gsm -fbcon -encode -dvd -dvdnav -md5sum -lirc -lzo -xscreensaver v4l -vdpau -cpudetection -faac -xvid -x264
+media-video/mplayer -cdparanoia -cdio -cddb -blueray -a52 -aalib -bl -bluray -zoran -speex -rtc -png -pnm -rar -targa -ftp -gif -ipv6 -joystick -jack -jpeg -gsm -fbcon -encode -dvd -dvdnav -md5sum -lirc -lzo -xscreensaver v4l -vdpau -cpudetection -faac -xvid -x264 cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 media-video/mpv -bluray -cdio -dvb -dvd -jack -joystick -jpeg -quvi  -v4l -xscrensaver -libav
-media-video/ffmpeg -cpudetection
+#media-video/ffmpeg -cpudetection rtmp amr -bluray -bzip2 cpu_flags_x86_ssse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse2 cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_avx encode -jack -postproc -speex -vapi -vdpau -vpx -zlib -x264
 
 # WWW
 www-plugins/adobe-flash cpu_flags_x86_sse2 -kde
@@ -17,6 +17,10 @@ media-libs/gegl -libav
 # IRC
 net-im/bitlbee -ipv6 -msn -nss -oscar plugins skype -yahoo jabber
 
+# Torrent
+net-p2p/rtorrent xmlrpc
+
 # Misc
+app-text/poppler -qt4 utils
 net-misc/tigervnc server
 xfce-base/thunar -dbus -libnotify -pcre -startup-notification -udisks -xfce_plugins_trash
