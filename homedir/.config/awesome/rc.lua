@@ -1,7 +1,7 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-local lain = require("lain")
+--local lain = require("lain")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
@@ -54,33 +54,33 @@ theme.bg_minimize   = "#00000077"
 
 --theme.fg_normal     = "#f5deb3"
 --theme.fg_normal = "#8ED5E1"
---theme.fg_normal = "#00ffff" -- tron
-theme.fg_normal = "#ae837a"
+theme.fg_normal = "#00ffff" -- tron
+---Ptheme.fg_normal = "#ae837a"
 --theme.fg_focus      = "#ffa500"
---theme.fg_focus      = "#8EFFE1" --tron
-theme.fg_focus = "#a04363"
+theme.fg_focus      = "#8EFFE1" --tron
+---Ptheme.fg_focus = "#a04363"
 theme.fg_urgent     = "#ffff00"
 
 theme.border_width  = 1
---theme.border_normal = "#2f4f4f" -- tron
-theme.border_normal = "#000000"
+theme.border_normal = "#2f4f4f" -- tron
+--Ptheme.border_normal = "#000000"
 --theme.border_focus  = "#ffa500"
 --theme.border_focus  = "#8EFFE1"
---theme.border_focus  = "#00ffff" -- tron
-theme.border_focus  = "#ffffff"
+theme.border_focus  = "#00ffff" -- tron
+--Ptheme.border_focus  = "#ffffff"
 theme.border_marked = "#8b0000"
 
 theme.bg_systray    = theme.bg_normal
 theme.fg_systray    = theme.bg_normal
 
-bar_position 	= "bottom"
+bar_position 	= "top"
 tag_count		= 4
 tag_icon 		= "◊"
 tag_icon_active = "◆"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
---terminal = "lxterminal"
+--terminal = "urxvt"
+terminal = "lxterminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -96,12 +96,12 @@ local layouts =
 {
 --    awful.layout.suit.floating,
 --    awful.layout.suit.tile,
---    awful.layout.suit.tile.left,
+   awful.layout.suit.tile.left,
 --    awful.layout.suit.tile.bottom,
---    awful.layout.suit.tile.top,
-  lain.layout.uselesstile,
+    awful.layout.suit.tile.top,
+----  lain.layout.uselesstile,
 --  lain.layout.uselesstile.left,
-  lain.layout.uselesstile.top,
+----  lain.layout.uselesstile.top,
 --  lain.layout.uselesstile.bottom,
 --  lain.layout.uselessfair,
 --  lain.layout.uselessfair.horizontal,
@@ -133,8 +133,8 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
---    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
+--    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
+    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
 --    tags[s] = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, s, layouts[1])
 end
 -- }}}
