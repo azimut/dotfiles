@@ -24,3 +24,8 @@ net-p2p/rtorrent xmlrpc
 app-text/poppler -qt4 utils
 net-misc/tigervnc server
 xfce-base/thunar -dbus -libnotify -pcre -startup-notification -udisks -xfce_plugins_trash
+
+# Sec
+net-analyzer/nmap -zenmap nse -nping nmap-update -ndiff -ncat -ipv6
+net-analyzer/metasploit ruby_targets_ruby19 -java -oracle -lorcon pcap
+net-analyzer/hydra -gtk idn -mysql -ncp -oracle pcre -postgres ssl -subversion

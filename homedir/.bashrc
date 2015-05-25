@@ -1,3 +1,6 @@
+nmap_iris(){
+    sudo nmap -sSV --top-ports 1000 --ttl 23 -n -Pn -g 80 --reason --open $@
+}
 addconda(){
 export PATH=/home/sendai/miniconda/bin:$PATH
 }
