@@ -2,3 +2,5 @@ auto-reload yes
 cache-file ~/.newsbeuter/cache.db
 cleanup-on-quit no
 reload-time 30
+browser w3m
+
