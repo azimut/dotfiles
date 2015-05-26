@@ -1,0 +1,337 @@
+2015-05-26 05:24:11	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:24:11	--	irc: connected to chat.freenode.net/6667 (148.251.187.147)
+2015-05-26 05:24:11	--	wilhelm.freenode.net: *** Looking up your hostname...
+2015-05-26 05:24:12	--	wilhelm.freenode.net: *** Checking Ident
+2015-05-26 05:24:15	--	wilhelm.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:24:17	--	wilhelm.freenode.net: *** No Ident response
+2015-05-26 05:24:17	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:24:17	--	Your host is wilhelm.freenode.net[148.251.187.147/6667], running version ircd-seven-1.1.3
+2015-05-26 05:24:17	--	This server was created Sun Feb 22 2015 at 15:29:51 UTC
+2015-05-26 05:24:17	--	wilhelm.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:24:17	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:24:17	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:24:17	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:24:17	--	There are 163 users and 87743 invisible on 27 servers
+2015-05-26 05:24:17	--	22 :IRC Operators online
+2015-05-26 05:24:17	--	26 :unknown connection(s)
+2015-05-26 05:24:17	--	58673 :channels formed
+2015-05-26 05:24:17	--	I have 9393 clients and 1 servers
+2015-05-26 05:24:18	--	9393 10461 :Current local users 9393, max 10461
+2015-05-26 05:24:18	--	87906 99340 :Current global users 87906, max 99340
+2015-05-26 05:24:18	--	Highest connection count: 10462 (10461 clients) (1256215 connections received)
+2015-05-26 05:24:18	--	- wilhelm.freenode.net Message of the Day -
+2015-05-26 05:24:18	--	- Welcome to wilhelm.freenode.net in Germany, EU.
+2015-05-26 05:24:18	--	- Thanks to http://digitaltreemedia.co.uk/ for sponsoring
+2015-05-26 05:24:18	--	- this server!
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:24:18	--	- software communities since 1998.
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:24:18	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:24:18	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:24:18	--	- any network-related questions or queries, where a number of
+2015-05-26 05:24:18	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:24:18	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:24:18	--	- real-life collaboration.
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	- We would like to thank Private Internet Access
+2015-05-26 05:24:18	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:24:18	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:24:18	--	- running for their sustained support.
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	- In particular we would like to thank the sponsor
+2015-05-26 05:24:18	--	- of this server, details of which can be found above.
+2015-05-26 05:24:18	--	-
+2015-05-26 05:24:18	--	End of /MOTD command.
+2015-05-26 05:24:18	--	User mode [+i] by sendai
+2015-05-26 05:24:18	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:24:55	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:24:56	--	irc: connected to chat.freenode.net/6667 (192.186.157.43)
+2015-05-26 05:24:56	--	tepper.freenode.net: *** Looking up your hostname...
+2015-05-26 05:24:56	--	tepper.freenode.net: *** Checking Ident
+2015-05-26 05:24:57	--	tepper.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:25:06	--	tepper.freenode.net: *** No Ident response
+2015-05-26 05:25:06	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:25:06	--	Your host is tepper.freenode.net[192.186.157.43/6667], running version ircd-seven-1.1.3
+2015-05-26 05:25:06	--	This server was created Sun Mar 15 2015 at 18:30:09 UTC
+2015-05-26 05:25:06	--	tepper.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:25:06	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:25:06	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:25:06	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:25:06	--	There are 163 users and 87758 invisible on 27 servers
+2015-05-26 05:25:06	--	22 :IRC Operators online
+2015-05-26 05:25:06	--	8 :unknown connection(s)
+2015-05-26 05:25:06	--	58678 :channels formed
+2015-05-26 05:25:06	--	I have 3725 clients and 1 servers
+2015-05-26 05:25:06	--	3725 4234 :Current local users 3725, max 4234
+2015-05-26 05:25:06	--	87921 96637 :Current global users 87921, max 96637
+2015-05-26 05:25:06	--	Highest connection count: 4235 (4234 clients) (162134 connections received)
+2015-05-26 05:25:06	--	- tepper.freenode.net Message of the Day -
+2015-05-26 05:25:06	--	- Welcome to tepper.freenode.net in Buffalo, NY.
+2015-05-26 05:25:06	--	- Thanks to http://www.servermania.com/ for sponsoring
+2015-05-26 05:25:06	--	- this server!
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- TEPPER, SHERI S. (1929-), an American science fiction,
+2015-05-26 05:25:06	--	- horror and mystery novel author, behind more than thirty
+2015-05-26 05:25:06	--	- books, many themed unapologetically eco-feminist. Her
+2015-05-26 05:25:06	--	- writing career started composing children's stories, but
+2015-05-26 05:25:06	--	- moved to adult fiction in 1982. With the 1991 novel
+2015-05-26 05:25:06	--	- 'Beauty' she won the Locus award for Best Fantasy Novel.
+2015-05-26 05:25:06	--	- Her other well-known works include 'Grass' (1989, nominated
+2015-05-26 05:25:06	--	- for Hugo and Locus Awards in 1990) and 'Gate to Women's
+2015-05-26 05:25:06	--	- Country' (1988).
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:25:06	--	- software communities since 1998.
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:25:06	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:25:06	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:25:06	--	- any network-related questions or queries, where a number of
+2015-05-26 05:25:06	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:25:06	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:25:06	--	- real-life collaboration.
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- We would like to thank Private Internet Access
+2015-05-26 05:25:06	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:25:06	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:25:06	--	- running for their sustained support.
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	- In particular we would like to thank the sponsor
+2015-05-26 05:25:06	--	- of this server, details of which can be found above.
+2015-05-26 05:25:06	--	-
+2015-05-26 05:25:06	--	End of /MOTD command.
+2015-05-26 05:25:06	--	User mode [+i] by sendai
+2015-05-26 05:25:06	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:28:09	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:28:10	--	irc: connected to chat.freenode.net/6667 (185.30.166.38)
+2015-05-26 05:28:10	--	orwell.freenode.net: *** Looking up your hostname...
+2015-05-26 05:28:10	--	orwell.freenode.net: *** Checking Ident
+2015-05-26 05:28:11	--	orwell.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:28:18	--	orwell.freenode.net: *** No Ident response
+2015-05-26 05:28:18	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:28:18	--	Your host is orwell.freenode.net[185.30.166.38/6667], running version ircd-seven-1.1.3
+2015-05-26 05:28:18	--	This server was created Sun Mar 15 2015 at 18:30:44 UTC
+2015-05-26 05:28:18	--	orwell.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:28:18	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:28:18	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:28:18	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:28:18	--	There are 164 users and 87872 invisible on 27 servers
+2015-05-26 05:28:18	--	22 :IRC Operators online
+2015-05-26 05:28:18	--	14 :unknown connection(s)
+2015-05-26 05:28:18	--	58684 :channels formed
+2015-05-26 05:28:18	--	I have 3806 clients and 1 servers
+2015-05-26 05:28:18	--	3806 4109 :Current local users 3806, max 4109
+2015-05-26 05:28:18	--	88036 97572 :Current global users 88036, max 97572
+2015-05-26 05:28:18	--	Highest connection count: 4110 (4109 clients) (254818 connections received)
+2015-05-26 05:28:18	--	- orwell.freenode.net Message of the Day -
+2015-05-26 05:28:18	--	- Welcome to orwell.freenode.net in Amsterdam, NL.
+2015-05-26 05:28:18	--	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2015-05-26 05:28:18	--	- this server!
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- ORWELL, GEORGE [1903 - 1950] Born in India, his mother
+2015-05-26 05:28:18	--	- moved him to England when he was one year old, and it
+2015-05-26 05:28:18	--	- was in England where he was educated and spent most of
+2015-05-26 05:28:18	--	- his life.  Orwell is perhaps best known for his novels
+2015-05-26 05:28:18	--	- Nineteen Eighty-Four and Animal Farm.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:28:18	--	- software communities since 1998.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:28:18	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:28:18	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:28:18	--	- any network-related questions or queries, where a number of
+2015-05-26 05:28:18	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:28:18	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:28:18	--	- real-life collaboration.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- We would like to thank Private Internet Access
+2015-05-26 05:28:18	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:28:18	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:28:18	--	- running for their sustained support.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	- In particular we would like to thank the sponsor
+2015-05-26 05:28:18	--	- of this server, details of which can be found above.
+2015-05-26 05:28:18	--	-
+2015-05-26 05:28:18	--	End of /MOTD command.
+2015-05-26 05:28:18	--	User mode [+i] by sendai
+2015-05-26 05:28:18	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:29:19	=!=	irc: this buffer is not a channel!
+2015-05-26 05:29:23	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:29:24	--	irc: connected to chat.freenode.net/6667 (38.229.70.22)
+2015-05-26 05:29:24	--	card.freenode.net: *** Looking up your hostname...
+2015-05-26 05:29:24	--	card.freenode.net: *** Checking Ident
+2015-05-26 05:29:24	--	card.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:29:35	--	card.freenode.net: *** No Ident response
+2015-05-26 05:29:35	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:29:35	--	Your host is card.freenode.net[38.229.70.22/6667], running version ircd-seven-1.1.3
+2015-05-26 05:29:35	--	This server was created Thu Sep 18 2014 at 18:48:25 UTC
+2015-05-26 05:29:35	--	card.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:29:35	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:29:35	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:29:35	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:29:35	--	There are 164 users and 87891 invisible on 27 servers
+2015-05-26 05:29:35	--	22 :IRC Operators online
+2015-05-26 05:29:35	--	6 :unknown connection(s)
+2015-05-26 05:29:35	--	58689 :channels formed
+2015-05-26 05:29:35	--	I have 4735 clients and 3 servers
+2015-05-26 05:29:35	--	4735 8011 :Current local users 4735, max 8011
+2015-05-26 05:29:35	--	88055 101901 :Current global users 88055, max 101901
+2015-05-26 05:29:35	--	Highest connection count: 8015 (8011 clients) (3734507 connections received)
+2015-05-26 05:29:35	--	- card.freenode.net Message of the Day -
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- Welcome to card.freenode.net in Washington, DC, US, kindly sponsored by
+2015-05-26 05:29:35	--	- Team Cymru (http://www.team-cymru.org).
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- CARD, ORSON SCOTT [1951-].  Born in Richland, Washington, Card grew up in
+2015-05-26 05:29:35	--	- California, Arizona, and Utah.  He lived in Brazil for two years as an
+2015-05-26 05:29:35	--	- unpaid missionary for the Mormon Church.  Author of the Ender and Alvin
+2015-05-26 05:29:35	--	- Maker books, Card's science fiction and fantasy work is strongly influenced
+2015-05-26 05:29:35	--	- by his Mormon cultural background.  The first author to win the Hugo and
+2015-05-26 05:29:35	--	- Nebula novel awards two years in a row, Card currently lives in Greensboro,
+2015-05-26 05:29:35	--	- North Carolina, US.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:29:35	--	- software communities since 1998.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:29:35	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:29:35	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:29:35	--	- any network-related questions or queries, where a number of
+2015-05-26 05:29:35	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:29:35	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:29:35	--	- real-life collaboration.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- We would like to thank Private Internet Access
+2015-05-26 05:29:35	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:29:35	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:29:35	--	- running for their sustained support.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:35	--	- In particular we would like to thank the sponsor
+2015-05-26 05:29:35	--	- of this server, details of which can be found above.
+2015-05-26 05:29:35	--	-
+2015-05-26 05:29:36	--	End of /MOTD command.
+2015-05-26 05:29:36	--	User mode [+i] by sendai
+2015-05-26 05:29:50	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:36:11	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:36:11	--	irc: connected to chat.freenode.net/6667 (83.170.73.249)
+2015-05-26 05:36:12	--	holmes.freenode.net: *** Looking up your hostname...
+2015-05-26 05:36:12	--	holmes.freenode.net: *** Checking Ident
+2015-05-26 05:36:12	--	holmes.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:36:19	--	holmes.freenode.net: *** No Ident response
+2015-05-26 05:36:19	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:36:19	--	Your host is holmes.freenode.net[83.170.73.249/6667], running version ircd-seven-1.1.3
+2015-05-26 05:36:19	--	This server was created Wed Sep 17 2014 at 17:57:00 UTC
+2015-05-26 05:36:19	--	holmes.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:36:19	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:36:19	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:36:19	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:36:19	--	There are 164 users and 88096 invisible on 27 servers
+2015-05-26 05:36:19	--	22 :IRC Operators online
+2015-05-26 05:36:19	--	10 :unknown connection(s)
+2015-05-26 05:36:19	--	58705 :channels formed
+2015-05-26 05:36:19	--	I have 6925 clients and 1 servers
+2015-05-26 05:36:19	--	6925 10895 :Current local users 6925, max 10895
+2015-05-26 05:36:19	--	88260 105669 :Current global users 88260, max 105669
+2015-05-26 05:36:19	--	Highest connection count: 10896 (10895 clients) (1082432 connections received)
+2015-05-26 05:36:19	--	- holmes.freenode.net Message of the Day -
+2015-05-26 05:36:19	--	- Welcome to holmes.freenode.net in London, UK! Massive thanks to
+2015-05-26 05:36:19	--	- UK2 (http://www.uk2.net) for sponsoring this server.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	- HOLMES, ROBERT (1928-1986). An English television scriptwriter,
+2015-05-26 05:36:19	--	- most notably remembered for his work on the sci-fi series;
+2015-05-26 05:36:19	--	- Doctor Who.
+2015-05-26 05:36:19	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:36:19	--	- software communities since 1998.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:36:19	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:36:19	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:36:19	--	- any network-related questions or queries, where a number of
+2015-05-26 05:36:19	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:36:19	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:36:19	--	- real-life collaboration.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	- We would like to thank Private Internet Access
+2015-05-26 05:36:19	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:36:19	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:36:19	--	- running for their sustained support.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	- In particular we would like to thank the sponsor
+2015-05-26 05:36:19	--	- of this server, details of which can be found above.
+2015-05-26 05:36:19	--	-
+2015-05-26 05:36:19	--	End of /MOTD command.
+2015-05-26 05:36:19	--	User mode [+i] by sendai
+2015-05-26 05:36:19	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:40:00	--	irc: connecting to server chat.freenode.net/6667...
+2015-05-26 05:40:00	--	irc: connected to chat.freenode.net/6667 (193.219.128.49)
+2015-05-26 05:40:01	--	sendak.freenode.net: *** Looking up your hostname...
+2015-05-26 05:40:01	--	sendak.freenode.net: *** Checking Ident
+2015-05-26 05:40:02	--	sendak.freenode.net: *** Couldn't look up your hostname
+2015-05-26 05:40:10	--	sendak.freenode.net: *** No Ident response
+2015-05-26 05:40:10	--	Welcome to the freenode Internet Relay Chat Network sendai
+2015-05-26 05:40:10	--	Your host is sendak.freenode.net[193.219.128.49/6667], running version ircd-seven-1.1.3
+2015-05-26 05:40:10	--	This server was created Sat Feb 21 2015 at 16:36:27 UTC
+2015-05-26 05:40:10	--	sendak.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2015-05-26 05:40:10	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2015-05-26 05:40:10	--	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2015-05-26 05:40:10	--	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2015-05-26 05:40:10	--	There are 166 users and 88178 invisible on 27 servers
+2015-05-26 05:40:10	--	22 :IRC Operators online
+2015-05-26 05:40:10	--	8 :unknown connection(s)
+2015-05-26 05:40:10	--	58730 :channels formed
+2015-05-26 05:40:10	--	I have 3859 clients and 1 servers
+2015-05-26 05:40:10	--	3859 8825 :Current local users 3859, max 8825
+2015-05-26 05:40:10	--	88344 99340 :Current global users 88344, max 99340
+2015-05-26 05:40:10	--	Highest connection count: 8826 (8825 clients) (1238916 connections received)
+2015-05-26 05:40:10	--	- sendak.freenode.net Message of the Day -
+2015-05-26 05:40:10	--	- Welcome to sendak.freenode.net in Vilnius, Lithuania, EU.
+2015-05-26 05:40:10	--	- Thanks to Microlink Lietuva (http://www.microlink.lt) for providing this
+2015-05-26 05:40:10	--	- server!
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- SENDAK, MAURICE [1928-2012].  The author of Seven Little
+2015-05-26 05:40:10	--	- Monsters and Where the Wild Things Are, Maurice Sendak was
+2015-05-26 05:40:10	--	- born in Brooklyn, NY, US, to a family of poor Polish
+2015-05-26 05:40:10	--	- immigrants who moved to the US before World War II.  He
+2015-05-26 05:40:10	--	- became an illustrator while in high school.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- Welcome to freenode - supporting the free and open source
+2015-05-26 05:40:10	--	- software communities since 1998.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- By connecting to freenode you indicate that you have read and
+2015-05-26 05:40:10	--	- accept our policies as set out on http://www.freenode.net
+2015-05-26 05:40:10	--	- freenode runs an open proxy scanner. Please join #freenode for
+2015-05-26 05:40:10	--	- any network-related questions or queries, where a number of
+2015-05-26 05:40:10	--	- volunteer staff and helpful users will be happy to assist you.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2015-05-26 05:40:10	--	- together with like-minded FOSS enthusiasts for talks and
+2015-05-26 05:40:10	--	- real-life collaboration.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- We would like to thank Private Internet Access
+2015-05-26 05:40:10	--	- (https://www.privateinternetaccess.com/) and the other
+2015-05-26 05:40:10	--	- organisations that help keep freenode and our other projects
+2015-05-26 05:40:10	--	- running for their sustained support.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	- In particular we would like to thank the sponsor
+2015-05-26 05:40:10	--	- of this server, details of which can be found above.
+2015-05-26 05:40:10	--	-
+2015-05-26 05:40:10	--	End of /MOTD command.
+2015-05-26 05:40:10	--	User mode [+i] by sendai
+2015-05-26 05:40:11	--	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2015-05-26 05:42:03	--	#‎hackerssdotcom‬ :Illegal channel name
