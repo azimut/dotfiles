@@ -12,6 +12,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+local lain = require("lain")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -45,6 +47,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
 --theme.font          = "ohsnap 8"
 theme.font          = "gohufont 8"
+--theme.font          = "Clear 8"
 
 theme.bg_normal     = "#000000aa"
 theme.bg_systray    = "#000000"
@@ -79,8 +82,8 @@ tag_icon 		= "◊"
 tag_icon_active = "◆"
 
 -- This is used later as the default terminal and editor to run.
---terminal = "urxvt"
-terminal = "lxterminal"
+terminal = "urxvt"
+--terminal = "evilvte"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -166,6 +169,7 @@ mytextclock = awful.widget.textclock('<span font="' .. theme.font .. '"> %b %d, 
 
 -- Create a wibox for each screen and add it
 mywibox = {}
+mybwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -212,6 +216,39 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+	batwidget = lain.widgets.bat({
+	    battery = "BAT0",
+		ac      = "AC",
+	    settings = function()
+	        perc = bat_now.perc .. "% "
+	        if bat_now.ac_status == 1 then
+	            perc = perc .. "(*)"
+	        end
+	        widget:set_text(perc)
+	    end
+	})
+    mpdwidget = lain.widgets.mpd({
+        port = "6601",
+        music_dir = os.getenv("HOME") .. "/music",
+        notify = "off",
+        settings = function()
+            artist = mpd_now.artist .. " - "
+            title  = mpd_now.title  .. " "
+            if mpd_now.state == pause then
+                artist = "mpd "
+                title  = "paused "
+            elseif mpd_now.state == "stop" then
+                artist = ""
+                title  = ""
+            end
+            widget:set_text(artist .. title)
+        end
+    })
+    mynet = lain.widgets.net({
+        settings = function()
+            widget:set_text(net_now.received .. " " .. net_now.sent .. " - ")
+        end
+    })
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -231,7 +268,8 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mybwibox[s] = awful.wibox({ position = "bottom", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -240,10 +278,14 @@ for s = 1, screen.count() do
 --    left_layout:add(mylayoutbox[s])
     left_layout:add(mypromptbox[s])
 
+
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+
     right_layout:add(mytextclock)
+
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
@@ -251,7 +293,19 @@ for s = 1, screen.count() do
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
+    -- BOTTOM bar
+    local layoutb = wibox.layout.align.horizontal()
+    local leftb_layout = wibox.layout.fixed.horizontal()
+    local rightb_layout = wibox.layout.fixed.horizontal()
+
+	rightb_layout:add(mynet)
+	rightb_layout:add(batwidget)
+    leftb_layout:add(mpdwidget)
+    layoutb:set_right(rightb_layout)
+    layoutb:set_left(leftb_layout)
+
     mywibox[s]:set_widget(layout)
+    mybwibox[s]:set_widget(layoutb)
 end
 -- }}}
 
@@ -284,6 +338,7 @@ globalkeys = awful.util.table.join(
 -- https://wiki.archlinux.org/index.php/awesome
     awful.key({ modkey }, "b", function ()
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+        mybwibox[mouse.screen].visible = not mybwibox[mouse.screen].visible
     end),
 
     -- Layout manipulation
@@ -302,7 +357,8 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "w", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('sh ~/projects/scripts/scripts/lockme.sh') end),
+--    awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('sh ~/projects/scripts/scripts/lockme.sh') end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('i3lock') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -329,6 +385,14 @@ globalkeys = awful.util.table.join(
 --		  nil,
 --                  awful.util.getdir("cache") .. "/history_eval")
 --              end),
+    awful.key({ modkey }, "e",
+        function()
+                  awful.prompt.run({ prompt = "Run Lua code: " },
+                  mypromptbox[mouse.screen].widget,
+                  awful.util.eval, nil,
+                  awful.util.getdir("cache") .. "/history_eval")
+              end),
+
     awful.key({ modkey }, "s",
         function ()
             awful.prompt.run({ prompt = " Search: "},
@@ -337,8 +401,30 @@ globalkeys = awful.util.table.join(
                     awful.util.spawn("xdotool search --name "..find.." windowactivate", false)
                     end)
             end),
+    -- MPD
+    awful.key({ modkey }, "<",
+        function ()
+            awful.util.spawn_with_shell("mpc --port 6601 prev")
+            mpdwidget.update()
+        end),
+    awful.key({ modkey, "Shift" }, "<",
+        function ()
+            awful.util.spawn_with_shell("mpc --port 6601 next")
+            mpdwidget.update()
+        end),
+    awful.key({ modkey }, "+",
+        function ()
+            awful.util.spawn_with_shell("mpc --port 6601 volume +5")
+            mpdwidget.update()
+        end),
+    awful.key({ modkey }, "-",
+        function ()
+            awful.util.spawn_with_shell("mpc --port 6601 volume -5")
+            mpdwidget.update()
+        end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end)
+
 )
 
 clientkeys = awful.util.table.join(
@@ -535,7 +621,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 awful.util.spawn_with_shell("sh ~/.fehbg")
 awful.util.spawn_with_shell("pgrep mpd || mpd &")
+awful.util.spawn_with_shell("pgrep mpdas || mpdas &")
 awful.util.spawn_with_shell("xset -b") -- disable beep
-awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
-awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
+--awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
+--awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
 -- }}}
