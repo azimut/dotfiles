@@ -1,0 +1,9 @@
+#!/usr/bin/env perl
+
+# On .Xdefaults add:
+# urxvt.perl-ext: grab_test
+
+sub on_sel_grab {
+    warn "you selected ", $_[0]->selection;
+    ()
+}

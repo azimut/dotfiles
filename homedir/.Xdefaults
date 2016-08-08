@@ -15,8 +15,10 @@
 ! ░░░░░░░░░░
 !
 ! █▓▒░ fonts
-urxvt*font: xft:gohufont:size=11:antialias=true
-urxvt*boldFont: xft:gohufont:size=11:antialias=true
+!urxvt*font: xft:gohufont:size=11:antialias=true
+!urxvt*boldFont: xft:gohufont:size=11:antialias=true
+!urxvt*font: xft:clean:size=10:style=Regular
+!URxvt*font: -misc-gohufont-medium-r-normal--0-0-0-0-c-0-iso8859-1
 urxvt*lineSpace: -1
 
 ! █▓▒░ interface
@@ -44,6 +46,12 @@ urxvt*color7: #bcbcaf
 urxvt*color15: #c1c4bc
 urxvt*color0: #222222
 urxvt*color8: #666666
+
+URxvt*urgentOnBell: true
+URxvt*visualBell: true
+
+!urxvt.perl-ext: grab_test
+urxvt.perl-ext: notifyme
 
 ! █▓▒░ clipboard
 !urxvt.perl-ext-common: default,clipboard,keyboard-select
