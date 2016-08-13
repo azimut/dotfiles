@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+#use Data::Dumper;
 
 # References:
 #   man urxvtperl
@@ -10,6 +11,8 @@
 sub on_start {
     my ($self) = @_;
     $self->{show_alert} = 0;
+    warn $self->vt;
+    warn $self->parent;
     ()
 }
 
@@ -25,7 +28,12 @@ sub on_bell {
     my ($self) = @_;
     warn "you whin";
     if ( $self->{show_alert} ) {
-        $self->exec_async("/usr/bin/notify-send","title","message");
+        $self->exec_async("/usr/bin/notify-send",
+                          "--expire-time=10000",
+                          "--icon=". $ENV{"HOME"} ."/.icons/cortana.png",
+                          "SENPAI!",
+                          "Notice me!"
+                      );
         $self->{show_alert} = 0;
     }
 }
