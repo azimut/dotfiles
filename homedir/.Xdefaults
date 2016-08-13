@@ -52,6 +52,7 @@ URxvt*visualBell: true
 
 !urxvt.perl-ext: grab_test
 urxvt.perl-ext: notifyme
+urxvt.keysym.M-x: perl:notifyme:activate
 
 ! █▓▒░ clipboard
 !urxvt.perl-ext-common: default,clipboard,keyboard-select

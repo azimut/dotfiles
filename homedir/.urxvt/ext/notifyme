@@ -1,21 +1,31 @@
 #!/usr/bin/env perl
 
-use Data::Dumper;
-
 # References:
 #   man urxvtperl
 #   http://jbl.web.cern.ch/jbl/doc/urxvt/
 
 # On .Xdefaults add:
 #   urxvt.perl-ext: notifyme
+
 sub on_start {
     my ($self) = @_;
-    
-    $self->{xr} = $self->x_resource;
+    $self->{show_alert} = 0;
+    ()
+}
+
+sub on_user_command {
+    my ($self, $action) = @_;
+    if ($action eq "notifyme:activate") {
+       $self->{show_alert} = 1; 
+    }
+    ()
 }
 
 sub on_bell {
     my ($self) = @_;
     warn "you whin";
-    $self->exec_async("/usr/bin/notify-send","title","message");
+    if ( $self->{show_alert} ) {
+        $self->exec_async("/usr/bin/notify-send","title","message");
+        $self->{show_alert} = 0;
+    }
 }
