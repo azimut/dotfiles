@@ -2,7 +2,6 @@
 -- https://awesomewm.org/doc/api/
 -- https://www.lua.org/manual/5.1/manual.html
 --
-
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -62,7 +61,8 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
 --theme.font          = "ohsnap 8"
-theme.font          = "gohufont 8"
+theme.font          = "termsyn 8"
+--theme.font          = "gohufont 10"
 --theme.font          = "Clear 8"
 
 theme.bg_normal     = "#000000aa"
@@ -115,15 +115,15 @@ local layouts =
 {
   --    awful.layout.suit.floating,
   --    awful.layout.suit.tile,
---awful.layout.suit.tile.left,
+awful.layout.suit.tile.left,
   --    awful.layout.suit.tile.bottom,
---awful.layout.suit.tile.top,
+awful.layout.suit.tile.top,
   ----  lain.layout.uselesstile,
   --  lain.layout.uselesstile.left,
   ----  lain.layout.uselesstile.top,
   --  lain.layout.uselesstile.bottom,
-    lain.layout.uselessfair,
-    lain.layout.uselessfair.horizontal,
+--    lain.layout.uselessfair,
+--    lain.layout.uselessfair.horizontal,
   --  lain.layout.termfair,
   --  lain.layout.centerfair,
   --  lain.layout.centerwork,
@@ -232,6 +232,7 @@ awful.button({ }, 5, function ()
   if client.focus then client.focus:raise() end
 end))
 
+--mytextclock = awful.widget.textclock('<span font="' .. theme.font .. '"> %b %d, %H:%M </span>')
 batwidget = lain.widgets.bat({
   battery = "BAT0",
   ac      = "AC",
@@ -248,16 +249,19 @@ mpdwidget = lain.widgets.mpd({
   music_dir = os.getenv("HOME") .. "/music",
   notify = "off",
   settings = function()
-    artist = mpd_now.artist .. " - "
-    title  = mpd_now.title  .. " "
-    if mpd_now.state == pause then
-      artist = "mpd "
-      title  = "paused "
-    elseif mpd_now.state == "stop" then
-      artist = ""
-      title  = ""
+    if mpd_now.state == "pause" or mpd_now.state == "stop" then
+      display = ""
+    else
+      if mpd_now.artist == "N/A" or mpd_now.title == "N/A" then
+        display = mpd_now.file
+      else
+        artist = mpd_now.artist .. " - "
+        title  = mpd_now.title  .. " "
+        display = artist .. title
+      end
     end
-    widget:set_text(artist .. title)
+    --widget:set_text(artist .. title)
+    widget:set_text(display)
   end
 })
 mynet = lain.widgets.net({
