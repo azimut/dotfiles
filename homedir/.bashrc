@@ -29,6 +29,8 @@
 # * ftp-proftpd-backdoor,ftp-vuln-cve2010-4221
 # * ftp-vsftpd-backdoor
 
+alias rm='rm -i'
+
 nmap_pupil(){
     local target="$@"
     set -x
@@ -133,6 +135,9 @@ ansible_env(){
 }
 
 export GOPATH=$HOME/go
+#export GOROOT=$HOME/go
+#export GOPATH=/usr/lib64/go
+#export GOROOT=/usr/lib64/go
 
 torchmedown(){
 . /home/sendai/projects/distro/install/bin/torch-activate
@@ -147,7 +152,8 @@ d_jweechat(){
     sudo docker rm weechat
     sudo docker run \
                     --dns 208.67.220.220 \
-                    --name weechat --hostname weechat \
+                    --name weechat \
+                    --hostname weechat \
                     --network redazul \
                     --rm \
                     -ti \
@@ -221,6 +227,21 @@ d_ddnsmasq(){
                     kubler-spin/dnsmasq
     set +x
 }
+d_dnsmasqtor(){
+    set -x
+    sudo docker rm dnsmasq
+    sudo docker run \
+                    -ti \
+                    --name dnsmasq \
+                    -u root \
+                    --network redvioleta \
+                    --entrypoint=/bin/sh \
+                    --rm \
+                    -e SERVER='--server=8.8.8.8#53' \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    kubler-spin/dnsmasq
+    set +x
+}
 
 d_davmail(){
     set -x
@@ -234,20 +255,28 @@ d_davmail(){
                     kubler-spin/davmail
     set +x
 }
+
 d_neomutt(){
     set -x
     sudo docker rm neomutt
     sudo docker run \
-        --name neomutt --hostname neomutt \
-        --rm -ti -v /etc/localtime:/etc/localtime:ro --net=redvioleta -v /home/sendai/.muttrc:/home/user/.muttrc  --entrypoint=/bin/sh kubler-spin/neomutt
+        --name neomutt \
+        --hostname neomutt \
+        --entrypoint=neomutt \
+        --rm \
+        -ti \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /home/sendai/.muttrc:/home/user/.muttrc \
+        --net=redvioleta \
+        kubler-spin/neomutt
     set +x
 }
 
 d_newsbeuter(){
     set -x
-    sudo docker rm newsbeuter
+    sudo docker rm newsbeuter2
     sudo docker run \
-                    --name newsbeuter --hostname newsbeuter \
+                    --name newsbeuter2 --hostname newsbeuter2 \
                     --dns 208.67.220.220 \
                     --network redazul \
                     --rm \
@@ -255,6 +284,18 @@ d_newsbeuter(){
                     -v $HOME/newsbeuter:/home/user/.newsbeuter \
                     kubler-spin/newsbeuter-python3
                     #kubler-spin/newsbeuter
+    set +x
+}
+d_torproxy(){
+    # READONLY
+    set -x
+    sudo docker rm tor-proxy
+    sudo docker run --name tor-proxy \
+                    --net=redvioleta \
+                    --rm \
+                    -ti \
+                    --entrypoint=/bin/sh \
+                    -v /etc/localtime:/etc/localtime:ro kubler-spin/tor
     set +x
 }
 d_tor(){
@@ -335,7 +376,85 @@ d_pychess(){
         -v $HOME/pychess/.local:/root/.local \
         -v $HOME/pychess/.cache:/root/.cache \
         -v $HOME/pychess/.config:/root/.config \
-        -e "DISPLAY=unix${DISPLAY}"  \
+        -e "DISPLAY=unix${DISPLAY}" \
         kubler-spin/pychess
+        #4e30c7aeb565
     set +x
 }
+d_cutechess(){
+    set -x
+    sudo docker rm cutechess
+    sudo docker run \
+        --net=none \
+        --rm \
+        --entrypoint=/opt/cutechess \
+        -v $HOME/cutechess:/root/.config/cutechess \
+        --name cutechess \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e "DISPLAY=unix${DISPLAY}"  \
+        kubler-spin/cutechess
+    set +x
+}
+d_firefox(){
+    set -x
+    sudo docker stop firefox
+	if [[ 'foo' == 'bar' ]]; then
+		docker run --detach \
+				   --publish 30000:14500 \
+				   --user "$(id -u):1000" \
+				   --volume "${HOME}"/firefox-storage:/home/user:rw \
+			       --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
+				   --env HOME=/home \
+				   --env CUPS_SERVER="${docker_address}" \
+				   --env SOCKS_SERVER="${docker_address}:5080" \
+				   --env SOCKS_VERSION=5 \
+				   "${dri_devices[@]}" \
+				   --volume /etc/localtime:/etc/localtimeXX:ro \
+				   --volume /etc/timezone:/etc/timezoneXX:ro \
+					devurandom/firefox "$@"
+	fi
+    sudo docker run --net=host \
+                    --rm \
+                    --name firefox \
+                    --entrypoint=firefox-bin \
+                    --device /dev/snd \
+                    --device /dev/dri \
+                    --cpuset-cpus 0 \
+                    -v /tmp/.X11-unix:/tmp/.X11-unix \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    -e GDK_SCALE \
+                    -e GDK_DPI_SCALE \
+                    -e "DISPLAY=unix${DISPLAY}" \
+                    kubler-spin/firefox-bin
+    set +x
+}
+d_torfirefox(){
+    set -x
+    sudo docker stop firefox
+	if [[ 'foo' == 'bar' ]]; then
+		docker run --detach \
+				   --publish 30000:14500 \
+				   --user "$(id -u):1000" \
+				   --volume "${HOME}"/firefox-storage:/home/user:rw \
+			       --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
+				   --env HOME=/home \
+				   --env CUPS_SERVER="${docker_address}" \
+				   --env SOCKS_SERVER="${docker_address}:5080" \
+				   --env SOCKS_VERSION=5 \
+				   "${dri_devices[@]}" \
+				   --volume /etc/localtime:/etc/localtimeXX:ro \
+				   --volume /etc/timezone:/etc/timezoneXX:ro \
+					devurandom/firefox "$@"
+	fi
+    sudo docker run --net=redvioleta \
+                    --rm \
+                    --name firefox \
+                    --entrypoint=firefox-bin \
+                    -v /tmp/.X11-unix:/tmp/.X11-unix -e "DISPLAY=unix${DISPLAY}" \
+                    kubler-spin/ffmpeg
+    set +x
+}
+
+
+# Put your fun stuff here.
+export PATH=$PATH:~/.bin
