@@ -144,11 +144,16 @@ torchmedown(){
 export  CUDA_BIN_PATH=/opt/cuda
 }
 
+screen_name(){
+    printf "\033k%s\033\\" "$@"
+}
+
 export TERM=xterm
 
 d_jweechat(){
     # sudo docker network create --subnet=10.0.43.1/24 redazul
     set -x
+    screen_name "weechat"
     sudo docker rm weechat
     sudo docker run \
                     --dns 208.67.220.220 \
@@ -166,6 +171,7 @@ d_jbitlbee(){
     # -p 127.0.0.1:6667:6667 \
     # sudo docker network create --subnet=10.0.43.1/24 redazul
     set -x
+    screen_name "bitlbee"
     sudo docker rm bitlbee
     sudo docker run \
                     --cap-drop=ALL \
@@ -258,6 +264,7 @@ d_davmail(){
 
 d_neomutt(){
     set -x
+    screen_name "neomutt"
     sudo docker rm neomutt
     sudo docker run \
         --name neomutt \
@@ -266,7 +273,7 @@ d_neomutt(){
         --rm \
         -ti \
         -v /etc/localtime:/etc/localtime:ro \
-        -v /home/sendai/.muttrc:/home/user/.muttrc \
+        -v $HOME/.muttrc:/home/user/.muttrc:ro \
         --net=redvioleta \
         kubler-spin/neomutt
     set +x
@@ -274,6 +281,7 @@ d_neomutt(){
 
 d_newsbeuter(){
     set -x
+    screen_name "newsbeuter"
     sudo docker rm newsbeuter2
     sudo docker run \
                     --name newsbeuter2 --hostname newsbeuter2 \
@@ -455,6 +463,32 @@ d_torfirefox(){
     set +x
 }
 
+d_postgres(){
+    set -x
+    sudo docker run --rm \
+                    -ti \
+                    -e POSTGRES_PASSWORD=secret \
+                    -e POSTGRES_USER=fluentd \
+                    -e POSTGRES_DB=rss \
+                    --entrypoint=/etc/service/postgres/run \
+                    --net=host \
+                    --name postgres \
+                    -v /home/sendai/postgres/:/var/lib/postgresql/data \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    kubler-spin/postgres
+    set +x
+}
+
+d_gci(){
+    set -x
+    sudo docker images | grep none | awk '{print $3;}' | xargs -r sudo docker rmi
+    set +x
+}
+d_gc(){
+    set -x
+    sudo docker ps -a | grep -v -e Up -e portage | tail -n+2 | cut -f1 -d' ' | xargs -r sudo docker rm 
+    set +x
+}
 
 # Put your fun stuff here.
 export PATH=$PATH:~/.bin
