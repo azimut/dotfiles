@@ -478,7 +478,24 @@ d_postgres(){
                     kubler-spin/postgres
     set +x
 }
-
+d_postgres(){
+    set -x
+    sudo docker stop flood
+    sudo docker run --rm \
+                    --entrypoint=/etc/service/postgres/run \
+                    --add-host=flood:192.168.1.101 \
+                    --add-host=rtorrent:192.168.1.101 \
+                    -p 3000:3000 \
+                    --net=host \
+                    --name flood --hostname flood \
+                    --read-only \
+                    --tmpfs=/opt/flood/server/temp \
+                    -v $HOME/flood/config.js:/opt/flood/config.js:ro \
+                    -v $HOME/flood/db:/opt/flood/server/db \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    kubler-spin/flood
+    set +x
+}
 d_gci(){
     set -x
     sudo docker images | grep none | awk '{print $3;}' | xargs -r sudo docker rmi
