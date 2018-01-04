@@ -482,7 +482,6 @@ d_flood(){
     set -x
     sudo docker stop flood
     sudo docker run --rm \
-                    --entrypoint=/etc/service/postgres/run \
                     --add-host=flood:192.168.1.101 \
                     --add-host=rtorrent:192.168.1.101 \
                     -p 3000:3000 \
