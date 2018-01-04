@@ -478,7 +478,7 @@ d_postgres(){
                     kubler-spin/postgres
     set +x
 }
-d_postgres(){
+d_flood(){
     set -x
     sudo docker stop flood
     sudo docker run --rm \
