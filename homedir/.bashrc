@@ -86,22 +86,22 @@ nmap_limbus(){
 
 addconda3(){
 unset PYTHONPATH
-export PATH=/home/sendai/miniconda3/bin:$PATH
-source activate /home/sendai/miniconda3/
+export PATH=$HOME/miniconda3/bin:$PATH
+source activate $HOME/miniconda3/
 }
 
 addconda22(){
 unset PYTHONPATH
-export PATH=/home/sendai/miniconda22/bin:$PATH
-source activate /home/sendai/miniconda22/
+export PATH=$HOME/miniconda22/bin:$PATH
+source activate $HOME/miniconda22/
 }
 addconda(){
-export PATH=/home/sendai/miniconda2/bin:$PATH
-source activate /home/sendai/miniconda2/
+export PATH=$HOME/miniconda2/bin:$PATH
+source activate $HOME/miniconda2/
 }
 addconda27(){
-export PATH=/home/sendai/miniconda27/bin:$PATH
-source activate /home/sendai/miniconda27/
+export PATH=$HOME/miniconda27/bin:$PATH
+source activate $HOME/miniconda27/
 }
 
 rand_play(){
@@ -140,7 +140,7 @@ export GOPATH=$HOME/go
 #export GOROOT=/usr/lib64/go
 
 torchmedown(){
-. /home/sendai/projects/distro/install/bin/torch-activate
+. $HOME/projects/distro/install/bin/torch-activate
 export  CUDA_BIN_PATH=/opt/cuda
 }
 
@@ -251,6 +251,7 @@ d_dnsmasqtor(){
 
 d_davmail(){
     set -x
+    screen_name "davmail"
     sudo docker rm davmail
     sudo docker run \
                     --name davmail --hostname davmail \
@@ -324,7 +325,7 @@ d_kibana(){
 d_flexget(){
     set -x
     sudo docker rm flexget
-    sudo docker run --add-host=rtorrent:192.168.1.101 --rm -ti --name flexget --tmpfs /tmp --tmpfs /var/tmp -v /home/sendai/flexget/:/root/.config/flexget --net=host --read-only  -v /etc/localtime:/etc/localtime:ro kubler-spin/flexget:20170423
+    sudo docker run --add-host=rtorrent:192.168.1.101 --rm -ti --name flexget --tmpfs /tmp --tmpfs /var/tmp -v $HOME/flexget/:/root/.config/flexget --net=host --read-only  -v /etc/localtime:/etc/localtime:ro kubler-spin/flexget:20170423
     set +x
 }
 d_rss(){
@@ -340,13 +341,13 @@ d_rss(){
 d_logstash(){
     set -x
     sudo docker rm logstash
-    sudo docker run --net=host -v /home/sendai/logstash/:/data -v /home/sendai/logstash-logs:/opt/logstash/logs  --rm  --entrypoint=/opt/logstash/bin/logstash  kubler-spin/logstash -f /data/rss.conf -r -w 2
+    sudo docker run --net=host -v $HOME/logstash/:/data -v $HOME/logstash-logs:/opt/logstash/logs  --rm  --entrypoint=/opt/logstash/bin/logstash  kubler-spin/logstash -f /data/rss.conf -r -w 2
     set +x
 }
 d_elasticsearch(){
     set -x
     sudo docker rm elasticsearch
-    sudo docker run -ti --rm --entrypoint=/etc/service/elasticsearch/run --net=host -v /home/sendai/elasticsearch/:/etc/elasticsearch -v /home/sendai/elasticsearch-data/:/var/lib/elasticsearch  -v /home/sendai/elasticsearch-log/:/var/log/elasticsearch kubler-spin/elasticsearch
+    sudo docker run -ti --rm --entrypoint=/etc/service/elasticsearch/run --net=host -v $HOME/elasticsearch/:/etc/elasticsearch -v $HOME/elasticsearch-data/:/var/lib/elasticsearch  -v $HOME/elasticsearch-log/:/var/log/elasticsearch kubler-spin/elasticsearch
     set +x
 }
 d_rtorrent(){
@@ -358,7 +359,7 @@ d_rtorrent(){
 d_fluentd(){
     set -x
     sudo docker rm fluentd
-    sudo docker run --net=host --name fluentd --hostname fluentd -v /etc/localtime:/etc/localtime:ro --rm -ti -v /home/sendai/fluentd/:/data  --entrypoint=/bin/sh kubler-spin/fluentd
+    sudo docker run --net=host --name fluentd --hostname fluentd -v /etc/localtime:/etc/localtime:ro --rm -ti -v $HOME/fluentd/:/data  --entrypoint=/bin/sh kubler-spin/fluentd
     set +x
 }
 d_headphones(){
@@ -368,8 +369,8 @@ d_headphones(){
          -p 5000:5000 -p 8181:8181 \
          -v /etc/localtime:/etc/localtime:ro  \
          --rm -ti \
-         -v /home/sendai/headphones:/home/user/data \
-         -v /home/sendai/headphones-blackhole:/home/user/blackhole \
+         -v $HOME/headphones:/home/user/data \
+         -v $HOME/headphones-blackhole:/home/user/blackhole \
          kubler-spin/headphones 
      set +x
 }
@@ -473,7 +474,7 @@ d_postgres(){
                     --entrypoint=/etc/service/postgres/run \
                     --net=host \
                     --name postgres \
-                    -v /home/sendai/postgres/:/var/lib/postgresql/data \
+                    -v $HOME/postgres/:/var/lib/postgresql/data \
                     -v /etc/localtime:/etc/localtime:ro \
                     kubler-spin/postgres
     set +x
