@@ -12,6 +12,9 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+
+local revelation=require("revelation")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -57,7 +60,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-
+revelation.init()
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
 --theme.font          = "ohsnap 8"
@@ -99,6 +102,7 @@ tag_icon_active = "◆"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
+--terminal = "/home/sendai/projects/LilyTerm/src/lilyterm"
 --terminal = "evilvte"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
@@ -152,9 +156,9 @@ end
 tags = {}
 for s = 1, screen.count() do
   -- Each screen has its own tag table.
-  --    tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
+   --   tags[s] = awful.tag({ "一 ichi", "二 ni", "三 san", "四 yon/shi", "五 go", "六 roku", "七 shichi/nana", "八 hachi", "九 kyu/ku", "十 yu"}, s, layouts[1])
   tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"}, s, layouts[1])
-  --    tags[s] = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, s, layouts[1])
+--      tags[s] = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, s, layouts[1])
 end
 -- }}}
 
@@ -247,7 +251,7 @@ batwidget = lain.widgets.bat({
 mpdwidget = lain.widgets.mpd({
   port = "6601",
   music_dir = os.getenv("HOME") .. "/music",
-  notify = "off",
+  notify = "on",
   settings = function()
     if mpd_now.state == "pause" or mpd_now.state == "stop" then
       display = ""
@@ -255,9 +259,7 @@ mpdwidget = lain.widgets.mpd({
       if mpd_now.artist == "N/A" or mpd_now.title == "N/A" then
         display = mpd_now.file
       else
-        artist = mpd_now.artist .. " - "
-        title  = mpd_now.title  .. " "
-        display = artist .. title
+        display = mpd_now.artist .. " - " .. mpd_now.title
       end
     end
     --widget:set_text(artist .. title)
@@ -347,10 +349,12 @@ awful.button({ }, 5, awful.tag.viewprev)
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+  awful.key({ "Any",           }, "F1", nil       ),
+  awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
   awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
   awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
   awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-  
+  awful.key({ modkey,           }, "e",      revelation),
   awful.key({ modkey,           }, "j",
   function ()
     awful.client.focus.byidx( 1)
@@ -385,7 +389,7 @@ globalkeys = awful.util.table.join(
   
   -- Standard program
   awful.key({ modkey,           }, "w", function () awesome.spawn(terminal) end),
-  awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -scale 10% -scale 1000% /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png') end),
+  awful.key({ modkey,           }, "x", function () awful.util.spawn_with_shell('scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -scale 10% -scale 1000% /tmp/screen_locked2.png && i3lock --ignore-empty-password -i /tmp/screen_locked2.png') end),
   awful.key({ modkey, "Control" }, "r", awesome.restart),
   awful.key({ modkey, "Shift"   }, "q", awesome.quit),
   
@@ -404,14 +408,14 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey }, "r",
   function () mypromptbox[mouse.screen]:run() end),
   
-  awful.key({ modkey }, "e",
-  function()
-    awful.prompt.run({ prompt = "Run Lua code: " },
-    mypromptbox[mouse.screen].widget,
-    awful.util.eval,
-    nil,
-    awful.util.getdir("cache") .. "/history_eval")
-  end),
+--  awful.key({ modkey }, "e",
+--  function()
+--    awful.prompt.run({ prompt = "Run Lua code: " },
+--    mypromptbox[mouse.screen].widget,
+--    awful.util.eval,
+--    nil,
+--    awful.util.getdir("cache") .. "/history_eval")
+--  end),
   
   awful.key({ modkey }, "s",
   function ()
@@ -434,17 +438,20 @@ globalkeys = awful.util.table.join(
   end),
   awful.key({ modkey }, "+",
   function ()
-    awesome.spawn("mpc --port 6601 volume +2",false)
+    --awesome.spawn("mpc --port 6601 volume +2",false)
+    awesome.spawn("amixer -D pulse sset Master 1%+",false)
     mpdwidget.update()
   end),
   awful.key({ modkey }, "-",
   function ()
-    awesome.spawn("mpc --port 6601 volume -2",false)
+    --awesome.spawn("mpc --port 6601 volume -2",false)
+    awesome.spawn("amixer -D pulse sset Master 1%-",false)
     mpdwidget.update()
   end),
   -- Copy primary to clipboard
   -- See: autocutsel
   awful.key({ modkey }, "c", function () awful.util.spawn_with_shell("xclip -selection primary -o | xclip -selection clipboard") end),
+  awful.key({ modkey }, "v", function () awful.util.spawn_with_shell("xclip -selection clipboard -o | xclip -selection primary") end),
   -- Menubar
   awful.key({ modkey }, "p", function() menubar.show() end)
   
@@ -530,6 +537,8 @@ awful.rules.rules = {
                    focus = awful.client.focus.filter,
                    keys = clientkeys,
                    buttons = clientbuttons } },
+  { rule = { class = "mpv" },
+    properties = { ontop = true } },
   { rule = { class = "gimp" },
     properties = { floating = true } },
   { rule = { instance = "plugin-container" },
@@ -632,13 +641,14 @@ end)
 client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus  end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
+awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 awesome.spawn("bash ".. os.getenv("HOME") .."/.fehbg")              -- restore wallpaper
 run_once("urxvtd")
 run_once("mpd")
+--run_once("keynav")
 awesome.spawn("xset -b",false)                  -- disable beepI
 awesome.spawn("amixer set Capture nocap",false) -- disable mic
---awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
+awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
 --awful.util.spawn_with_shell("pgrep nm-applet || nm-applet &")
 -- }}}
 --
