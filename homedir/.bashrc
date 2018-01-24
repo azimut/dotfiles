@@ -164,6 +164,7 @@ d_jweechat(){
                     -ti \
                     -v $HOME/weechat:/home/user/.weechat \
                     -v /etc/localtime:/etc/localtime:ro \
+                    -v $HOME/Downloads/zscaler/:/usr/local/share/ca-certificates:ro \
                     kubler-spin/weechat
     set +x
 }
@@ -479,6 +480,23 @@ d_postgres(){
                     kubler-spin/postgres
     set +x
 }
+
+d_citus(){
+    set -x
+    sudo docker rm citusdb
+    sudo docker run --rm \
+                    -ti \
+                    -e POSTGRES_PASSWORD=secret \
+                    -e POSTGRES_USER=fluentd \
+                    -e POSTGRES_DB=rss \
+                    --entrypoint=/etc/service/postgres/run \
+                    --net=host \
+                    --name citusdb \
+                    -v $HOME/postgres/:/var/lib/postgresql/data \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    kubler-spin/citusdb
+    set +x
+}
 d_flood(){
     set -x
     sudo docker stop flood
@@ -504,6 +522,21 @@ d_gci(){
 d_gc(){
     set -x
     sudo docker ps -a | grep -v -e Up -e portage | tail -n+2 | cut -f1 -d' ' | xargs -r sudo docker rm 
+    set +x
+}
+
+# NON KUBLER
+
+d_wireshark(){
+    set -x
+    sudo docker rm wireshark
+    sudo docker run --net=none \
+        --rm -ti --name wireshark \
+        -v /tmp/.X11-unix:/tmp/.X11-unix\
+        -v /etc/localtime:/etc/localtime:ro \
+        -e GDK_SCALE -e GDK_DPI_SCALE \
+        -e DISPLAY=unix:0 \
+        jess/wireshark
     set +x
 }
 
