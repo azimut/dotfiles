@@ -9,6 +9,7 @@ media-video/mpv -bluray -cdio -dvb -dvd -jack -joystick -jpeg -quvi  -v4l -xscre
 
 # WWW
 www-plugins/adobe-flash cpu_flags_x86_sse2 -kde
+www-client/w3m X fbcon gpm gtk imlib linguas_ja -lynxkeymap -migemo nls -nntp ssl unicode -vainilla -xface
 
 # Gimp
 media-gfx/gimp -aalib -alsa -bzip2 -dbus -mng -pdf postscript -python -python_targets_python2_7 -udev -wmf -xpm
@@ -29,3 +30,4 @@ xfce-base/thunar -dbus -libnotify -pcre -startup-notification -udisks -xfce_plug
 net-analyzer/nmap -zenmap nse -nping nmap-update -ndiff -ncat -ipv6
 net-analyzer/metasploit ruby_targets_ruby19 -java -oracle -lorcon pcap
 net-analyzer/hydra -gtk idn -mysql -ncp -oracle pcre -postgres ssl -subversion
+
