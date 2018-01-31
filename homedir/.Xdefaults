@@ -21,8 +21,8 @@
 !urxvt*font: -misc-gohufont-medium-r-normal--0-0-0-0-c-0-iso8859-1
 urxvt*lineSpace: -1
 !urxvt*font: size=12
-URxvt*font:       xft:Terminus:pixelsize=10
-!URxvt*font: xft:Dejavu Sans Mono:size=10
+!URxvt*font:       xft:Terminus:pixelsize=10
+URxvt*font: xft:Dejavu Sans Mono:size=9
 !URxvt.font: -*-dejavu sans mono-medium-r-normal-*-*-*-*-*-*-*-*-u
 
 URxvt*termName: rxvt-unicode
@@ -41,7 +41,7 @@ urxvt*scrollBar: false
 urxvt*depth: 32
 !urxvt*foreground:#FFFFFF
 !URxvt.background: [90]#000000
-URxvt.background: rgba:0000/0000/0000/dddd
+URxvt.background: rgba:0000/0000/0000/aaaa
 !urxvt*background:rgba:2000/2000/2000/dddd
 
 !URxvt.background: rgba:0000/0000/0000/0000

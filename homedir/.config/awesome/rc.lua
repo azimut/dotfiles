@@ -267,7 +267,7 @@ mpdwidget = lain.widgets.mpd({
   end
 })
 mynet = lain.widgets.net({
-  iface = {"wlp3s0", "enp0s25"},
+  iface = {"wlp2s0","enp0s31f6"},
   settings = function()
     widget:set_text(net_now.received .. " " .. net_now.sent .. " - ")
   end
