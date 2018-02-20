@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: temporal recursion expanded
+# key: tr1
+# --
+(defun ${1:fun-name} (time &optional notes rhythms)
+
+  (when (null notes)
+    (setf notes (cm:next
+                 (cm:new cm:cycle
+                   :of '())
+                't)))
+
+  (when (null rhythms)
+    (setf rhythms '()))
+    
+  (let ((rhythm (first rhythms)))
+    (play-midi-note
+        time (first notes) 30 rhythm ${2:1})
+    (aat (+ time #[rhythm b])
+      #'$1
+        it (rest notes) (rest rhythms))))
+
+($1 (tempo-sync #[1 b]))
+(fluidsynth:program-change *synth* $2 1)

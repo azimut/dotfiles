@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: temporal recursion
+# key: temporal-recursion
+# --
+(defun ${1:fun-name} (time)
+  (play-midi-note time 40 40 ${2:1} ${3:1})
+  (aat (+ time #[${4:1} b])
+    #'$1 it))
+    
+($1 (tempo-sync #[1 b]))
+(fluidsynth:program-change *synth* $3 1)

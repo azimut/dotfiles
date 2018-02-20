@@ -30,7 +30,7 @@
 # * ftp-vsftpd-backdoor
 
 alias rm='rm -i'
-alias ls='ls -p'
+alias ls='ls -p --color'
 nmap_pupil(){
     local target="$@"
     set -x
@@ -326,6 +326,7 @@ d_kibana(){
 }
 d_flexget(){
     set -x
+    screen_name flexget
     sudo docker rm flexget
     sudo docker run --add-host=rtorrent:192.168.1.101 --rm -ti --name flexget --tmpfs /tmp --tmpfs /var/tmp -v $HOME/flexget/:/root/.config/flexget --net=host --read-only  -v /etc/localtime:/etc/localtime:ro kubler-spin/flexget:20170423
     set +x
@@ -354,6 +355,7 @@ d_elasticsearch(){
 }
 d_rtorrent(){
     set -x
+    screen_name rtorrent
     sudo docker rm rtorrent
     sudo docker run --name rtorrent --hostname rtorrent --net=host -v $HOME/anime:/opt --rm -ti kubler-spin/rtorrent-git:latest
     set +x

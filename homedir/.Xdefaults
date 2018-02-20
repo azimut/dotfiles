@@ -124,6 +124,7 @@ URxvt*visualBell: true
 
 !urxvt.perl-ext: grab_test
 urxvt.perl-ext: notifyme
+URxvt.perl-ext-common: "defaul, -searchable-scrollback"
 
 ! █▓▒░ clipboard
 !urxvt.perl-ext-common: default,clipboard,keyboard-select
