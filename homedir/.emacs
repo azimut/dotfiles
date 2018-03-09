@@ -29,6 +29,29 @@
           (":->" . 8594)   ;
           )))
 (add-hook 'lisp-mode-hook 'my-add-pretty-lambda)
+(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+
+;; neotree
+;; https://github.com/jaypei/emacs-neotree/issues/56
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(col-highlight ((t (:background "color-233"))))
+ '(hl-line ((t (:background "color-233"))))
+ '(lazy-highlight ((t (:background "black" :foreground "white" :underline t))))
+ '(neo-dir-link-face ((t (:foreground "cyan"))))
+ '(neo-file-link-face ((t (:foreground "white")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (jinja2-mode yaml-mode ansible magit neotree auto-complete company glsl-mode clojure-mode yasnippet markdown-mode dummyparens extempore-mode chicken-scheme smartparens lua-mode))))
 
 ;;; concurrent hints
 ;; https://www.reddit.com/r/lisp/comments/72v6p3/pushing_pixels_with_lisp_episode_18_shadow/
@@ -62,19 +85,6 @@
 
 ; I want spaces for indentation
 (setq-default indent-tabs-mode nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-    (clojure-mode yasnippet markdown-mode dummyparens extempore-mode chicken-scheme smartparens lua-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+
 
