@@ -1,0 +1,4 @@
+[submodule "homedir/.config/awesome/lain"]
+	path = homedir/.config/awesome/lain
+	url = https://github.com/lcpz/lain.git
+	branch = 3.5
