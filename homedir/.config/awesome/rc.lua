@@ -13,7 +13,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 
-local revelation=require("revelation")
+--local revelation=require("revelation")
 
 -- Notification library
 local naughty = require("naughty")
@@ -60,7 +60,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-revelation.init()
+-- revelation.init()
 -- Subtle hacker theme
 -- http://awesome.naquadah.org/wiki/Subtle_hacker_theme
 --theme.font          = "ohsnap 8"
@@ -267,7 +267,7 @@ mpdwidget = lain.widgets.mpd({
   end
 })
 mynet = lain.widgets.net({
-  iface = {"wlp2s0","enp0s31f6"},
+  iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1"},
   settings = function()
     widget:set_text(net_now.received .. " " .. net_now.sent .. " - ")
   end
@@ -354,7 +354,7 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
   awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
   awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-  awful.key({ modkey,           }, "e",      revelation),
+  --awful.key({ modkey,           }, "e",      revelation),
   awful.key({ modkey,           }, "j",
   function ()
     awful.client.focus.byidx( 1)
