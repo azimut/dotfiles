@@ -28,9 +28,18 @@
 # * ftp-brute --script-args='ftp.brute='ftp-brute.timeout=10s'
 # * ftp-proftpd-backdoor,ftp-vuln-cve2010-4221
 # * ftp-vsftpd-backdoor
+export PAGER=less
+export LESS="-SR"
 
 alias rm='rm -i'
 alias ls='ls -p --color'
+alias cp='cp -i'
+
+# --no-playlist
+alias ytmp3='youtube-dl --no-post-overwrites -x -f bestaudio -i -k --audio-format mp3'
+
+alias emacs='XMODIFIERS= emacs'
+
 nmap_pupil(){
     local target="$@"
     set -x
@@ -350,7 +359,7 @@ d_logstash(){
 d_elasticsearch(){
     set -x
     sudo docker rm elasticsearch
-    sudo docker run -ti --rm --entrypoint=/etc/service/elasticsearch/run --net=host -v $HOME/elasticsearch/:/etc/elasticsearch -v $HOME/elasticsearch-data/:/var/lib/elasticsearch  -v $HOME/elasticsearch-log/:/var/log/elasticsearch kubler-spin/elasticsearch
+    sudo docker run -ti --rm --entrypoint=/etc/service/elasticsearch/run --net=host -v $HOME/elasticsearch/:/etc/elasticsearch -v $HOME/elasticsearch-data/:/var/lib/elasticsearch  -v $HOME/elasticsearch-log/:/var/log/elasticsearch kubler-tresdos/elasticsearch
     set +x
 }
 d_rtorrent(){
@@ -553,6 +562,31 @@ d_wireshark(){
         -e GDK_SCALE -e GDK_DPI_SCALE \
         -e DISPLAY=unix:0 \
         jess/wireshark
+    set +x
+}
+
+d_plex(){
+    set -x
+    [[ -z $X_PLEX_TOKEN ]] && return 1
+    screen_name "plex"
+    sudo docker run -e X_PLEX_TOKEN=${X_PLEX_TOKEN} \
+                    -v /etc/localtime:/etc/localtime:ro \
+                    -v /home/sendai/disks/:/opt \
+                    -d \
+                    --net=host --name plex \
+                    kubler-spin/plex-media-server
+    set +x
+}
+
+d_znc(){
+    set -x
+    screen_name "znc"
+    sudo chown -R 122 $HOME/znc
+    sudo docker run \--name znc \
+         --net=host \
+         -v /etc/localtime:/etc/localtime:ro \
+         -v $HOME/znc:/var/lib/znc/.znc/configs \
+         kubler-spin/znc
     set +x
 }
 
