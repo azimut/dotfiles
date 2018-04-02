@@ -10,12 +10,20 @@
 ; disable menu-bar
 ; https://www.emacswiki.org/emacs/MenuBar
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 ; window resize
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+
+;; jupyter elpy
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt")
+
 
 ; pretty lambda
 (global-prettify-symbols-mode 1)
@@ -30,6 +38,10 @@
           )))
 (add-hook 'lisp-mode-hook 'my-add-pretty-lambda)
 (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+(add-hook 'go-mode-hook
+      (lambda ()
+        (set (make-local-variable 'company-backends) '(company-go))
+        (company-mode)))
 
 ;; neotree
 ;; https://github.com/jaypei/emacs-neotree/issues/56
@@ -48,10 +60,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+ '(custom-enabled-themes (quote (manoj-dark)))
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (jinja2-mode yaml-mode ansible magit neotree auto-complete company glsl-mode clojure-mode yasnippet markdown-mode dummyparens extempore-mode chicken-scheme smartparens lua-mode))))
+    (flycheck-bashate flycheck go-guru company-go go-mode elpy paredit jinja2-mode yaml-mode ansible magit neotree auto-complete company glsl-mode clojure-mode yasnippet markdown-mode dummyparens extempore-mode chicken-scheme smartparens lua-mode))))
 
 ;;; concurrent hints
 ;; https://www.reddit.com/r/lisp/comments/72v6p3/pushing_pixels_with_lisp_episode_18_shadow/
@@ -87,4 +104,8 @@
 (setq-default indent-tabs-mode nil)
 
 
+;; https://emacs.stackexchange.com/questions/24719/set-indentation-for-shell-script-function
+(setq sh-basic-offset 4)
+(setq sh-indentation 4)
+(setq smie-indent-basic 4)
 
