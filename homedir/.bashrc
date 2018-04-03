@@ -395,9 +395,9 @@ d_pychess(){
         --rm \
         --name pychess \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -v $HOME/pychess/.local:/root/.local \
-        -v $HOME/pychess/.cache:/root/.cache \
-        -v $HOME/pychess/.config:/root/.config \
+        -v $HOME/pychess/.local:/home/user/.local \
+        -v $HOME/pychess/.cache:/home/user/.cache \
+        -v $HOME/pychess/.config:/home/user/.config \
         -e "DISPLAY=unix${DISPLAY}" \
         kubler-spin/pychess
         #4e30c7aeb565
@@ -581,7 +581,7 @@ d_plex(){
 d_znc(){
     set -x
     screen_name "znc"
-    sudo chown -R 122 $HOME/znc
+    sudo chown -R 101 $HOME/znc
     sudo docker run \--name znc \
          --net=host \
          -v /etc/localtime:/etc/localtime:ro \
