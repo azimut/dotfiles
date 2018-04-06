@@ -124,7 +124,9 @@ URxvt*visualBell: true
 
 !urxvt.perl-ext: grab_test
 urxvt.perl-ext: notifyme
-URxvt.perl-ext-common: "default, -searchable-scrollback"
+URxvt.perl-ext-common: default,matcher,-searchable-scrollback
+URxvt.urlLauncher: /usr/bin/firefox
+URxvt.matcher.button: 0
 
 ! █▓▒░ clipboard
 !urxvt.perl-ext-common: default,clipboard,keyboard-select

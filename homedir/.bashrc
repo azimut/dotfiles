@@ -177,7 +177,7 @@ d_jweechat(){
                     kubler-spin/weechat
     set +x
 }
-d_jbitlbee(){
+d_bitlbee(){
     # -p 127.0.0.1:6667:6667 \
     # sudo docker network create --subnet=10.0.43.1/24 redazul
     set -x
@@ -185,9 +185,8 @@ d_jbitlbee(){
     sudo docker rm bitlbee
     sudo docker run \
                     --cap-drop=ALL \
-                    --dns 208.67.220.220 \
                     --name bitlbee --hostname bitlbee \
-                    --network redazul \
+                    --network host \
                     --read-only \
                     --rm \
                     -ti \
