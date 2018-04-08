@@ -580,11 +580,13 @@ d_plex(){
 d_znc(){
     set -x
     screen_name "znc"
-    sudo chown -R 101 $HOME/znc
+    sudo chown -R 101:247 $HOME/znc
+    sudo docker rm znc
     sudo docker run \--name znc \
          --net=host \
          -v /etc/localtime:/etc/localtime:ro \
-         -v $HOME/znc:/var/lib/znc/.znc/configs \
+         -v $HOME/znc/users:/var/lib/znc/.znc/users \
+         -v $HOME/znc/configs:/var/lib/znc/.znc/configs \
          kubler-spin/znc
     set +x
 }

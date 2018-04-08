@@ -1,0 +1,4 @@
+Mar 09 18:54 : alsa_mixer: Failed to read mixer for 'audio': no such mixer control: PCM
+Mar 15 09:02 : alsa_mixer: Failed to read mixer for 'audio': no such mixer control: PCM
+Mar 23 17:38 : alsa_mixer: Failed to read mixer for 'audio': no such mixer control: PCM
+Apr 06 13:07 : alsa_mixer: Failed to read mixer for 'audio': no such mixer control: PCM
