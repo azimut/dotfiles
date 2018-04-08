@@ -576,13 +576,27 @@ d_plex(){
                     kubler-spin/plex-media-server
     set +x
 }
-
+d_redis(){
+    set -x
+    mkdir -p $HOME/redis
+    chmod 777 $HOME/redis
+    screen_name "redis"
+    sudo docker rm redis
+    sudo docker run \
+        --name redis \
+        --net=host \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v $HOME/redis:/var/lib/redis \
+        kubler-spin/redis
+    set +x
+}
 d_znc(){
     set -x
     screen_name "znc"
     sudo chown -R 101:247 $HOME/znc
     sudo docker rm znc
-    sudo docker run \--name znc \
+    sudo docker run \
+         --name znc \
          --net=host \
          -v /etc/localtime:/etc/localtime:ro \
          -v $HOME/znc/users:/var/lib/znc/.znc/users \
