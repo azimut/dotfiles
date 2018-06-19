@@ -40,6 +40,28 @@ alias ytmp3='youtube-dl --no-post-overwrites -x -f bestaudio -i -k --audio-forma
 
 alias emacs='XMODIFIERS= emacs'
 
+xhtml(){
+    xmlpath="$1"
+    xmllint --html --xpath "${xmlpath}" - 2>/dev/null
+}
+
+xv(){
+    local user=$1
+    local page=$2
+    export burl=$(echo -n 'aHR0cHM6Ly93d3cueHZpZGVvcy5jb20=' | base64 -d)
+    local links=($(wget -O - -q ${burl}/profiles/${user}/videos/new/${page} \
+        | xhtml '//div[@class="thumb-block "]/div[@class="thumb-inside"]/div[@class="thumb"]/a/@href' \
+        | tr ' ' $'\n' \
+        | sed 's#THUMBNUM/##g' \
+        | cut -f2 -d'"'))
+    mkdir -p "${user}"
+    cd "${user}" && {
+        for link in ${links[@]}; do
+          youtube-dl -c ${burl}${link}
+        done
+    }
+}
+
 nmap_pupil(){
     local target="$@"
     set -x
@@ -604,7 +626,17 @@ d_znc(){
          kubler-spin/znc
     set +x
 }
-
+d_minidlna(){
+    set -x
+    screen_name "minidlna"
+    sudo docker run --net=host \
+        -v $HOME/disks/edisk-phil/funandmedia/human/movies/:/opt:ro \
+        -v $HOME/disks/edisk-sam/funandmedia/human/movies/:/opt2:ro \
+        --rm \
+        --name minidlna \
+        kubler-spin/minidlna
+    set +x
+}
 # Add Gentoo overlay to repos.conf/ and sync it
 # Example usage: add_overlay musl https://anongit.gentoo.org/git/proj/musl.git
 #
