@@ -1,0 +1,6 @@
+[user]
+        name = azimut
+        username = azimut
+        email = azimut.github@protonmail.com
+[alias]
+        staple = subtree push --prefix doc origin gh-pages
