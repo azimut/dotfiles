@@ -181,16 +181,16 @@ screen_name(){
 
 export TERM=xterm
 
-d_jweechat(){
+d_weechat(){
     # sudo docker network create --subnet=10.0.43.1/24 redazul
     set -x
     screen_name "weechat"
     sudo docker rm weechat
     sudo docker run \
-                    --dns 208.67.220.220 \
                     --name weechat \
                     --hostname weechat \
-                    --network redazul \
+                    --device=/dev/input/mice \
+                    --net=host \
                     --rm \
                     -ti \
                     -v $HOME/weechat:/home/user/.weechat \
@@ -358,6 +358,7 @@ d_flexget(){
     set -x
     screen_name flexget
     sudo docker rm flexget
+    sudo rm -f flexget/.config-lock
     sudo docker run --add-host=rtorrent:192.168.1.101 --rm -ti --name flexget --tmpfs /tmp --tmpfs /var/tmp -v $HOME/flexget/:/root/.config/flexget --net=host --read-only  -v /etc/localtime:/etc/localtime:ro kubler-spin/flexget:20170423
     set +x
 }
@@ -592,7 +593,7 @@ d_plex(){
     screen_name "plex"
     sudo docker run -e X_PLEX_TOKEN=${X_PLEX_TOKEN} \
                     -v /etc/localtime:/etc/localtime:ro \
-                    -v /home/sendai/disks/:/opt \
+                    -v $HOME/disks/:/opt \
                     -d \
                     --net=host --name plex \
                     kubler-spin/plex-media-server
@@ -628,10 +629,13 @@ d_znc(){
 }
 d_minidlna(){
     set -x
+    mkdir -p $HOME/minidlna
+    chmod 777 $HOME/minidlna
+
     screen_name "minidlna"
     sudo docker run --net=host \
+        -v $HOME/minidlna:/var/lib/minidlna \
         -v $HOME/disks/edisk-phil/funandmedia/human/movies/:/opt:ro \
-        -v $HOME/disks/edisk-sam/funandmedia/human/movies/:/opt2:ro \
         --rm \
         --name minidlna \
         kubler-spin/minidlna
@@ -685,3 +689,14 @@ alias sssh="ssh -o ControlMaster=auto -o ControlPersist=8h -o ControlPath=/home/
 
 # Put your fun stuff here.
 export PATH=$PATH:~/.bin
+
+
+d_server(){
+    sudo systemctl start docker
+# d_rtorrent
+# d_flexget
+# d_postgres
+# d_bitlbee
+# d_znc
+# d_weechat
+}
