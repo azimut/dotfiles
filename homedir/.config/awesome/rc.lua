@@ -351,7 +351,6 @@ awful.button({ }, 5, awful.tag.viewprev)
 globalkeys = awful.util.table.join(
   awful.key({ "Any",           }, "F1", nil       ),
   awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-  awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
   awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
   awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
   --awful.key({ modkey,           }, "e",      revelation),
