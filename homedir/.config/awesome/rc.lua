@@ -643,8 +643,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 awesome.spawn("bash ".. os.getenv("HOME") .."/.fehbg")              -- restore wallpaper
 run_once("urxvtd")
-run_once("mpd")
---run_once("keynav")
+-- run_once("mpd")
+run_once("keynav")
 awesome.spawn("xset -b",false)                  -- disable beepI
 awesome.spawn("amixer set Capture nocap",false) -- disable mic
 awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88")
