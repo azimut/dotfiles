@@ -6,3 +6,8 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
+#+quicklisp
+(ql:quickload "quickproject")
+#+quicklisp
+(setq quickproject:*author* "azimut <azimut.github@protonmail.com>"
+      quickproject:*license* "MIT")
