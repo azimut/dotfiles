@@ -700,3 +700,27 @@ d_server(){
 # d_znc
 # d_weechat
 }
+
+ferror(){
+    printf "Error: %s\n" "$1" 1>&2
+}
+
+# Copies a .srt to the correct name on dir
+srt_anchor(){
+    shopt -s nullglob
+    {
+        local srts=(./*.srt)
+        local mp4s=(./*.mp4 ./*.mkv)
+        [[ ${#mp4s[@]} -ne 1 ]] &&
+            { ferror "video not found or more than 1 found"; return 1; }
+        [[ ${#srts[@]} -ne 1 ]] &&
+            { ferror "subtitle not found or more than 1 found"; return 1; }
+        local srt="${srts[0]}"
+        local mp4="${mp4s[0]}"
+        # do it!
+        mv -iv "${srt}" "${mp4%.*}.srt"
+    }
+    shopt -u nullglob
+    return 0
+}
+
