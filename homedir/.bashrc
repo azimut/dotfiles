@@ -30,6 +30,7 @@
 # * ftp-vsftpd-backdoor
 export PAGER=less
 export LESS="-SR"
+export GREP_COLOR='1;30;42'
 
 alias rm='rm -i'
 alias ls='ls -p --color'
@@ -61,22 +62,88 @@ xv(){
         done
     }
 }
-
+hint_nmap(){
+    echo "Remeber flags:
+  -sV -sU
+  -D
+  --ttl
+  -f
+  --data-length
+  -sO
+  -g"
+}
+nmap_up(){
+    local host="$1"
+    local SCRIPTS=(
+        asn-query
+        address-info
+        fcrdns
+        traceroute-geolocation
+        resolveall
+        whois-domain
+        whois-ip
+    )
+    sudo nmap -n -sn \
+         -PS 80 \
+         --script-args="http.useragent='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'" \
+         --traceroute \
+         --script $(printf '%s,' ${SCRIPTS[@]}) \
+         --reason -v $host
+}
+nmap_port(){
+    local host="$1"
+    local port="$2"
+    [[ $# -ne 2 ]] && { echo "nmap_port <HOST> <PORT>"; return 1; }
+    nmap -sT \
+         --reason --packet-trace \
+         -n -Pn --max-retries=0 \
+         -p $port \
+         $host
+}
+nmap_ports(){
+    local host="$@"
+    sudo nmap -sT \
+         --traceroute \
+         --reason -v -d --open \
+         -n -Pn --max-retries=0 \
+         -F \
+         "${host}"
+}
+nmap_uport(){
+    local host="$1"
+    local port="$2"
+    sudo nmap -sUV \
+         --packet-trace \ \
+         -p "${port}" \
+         --max-retries=0 \
+         --reason -v \
+         -n -Pn \
+         "${host}"
+}
+nmap_uports(){
+    local host="$@"
+    sudo nmap -sUV \
+         -F \
+         --max-retries=0 \
+         --reason -v \
+         -n -Pn \
+         "${host}"
+}
 nmap_pupil(){
     local target="$@"
     set -x
     sudo proxychains nmap \
-        -vvvvv \
-        --send-ip \
-        -sS \
-        -Pn \
-        -n \
-        --ttl 69 \
-        --reason \
-        --open \
-        -F \
-        -oA "${target}".fast \
-        "${target}"
+         -vvvvv \
+         --send-ip \
+         -sS \
+         -Pn \
+         -n \
+         --ttl 69 \
+         --reason \
+         --open \
+         -F \
+         -oA "${target}".fast \
+         "${target}"
     { set +x ;} &>/dev/null
 }
 nmap_iris(){
@@ -84,59 +151,59 @@ nmap_iris(){
     local target="$2"
     set -x
     sudo proxychains nmap \
-        -vvvvv \
-        --send-ip \
-        -sS \
-        -Pn \
-        -n \
-        --ttl 69 \
-        --reason \
-        --open \
-        --top-ports "$ports" \
-        -oA "${target}".top"${ports}" \
-        "${target}"
+         -vvvvv \
+         --send-ip \
+         -sS \
+         -Pn \
+         -n \
+         --ttl 69 \
+         --reason \
+         --open \
+         --top-ports "$ports" \
+         -oA "${target}".top"${ports}" \
+         "${target}"
     { set +x ;} &>/dev/null
 }
 nmap_limbus(){
     local target="$@"
     set -x
     sudo proxychains nmap \
-        -vvvvv \
-        --send-ip \
-        -sS \
-        -Pn \
-        -n \
-        --ttl 69 \
-        --reason \
-        --open \
-        -p- \
-        -oA "${target}".topall \
-        "${target}"
+         -vvvvv \
+         --send-ip \
+         -sS \
+         -Pn \
+         -n \
+         --ttl 69 \
+         --reason \
+         --open \
+         -p- \
+         -oA "${target}".topall \
+         "${target}"
     { set +x ;} &>/dev/null
 }
 
 addconda3(){
-unset PYTHONPATH
-export PATH=$HOME/miniconda3/bin:$PATH
-source activate $HOME/miniconda3/
+    unset PYTHONPATH
+    export PATH=$HOME/miniconda3/bin:$PATH
+    source activate $HOME/miniconda3/
 }
 
 addconda22(){
-unset PYTHONPATH
-export PATH=$HOME/miniconda22/bin:$PATH
-source activate $HOME/miniconda22/
+    unset PYTHONPATH
+    export PATH=$HOME/miniconda22/bin:$PATH
+    source activate $HOME/miniconda22/
 }
 addconda(){
-export PATH=$HOME/miniconda2/bin:$PATH
-source activate $HOME/miniconda2/
+    export PATH=$HOME/miniconda2/bin:$PATH
+    source activate $HOME/miniconda2/
 }
 addconda27(){
-export PATH=$HOME/miniconda27/bin:$PATH
-source activate $HOME/miniconda27/
+    export PATH=$HOME/miniconda27/bin:$PATH
+    source activate $HOME/miniconda27/
 }
 
 rand_play(){
-( a=(*.mp3); IFS=$'\n' a=( $(printf '%s\n' "${a[@]}" | shuf) ) ; mpv -no-video "${a[@]}"; )
+    ( a=(*.mp3); IFS=$'\n' a=( $(printf '%s\n' "${a[@]}" | shuf) ) ; mpv -no-video "${a[@]}"; )
 }
 find_rand_play(){
     find $PWD -type f -iname '*mp3' | shuf | while read -r track; do mpv -no-video "$track"; done
@@ -171,8 +238,8 @@ export GOPATH=$HOME/go
 #export GOROOT=/usr/lib64/go
 
 torchmedown(){
-. $HOME/projects/distro/install/bin/torch-activate
-export  CUDA_BIN_PATH=/opt/cuda
+    . $HOME/projects/distro/install/bin/torch-activate
+    export  CUDA_BIN_PATH=/opt/cuda
 }
 
 screen_name(){
@@ -187,52 +254,52 @@ d_weechat(){
     screen_name "weechat"
     sudo docker rm weechat
     sudo docker run \
-                    --name weechat \
-                    --hostname weechat \
-                    --device=/dev/input/mice \
-                    --net=host \
-                    --rm \
-                    -ti \
-                    -v $HOME/weechat:/home/user/.weechat \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -v /usr/local/share/ca-certificates:/usr/local/share/ca-certificates:ro \
-                    kubler-spin/weechat
+         --name weechat \
+         --hostname weechat \
+         --device=/dev/input/mice \
+         --net=host \
+         --rm \
+         -ti \
+         -v $HOME/weechat:/home/user/.weechat \
+         -v /etc/localtime:/etc/localtime:ro \
+         -v /usr/local/share/ca-certificates:/usr/local/share/ca-certificates:ro \
+         kubler-spin/weechat
     set +x
 }
 d_bitlbee(){
     # -p 127.0.0.1:6667:6667 \
-    # sudo docker network create --subnet=10.0.43.1/24 redazul
+        # sudo docker network create --subnet=10.0.43.1/24 redazul
     set -x
     screen_name "bitlbee"
     sudo docker rm bitlbee
     sudo docker run \
-                    --cap-drop=ALL \
-                    --name bitlbee --hostname bitlbee \
-                    --network host \
-                    --read-only \
-                    --rm \
-                    -ti \
-                    -v $HOME/bitlbee:/var/lib/bitlbee \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -v /usr/local/share/ca-certificates:/usr/local/share/ca-certificates:ro \
-                    kubler-spin/bitlbee
+         --cap-drop=ALL \
+         --name bitlbee --hostname bitlbee \
+         --network host \
+         --read-only \
+         --rm \
+         -ti \
+         -v $HOME/bitlbee:/var/lib/bitlbee \
+         -v /etc/localtime:/etc/localtime:ro \
+         -v /usr/local/share/ca-certificates:/usr/local/share/ca-certificates:ro \
+         kubler-spin/bitlbee
     set +x
 }
 
 d_dnscrypt(){
-    #-p 127.0.0.1:53:5353/udp \
-                    #--dns 208.67.220.220 \
-    set -x
-    sudo docker rm dnscrypt-proxy
-    sudo docker run \
-                    --cap-add=IPC_LOCK \
-                    --cap-drop=ALL \
-                    --name dnscrypt-proxy --hostname dnscrypt-proxy \
-                    --network redverde \
-                    --rm \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/dnscrypt-proxy 
-    set +x
+                            #-p 127.0.0.1:53:5353/udp \
+                                #--dns 208.67.220.220 \
+                                set -x
+                                sudo docker rm dnscrypt-proxy
+                                sudo docker run \
+                                     --cap-add=IPC_LOCK \
+                                     --cap-drop=ALL \
+                                     --name dnscrypt-proxy --hostname dnscrypt-proxy \
+                                     --network redverde \
+                                     --rm \
+                                     -v /etc/localtime:/etc/localtime:ro \
+                                     kubler-spin/dnscrypt-proxy 
+                                set +x
 }
 
 d_dnsmasq(){
@@ -240,12 +307,12 @@ d_dnsmasq(){
     echo 'nameserver 127.0.0.1' | sudo tee /etc/resolv.conf
     sudo docker rm dnsmasq
     sudo docker run \
-                    -p 127.0.0.1:53:5353/udp \
-                    --name dnsmasq --hostname dnsmasq \
-                    --network redverde \
-                    --rm \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/dnsmasq
+         -p 127.0.0.1:53:5353/udp \
+         --name dnsmasq --hostname dnsmasq \
+         --network redverde \
+         --rm \
+         -v /etc/localtime:/etc/localtime:ro \
+         kubler-spin/dnsmasq
     set +x
 }
 
@@ -253,31 +320,31 @@ d_ddnsmasq(){
     # sudo iptables -t nat -I PREROUTING -p tcp --dport 53- -j REDIRECT --to-ports 5353
     # -e SERVER='--server=127.0.0.1#5354'
     set -x
-                    #-ti \
-    sudo docker rm dnsmasq
-    sudo docker run \
-                    -p 127.0.0.1:53:5353/udp \
-                    --name dnsmasq --hostname dnsmasq \
-                    --network redverde \
-                    --rm \
-                    -e SERVER='--server=8.8.8.8#53' \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/dnsmasq
-    set +x
+                                            #-ti \
+                                                sudo docker rm dnsmasq
+                                                sudo docker run \
+                                                     -p 127.0.0.1:53:5353/udp \
+                                                     --name dnsmasq --hostname dnsmasq \
+                                                     --network redverde \
+                                                     --rm \
+                                                     -e SERVER='--server=8.8.8.8#53' \
+                                                     -v /etc/localtime:/etc/localtime:ro \
+                                                     kubler-spin/dnsmasq
+                                                set +x
 }
 d_dnsmasqtor(){
     set -x
     sudo docker rm dnsmasq
     sudo docker run \
-                    -ti \
-                    --name dnsmasq \
-                    -u root \
-                    --network redvioleta \
-                    --entrypoint=/bin/sh \
-                    --rm \
-                    -e SERVER='--server=8.8.8.8#53' \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/dnsmasq
+         -ti \
+         --name dnsmasq \
+         -u root \
+         --network redvioleta \
+         --entrypoint=/bin/sh \
+         --rm \
+         -e SERVER='--server=8.8.8.8#53' \
+         -v /etc/localtime:/etc/localtime:ro \
+         kubler-spin/dnsmasq
     set +x
 }
 
@@ -286,12 +353,12 @@ d_davmail(){
     screen_name "davmail"
     sudo docker rm davmail
     sudo docker run \
-                    --name davmail --hostname davmail \
-                    --network redvioleta \
-                    --rm \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -v $HOME/davmail.properties:/opt/davmail/conf/davmail.properties:ro \
-                    kubler-spin/davmail
+         --name davmail --hostname davmail \
+         --network redvioleta \
+         --rm \
+         -v /etc/localtime:/etc/localtime:ro \
+         -v $HOME/davmail.properties:/opt/davmail/conf/davmail.properties:ro \
+         kubler-spin/davmail
     set +x
 }
 
@@ -300,15 +367,15 @@ d_neomutt(){
     screen_name "neomutt"
     sudo docker rm neomutt
     sudo docker run \
-        --name neomutt \
-        --hostname neomutt \
-        --entrypoint=neomutt \
-        --rm \
-        -ti \
-        -v /etc/localtime:/etc/localtime:ro \
-        -v $HOME/.muttrc:/home/user/.muttrc:ro \
-        --net=redvioleta \
-        kubler-spin/neomutt
+         --name neomutt \
+         --hostname neomutt \
+         --entrypoint=neomutt \
+         --rm \
+         -ti \
+         -v /etc/localtime:/etc/localtime:ro \
+         -v $HOME/.muttrc:/home/user/.muttrc:ro \
+         --net=redvioleta \
+         kubler-spin/neomutt
     set +x
 }
 
@@ -317,14 +384,14 @@ d_newsbeuter(){
     screen_name "newsbeuter"
     sudo docker rm newsbeuter2
     sudo docker run \
-                    --name newsbeuter2 --hostname newsbeuter2 \
-                    --dns 208.67.220.220 \
-                    --network redazul \
-                    --rm \
-                    -ti \
-                    -v $HOME/newsbeuter:/home/user/.newsbeuter \
-                    kubler-spin/newsbeuter-python3
-                    #kubler-spin/newsbeuter
+         --name newsbeuter2 --hostname newsbeuter2 \
+         --dns 208.67.220.220 \
+         --network redazul \
+         --rm \
+         -ti \
+         -v $HOME/newsbeuter:/home/user/.newsbeuter \
+         kubler-spin/newsbeuter-python3
+    #kubler-spin/newsbeuter
     set +x
 }
 d_torproxy(){
@@ -332,11 +399,11 @@ d_torproxy(){
     set -x
     sudo docker rm tor-proxy
     sudo docker run --name tor-proxy \
-                    --net=redvioleta \
-                    --rm \
-                    -ti \
-                    --entrypoint=/bin/sh \
-                    -v /etc/localtime:/etc/localtime:ro kubler-spin/tor
+         --net=redvioleta \
+         --rm \
+         -ti \
+         --entrypoint=/bin/sh \
+         -v /etc/localtime:/etc/localtime:ro kubler-spin/tor
     set +x
 }
 d_tor(){
@@ -344,7 +411,7 @@ d_tor(){
     set -x
     sudo docker rm tor
     sudo docker run --name tor --hostname tor \
-                    -p 127.0.0.1:9050:9050 --rm -ti -v /etc/localtime:/etc/localtime:ro kubler-spin/tor
+         -p 127.0.0.1:9050:9050 --rm -ti -v /etc/localtime:/etc/localtime:ro kubler-spin/tor
     set +x
 }
 d_kibana(){
@@ -398,208 +465,208 @@ d_fluentd(){
     set +x
 }
 d_headphones(){
-     set -x
-     sudo docker rm headphones
-     sudo docker run --name headphones --hostname headphones \
+    set -x
+    sudo docker rm headphones
+    sudo docker run --name headphones --hostname headphones \
          -p 5000:5000 -p 8181:8181 \
-         -v /etc/localtime:/etc/localtime:ro  \
-         --rm -ti \
-         -v $HOME/headphones:/home/user/data \
-         -v $HOME/headphones-blackhole:/home/user/blackhole \
-         kubler-spin/headphones 
-     set +x
-}
-d_pychess(){
-    set -x
-    sudo docker rm pychess
-    sudo docker run \
-        --net=none \
-        --rm \
-        --name pychess \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -v $HOME/pychess/.local:/home/user/.local \
-        -v $HOME/pychess/.cache:/home/user/.cache \
-        -v $HOME/pychess/.config:/home/user/.config \
-        -e "DISPLAY=unix${DISPLAY}" \
-        kubler-spin/pychess
+             -v /etc/localtime:/etc/localtime:ro  \
+             --rm -ti \
+             -v $HOME/headphones:/home/user/data \
+             -v $HOME/headphones-blackhole:/home/user/blackhole \
+             kubler-spin/headphones 
+        set +x
+    }
+    d_pychess(){
+        set -x
+        sudo docker rm pychess
+        sudo docker run \
+             --net=none \
+             --rm \
+             --name pychess \
+             -v /tmp/.X11-unix:/tmp/.X11-unix \
+             -v $HOME/pychess/.local:/home/user/.local \
+             -v $HOME/pychess/.cache:/home/user/.cache \
+             -v $HOME/pychess/.config:/home/user/.config \
+             -e "DISPLAY=unix${DISPLAY}" \
+             kubler-spin/pychess
         #4e30c7aeb565
-    set +x
-}
-d_cutechess(){
-    set -x
-    sudo docker rm cutechess
-    sudo docker run \
-        --net=none \
-        --rm \
-        --entrypoint=/opt/cutechess \
-        -v $HOME/cutechess:/root/.config/cutechess \
-        --name cutechess \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -e "DISPLAY=unix${DISPLAY}"  \
-        kubler-spin/cutechess
-    set +x
-}
-d_firefox(){
-    set -x
-    sudo docker stop firefox
+        set +x
+    }
+    d_cutechess(){
+        set -x
+        sudo docker rm cutechess
+        sudo docker run \
+             --net=none \
+             --rm \
+             --entrypoint=/opt/cutechess \
+             -v $HOME/cutechess:/root/.config/cutechess \
+             --name cutechess \
+             -v /tmp/.X11-unix:/tmp/.X11-unix \
+             -e "DISPLAY=unix${DISPLAY}"  \
+             kubler-spin/cutechess
+        set +x
+    }
+    d_firefox(){
+        set -x
+        sudo docker stop firefox
+        if [[ 'foo' == 'bar' ]]; then
+	    docker run --detach \
+	           --publish 30000:14500 \
+	           --user "$(id -u):1000" \
+	           --volume "${HOME}"/firefox-storage:/home/user:rw \
+	           --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
+	           --env HOME=/home \
+	           --env CUPS_SERVER="${docker_address}" \
+	           --env SOCKS_SERVER="${docker_address}:5080" \
+	           --env SOCKS_VERSION=5 \
+	           "${dri_devices[@]}" \
+	           --volume /etc/localtime:/etc/localtimeXX:ro \
+	           --volume /etc/timezone:/etc/timezoneXX:ro \
+	           devurandom/firefox "$@"
+        fi
+        sudo docker run --net=host \
+             --rm \
+             --name firefox \
+             --entrypoint=firefox-bin \
+             --device /dev/snd \
+             --device /dev/dri \
+             --cpuset-cpus 0 \
+             -v /tmp/.X11-unix:/tmp/.X11-unix \
+             -v /etc/localtime:/etc/localtime:ro \
+             -e GDK_SCALE \
+             -e GDK_DPI_SCALE \
+             -e "DISPLAY=unix${DISPLAY}" \
+             kubler-spin/firefox-bin
+        set +x
+    }
+    d_torfirefox(){
+        set -x
+        sudo docker stop firefox
 	if [[ 'foo' == 'bar' ]]; then
-		docker run --detach \
-				   --publish 30000:14500 \
-				   --user "$(id -u):1000" \
-				   --volume "${HOME}"/firefox-storage:/home/user:rw \
-			       --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
-				   --env HOME=/home \
-				   --env CUPS_SERVER="${docker_address}" \
-				   --env SOCKS_SERVER="${docker_address}:5080" \
-				   --env SOCKS_VERSION=5 \
-				   "${dri_devices[@]}" \
-				   --volume /etc/localtime:/etc/localtimeXX:ro \
-				   --volume /etc/timezone:/etc/timezoneXX:ro \
-					devurandom/firefox "$@"
+	    docker run --detach \
+		   --publish 30000:14500 \
+		   --user "$(id -u):1000" \
+		   --volume "${HOME}"/firefox-storage:/home/user:rw \
+		   --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
+		   --env HOME=/home \
+		   --env CUPS_SERVER="${docker_address}" \
+		   --env SOCKS_SERVER="${docker_address}:5080" \
+		   --env SOCKS_VERSION=5 \
+		   "${dri_devices[@]}" \
+		   --volume /etc/localtime:/etc/localtimeXX:ro \
+		   --volume /etc/timezone:/etc/timezoneXX:ro \
+		   devurandom/firefox "$@"
 	fi
-    sudo docker run --net=host \
-                    --rm \
-                    --name firefox \
-                    --entrypoint=firefox-bin \
-                    --device /dev/snd \
-                    --device /dev/dri \
-                    --cpuset-cpus 0 \
-                    -v /tmp/.X11-unix:/tmp/.X11-unix \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -e GDK_SCALE \
-                    -e GDK_DPI_SCALE \
-                    -e "DISPLAY=unix${DISPLAY}" \
-                    kubler-spin/firefox-bin
-    set +x
-}
-d_torfirefox(){
-    set -x
-    sudo docker stop firefox
-	if [[ 'foo' == 'bar' ]]; then
-		docker run --detach \
-				   --publish 30000:14500 \
-				   --user "$(id -u):1000" \
-				   --volume "${HOME}"/firefox-storage:/home/user:rw \
-			       --env XPRA_EXTRA_ARGS="--tcp-auth= --tcp-encryption=" \
-				   --env HOME=/home \
-				   --env CUPS_SERVER="${docker_address}" \
-				   --env SOCKS_SERVER="${docker_address}:5080" \
-				   --env SOCKS_VERSION=5 \
-				   "${dri_devices[@]}" \
-				   --volume /etc/localtime:/etc/localtimeXX:ro \
-				   --volume /etc/timezone:/etc/timezoneXX:ro \
-					devurandom/firefox "$@"
-	fi
-    sudo docker run --net=redvioleta \
-                    --rm \
-                    --name firefox \
-                    --entrypoint=firefox-bin \
-                    -v /tmp/.X11-unix:/tmp/.X11-unix -e "DISPLAY=unix${DISPLAY}" \
-                    kubler-spin/ffmpeg
-    set +x
-}
+        sudo docker run --net=redvioleta \
+             --rm \
+             --name firefox \
+             --entrypoint=firefox-bin \
+             -v /tmp/.X11-unix:/tmp/.X11-unix -e "DISPLAY=unix${DISPLAY}" \
+             kubler-spin/ffmpeg
+        set +x
+    }
 
-d_postgres(){
-    set -x
-    sudo docker run --rm \
-                    -ti \
-                    -e POSTGRES_PASSWORD=secret \
-                    -e POSTGRES_USER=fluentd \
-                    -e POSTGRES_DB=rss \
-                    --entrypoint=/etc/service/postgres/run \
-                    --net=host \
-                    --name postgres \
-                    -v $HOME/postgres/:/var/lib/postgresql/data \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/postgres
-    set +x
-}
+    d_postgres(){
+        set -x
+        sudo docker run --rm \
+             -ti \
+             -e POSTGRES_PASSWORD=secret \
+             -e POSTGRES_USER=fluentd \
+             -e POSTGRES_DB=rss \
+             --entrypoint=/etc/service/postgres/run \
+             --net=host \
+             --name postgres \
+             -v $HOME/postgres/:/var/lib/postgresql/data \
+             -v /etc/localtime:/etc/localtime:ro \
+             kubler-spin/postgres
+        set +x
+    }
 
-d_citus(){
-    set -x
-    sudo docker rm citusdb
-    sudo docker run --rm \
-                    -ti \
-                    -e POSTGRES_PASSWORD=secret \
-                    -e POSTGRES_USER=fluentd \
-                    -e POSTGRES_DB=rss \
-                    --entrypoint=/etc/service/postgres/run \
-                    --net=host \
-                    --name citusdb \
-                    -v $HOME/postgres/:/var/lib/postgresql/data \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/citusdb
-    set +x
-}
-d_flood(){
-    set -x
-    sudo docker stop flood
-    sudo docker run --rm \
-                    --add-host=flood:192.168.1.101 \
-                    --add-host=rtorrent:192.168.1.101 \
-                    -p 3000:3000 \
-                    --net=host \
-                    --name flood --hostname flood \
-                    --read-only \
-                    --tmpfs=/opt/flood/server/temp \
-                    -v $HOME/flood/config.js:/opt/flood/config.js:ro \
-                    -v $HOME/flood/db:/opt/flood/server/db \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    kubler-spin/flood
-    set +x
-}
-d_dnscrypt2(){
-    set -x
-    screen_name "dnscrypt"
-    sudo docker stop dnscrypt2
-    sudo docker run --rm \
-                    --net=host \
-                    --name dnscrypt2 \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -u root \
-                    -ti \
-                    kubler-spin/dnscrypt-proxy2:latest -config /opt/dnscrypt-proxy2/proxy53.toml
-    set +x
-}
-d_gci(){
-    set -x
-    sudo docker images | grep none | awk '{print $3;}' | xargs -r sudo docker rmi
-    set +x
-}
-d_gc(){
-    set -x
-    sudo docker ps -a | grep -v -e Up -e portage | tail -n+2 | cut -f1 -d' ' | xargs -r sudo docker rm 
-    set +x
-}
+    d_citus(){
+        set -x
+        sudo docker rm citusdb
+        sudo docker run --rm \
+             -ti \
+             -e POSTGRES_PASSWORD=secret \
+             -e POSTGRES_USER=fluentd \
+             -e POSTGRES_DB=rss \
+             --entrypoint=/etc/service/postgres/run \
+             --net=host \
+             --name citusdb \
+             -v $HOME/postgres/:/var/lib/postgresql/data \
+             -v /etc/localtime:/etc/localtime:ro \
+             kubler-spin/citusdb
+        set +x
+    }
+    d_flood(){
+        set -x
+        sudo docker stop flood
+        sudo docker run --rm \
+             --add-host=flood:192.168.1.101 \
+             --add-host=rtorrent:192.168.1.101 \
+             -p 3000:3000 \
+             --net=host \
+             --name flood --hostname flood \
+             --read-only \
+             --tmpfs=/opt/flood/server/temp \
+             -v $HOME/flood/config.js:/opt/flood/config.js:ro \
+             -v $HOME/flood/db:/opt/flood/server/db \
+             -v /etc/localtime:/etc/localtime:ro \
+             kubler-spin/flood
+        set +x
+    }
+    d_dnscrypt2(){
+        set -x
+        screen_name "dnscrypt"
+        sudo docker stop dnscrypt2
+        sudo docker run --rm \
+             --net=host \
+             --name dnscrypt2 \
+             -v /etc/localtime:/etc/localtime:ro \
+             -u root \
+             -ti \
+             kubler-spin/dnscrypt-proxy2:latest -config /opt/dnscrypt-proxy2/proxy53.toml
+        set +x
+    }
+    d_gci(){
+        set -x
+        sudo docker images | grep none | awk '{print $3;}' | xargs -r sudo docker rmi
+        set +x
+    }
+    d_gc(){
+        set -x
+        sudo docker ps -a | grep -v -e Up -e portage | tail -n+2 | cut -f1 -d' ' | xargs -r sudo docker rm 
+        set +x
+    }
 
-# NON KUBLER
+    # NON KUBLER
 
-d_wireshark(){
-    set -x
-    sudo docker rm wireshark
-    sudo docker run --net=none \
-        --rm -ti --name wireshark \
-        -v /tmp/.X11-unix:/tmp/.X11-unix\
-        -v /etc/localtime:/etc/localtime:ro \
-        -e GDK_SCALE -e GDK_DPI_SCALE \
-        -e DISPLAY=unix:0 \
-        jess/wireshark
-    set +x
-}
+    d_wireshark(){
+        set -x
+        sudo docker rm wireshark
+        sudo docker run --net=none \
+             --rm -ti --name wireshark \
+             -v /tmp/.X11-unix:/tmp/.X11-unix\
+             -v /etc/localtime:/etc/localtime:ro \
+             -e GDK_SCALE -e GDK_DPI_SCALE \
+             -e DISPLAY=unix:0 \
+             jess/wireshark
+        set +x
+    }
 
-d_plex(){
-    set -x
-    [[ -z $X_PLEX_TOKEN ]] && return 1
-    screen_name "plex"
-    sudo docker run -e X_PLEX_TOKEN=${X_PLEX_TOKEN} \
-                    -v /etc/localtime:/etc/localtime:ro \
-                    -v $HOME/disks/:/opt \
-                    -d \
-                    --net=host --name plex \
-                    kubler-spin/plex-media-server
-    set +x
-}
-d_redis(){
+    d_plex(){
+        set -x
+        [[ -z $X_PLEX_TOKEN ]] && return 1
+        screen_name "plex"
+        sudo docker run -e X_PLEX_TOKEN=${X_PLEX_TOKEN} \
+             -v /etc/localtime:/etc/localtime:ro \
+             -v $HOME/disks/:/opt \
+             -d \
+             --net=host --name plex \
+             kubler-spin/plex-media-server
+        set +x
+    }
+    d_redis(){
     set -x
     mkdir -p $HOME/redis
     chmod 777 $HOME/redis
@@ -724,3 +791,207 @@ srt_anchor(){
     return 0
 }
 
+# Downloads .zip archive from github url
+gh-download(){
+    set -x
+    local url="${1}"
+    local branch="${2:-master}"
+    local rate="${3:-2000k}"
+
+    local user_repo="${url#*github.com/}"    # cbaggers/cepl/
+    local repo="${user_repo#*/}"             # cepl
+    local repo_directory="${repo}-${branch}" # cepl-master
+    local zip_url="${url}/archive/${branch}.zip"
+
+    [[ ! -d $repo_directory ]] &&
+        {
+            wget --limit-rate="${rate}" -c "${zip_url}";
+            unzip -e "${branch}.zip" &&
+                echo "$url" > "$repo_directory"/GITHUB_URL &&
+                date        > "$repo_directory"/GITHUB_DATE &&
+                rm -f "${branch}.zip"
+        }
+    set +x
+}
+
+# Keeps watching the file until it dissapears...
+watchman(){
+    local FILE="$1"
+    [[ -f $FILE ]] || { echo "File does not exists!"; return 1; }
+    while :; do
+        sleep 1
+        echo -n "."
+        [[ -f $FILE ]] || { echo "... file dissapeared"; break; }
+    done
+    echo -e "\n"
+    return 0
+}
+
+is_number(){
+    local re='^[0-9]+$'
+    [[ $1 =~ $re ]]
+}
+
+# https://gist.github.com/cmlewis/f950d876171a11703f89
+ffmpeg_rotate(){
+    [[ $# -ne 2 ]] && { ferror "needs two params, 1st is file, 2nd rotation in deg"; return 1; }
+    [[ ! -f $1 ]] && { ferror "file does not exists"; return 1; }
+    local video="$1"
+    local opts=""
+    case $2 in
+        90)   opts="transpose=1" ;;
+        90f)  opts="transpose=3" ;;
+        180)  opts="tranpose2,tranpose=2" ;;
+        270)  opts="transpose=2" ;;
+        270f) opts="transpose=0" ;;
+        *) ferror "should have been a value among 90, 180 or 270"
+    esac
+    [[ -z $opts ]] && return 1
+    set -x
+    ffmpeg -i "${video}" -vf "${opts}" -codec:a copy out.mp4
+    set +x
+    return 0
+}
+
+# Erlang
+export PATH=$HOME/.cache/rebar3/bin:$PATH
+export PATH=$HOME/.kerl/builds/22.1/release_22.1/bin/:$PATH
+
+# LUA
+export PATH=$HOME/.luarocks/bin:$PATH
+
+# Ruby
+export PATH=$HOME/bin:$PATH
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# https://stackoverflow.com/questions/44274194/how-do-i-remove-tput-color-from-log-file
+# https://stackoverflow.com/questions/17998978/removing-colors-from-output
+#sed -e 's#\x1B\[^m\]*m##g' /dev/stdin
+grinch(){
+    sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" /dev/stdin
+}
+lowercase(){
+    tr '[[:upper:]]' '[[:lower:]]' < /dev/stdin
+}
+alias uppercase="tr '[[:lower:]]' '[[:upper:]]'"
+trim(){ awk '{$1=$1};1' /dev/stdin; }
+uncomment(){
+    grep -v -e '^$' -e '^#' -e '^//' -e '^;' /dev/stdin \
+        | sed -e 's/#.*$//g' \
+        | sed -e 's/;;.*$//g'
+}
+revdomain() {
+    while read -r domain; do
+        echo $(echo $domain | tr '.' $'\n' | tac | paste -sd'.')
+    done < /dev/stdin
+}
+alias g1='git clone --depth=1'
+alias columnt='column -t'
+separator(){ printf '=%.0s' {0..30}; echo; }
+worker_rmwildcard(){
+    local original="${1}"
+    local tld="${1#*.}"
+    local check="moiuoxncw.${tld}"
+    if output="$(dig +short A ${check} | wc -l)"; then
+        if [[ $output -eq 0 ]]; then
+            echo "${original}"
+        fi
+    fi
+}
+export -f worker_rmwildcard
+rmwildcarddns(){
+    mapfile -t domains < /dev/stdin
+    parallel worker_rmwildcard ::: "${domains[@]}"
+}
+
+intersection(){
+    [[ $# -ne 2 ]] && { ferror "needs 2 arguments"; return 1; }
+    [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
+    local filea="$1"
+    local fileb="$2"
+    fgrep -xf "$filea" "$fileb"
+}
+
+complement(){
+    [[ $# -ne 2 ]] && { ferror "needs 2 arguments"; return 1; }
+    [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
+    local filea="$1"
+    local fileb="$2"
+    fgrep -vxf "$filea" "$fileb"
+}
+
+prefix(){ sed 's#^#'"${1}"'#g' /dev/stdin; }
+suffix(){ sed 's#$#'"${1}"'#g' /dev/stdin; }
+
+source ~/.bash_secret
+
+greplinkdomain(){
+    grep -Eo '(http|https)://[^/"]+' /dev/stdin | cut -f3 -d/
+}
+
+greplink(){
+    grep -Eo "(http|https)://[a-zA-Z0-9./?=_-]*" /dev/stdin
+}
+
+grepdomain(){
+    egrep -I -h -o '[-_[:alnum:]\.]+\.'${1} -r . \
+        | sed 's/^2F//g' \
+        | sed 's/^32m//g' \
+        | sed 's/^253A//g' \
+        | sort | uniq
+}
+grepsubdomain(){
+    local domain=${1}
+    grepdomain | sed 's/.'${domain}'$//g'
+}
+# python2 cidrize
+cidrpipe(){
+    while read -r ip; do
+        cidr $ip
+    done < /dev/stdin
+}
+
+alias sortip='sort -V'
+printfnumber(){
+    LC_NUMERIC=en_US printf "%'.f\n" "${1}"
+}
+explode_domain(){
+    local domain="${1}"
+    local regex_dot='\.'
+    echo ${domain}
+    if [[ $domain =~ $regex_dot ]]; then
+        explode_domain "${domain#*.}"
+    fi
+}
+explode_domains(){
+    local domains=(${@})
+    for domain in ${domains[@]}; do
+        explode_domain ${domain}
+    done | sort | uniq
+}
+upsert_in_file(){
+    local file="${1}"
+    shift
+    local inserts=(${@})
+    [[ ! -f ${file} ]] && return 1
+    for insert in ${inserts[@]}; do
+        grep -qxF "${insert}" "${file}" \
+            || echo "${insert}" >> "${file}"
+    done
+}
+toptr(){
+    cat /dev/stdin | revdomain | sed 's/$/.in-addr.arpa./g'
+}
+grepip(){
+    grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" /dev/stdin
+}
+alias highlight="grep --color -e '^' -e"
+topcompanies(){
+    cat TOPSUBDOMAINTAKEOVER.md \
+        | grep -E '\$[1-9][0-9][0-9]+' \
+        | grep -E -o ') to [[:alnum:]]+ ' \
+        | cut -f3 -d' ' \
+        | sort | uniq -c | sort -n
+}
