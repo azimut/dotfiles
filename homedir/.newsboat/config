@@ -1,0 +1,42 @@
+auto-reload            yes
+suppress-first-reload  yes
+confirm-exit           yes
+cleanup-on-quit        no
+browser                "torsocks w3m %u"
+cache-file             ~/.newsbeuter/cache.db
+error-log              ~/.newsboat/error.log
+
+#
+# Networking
+#
+reload-threads          1
+reload-time            45
+download-timeout       60
+download-retries        4
+proxy                  127.0.0.1:9050
+proxy-type             socks5
+use-proxy              yes
+
+#
+# Keybindings
+#
+bind-key j down      feedlist
+bind-key k up        feedlist
+bind-key j next      articlelist
+bind-key k prev      articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down      article
+bind-key k up        article
+
+color listnormal        green default
+color listnormal_unread green default
+color listfocus         green default reverse
+color listfocus_unread  green default reverse
+color info              green default reverse
+color background        green default
+color article           green default
+
+macro r set browser "torsocks redditviewer %u | less -Sr"    ; open-in-browser ; set browser "torsocks w3m %u"
+macro o set browser "firefox %u"                             ; open-in-browser ; set browser "torsocks w3m %u"
+macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "torsocks w3m %u"
