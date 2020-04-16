@@ -887,6 +887,7 @@ revdomain() {
         echo $(echo $domain | tr '.' $'\n' | tac | paste -sd'.')
     done < /dev/stdin
 }
+alias git-grep='git rev-list --all | xargs git grep'
 alias g1='git clone --depth=1'
 alias columnt='column -t'
 separator(){ printf '=%.0s' {0..30}; echo; }
