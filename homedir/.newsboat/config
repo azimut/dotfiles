@@ -2,6 +2,7 @@ auto-reload            yes
 suppress-first-reload  yes
 confirm-exit           yes
 cleanup-on-quit        no
+goto-next-feed         no
 browser                "torsocks w3m %u"
 cache-file             ~/.newsboat/cache.db
 error-log              ~/.newsboat/error.log
@@ -20,6 +21,9 @@ use-proxy              yes
 #
 # Keybindings
 #
+unbind-key Q
+bind-key ESC hard-quit
+
 bind-key j down      feedlist
 bind-key k up        feedlist
 bind-key j next      articlelist
@@ -29,6 +33,9 @@ bind-key K prev-feed articlelist
 bind-key j down      article
 bind-key k up        article
 
+#
+# Theme
+#
 color listnormal        green default
 color listnormal_unread green default
 color listfocus         green default reverse
@@ -37,6 +44,9 @@ color info              green default reverse
 color background        green default
 color article           green default
 
+#
+# Macros
+#
 macro r set browser "torsocks redditviewer %u | less -Sr"    ; open-in-browser ; set browser "torsocks w3m %u"
 macro o set browser "firefox %u"                             ; open-in-browser ; set browser "torsocks w3m %u"
 macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "torsocks w3m %u"
