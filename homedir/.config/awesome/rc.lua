@@ -109,6 +109,13 @@ myvolume = lain.widget.alsa({
       end
 })
 
+mytemp = lain.widget.temp({
+      timeout = 15,
+      settings = function()
+         widget:set_markup(markup(color, coretemp_now .. "🔥 "))
+      end
+})
+
 mybattery = lain.widget.bat({
       battery = "BAT0",
       settings = function()
@@ -220,6 +227,7 @@ awful.screen.connect_for_each_screen(function(s)
          nil,
          {
             layout = wibox.layout.fixed.horizontal,
+            mytemp,
             mybattery,
             myvolume
          }
