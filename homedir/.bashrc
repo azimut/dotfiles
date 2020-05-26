@@ -1001,3 +1001,27 @@ topcompanies(){
         | cut -f3 -d' ' \
         | sort | uniq -c | sort -n
 }
+
+board_dl(){
+    set -x
+    local domain="${1}"
+    local url="${2}"
+    local result=()
+    if result=($(torsocks wget -O - "${domain}/${url}" | tr '"' $'\n' | grep media | grep jpg)); then
+        result=(${result[@]/#/${domain}})
+        printf "%s\n" "${result[@]}" | sort | uniq | torsocks aria2c -i - --async-dns=false --max-concurrent-downloads=2 --continue=true
+    fi
+    set +x
+}
+
+board_dl_webm(){
+    set -x
+    local domain="${1}"
+    local url="${2}"
+    local result=()
+    if result=($(torsocks wget -O - "${domain}/${url}" | tr '"' $'\n' | grep media | fgrep -e .webm -e .mp4)); then
+        result=(${result[@]/#/${domain}})
+        printf "%s\n" "${result[@]}" | sort | uniq | torsocks aria2c -i - --async-dns=false --max-concurrent-downloads=2 --continue=true
+    fi
+    set +x
+}
