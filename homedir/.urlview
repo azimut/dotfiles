@@ -1,0 +1,2 @@
+COMMAND torsocks w3m %s
+WRAP YES
