@@ -11,7 +11,8 @@ case $URL in
     *.jpg|*.png|*.jpeg)
         torsocks feh "${URL}" < /dev/null;;
     *reddit.com/r/*)
-        redditviewer "${URL}" | less;;
+        HTTP_PROXY="socks5://127.0.0.1:9050" \
+                  redditviewer "${URL}" | less;;
     *youtube.com*|*youtu.be*)
         mpv --quiet \
             --volume=30 \
