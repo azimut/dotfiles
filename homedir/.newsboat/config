@@ -3,7 +3,7 @@ suppress-first-reload  yes
 confirm-exit           yes
 cleanup-on-quit        no
 goto-next-feed         no
-browser                "torsocks w3m %u"
+browser                "torsocks weblauncher %u"
 cache-file             ~/.newsboat/cache.db
 error-log              ~/.newsboat/error.log
 
@@ -59,6 +59,7 @@ highlight feedlist "^─.*$" color61 color235 bold
 #
 # Macros
 #
-macro r set browser "torsocks redditviewer %u | less -Sr"    ; open-in-browser ; set browser "torsocks w3m %u"
-macro o set browser "firefox %u"                             ; open-in-browser ; set browser "torsocks w3m %u"
-macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "torsocks w3m %u"
+# TODO: torsocks doesn't work on go programs
+macro r set browser "torsocks redditviewer %u | less -Sr"    ; open-in-browser ; set browser "torsocks weblauncher %u"
+macro o set browser "firefox %u"                             ; open-in-browser ; set browser "torsocks weblauncher %u"
+macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "torsocks weblauncher %u"
