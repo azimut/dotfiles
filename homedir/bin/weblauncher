@@ -7,19 +7,19 @@ UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
 case "${URL,,}" in
     *.gif)
-        nohup torsocks mpv --loop --quiet "${URL}" < /dev/null &;;
+        nohup 2>&1 torsocks mpv --loop --quiet "${URL}" < /dev/null &;;
     *.jpg|*.png|*.jpeg)
-        nohup torsocks feh "${URL}" < /dev/null & ;;
+        nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
     *reddit.com/r/*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   redditviewer "${URL}" | less;;
     *youtube.com*|*youtu.be*)
-        nohup mpv --quiet \
-              --volume=30 \
-              --user-agent="${UA}" \
-              --ytdl-raw-options=all-subs= \
-              --ytdl-format='bestvideo[height<481]+bestaudio' \
-              "${URL}" < /dev/null &;;
+        nohup 2>&1 mpv --quiet \
+                   --volume=30 \
+                   --user-agent="${UA}" \
+                   --ytdl-raw-options=all-subs= \
+                   --ytdl-format='bestvideo[height<481]+bestaudio' \
+                   "${URL}" < /dev/null &;;
     *)
         torsocks w3m -o "user_agent=${UA}" "${URL}";;
 esac
