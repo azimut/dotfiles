@@ -6,7 +6,8 @@ URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
 case $URL in
-    #*.jpg) torsocks feh "${URL}";;
+    *.jpg|*.png)
+        torsocks feh "${URL}" < /dev/null;;
     *reddit.com/r/*)
         redditviewer "${URL}" | less;;
     *youtube.com*|*youtu.be*)
