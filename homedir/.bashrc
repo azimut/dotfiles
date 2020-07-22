@@ -45,6 +45,8 @@ alias ytmp3='youtube-dl --no-post-overwrites -x -f bestaudio -i -k --audio-forma
 
 alias emacs='XMODIFIERS= emacs'
 
+export UA="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0"
+
 xhtml(){
     xmlpath="$1"
     xmllint --html --xpath "${xmlpath}" - 2>/dev/null
@@ -845,7 +847,7 @@ ffmpeg_rotate(){
     case $2 in
         90)   opts="transpose=1" ;;
         90f)  opts="transpose=3" ;;
-        180)  opts="tranpose2,tranpose=2" ;;
+        180)  opts="transpose=2,transpose=2" ;;
         270)  opts="transpose=2" ;;
         270f) opts="transpose=0" ;;
         *) ferror "should have been a value among 90, 180 or 270"
@@ -893,6 +895,7 @@ revdomain() {
 }
 alias git-fsless='GIT_LFS_SKIP_SMUDGE=1 git clone'
 alias git-grep='git rev-list --all | xargs git grep'
+alias grep-code='grep -I -r --color=always'
 alias g1='git clone --depth=1'
 alias columnt='column -t'
 separator(){ printf '=%.0s' {0..30}; echo; }
@@ -917,7 +920,7 @@ intersection(){
     [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
     local filea="$1"
     local fileb="$2"
-    fgrep -xf "$filea" "$fileb"
+    grep -F -xf "$filea" "$fileb"
 }
 
 complement(){
@@ -925,7 +928,7 @@ complement(){
     [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
     local filea="$1"
     local fileb="$2"
-    fgrep -vxf "$filea" "$fileb"
+    grep -F -vxf "$filea" "$fileb"
 }
 
 prefix(){ sed 's#^#'"${1}"'#g' /dev/stdin; }
@@ -993,7 +996,7 @@ toptr(){
 grepip(){
     grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" /dev/stdin
 }
-alias highlight="grep --color -e '^' -e"
+alias highlight="grep --color=always -e '^' -e"
 topcompanies(){
     cat TOPSUBDOMAINTAKEOVER.md \
         | grep -E '\$[1-9][0-9][0-9]+' \
@@ -1025,3 +1028,4 @@ board_dl_webm(){
     fi
     set +x
 }
+. `which env_parallel.bash`
