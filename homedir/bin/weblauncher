@@ -5,4 +5,10 @@ set -exuo pipefail
 URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
-w3m -header "${UA}" "${URL}"
+case $URL in
+    #*.jpg) torsocks feh "${URL}";;
+    *youtube.com*|*youtu.be*)
+        mpv --volume=30 --ytdl-raw-options=all-subs= --user-agent="${UA}" --ytdl-format=18 "${URL}";;
+    *)
+        torsocks w3m -o "user_agent=${UA}" "${URL}";;
+esac

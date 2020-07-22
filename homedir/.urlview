@@ -1,2 +1,2 @@
-COMMAND torsocks w3m %s
+COMMAND weblauncher %s
 WRAP YES
