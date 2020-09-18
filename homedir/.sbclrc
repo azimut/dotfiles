@@ -10,4 +10,5 @@
 (ql:quickload "quickproject")
 #+quicklisp
 (setq quickproject:*author* "azimut <azimut.github@protonmail.com>"
-      quickproject:*license* "MIT")
+      quickproject:*license* "MIT"
+      quickproject:*include-copyright* t)

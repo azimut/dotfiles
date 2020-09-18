@@ -4,7 +4,7 @@ set -exuo pipefail
 
 URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
-
+#  cvlc --preferred-resolution 720 --http-user-agent "${UA}" --quiet
 case "${URL,,}" in
     *.gif)
         nohup 2>&1 torsocks mpv --loop --quiet "${URL}" < /dev/null &;;
@@ -15,6 +15,7 @@ case "${URL,,}" in
                   redditviewer "${URL}" | less;;
     *youtube.com*|*youtu.be*)
         nohup 2>&1 mpv --quiet \
+                   --af=@rb:rubberband \
                    --volume=30 \
                    --user-agent="${UA}" \
                    --ytdl-raw-options=all-subs= \
