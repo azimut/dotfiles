@@ -129,7 +129,7 @@ mybattery = lain.widget.bat({
 })
 
 mynet = lain.widget.net {
-   iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1", "wlp0s20f0u2"},
+   iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1", "wlp0s20f0u2","wlo1"},
    settings = function()
       widget:set_markup(
          markup("#777777"," " .. net_now.received .. " ⇵ " .. net_now.sent)) end}
