@@ -102,6 +102,19 @@ mytextclock = wibox.widget.textclock(
       "termsyn 10" ..
       '">%a %d %b, %H:%M </span>')
 
+myweather = lain.widget.weather({
+      city_id = 3435910,
+      -- HTTP(S)
+      current_call = "curl -s 'https://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'",
+      forecast_call = "curl -s 'https://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=%s&lang=%s&cnt=%s&APPID=%s'",
+      settings = function()
+         descr = weather_now["weather"][1]["description"]:lower()
+         units = math.floor(weather_now["main"]["temp"])
+         local fg_color = "#eca4c4"
+         widget:set_markup(markup(fg_color, descr .. " @ " .. units .. "°C "))
+      end
+})
+
 myvolume = lain.widget.alsa({
       settings = function()
          widget:set_markup(
@@ -227,6 +240,7 @@ awful.screen.connect_for_each_screen(function(s)
          nil,
          {
             layout = wibox.layout.fixed.horizontal,
+            myweather,
             mytemp,
             mybattery,
             myvolume
