@@ -99,8 +99,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock(
    '<span font="' ..
-      "termsyn 10" ..
-      '">%a %d %b, %H:%M </span>')
+   'termsyn 10' ..
+   '">%a %d %b, %H:%M </span>')
 
 myweather = lain.widget.weather({
       city_id = 3435910,
@@ -111,7 +111,8 @@ myweather = lain.widget.weather({
          descr = weather_now["weather"][1]["description"]:lower()
          units = math.floor(weather_now["main"]["temp"])
          local fg_color = "#eca4c4"
-         widget:set_markup(markup(fg_color, descr .. " @ " .. units .. "°C "))
+         widget:set_markup(
+            markup(fg_color, descr .. " @ " .. units .. "°C "))
       end
 })
 
@@ -125,7 +126,8 @@ myvolume = lain.widget.alsa({
 mytemp = lain.widget.temp({
       timeout = 15,
       settings = function()
-         widget:set_markup(markup(color, coretemp_now .. "🔥 "))
+         widget:set_markup(
+            markup(color, math.floor(coretemp_now) .. "°🔥 "))
       end
 })
 
@@ -137,7 +139,8 @@ mybattery = lain.widget.bat({
          else
             color = "#777777"
          end
-         widget:set_markup(markup(color, bat_now.perc .. "⚡ "))
+         widget:set_markup(
+            markup(color, bat_now.perc .. "⚡ "))
       end
 })
 
