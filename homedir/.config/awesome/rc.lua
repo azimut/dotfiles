@@ -97,10 +97,31 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widget
+-- mytextclock = wibox.widget.textclock(
+--    '<span font="' ..
+--    'termsyn 10' ..
+--    '">%a %d %b, %H:%M </span>')
+
+local theme = {}
+theme.font = 'Terminus 10.5'
+
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#535d6c"
+theme.bg_urgent     = "#ff0000"
+theme.bg_minimize   = "#444444"
+theme.bg_systray    = theme.bg_normal
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
+theme.border_normal = "#000000"
+theme.border_focus  = "#535d6c"
+theme.border_marked = "#91231c"
+
 mytextclock = wibox.widget.textclock(
-   '<span font="' ..
-   'termsyn 10' ..
-   '">%a %d %b, %H:%M </span>')
+   markup.font(
+      theme.font,
+      markup(theme.fg_normal,'%a %d %b, %H:%M')))
 
 myweather = lain.widget.weather({
       city_id = 3435910,
@@ -110,9 +131,10 @@ myweather = lain.widget.weather({
       settings = function()
          descr = weather_now["weather"][1]["description"]:lower()
          units = math.floor(weather_now["main"]["temp"])
-         local fg_color = "#eca4c4"
          widget:set_markup(
-            markup(fg_color, descr .. " @ " .. units .. "°C "))
+            markup.font(
+               theme.font,
+               markup(theme.fg_normal, descr .. " @ " .. units .. "°C ")))
       end
 })
 
@@ -148,7 +170,10 @@ mynet = lain.widget.net {
    iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1", "wlp0s20f0u2","wlo1"},
    settings = function()
       widget:set_markup(
-         markup("#777777"," " .. net_now.received .. " ⇵ " .. net_now.sent)) end}
+         markup.font(
+            theme.font,
+            markup(theme.fg_normal," " .. net_now.received .. " ⇵ " .. net_now.sent)))
+end}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -227,10 +252,6 @@ awful.screen.connect_for_each_screen(function(s)
          filter  = awful.widget.tasklist.filter.currenttags,
          buttons = tasklist_buttons
       }
-
-      -- Lain
-      lain.widget.contrib.task.attach(mytextclock,
-                                      {show_cmd = "task rc.verbose:nothing"})
 
       -- Create the wibox
       s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -330,8 +351,6 @@ globalkeys = gears.table.join(
             "xclip -selection clipboard -o | xclip -selection primary") end,
       {description = "copy primary clipboard to secondary"}),
    --
-   --awful.key({ modkey }, "z", lain.widget.contrib.task.prompt),
-   awful.key({ modkey }, "z", function () lain.widget.contrib.task.show() end),
    awful.key({ modkey }, "+",
       function () awesome.spawn("amixer -D pulse sset Master 1%+", false) end,
       {description = "increase volume"}),
