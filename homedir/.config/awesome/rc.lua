@@ -139,24 +139,27 @@ local myweather = lain.widget.weather({
          descr = weather_now["weather"][1]["description"]:lower()
          units = math.floor(weather_now["main"]["temp"])
          widget:set_markup(
-            markup.font(
-               theme.font,
-               markup(theme.fg_normal, descr .. " @ " .. units .. "°C ")))
+            markup.font(theme.font,
+                        markup(theme.fg_normal, descr .. " @ " .. units .. "°C ")))
       end
 })
 
 local myfs = lain.widget.fs({
       notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = theme.font },
+      showpopup = "off",
       settings = function()
          local fsp = string.format(" %3.2f %s ", fs_now["/home"].free, fs_now["/home"].units)
-         widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, fsp)))
+         widget:set_markup(
+            markup.font(theme.font,
+                        markup(theme.fg_normal, fsp)))
       end
 })
 
 local myvolume = lain.widget.alsa({
       settings = function()
          widget:set_markup(
-            markup(theme.fg_normal, " "  .. volume_now.level .. " 🔊"))
+            markup.font(theme.font,
+                        markup(theme.fg_normal, " "  .. volume_now.level .. " 🔊")))
       end
 })
 
@@ -164,7 +167,7 @@ local mytemp = lain.widget.temp({
       timeout = 15,
       settings = function()
          widget:set_markup(
-            markup(theme.fg_normal, math.floor(coretemp_now) .. "°🔥 "))
+            markup.font(theme.font, markup(theme.fg_normal, math.floor(coretemp_now) .. "°🔥 ")))
       end
 })
 
@@ -174,10 +177,10 @@ local mybattery = lain.widget.bat({
          if bat_now.perc < 10 then
             color = "#e33a6e"
          else
-            color = "#777777"
+            color = theme.fg_normal
          end
          widget:set_markup(
-            markup(color, bat_now.perc .. "⚡ "))
+            markup.font(theme.font, markup(color, bat_now.perc .. "⚡ ")))
       end
 })
 
