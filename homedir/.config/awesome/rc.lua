@@ -190,6 +190,14 @@ local mynet = lain.widget.net {
             markup(theme.fg_normal," " .. net_now.received .. " ⇵ " .. net_now.sent)))
 end}
 
+local myquake = lain.util.quake({
+      app = "alacritty",
+      argname = "--class %s",
+      height = 0.25,
+      width = 1,
+      settings = function(c) c.sticky = true end
+})
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
    awful.button({ }, 1, function(t) t:view_only() end),
@@ -372,6 +380,10 @@ globalkeys = gears.table.join(
    awful.key({ modkey }, "-",
       function () awesome.spawn("amixer -D pulse sset Master 1%-", false) end,
       {description = "decrease volume"}),
+   --
+   awful.key({ modkey }, "z",
+      function () myquake:toggle() end,
+      {description = "quake toggle"}),
    -- https://wiki.archlinux.org/index.php/awesome#Hide_/_show_wibox
    awful.key({ modkey }, "b",
       function ()
