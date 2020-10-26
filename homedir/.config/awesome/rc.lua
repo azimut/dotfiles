@@ -103,7 +103,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --    '">%a %d %b, %H:%M </span>')
 
 local theme = {}
-theme.font = 'Terminus 10.5'
+theme.font = 'Terminus 11'
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
@@ -118,12 +118,19 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
-mytextclock = wibox.widget.textclock(
-   markup.font(
-      theme.font,
-      markup(theme.fg_normal,'%a %d %b, %H:%M')))
+local mytextclock = wibox.widget.textclock(
+   markup.font(theme.font, markup(theme.fg_normal,'%a %d %b, %H:%M')))
 
-myweather = lain.widget.weather({
+local mycal = lain.widget.cal({
+      attach_to = { mytextclock },
+      notification_preset = {
+         font = theme.font,
+         fg   = theme.fg_normal,
+         bg   = theme.bg_normal
+      }
+})
+
+local myweather = lain.widget.weather({
       city_id = 3435910,
       -- HTTP(S)
       current_call = "curl -s 'https://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'",
@@ -138,22 +145,30 @@ myweather = lain.widget.weather({
       end
 })
 
-myvolume = lain.widget.alsa({
+local myfs = lain.widget.fs({
+      notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = theme.font },
       settings = function()
-         widget:set_markup(
-            markup("#777777"," "  .. volume_now.level .. " 🔊"))
+         local fsp = string.format(" %3.2f %s ", fs_now["/home"].free, fs_now["/home"].units)
+         widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, fsp)))
       end
 })
 
-mytemp = lain.widget.temp({
+local myvolume = lain.widget.alsa({
+      settings = function()
+         widget:set_markup(
+            markup(theme.fg_normal, " "  .. volume_now.level .. " 🔊"))
+      end
+})
+
+local mytemp = lain.widget.temp({
       timeout = 15,
       settings = function()
          widget:set_markup(
-            markup(color, math.floor(coretemp_now) .. "°🔥 "))
+            markup(theme.fg_normal, math.floor(coretemp_now) .. "°🔥 "))
       end
 })
 
-mybattery = lain.widget.bat({
+local mybattery = lain.widget.bat({
       battery = "BAT0",
       settings = function()
          if bat_now.perc < 10 then
@@ -166,7 +181,7 @@ mybattery = lain.widget.bat({
       end
 })
 
-mynet = lain.widget.net {
+local mynet = lain.widget.net {
    iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1", "wlp0s20f0u2","wlo1"},
    settings = function()
       widget:set_markup(
@@ -261,7 +276,7 @@ awful.screen.connect_for_each_screen(function(s)
       s.mywiboy:setup {
          layout = wibox.layout.align.horizontal,
          mynet,
-         nil,
+         myfs.widget,
          {
             layout = wibox.layout.fixed.horizontal,
             myweather,
