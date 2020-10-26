@@ -381,7 +381,7 @@ globalkeys = gears.table.join(
       function () awesome.spawn("amixer -D pulse sset Master 1%-", false) end,
       {description = "decrease volume"}),
    --
-   awful.key({ modkey }, "z",
+   awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
       {description = "quake toggle"}),
    -- https://wiki.archlinux.org/index.php/awesome#Hide_/_show_wibox
