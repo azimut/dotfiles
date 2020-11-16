@@ -103,7 +103,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --    '">%a %d %b, %H:%M </span>')
 
 local theme = {}
-theme.font = 'Terminus 11'
+theme.font = 'Terminus 10.5'
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
@@ -124,7 +124,7 @@ local mytextclock = wibox.widget.textclock(
 local mycal = lain.widget.cal({
       attach_to = { mytextclock },
       notification_preset = {
-         font = theme.font,
+         font = "Monospace 10",
          fg   = theme.fg_normal,
          bg   = theme.bg_normal
       }
@@ -132,6 +132,7 @@ local mycal = lain.widget.cal({
 
 local myweather = lain.widget.weather({
       city_id = 3435910,
+      notification_preset = { font = "Monospace 10" },
       -- HTTP(S)
       current_call = "curl -s 'https://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'",
       forecast_call = "curl -s 'https://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=%s&lang=%s&cnt=%s&APPID=%s'",
@@ -185,7 +186,7 @@ local mybattery = lain.widget.bat({
 })
 
 local mynet = lain.widget.net {
-   iface = {"wlp2s0","enp0s31f6","wlp0s20f0u1", "wlp0s20f0u2","wlo1"},
+   iface = {"wlo1"},
    settings = function()
       widget:set_markup(
          markup.font(
