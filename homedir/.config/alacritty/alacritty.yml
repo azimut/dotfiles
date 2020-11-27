@@ -1,4 +1,13 @@
 #background_opacity: 0.9
+font:
+  normal:
+    family: JetBrains Mono NL
+    style: Light
+  size: 13.0
+
+window:
+  dynamic_padding: true
+
 colors:
   # Default colors
   primary:
