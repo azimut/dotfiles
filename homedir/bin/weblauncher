@@ -12,10 +12,12 @@ case "${URL,,}" in
         nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
     *lainchan.org*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  lainviewer -t 20 -u "${URL}" | less;;
+                  lainviewer -t 25 -u "${URL}" | less -M;;
     *reddit.com/r/*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  redditviewer -t 20 -u "${URL}" | less;;
+                  redditviewer -t 20 -u "${URL}" | less -M;;
+    *github.com*)
+        rdrview -B w3m "${URL}" ;;
     *youtube.com*|*youtu.be*)
         nohup 2>&1 mpv --quiet \
                    --af=@rb:rubberband \
