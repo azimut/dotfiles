@@ -199,6 +199,7 @@ local myquake = lain.util.quake({
       argname = "--class %s",
       height = 0.25,
       width = 1,
+      vert = "bottom",
       settings = function(c) c.sticky = true end
 })
 
