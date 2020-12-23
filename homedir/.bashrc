@@ -237,7 +237,10 @@ ansible_env(){
     source hacking/env-setup
     cd -
 }
+# Erlang
+export ERL_AFLAGS="-kernel shell_history enabled"
 
+# Golang
 export GOPATH=$HOME/go
 #export GOROOT=$HOME/go
 #export GOPATH=/usr/lib64/go
@@ -931,8 +934,8 @@ complement(){
     grep -F -vxf "$filea" "$fileb"
 }
 
-prefix(){ sed 's#^#'"${1}"'#g' /dev/stdin; }
-suffix(){ sed 's#$#'"${1}"'#g' /dev/stdin; }
+prefix(){ sed 's#^#'"${1}"'#g'; }
+suffix(){ sed 's#$#'"${1}"'#g'; }
 
 source ~/.bash_secret
 
