@@ -12,10 +12,13 @@ case "${URL,,}" in
         nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
     *lainchan.org*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  lainviewer -t 25 -u "${URL}" | less -M;;
+                  lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
+    *wired-7.org*)
+        #HTTP_PROXY="socks5://127.0.0.1:9050"
+        lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *reddit.com/r/*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  redditviewer -t 20 -u "${URL}" | less -M;;
+                  redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         rdrview -B w3m "${URL}" ;;
     *youtube.com*|*youtu.be*)
@@ -26,6 +29,7 @@ case "${URL,,}" in
                    --ytdl-raw-options=all-subs= \
                    --ytdl-format='bestvideo[height<481]+bestaudio' \
                    "${URL}" < /dev/null &;;
+    *0x00sec.org*) w3m -o "user_agent=${UA}" "${URL}";;
     *)
         torsocks w3m -o "user_agent=${UA}" "${URL}";;
 esac
