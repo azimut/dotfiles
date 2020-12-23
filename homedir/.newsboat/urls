@@ -16,6 +16,14 @@ https://fanfox.net/rss/drifters.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
+https://rebelion.digital/rss
+
+#https://boards.4channel.org/g/index.rss
+
+https://wired-7.org/tech/index.rss
+
+https://lainchan.org/lit/index.rss
+https://lainchan.org/music/index.rss
 https://lainchan.org/%CE%BB/index.rss
 https://lainchan.org/sec/index.rss
 https://lainchan.org/%CE%A9/index.rss
@@ -30,12 +38,18 @@ https://www.reddit.com/r/lua/.rss "~/r/lua"
 https://www.reddit.com/r/elixir/.rss "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss "~/r/erlang"
 https://www.reddit.com/r/haskell/.rss "~/r/haskell"
+https://www.reddit.com/r/scheme/.rss "~/r/scheme"
 https://www.reddit.com/r/lisp/.rss "~/r/lisp"
 #https://www.reddit.com/r/lisp_ja/.rss "~/r/lisp_ja"
 https://www.reddit.com/r/Common_Lisp/.rss "~/r/Common_Lisp"
 https://www.reddit.com/r/Clojure/.rss "~/r/Clojure"
 https://www.reddit.com/r/golang/.rss "~/r/golang"
 https://www.reddit.com/r/rust/.rss "~/r/rust"
+
+
+https://www.reddit.com/r/cprogramming+embedded/top/.rss "~/r/C+Embedded"
+
+https://0x00sec.org/latest.rss sec
 
 https://www.reddit.com/r/securityCTF/.rss "~/r/securityCTF"
 https://www.reddit.com/r/oscp/.rss "~/r/oscp"
@@ -79,3 +93,6 @@ https://feeds2.feedburner.com/SecurityTube netsec
 #https://selfiescorts.com/escorts/feed/
 
 #https://tools.kali.org/tools-listing/feed
+
+https://lwn.net/headlines/newrss
+https://hnrss.org/best
