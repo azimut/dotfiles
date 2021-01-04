@@ -103,7 +103,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --    '">%a %d %b, %H:%M </span>')
 
 local theme = {}
-theme.font = 'Terminus 10.5'
+   --theme.font = 'Terminus 10.5'
+theme.font = 'Monospace 12'
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
@@ -137,11 +138,12 @@ local myweather = lain.widget.weather({
       current_call = "curl -s 'https://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'",
       forecast_call = "curl -s 'https://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=%s&lang=%s&cnt=%s&APPID=%s'",
       settings = function()
-         descr = weather_now["weather"][1]["description"]:lower()
-         units = math.floor(weather_now["main"]["temp"])
+         local descr = weather_now["weather"][1]["description"]:lower()
+         local units = math.floor(weather_now["main"]["temp"])
+         local msg = descr .. "@" .. units .. "° "
          widget:set_markup(
             markup.font(theme.font,
-                        markup(theme.fg_normal, descr .. " @ " .. units .. "°C ")))
+                        markup(theme.fg_normal, msg)))
       end
 })
 
@@ -167,8 +169,9 @@ local myvolume = lain.widget.alsa({
 local mytemp = lain.widget.temp({
       timeout = 15,
       settings = function()
+         local msg = math.floor(coretemp_now) .. "° "
          widget:set_markup(
-            markup.font(theme.font, markup(theme.fg_normal, math.floor(coretemp_now) .. "°🔥 ")))
+            markup.font(theme.font, markup(theme.fg_normal,msg)))
       end
 })
 
@@ -188,12 +191,9 @@ local mybattery = lain.widget.bat({
 local mynet = lain.widget.net {
    iface = {"wlo1"},
    settings = function()
-      local received = math.ceil(net_now.received)
-      local length = math.max(1,math.floor(math.log10(received)+1))
-      local rcv = string.format("%" .. (10-length+1) .. "d", received)
-      local snt = string.format("%-5g", math.ceil(net_now.sent))
-      --
-      local msg = " " .. rcv .. "  ⇵  " .. snt
+      local rcv = string.format("%5d", math.ceil(net_now.received))
+      local snt = string.format("%-2g", math.ceil(net_now.sent))
+      local msg = rcv .. " ⇵ " .. snt .. "  "
       widget:set_markup(
          markup.font(
             theme.font,
