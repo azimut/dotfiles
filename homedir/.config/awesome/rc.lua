@@ -188,10 +188,16 @@ local mybattery = lain.widget.bat({
 local mynet = lain.widget.net {
    iface = {"wlo1"},
    settings = function()
+      local received = math.ceil(net_now.received)
+      local length = math.max(1,math.floor(math.log10(received)+1))
+      local rcv = string.format("%" .. (10-length+1) .. "d", received)
+      local snt = string.format("%-5g", math.ceil(net_now.sent))
+      --
+      local msg = " " .. rcv .. "  ⇵  " .. snt
       widget:set_markup(
          markup.font(
             theme.font,
-            markup(theme.fg_normal," " .. net_now.received .. " ⇵ " .. net_now.sent)))
+            markup(theme.fg_normal,msg)))
 end}
 
 local myquake = lain.util.quake({
