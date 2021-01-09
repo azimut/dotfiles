@@ -1,6 +1,7 @@
 https://readshingekinokyojin.com/rss manga
 #https://w12.readonepunchman.net/rss manga
 https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
+https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
 https://fanfox.net/rss/talentless_nana.xml manga
 https://fanfox.net/rss/vinland_saga.xml manga
 https://fanfox.net/rss/onepunch_man.xml manga
@@ -16,7 +17,7 @@ https://fanfox.net/rss/drifters.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
-https://rebelion.digital/rss
+https://rebelion.digital/rss argentina
 
 #https://boards.4channel.org/g/index.rss
 
@@ -34,65 +35,61 @@ https://planet.lisp.org/github.atom
 #https://www.reddit.com/r/Gentoo/.rss "~/r/Gentoo"
 
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
-https://www.reddit.com/r/lua/.rss "~/r/lua"
-https://www.reddit.com/r/elixir/.rss "~/r/elixir"
-https://www.reddit.com/r/erlang/.rss "~/r/erlang"
-https://www.reddit.com/r/haskell/.rss "~/r/haskell"
-https://www.reddit.com/r/scheme/.rss "~/r/scheme"
-https://www.reddit.com/r/lisp/.rss "~/r/lisp"
-#https://www.reddit.com/r/lisp_ja/.rss "~/r/lisp_ja"
-https://www.reddit.com/r/Common_Lisp/.rss "~/r/Common_Lisp"
-https://www.reddit.com/r/Clojure/.rss "~/r/Clojure"
-https://www.reddit.com/r/golang/.rss "~/r/golang"
-https://www.reddit.com/r/rust/.rss "~/r/rust"
-
-
-https://www.reddit.com/r/cprogramming+embedded/top/.rss "~/r/C+Embedded"
+https://www.reddit.com/r/lua/.rss language "~/r/lua"
+https://www.reddit.com/r/elixir/.rss language "~/r/elixir"
+https://www.reddit.com/r/erlang/.rss language "~/r/erlang"
+https://www.reddit.com/r/haskell/.rss language "~/r/haskell"
+https://www.reddit.com/r/scheme/.rss language "~/r/scheme"
+https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
+https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
+https://www.reddit.com/r/Clojure/.rss language "~/r/Clojure"
+https://www.reddit.com/r/golang/.rss language "~/r/golang"
+https://www.reddit.com/r/rust/.rss language "~/r/rust"
+https://www.reddit.com/r/cprogramming+embedded/top/.rss language "~/r/C+Embedded"
 
 https://0x00sec.org/latest.rss sec
 
-https://www.reddit.com/r/securityCTF/.rss "~/r/securityCTF"
-https://www.reddit.com/r/oscp/.rss "~/r/oscp"
-https://www.reddit.com/r/netsec/.rss linux netsec "~/r/netsec"
-https://www.reddit.com/r/devops/.rss linux devops "~/r/devops"
-https://www.reddit.com/r/kubernetes/.rss linux netsec "~/r/kubernetes"
+https://www.reddit.com/r/securityCTF/.rss sec "~/r/securityCTF"
+https://www.reddit.com/r/oscp/.rss sec "~/r/oscp"
+https://www.reddit.com/r/netsec/.rss sec "~/r/netsec"
+https://www.reddit.com/r/devops/.rss admin "~/r/devops"
+https://www.reddit.com/r/kubernetes/.rss admin "~/r/kubernetes"
 
 https://www.reddit.com/r/computergraphics/.rss graphics "~/r/computergraphics"
 https://www.reddit.com/r/GraphicsProgramming/.rss graphics "~/r/GraphicsProgramming"
 
-#https://www.reddit.com/r/argentina/.rss "~/r/argentina"
-#https://www.reddit.com/r/argentinacirclejerk/.rss "~/r/ArgCjerk"
+https://www.reddit.com/r/argentina/top/.rss argentina "~/r/argentina"
 
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLP4CSgl7K7oo93I49tQa0TLB8qY3u7xuO music
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLytTJqkSQqtr7BqC1Jf4nv3g2yDfu7Xmd feminism
 #https://www.youtube.com/feeds/videos.xml?playlist_id=LLJTxEY8-lIbqJWk4ol5eThg
 
-http://feeds.feedburner.com/FluProject linux netsec
-http://feeds.feedburner.com/NoticiasSeguridadInformatica linux netsec
-http://feeds.feedburner.com/hispasec/zCAd linux segu
+http://feeds.feedburner.com/FluProject sec
+http://feeds.feedburner.com/NoticiasSeguridadInformatica sec
+http://feeds.feedburner.com/hispasec/zCAd sec
 
-https://slatestarcodex.com/feed/
+https://slatestarcodex.com/feed/ politics
 
-https://www.spreaker.com/user/7472853/episodes/feed netsec
-https://feeds.simplecast.com/2Ntuu3AF netsec
+https://www.spreaker.com/user/7472853/episodes/feed sec
+https://feeds.simplecast.com/2Ntuu3AF sec podcast
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 
 https://forum.cabbageaudio.com/latest.rss csound
-
 http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
-https://www.industriavg.com.ar/rss/all/
-https://blog.redpanal.org/rss
+https://www.industriavg.com.ar/rss/all/ jobs
+https://blog.redpanal.org/rss argentina
 
-https://feeds2.feedburner.com/SecurityTube netsec
+https://feeds2.feedburner.com/SecurityTube sec
 
 #http://www.bairesgirls.net/rssfeed/todas.php
 #https://selfiescorts.com/escorts/feed/
 
 #https://tools.kali.org/tools-listing/feed
 
-https://lwn.net/headlines/newrss
-https://hnrss.org/best
+https://hnrss.org/best tech
+
+https://anchor.fm/s/34c6f190/podcast/rss podcast

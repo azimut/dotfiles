@@ -255,7 +255,7 @@ screen_name(){
     printf "\033k%s\033\\" "$@"
 }
 
-export TERM=xterm
+#export TERM=xterm
 
 d_weechat(){
     # sudo docker network create --subnet=10.0.43.1/24 redazul
