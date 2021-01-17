@@ -56,7 +56,7 @@ beautiful.border_focus = "#00AAAA"
 beautiful.border_width = 1
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -706,7 +706,7 @@ end
 run_once("mpd")
 run_once("mpdas")
 run_once("nm-applet")
--- run_once("urxvtd")
+run_once("urxvtd")
 run_once("keynav")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap")
