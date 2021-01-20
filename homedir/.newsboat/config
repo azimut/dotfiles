@@ -9,6 +9,13 @@ error-log              ~/.newsboat/error.log
 player                 "mpv"
 
 #
+# Bookmarking
+#
+# bookmark-autopilot yes
+# bookmark-cmd ~/bin/book.sh
+# bookmark-interactive no
+
+#
 # Networking
 #
 reload-threads          1
@@ -49,6 +56,11 @@ color article           default default
 # Macros
 #
 # TODO: torsocks doesn't work on golang programs
-macro r set browser "redditviewer %u | less -Sr"             ; open-in-browser ; set browser "weblauncher %u"
 macro o set browser "firefox %u"                             ; open-in-browser ; set browser "weblauncher %u"
 macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "weblauncher %u"
+macro p set browser "mpv --player-operation-mode=pseudo-gui -- %u &"; one      ; set browser "weblauncher %u"
+# macro 1 set browser "mpv %u"; one; set browser "weblauncher %u"
+# macro 2 set browser "mpv %u"; two; set browser "weblauncher %u"
+
+
+

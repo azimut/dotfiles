@@ -32,22 +32,22 @@ https://lainchan.org/sec/index.rss
 https://lainchan.org/%CE%A9/index.rss
 https://lainchan.org/%CE%94/index.rss
 
-https://planet.lisp.org/github.atom
+#https://planet.lisp.org/github.atom
 
 #https://www.reddit.com/r/Gentoo/.rss "~/r/Gentoo"
 
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
-https://www.reddit.com/r/lua/.rss language "~/r/lua"
-https://www.reddit.com/r/elixir/.rss language "~/r/elixir"
+https://www.reddit.com/r/lua/top/.rss language "~/r/lua"
+https://www.reddit.com/r/elixir/top/.rss language "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss language "~/r/erlang"
-https://www.reddit.com/r/haskell/.rss language "~/r/haskell"
+https://www.reddit.com/r/haskell/top/.rss language "~/r/haskell"
 https://www.reddit.com/r/scheme/.rss language "~/r/scheme"
 https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
 https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
-https://www.reddit.com/r/Clojure/.rss language "~/r/Clojure"
-https://www.reddit.com/r/golang/.rss language "~/r/golang"
-https://www.reddit.com/r/rust/.rss language "~/r/rust"
-https://www.reddit.com/r/cprogramming+embedded/top/.rss language "~/r/C+Embedded"
+https://www.reddit.com/r/Clojure/top/.rss language "~/r/Clojure"
+https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
+https://www.reddit.com/r/rust/top/.rss language "~/r/rust"
+https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
 
 https://0x00sec.org/latest.rss sec
 
@@ -57,8 +57,8 @@ https://www.reddit.com/r/netsec/.rss sec "~/r/netsec"
 https://www.reddit.com/r/devops/.rss admin "~/r/devops"
 https://www.reddit.com/r/kubernetes/.rss admin "~/r/kubernetes"
 
-https://www.reddit.com/r/computergraphics/.rss graphics "~/r/computergraphics"
-https://www.reddit.com/r/GraphicsProgramming/.rss graphics "~/r/GraphicsProgramming"
+#https://www.reddit.com/r/computergraphics/.rss graphics "~/r/computergraphics"
+#https://www.reddit.com/r/GraphicsProgramming/.rss graphics "~/r/GraphicsProgramming"
 
 #https://www.reddit.com/r/argentina/top/.rss argentina "~/r/argentina"
 
@@ -72,15 +72,15 @@ http://feeds.feedburner.com/hispasec/zCAd sec
 
 https://slatestarcodex.com/feed/ politics
 
-https://www.spreaker.com/user/7472853/episodes/feed sec
-https://feeds.simplecast.com/2Ntuu3AF sec podcast
+#https://www.spreaker.com/user/7472853/episodes/feed sec
+#https://feeds.simplecast.com/2Ntuu3AF sec podcast
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 
 https://forum.cabbageaudio.com/latest.rss csound
-http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
+#http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
 https://blog.redpanal.org/rss argentina
@@ -94,4 +94,7 @@ https://feeds2.feedburner.com/SecurityTube sec
 
 https://hnrss.org/best tech
 
+https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
+
+https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
