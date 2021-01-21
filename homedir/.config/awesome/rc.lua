@@ -709,11 +709,11 @@ run_once("nm-applet")
 run_once("urxvtd")
 run_once("keynav")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
-awesome.spawn("xmodmap ~/.Xmodmap")
+awesome.spawn("xmodmap ~/.Xmodmap", false)
 awesome.spawn("bash " .. os.getenv("HOME") .. "/.fehbg", false)
 awesome.spawn("xset -b", false)                  -- disable beep
 awesome.spawn("amixer set Capture nocap", false) -- disable mic
-awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled") -- disable auto-mute
+awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled", false) -- disable auto-mute
 -- awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 
 -- GC
