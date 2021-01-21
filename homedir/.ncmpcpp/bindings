@@ -22,3 +22,8 @@ def_key "n"
     next_found_item
 def_key "N"
     previous_found_item
+
+def_key "Q"
+    quit
+def_key "q"
+    dummy

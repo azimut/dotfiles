@@ -48,7 +48,7 @@ progressbar_color = "black"
 mouse_support = "no"
 discard_colors_if_item_is_selected = "yes"
 user_interface = "classic"
-playlist_display_mode = "classic"
+playlist_display_mode = "columns"
 
 # █▓▒░ cheat sheet
 # %l - length
@@ -77,3 +77,7 @@ playlist_display_mode = "classic"
 # $7 - cyan
 # $8 - white
 # $9 - end of current color
+ask_for_locked_screen_width_part = 	no
+locked_screen_width_part =		50
+
+
