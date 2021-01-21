@@ -713,5 +713,9 @@ awesome.spawn("xmodmap ~/.Xmodmap")
 awesome.spawn("bash " .. os.getenv("HOME") .. "/.fehbg", false)
 awesome.spawn("xset -b", false)                  -- disable beep
 awesome.spawn("amixer set Capture nocap", false) -- disable mic
+awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled") -- disable auto-mute
 -- awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 
+-- GC
+-- https://www.reddit.com/r/awesomewm/comments/iguwcj/memory_leaks/
+gears.timer.start_new(10, function() collectgarbage("step", 20000) return true end)
