@@ -162,7 +162,7 @@ local myvolume = lain.widget.alsa({
       settings = function()
          widget:set_markup(
             markup.font(theme.font,
-                        markup(theme.fg_normal, " "  .. volume_now.level .. " 🔊")))
+                        markup(theme.fg_normal, " "  .. volume_now.level .. "%")))
       end
 })
 
@@ -183,8 +183,18 @@ local mybattery = lain.widget.bat({
          else
             color = theme.fg_normal
          end
+         if bat_now.ac_status == 0 then -- 0:unplugged 1:plugged
+            plug = "⚡ "
+         else
+            plug = " "
+         end
+         if bat_now.status == "Full" then
+            state = "Full"
+         else
+            state = bat_now.perc
+         end
          widget:set_markup(
-            markup.font(theme.font, markup(color, bat_now.perc .. "⚡ ")))
+            markup.font(theme.font, markup(color, state .. plug)))
       end
 })
 
