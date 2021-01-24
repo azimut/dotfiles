@@ -7,29 +7,42 @@ UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 #  cvlc --preferred-resolution 720 --http-user-agent "${UA}" --quiet
 case "${URL,,}" in
     *.gif)
-        nohup 2>&1 torsocks mpv --loop --quiet "${URL}" < /dev/null &;;
+        nohup 2>&1 torsocks mpv \
+                   --loop \
+                   --osd-level=3 \
+                   --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
     *.jpg|*.png|*.jpeg)
         nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
+    *.wav|*.mp3) # might be Download?
+        nohup 2>&1 mpv  \
+                   --player-operation-mode=pseudo-gui \
+                   --osd-level=3 \
+                   --volume=30 \
+                   --af=@rb:rubberband \
+                   --user-agent="${UA}" \
+                   --player-operation-mode=pseudo-gui "${URL}" < /dev/null & ;;
     *lainchan.org*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *wired-7.org*)
-        #HTTP_PROXY="socks5://127.0.0.1:9050"
         lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *reddit.com/r/*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
-        rdrview -B w3m "${URL}" ;;
-    *youtube.com*|*youtu.be*)
-        nohup 2>&1 mpv --quiet \
+        torsocks rdrview -B w3m "${URL}" ;;
+    *youtube.com*|*youtu.be*|*twitch.tv*)
+        nohup 2>&1 mpv \
+                   --player-operation-mode=pseudo-gui \
+                   --osd-level=3 \
                    --af=@rb:rubberband \
                    --volume=30 \
                    --user-agent="${UA}" \
                    --ytdl-raw-options=all-subs= \
                    --ytdl-format='bestvideo[height<481]+bestaudio' \
                    "${URL}" < /dev/null &;;
-    *0x00sec.org*) w3m -o "user_agent=${UA}" "${URL}";;
+    *0x00sec.org*)
+        w3m -o "user_agent=${UA}" "${URL}";;
     *)
         torsocks w3m -o "user_agent=${UA}" "${URL}";;
 esac
