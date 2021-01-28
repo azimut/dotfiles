@@ -31,18 +31,29 @@ case "${URL,,}" in
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
-    *youtube.com*|*youtu.be*|*twitch.tv*)
+    *youtube.com*|*youtu.be*)
         nohup 2>&1 mpv \
-                   --player-operation-mode=pseudo-gui \
                    --osd-level=3 \
                    --af=@rb:rubberband \
-                   --volume=30 \
+                   --volume=50 \
                    --user-agent="${UA}" \
                    --ytdl-raw-options=all-subs= \
                    --ytdl-format='bestvideo[height<481]+bestaudio' \
                    "${URL}" < /dev/null &;;
+    *twitch.tv*)
+        nohup 2>&1 mpv \
+                   --osd-level=3 \
+                   --loop \
+                   --af=@rb:rubberband \
+                   --volume=50 \
+                   --user-agent="${UA}" \
+                   --ytdl-format='720' \
+                   --ytdl-raw-options=all-subs= \
+                   "${URL}" < /dev/null &;;
     *0x00sec.org*)
         w3m -o "user_agent=${UA}" "${URL}";;
+    *twitter.com*)
+        torsocks w3m -o "user_agent=${UA}" "${URL/twitter.com/nitter.net}";;
     *)
         torsocks w3m -o "user_agent=${UA}" "${URL}";;
 esac
