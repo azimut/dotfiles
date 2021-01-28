@@ -1,3 +1,11 @@
+#https://github.com/tsoding.atom
+
+"exec:gitorg-rss EpicGames"
+"exec:gitorg-rss NVIDIAGameWorks"
+"exec:gitorg-rss Shirakumo"
+"exec:github-rss azimut"
+#https://github.com/azimut.private.atom?token=AAV36XDSLMQEKKMB5OEE5L56DGXDK
+
 https://readshingekinokyojin.com/rss manga
 #https://w12.readonepunchman.net/rss manga
 https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
@@ -51,11 +59,11 @@ https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
 
 https://0x00sec.org/latest.rss sec
 
-https://www.reddit.com/r/securityCTF/.rss sec "~/r/securityCTF"
-https://www.reddit.com/r/oscp/.rss sec "~/r/oscp"
-https://www.reddit.com/r/netsec/.rss sec "~/r/netsec"
-https://www.reddit.com/r/devops/.rss admin "~/r/devops"
-https://www.reddit.com/r/kubernetes/.rss admin "~/r/kubernetes"
+#https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
+#https://www.reddit.com/r/oscp/top/.rss sec "~/r/oscp"
+https://www.reddit.com/r/netsec/top/.rss sec "~/r/netsec"
+https://www.reddit.com/r/devops/top/.rss admin "~/r/devops"
+https://www.reddit.com/r/kubernetes/top/.rss admin "~/r/kubernetes"
 
 #https://www.reddit.com/r/computergraphics/.rss graphics "~/r/computergraphics"
 #https://www.reddit.com/r/GraphicsProgramming/.rss graphics "~/r/GraphicsProgramming"
@@ -63,7 +71,7 @@ https://www.reddit.com/r/kubernetes/.rss admin "~/r/kubernetes"
 #https://www.reddit.com/r/argentina/top/.rss argentina "~/r/argentina"
 
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLP4CSgl7K7oo93I49tQa0TLB8qY3u7xuO music
-https://www.youtube.com/feeds/videos.xml?playlist_id=PLytTJqkSQqtr7BqC1Jf4nv3g2yDfu7Xmd feminism
+#https://www.youtube.com/feeds/videos.xml?playlist_id=PLytTJqkSQqtr7BqC1Jf4nv3g2yDfu7Xmd feminism
 #https://www.youtube.com/feeds/videos.xml?playlist_id=LLJTxEY8-lIbqJWk4ol5eThg
 
 http://feeds.feedburner.com/FluProject sec
@@ -74,6 +82,8 @@ https://slatestarcodex.com/feed/ politics
 
 #https://www.spreaker.com/user/7472853/episodes/feed sec
 #https://feeds.simplecast.com/2Ntuu3AF sec podcast
+https://sector035.nl/articles.atom sec
+
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
@@ -94,6 +104,7 @@ https://feeds2.feedburner.com/SecurityTube sec
 
 https://hnrss.org/best tech
 
+https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand podcast
 https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
 
