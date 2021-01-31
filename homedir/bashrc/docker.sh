@@ -1,4 +1,7 @@
 #!/bin/bash
+screen_name(){
+    printf "\033k%s\033\\" "$@"
+}
 
 d_weechat(){
     # sudo docker network create --subnet=10.0.43.1/24 redazul
