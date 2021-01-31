@@ -45,7 +45,3 @@ alias columnt='column -t'
 
 alias j=journalctl
 alias s="sudo systemctl"
-
-# gnu-parallel
-. `which env_parallel.bash`
-
