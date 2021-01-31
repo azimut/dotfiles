@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ~/.bash_secret
+source ~/bashrc/helpers.sh
 
 PS1='[\[\033[36m\]\w\[\033[0m\]] > '
 
