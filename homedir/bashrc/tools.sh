@@ -1,5 +1,47 @@
 #!/bin/bash
 
+ferror(){
+    printf "Error: %s\n" "$1" 1>&2
+}
+
+
+intersection(){
+    [[ $# -ne 2 ]] && { ferror "needs 2 arguments"; return 1; }
+    [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
+    local filea="$1"
+    local fileb="$2"
+    grep -F -xf "$filea" "$fileb"
+}
+
+complement(){
+    [[ $# -ne 2 ]] && { ferror "needs 2 arguments"; return 1; }
+    [[ (-f $1 || -p $1) && (-f $2 || -p $2) ]] || { ferror "arguments need to be a file"; return 1; }
+    local filea="$1"
+    local fileb="$2"
+    grep -F -vxf "$filea" "$fileb"
+}
+
+upsert_in_file(){
+    local file="${1}"
+    shift
+    local inserts=(${@})
+    [[ ! -f ${file} ]] && return 1
+    for insert in ${inserts[@]}; do
+        grep -qxF "${insert}" "${file}" \
+            || echo "${insert}" >> "${file}"
+    done
+}
+
+separator(){ printf '=%.0s' {0..30}; echo; }
+
+
+
+printfnumber(){
+    LC_NUMERIC=en_US printf "%'.f\n" "${1}"
+}
+
+
+
 # Copies a .srt to the correct name on dir
 srt_anchor(){
     shopt -s nullglob
