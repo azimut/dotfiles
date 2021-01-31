@@ -1,0 +1,13 @@
+alias rm='rm -i'
+alias ls='ls -p --color'
+alias cp='cp -i'
+alias ffmpeg='ffmpeg -hide_banner'
+
+# --no-playlist
+alias ytmp3='youtube-dl --no-post-overwrites -x -f bestaudio -i -k --audio-format mp3'
+
+alias emacs='XMODIFIERS= emacs'
+alias columnt='column -t'
+
+alias j="journalctl"
+alias s="sudo systemctl"
