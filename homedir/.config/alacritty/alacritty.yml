@@ -55,3 +55,5 @@ colors:
     magenta: '0x6e4962'
     cyan:    '0x5c8482'
     white:   '0x828282'
+shell:
+  program: /bin/zsh
