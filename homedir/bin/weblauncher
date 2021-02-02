@@ -31,7 +31,7 @@ case "${URL,,}" in
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
-    *youtube.com*|*youtu.be*)
+    *youtube.com*|*youtu.be*|*streamable.com*)
         nohup 2>&1 mpv \
                    --osd-level=3 \
                    --af=@rb:rubberband \
