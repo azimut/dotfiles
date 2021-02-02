@@ -1,16 +1,18 @@
-#https://github.com/tsoding.atom
+exec:~/.newsboat/feeds/ekojobs.sh
 
 "exec:gitorg-rss EpicGames"
 "exec:gitorg-rss NVIDIAGameWorks"
 "exec:gitorg-rss Shirakumo"
+
 "exec:github-rss azimut"
-#https://github.com/azimut.private.atom?token=AAV36XDSLMQEKKMB5OEE5L56DGXDK
+
+#https://w12.readonepunchman.net/rss mang
+#https://fanfox.net/rss/drifters.xml manga
 
 https://readshingekinokyojin.com/rss manga
-#https://w12.readonepunchman.net/rss manga
 https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
-https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml
-https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml
+https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
+https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
 https://fanfox.net/rss/talentless_nana.xml manga
 https://fanfox.net/rss/vinland_saga.xml manga
@@ -20,10 +22,7 @@ https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
 https://fanfox.net/rss/goblin_slayer.xml manga
 https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml manga
 https://fanfox.net/rss/dr_stone.xml manga
-#https://fanfox.net/rss/kimetsu_no_yaiba.xml manga
 https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
-#https://fanfox.net/rss/ryoumin_0_nin_start_no_henkyou_ryoushusama.xml manga
-#https://fanfox.net/rss/drifters.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
@@ -62,8 +61,8 @@ https://0x00sec.org/latest.rss sec
 #https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
 #https://www.reddit.com/r/oscp/top/.rss sec "~/r/oscp"
 https://www.reddit.com/r/netsec/top/.rss sec "~/r/netsec"
-https://www.reddit.com/r/devops/top/.rss admin "~/r/devops"
-https://www.reddit.com/r/kubernetes/top/.rss admin "~/r/kubernetes"
+#https://www.reddit.com/r/devops/top/.rss admin "~/r/devops"
+#https://www.reddit.com/r/kubernetes/top/.rss admin "~/r/kubernetes"
 
 #https://www.reddit.com/r/computergraphics/.rss graphics "~/r/computergraphics"
 #https://www.reddit.com/r/GraphicsProgramming/.rss graphics "~/r/GraphicsProgramming"
@@ -109,3 +108,8 @@ https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
+
+https://llllllll.co/latest.rss livecoding
+https://forum.toplap.org/latest.rss livecoding
+
+https://martinshkreli.com/blog/f.atom
