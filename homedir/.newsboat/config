@@ -6,14 +6,13 @@ goto-next-feed         no
 browser                "weblauncher %u"
 cache-file             ~/.newsboat/cache.db
 error-log              ~/.newsboat/error.log
-player                 "mpv"
-
+scrolloff              2
 #
 # Bookmarking
 #
-# bookmark-autopilot yes
-# bookmark-cmd ~/bin/book.sh
-# bookmark-interactive no
+bookmark-autopilot yes
+bookmark-cmd /usr/local/share/doc/newsboat/examples/example-bookmark-plugin.sh
+bookmark-interactive no
 
 #
 # Networking
@@ -55,12 +54,6 @@ color article           default default
 #
 # Macros
 #
-# TODO: torsocks doesn't work on golang programs
 macro o set browser "firefox %u"                             ; open-in-browser ; set browser "weblauncher %u"
 macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "weblauncher %u"
 macro p set browser "mpv --player-operation-mode=pseudo-gui -- %u &"; one      ; set browser "weblauncher %u"
-# macro 1 set browser "mpv %u"; one; set browser "weblauncher %u"
-# macro 2 set browser "mpv %u"; two; set browser "weblauncher %u"
-
-
-
