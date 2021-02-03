@@ -1,4 +1,4 @@
-source ~/.bash_secret
+. "${HOME}"/.bash_secret
 
 # Put your fun stuff here.
 export PATH=$PATH:$HOME/projects/scripts/scripts
@@ -36,5 +36,5 @@ export PATH=$HOME/.kerl/builds/22.1/release_22.1/bin/:$PATH
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+#unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+#MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
