@@ -31,7 +31,7 @@ case "${URL,,}" in
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
-    *youtube.com*|*youtu.be*|*streamable.com*)
+    *youtube.com*|*youtu.be*)
         nohup 2>&1 mpv \
                    --osd-level=3 \
                    --af=@rb:rubberband \
@@ -39,6 +39,14 @@ case "${URL,,}" in
                    --user-agent="${UA}" \
                    --ytdl-raw-options=all-subs= \
                    --ytdl-format='bestvideo[height<481]+bestaudio' \
+                   "${URL}" < /dev/null &;;
+    *streamable.com*)
+        nohup 2>&1 mpv \
+                   --osd-level=3 \
+                   --af=@rb:rubberband \
+                   --volume=50 \
+                   --user-agent="${UA}" \
+                   --ytdl-raw-options=all-subs= \
                    "${URL}" < /dev/null &;;
     *twitch.tv*)
         nohup 2>&1 mpv \
