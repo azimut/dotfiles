@@ -19,8 +19,6 @@ https://fanfox.net/rss/dr_stone.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
-
-
 "exec:gitorg-rss EpicGames"
 "exec:gitorg-rss NVIDIAGameWorks"
 "exec:gitorg-rss Shirakumo"
@@ -118,3 +116,6 @@ https://martinshkreli.com/blog/f.atom eco
 https://forum.toplap.org/latest.rss livecoding
 
 https://feeds.feedburner.com/oreilly/newbooks books
+exec:~/.newsboat/feeds/apress.sh books
+exec:~/.newsboat/feeds/manning.sh books
+exec:~/.newsboat/feeds/packt.sh books
