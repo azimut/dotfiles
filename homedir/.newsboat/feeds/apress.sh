@@ -25,4 +25,3 @@ torsocks curl "${URL}" \
 
 echo
 echo "</feed>"
-

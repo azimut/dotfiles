@@ -25,10 +25,3 @@ curl -A Mozilla "${URL}" \
 
 echo
 echo "</feed>"
-
-
-
-
-
-
-
