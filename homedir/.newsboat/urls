@@ -87,7 +87,7 @@ https://sector035.nl/articles.atom sec
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 
-https://forum.cabbageaudio.com/latest.rss csound
+#https://forum.cabbageaudio.com/latest.rss csound
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
@@ -119,3 +119,4 @@ https://feeds.feedburner.com/oreilly/newbooks books
 exec:~/.newsboat/feeds/apress.sh books
 exec:~/.newsboat/feeds/manning.sh books
 exec:~/.newsboat/feeds/packt.sh books
+https://nostarch.com/feeds/newbooks.xml books
