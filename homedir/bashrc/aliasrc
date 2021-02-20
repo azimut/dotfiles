@@ -16,3 +16,6 @@ alias git-fsless='GIT_LFS_SKIP_SMUDGE=1 git clone'
 alias git-grep='git rev-list --all | xargs git grep'
 alias g1='git clone --depth=1'
 alias wine-cordless='sudo unshare -n sudo -u sendai wine'
+
+alias duh="find . -maxdepth 1 -type d -regex './\..+' -exec du -sh {} \;"
+alias oddf="find . -maxdepth 1 -type f -not -iname '*\.*'"
