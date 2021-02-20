@@ -22,6 +22,7 @@ echo "<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns='http://www.w3.org/2005/Atom'>
   <title> ${TITLE} </title>
   <id> ${ID} </id>
+  <link href=\"https://subscription.packtpub.com/search?products=Book\"></link>
   <updated>${DATE}</updated>"
 
 packtjson \
