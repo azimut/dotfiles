@@ -1,17 +1,25 @@
-#https://w12.readonepunchman.net/rss mang
-#https://fanfox.net/rss/drifters.xml manga
+#https://w12.readonepunchman.net/rss manga
 
+# Let these manga accumulate before reading again
+#https://fanfox.net/rss/the_beginning_after_the_end.xml manga
+#https://fanfox.net/rss/dungeon_reset.xml
+#https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
+#https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
+#https://fanfox.net/rss/talentless_nana.xml manga
+#https://fanfox.net/rss/vinland_saga.xml manga
+
+https://www.webtoons.com/en/action/gosu/rss?title_no=1099
+https://fanfox.net/rss/drifters.xml manga
+https://fanfox.net/rss/solo_leveling.xml manga
+https://fanfox.net/rss/peerless_dad.xml manga
+https://mangadex.org/rss/z4MknbUmaqWewS5rcATh2guHGx6ZVRty/manga_id/28778?h=0 manga "~Skeleton Soldier"
 https://readshingekinokyojin.com/rss manga
 https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
 https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
 https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
-https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
-https://fanfox.net/rss/talentless_nana.xml manga
-https://fanfox.net/rss/vinland_saga.xml manga
 https://fanfox.net/rss/onepunch_man.xml manga
 https://fanfox.net/rss/onepunch_man_one.xml manga
-https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
 https://fanfox.net/rss/goblin_slayer.xml manga
 https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml manga
 https://fanfox.net/rss/dr_stone.xml manga
@@ -52,9 +60,9 @@ https://www.reddit.com/r/haskell/top/.rss language "~/r/haskell"
 https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
 https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
 https://www.reddit.com/r/Clojure/top/.rss language "~/r/Clojure"
-https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
-https://www.reddit.com/r/rust/top/.rss language "~/r/rust"
-https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
+#https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
+#https://www.reddit.com/r/rust/top/.rss language "~/r/rust"
+#https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
 
 https://0x00sec.org/latest.rss sec
 https://www.reddit.com/r/netsec/top/.rss sec "~/r/netsec"
@@ -121,3 +129,5 @@ exec:~/.newsboat/feeds/manning.sh books
 exec:~/.newsboat/feeds/packt.sh books
 exec:~/.newsboat/feeds/pragprog.sh books
 https://nostarch.com/feeds/newbooks.xml books
+"exec:~/.newsboat/feeds/crc.sh SCAR70" books
+"exec:~/.newsboat/feeds/crc.sh CGD" books
