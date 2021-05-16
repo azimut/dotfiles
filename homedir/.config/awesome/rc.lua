@@ -56,7 +56,7 @@ beautiful.border_focus = "#00AAAA"
 beautiful.border_width = 1
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -111,12 +111,12 @@ theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
+theme.fg_normal = "#455142"
+theme.fg_focus = "#90947E"
 theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.fg_minimize = "#0F120B"
+theme.border_normal = "#0F120B"
+theme.border_focus = "#90947E"
 theme.border_marked = "#91231c"
 
 local mytextclock = wibox.widget.textclock(
@@ -133,10 +133,8 @@ local mycal = lain.widget.cal({
 
 local myweather = lain.widget.weather({
       city_id = 3435910,
+      APPID = "c308ddb927e7e82126996fa9b3524237",
       notification_preset = { font = "Monospace 10" },
-      -- HTTP(S)
-      current_call = "curl -s 'https://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'",
-      forecast_call = "curl -s 'https://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=%s&lang=%s&cnt=%s&APPID=%s'",
       settings = function()
          local descr = weather_now["weather"][1]["description"]:lower()
          local units = math.floor(weather_now["main"]["temp"])
@@ -398,6 +396,12 @@ globalkeys = gears.table.join(
    awful.key({ modkey }, "+",
       function () awesome.spawn("amixer -D pulse sset Master 1%+", false) end,
       {description = "increase volume"}),
+   awful.key({ modkey }, "{",
+      function () awesome.spawn("pactl set-sink-port 0 analog-output-speaker", false) end,
+      {description = "audio output to speakers"}),
+   awful.key({ modkey }, "}",
+      function () awesome.spawn("pactl set-sink-port 0 analog-output-headphones", false) end,
+      {description = "audio output to headphones"}),
    awful.key({ modkey }, "-",
       function () awesome.spawn("amixer -D pulse sset Master 1%-", false) end,
       {description = "decrease volume"}),
@@ -421,11 +425,11 @@ globalkeys = gears.table.join(
       {description = "decrease master width factor", group = "layout"}),
    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
       {description = "increase the number of master clients", group = "layout"}),
-   awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-      {description = "decrease the number of master clients", group = "layout"}),
-   awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-      {description = "increase the number of columns", group = "layout"}),
-   awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+      awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+         {description = "decrease the number of master clients", group = "layout"}),
+      awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+         {description = "increase the number of columns", group = "layout"}),
+      awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
       {description = "decrease the number of columns", group = "layout"}),
    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
       {description = "select next", group = "layout"}),
@@ -716,7 +720,7 @@ end
 run_once("mpd")
 run_once("mpdas")
 run_once("nm-applet")
-run_once("urxvtd")
+--run_once("urxvtd")
 run_once("keynav")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap", false)
