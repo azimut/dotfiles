@@ -156,6 +156,15 @@ local myfs = lain.widget.fs({
       end
 })
 
+local mymem = lain.widget.mem({
+      timeout = 5,
+      settings = function ()
+         widget:set_markup(
+            markup.font(theme.font,
+                        markup(theme.fg_normal, mem_now.perc .. "%")))
+      end
+})
+
 local myvolume = lain.widget.alsa({
       settings = function()
          widget:set_markup(
@@ -302,8 +311,16 @@ awful.screen.connect_for_each_screen(function(s)
       -- Add widgets to the wibox
       s.mywiboy:setup {
          layout = wibox.layout.align.horizontal,
-         mynet,
-         myfs.widget,
+         {
+            layout = wibox.layout.fixed.horizontal,
+            mynet,
+            myfs.widget,
+            mymem,
+         },
+         nil,
+         -- mynet,
+         -- myfs.widget,
+         -- mymem,
          {
             layout = wibox.layout.fixed.horizontal,
             myweather,
