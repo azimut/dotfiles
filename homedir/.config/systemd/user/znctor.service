@@ -1,0 +1,8 @@
+[Unit]
+Description=Proxy FreeNode through Tor
+
+[Service]
+ExecStart=/usr/bin/socat TCP4-LISTEN:4321,fork SOCKS4A:127.0.0.1:ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion:6697,socksport=9050
+
+[Install]
+WantedBy=default.target
