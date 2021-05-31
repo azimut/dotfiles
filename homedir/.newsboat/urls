@@ -38,6 +38,7 @@ https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_t
 "exec:gitorg-rss EpicGames"
 "exec:gitorg-rss NVIDIAGameWorks"
 "exec:gitorg-rss Shirakumo"
+"exec:gitorg-rss tsoding"
 
 #"exec:github-rss azimut"
 
@@ -92,7 +93,7 @@ http://feeds.feedburner.com/NoticiasSeguridadInformatica sec
 http://feeds.feedburner.com/hispasec/zCAd sec
 
 https://slatestarcodex.com/feed/ politics
-https://www.descifrandolaguerra.es/feed/ politics
+#https://www.descifrandolaguerra.es/feed/ politics
 
 #https://www.spreaker.com/user/7472853/episodes/feed sec
 #https://feeds.simplecast.com/2Ntuu3AF sec podcast
