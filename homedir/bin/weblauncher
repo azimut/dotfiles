@@ -11,6 +11,13 @@ case "${URL,,}" in
                    --loop \
                    --osd-level=3 \
                    --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
+    *v.redd.it*)
+        nohup 2>&1 mpv \
+                   --loop \
+                   --osd-level=3 \
+                   --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
+    *imgflip*) # Does not accept TOR
+        nohup 2>&1 feh "${URL}" < /dev/null & ;;
     *.jpg|*.png|*.jpeg)
         nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
     *.wav|*.mp3) # might be Download?
