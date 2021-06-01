@@ -13,11 +13,11 @@ blocked_hosts=(
 
 FOCUS_MSG="Time to FOCUS!!!"
 UNFOCUS_MSG="Welcome back!"
-HOSTS=/etc/hosts
+HOSTS=/etc/dnsmasq.d/hosts/01-focus
 
 notify(){ notify-send 'focus-mode' "$@"; }
 add_host(){
-    echo "127.0.0.1 ${1} www.${1}" | sudo tee -a "${HOSTS}"
+    echo "0.0.0.0 ${1} www.${1}" | tee -a "${HOSTS}"
 }
 add_hosts(){
     for host in "${blocked_hosts[@]}"; do
@@ -28,23 +28,20 @@ add_hosts(){
 # NOTE: Return code for remove_host() is important
 remove_host(){
     local old; old=$(stat --printf="%s" ${HOSTS})
-    sudo sed -i '/127.0.0.1.*\s'"${1}"'\s.*/d' "${HOSTS}"
+    sed '/0.0.0.0.*\s'"${1}"'\s.*/d' "${HOSTS}" > temp
+    cat temp > ${HOSTS}
     local new; new=$(stat --printf="%s" ${HOSTS})
-    if [[ ${old} -eq ${new} ]]; then
-        return 1
-    else
-        return 0
-    fi
+    [[ ${old} -ne ${new} ]]
 }
 remove_hosts(){
-    local i=1
+    local r=1
     for host in "${blocked_hosts[@]}"; do
         if remove_host "$host"; then
-            i=0
+            r=0
         fi
     done
     notify "$UNFOCUS_MSG"
-    return $i
+    return $r
 }
 
 if ! remove_hosts; then
