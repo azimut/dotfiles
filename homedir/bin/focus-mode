@@ -1,0 +1,54 @@
+#!/bin/bash
+
+set -euo pipefail
+
+blocked_hosts=(
+    "instagram.com"
+    "okcupid.com"
+    "reddit.com"
+    "twitch.tv"
+    "twitter.com"
+    "youtube.com"
+)
+
+FOCUS_MSG="Time to FOCUS!!!"
+UNFOCUS_MSG="Welcome back!"
+HOSTS=/etc/hosts
+
+add_host(){
+    echo "127.0.0.1 ${1} www.${1}" | sudo tee -a "${HOSTS}"
+}
+add_hosts(){
+    for host in "${blocked_hosts[@]}"; do
+        add_host "${host}"
+    done
+}
+# NOTE: Return code for remove_host() is important
+remove_host(){
+    local old; old=$(stat --printf="%s" ${HOSTS})
+    sudo sed -i '/127.0.0.1.*\s'"${1}"'\s.*/d' "${HOSTS}"
+    local new; new=$(stat --printf="%s" ${HOSTS})
+    if [[ ${old} -eq ${new} ]]; then
+        return 1
+    else
+        return 0
+    fi
+}
+remove_hosts(){
+    local i=1
+    for host in "${blocked_hosts[@]}"; do
+        if remove_host "$host" ; then
+            i=0
+        fi
+    done
+    return $i
+}
+notify(){ notify-send 'focus-mode' "$@"; }
+
+if remove_hosts; then
+    notify "$UNFOCUS_MSG"
+    exit 0
+fi
+
+add_hosts
+notify "$FOCUS_MSG"
