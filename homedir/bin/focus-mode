@@ -47,6 +47,7 @@ remove_hosts(){
     return $r
 }
 
-if ! remove_hosts; then
-    add_hosts
-fi
+case ${@} in
+    relax) remove_hosts ;;
+    *) remove_hosts || add_hosts ;;
+esac
