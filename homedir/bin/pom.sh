@@ -20,6 +20,8 @@ while true; do
     # Start MPD playing
     mpc play > /dev/null
 
+    focus-mode work
+
     # Countdown 25 minutes
     start=$(date +%H:%M:%S)
     printf "\rBeginning pomodoro %s at %s\n" "${POM}" "${start}"
@@ -42,6 +44,7 @@ while true; do
 
     # Display "what did you achieve" text-box
     #(sleep 3; wmctrl -r Pomodoro -e 0,640,600,-1,-1; wmctrl -R Pomodoro; wmctrl -r Pomodoro -b add,above,sticky) &
+    focus-mode relax
     feedback="$(zenity --entry \
                        --title="Pomodoro" \
                        --text="Pomodoro ${POM} ended. What did you achieve\?" \
