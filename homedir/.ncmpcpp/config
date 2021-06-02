@@ -17,7 +17,7 @@ mpd_crossfade_time = "3"
 #mpd_music_dir = "~/music"
 mpd_host = "127.0.0.1"
 #mpd_host = "samsung"
-mpd_port = "6601"
+mpd_port = "6600"
 
 # █▓▒░ Visualizer
 #visualizer_look = "▒░"
