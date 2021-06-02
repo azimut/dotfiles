@@ -23,3 +23,4 @@ alias duh="find . -maxdepth 1 -type d -regex './\..+' -exec du -sh {} \;"
 alias oddf="find . -maxdepth 1 -type f -not -iname '*\.*'"
 
 alias tailf='tail -f'
+alias cat='bat'
