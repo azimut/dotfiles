@@ -13,11 +13,12 @@ blocked_hosts=(
 
 FOCUS_MSG="Time to FOCUS!!!"
 UNFOCUS_MSG="Welcome back!"
-HOSTS=/etc/dnsmasq.d/hosts/01-focus
+HOSTS=/etc/coredns/hosts/block
 
 notify(){ notify-send 'focus-mode' "$@"; }
 add_host(){
-    echo "0.0.0.0 ${1} www.${1}" | tee -a "${HOSTS}"
+    local host="${1}"
+    echo "0.0.0.0 ${host} www.${host}" | tee -a "${HOSTS}"
 }
 add_hosts(){
     for host in "${blocked_hosts[@]}"; do
@@ -25,11 +26,13 @@ add_hosts(){
     done
     notify "$FOCUS_MSG"
 }
-# NOTE: Return code for remove_host() is important
+
 remove_host(){
+    local host="${1}"
     local old; old=$(stat --printf="%s" ${HOSTS})
-    sed '/0.0.0.0.*\s'"${1}"'\s.*/d' "${HOSTS}" > temp
+    sed '/0.0.0.0.*\s'"${host}"'\s.*/d' "${HOSTS}" > temp
     cat temp > ${HOSTS}
+    rm -f temp
     local new; new=$(stat --printf="%s" ${HOSTS})
     [[ ${old} -ne ${new} ]]
 }
@@ -40,7 +43,7 @@ remove_hosts(){
             r=0
         fi
     done
-    notify "$UNFOCUS_MSG"
+    [[ $r -eq 0 ]] && notify "$UNFOCUS_MSG"
     return $r
 }
 
