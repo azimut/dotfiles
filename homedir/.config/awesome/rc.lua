@@ -420,6 +420,11 @@ globalkeys = gears.table.join(
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%", false) end,
       {description = "decrease volume"}),
    --
+   -- BOTH             xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary
+   -- MONITOR ONLY     xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal
+   -- MONITOR ONLY ROT xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left
+   -- NOTEBOOK ONLY    xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off
+   --
    awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
       {description = "quake toggle"}),
