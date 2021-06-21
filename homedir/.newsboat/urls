@@ -1,6 +1,8 @@
 https://w12.readonepunchman.net/rss manga
 
 # Let these manga accumulate before reading again
+https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml manga
+https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
 https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
 https://fanfox.net/rss/the_beginning_after_the_end.xml manga
@@ -12,7 +14,7 @@ https://fanfox.net/rss/talentless_nana.xml manga
 https://fanfox.net/rss/vinland_saga.xml manga
 https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
 https://fanfox.net/rss/the_live_ant_studios.xml manga
-https://fanfox.net/rss/i_am_the_sorcerer_king.xml manga
+#https://fanfox.net/rss/i_am_the_sorcerer_king.xml manga
 
 #####https://fanfox.net/rss/hazure_waku_no_joutai_ijou_skill_de_saikyou_ni_natta_ore_ga_subete_wo_juurin_suru_made.xml manga
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
@@ -22,6 +24,7 @@ https://fanfox.net/rss/i_am_the_sorcerer_king.xml manga
 #https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
 #https://fanfox.net/rss/drifters.xml manga
 #https://mangadex.org/rss/z4MknbUmaqWewS5rcATh2guHGx6ZVRty/manga_id/28778?h=0 manga "~Skeleton Soldier"
+https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml
 #https://readshingekinokyojin.com/rss manga
 
 https://mangasee123.com/rss/To-You-The-Immortal.xml manga
@@ -69,7 +72,7 @@ https://www.reddit.com/r/haskell/top/.rss language "~/r/haskell"
 https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
 https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
 https://www.reddit.com/r/Clojure/top/.rss language "~/r/Clojure"
-#https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
+https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
 #https://www.reddit.com/r/rust/top/.rss language "~/r/rust"
 #https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
 
