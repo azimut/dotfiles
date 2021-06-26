@@ -103,7 +103,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --    '">%a %d %b, %H:%M </span>')
 
 local theme = {}
-   --theme.font = 'Terminus 10.5'
+--theme.font = 'Terminus 10.5'
 theme.font = 'Monospace 12'
 
 theme.bg_normal     = "#222222"
@@ -418,12 +418,21 @@ globalkeys = gears.table.join(
       {description = "audio output to headphones"}),
    awful.key({ modkey }, "-",
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%", false) end,
-      {description = "decrease volume"}),
+      {description = "decrease "}),
    --
    -- BOTH             xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary
    -- MONITOR ONLY     xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal
    -- MONITOR ONLY ROT xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left
    -- NOTEBOOK ONLY    xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off
+   awful.key({ modkey }, "F1",
+      function () awesome.spawn("xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal", false) end,
+      {description = "xrandr HDMI ONLY"}),
+   awful.key({ modkey }, "F2",
+      function () awesome.spawn("xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary", false) end,
+      {description = "xrandr BOTH"}),
+   awful.key({ modkey }, "F3",
+      function () awesome.spawn("xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left", false) end,
+      {description = "xrandr HDMI ROTATED"}),
    --
    awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
@@ -444,11 +453,11 @@ globalkeys = gears.table.join(
       {description = "decrease master width factor", group = "layout"}),
    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
       {description = "increase the number of master clients", group = "layout"}),
-      awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-         {description = "decrease the number of master clients", group = "layout"}),
-      awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-         {description = "increase the number of columns", group = "layout"}),
-      awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+   awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+      {description = "decrease the number of master clients", group = "layout"}),
+   awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+      {description = "increase the number of columns", group = "layout"}),
+   awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
       {description = "decrease the number of columns", group = "layout"}),
    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
       {description = "select next", group = "layout"}),
@@ -668,7 +677,7 @@ client.connect_signal(
       -- if not awesome.startup then awful.client.setslave(c) end
       if awesome.startup
          and not c.size_hints.user_position
-      and not c.size_hints.program_position then
+         and not c.size_hints.program_position then
          -- Prevent clients from being unreachable after screen count changes.
          awful.placement.no_offscreen(c)
       end
