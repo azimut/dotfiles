@@ -18,6 +18,10 @@ case "${URL,,}" in
                    --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
     *imgflip*) # Does not accept TOR
         nohup 2>&1 feh "${URL}" < /dev/null & ;;
+    *imgur.com/*)
+        if [[ ${URL} != *album* ]]; then
+            nohup 2>&1 torsocks feh "${URL}.jpg" < /dev/null &
+        fi ;&
     *.jpg|*.png|*.jpeg)
         nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
     *.wav|*.mp3) # might be Download?
