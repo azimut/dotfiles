@@ -16,10 +16,15 @@ case "${URL,,}" in
                    --loop \
                    --osd-level=3 \
                    --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
+    *tiktok.com*)
+        nohup 2>&1 mpv \
+                   --loop \
+                   --osd-level=3 \
+                   --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
     *imgflip*) # Does not accept TOR
         nohup 2>&1 feh "${URL}" < /dev/null & ;;
     *imgur.com/*)
-        if [[ ${URL} != *album* ]]; then
+        if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
             nohup 2>&1 torsocks feh "${URL}.jpg" < /dev/null &
         fi ;&
     *.jpg|*.png|*.jpeg)
