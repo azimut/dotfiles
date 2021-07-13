@@ -1,4 +1,4 @@
-alias rm='rm -i'
+alias rm='rm -iv'
 alias ls='ls -p --color'
 alias cp='cp -i'
 alias mv='mv -i'
