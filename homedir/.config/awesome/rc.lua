@@ -433,6 +433,9 @@ globalkeys = gears.table.join(
    awful.key({ modkey }, "F3",
       function () awesome.spawn("xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left", false) end,
       {description = "xrandr HDMI ROTATED"}),
+   awful.key({ modkey }, "F4",
+      function () awesome.spawn("xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off", false) end,
+      {description = "xrandr NOTEBOOK ONLY"}),
    --
    awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
