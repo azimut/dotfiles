@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -exuo pipefail
+
+for link in "${HOME}"/.coomer/*; do
+    if [[ ! -L $link ]]; then
+        continue
+    fi
+    fullpath=$(readlink ${link})
+    IFS='/' read -ra components <<<"${fullpath}"
+    usr="${components[$((${#components[@]}-2))]}"
+    img="${components[$((${#components[@]}-1))]}"
+    if [[ ! -f $fullpath  && $fullpath == *$HOME* ]]; then
+        altpath=$HOME/disk2/insta/${usr}/${img}
+        if [[ -f ${altpath} ]]; then
+            ln -sf ${altpath} ${link}
+        fi
+    fi
+done
