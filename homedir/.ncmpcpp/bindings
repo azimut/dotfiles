@@ -16,6 +16,19 @@ def_key "g"
 def_key "G"
   move_end
 
+def_key "m"
+  select_item
+  scroll_down
+
+def_key "ctrl-v"
+  page_down
+
+def_key "alt-v"
+  page_up
+
+def_key "l"
+  jump_to_parent_directory
+
 # Find
 
 def_key "n"
