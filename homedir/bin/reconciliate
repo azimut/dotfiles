@@ -3,9 +3,7 @@
 set -exuo pipefail
 
 for link in "${HOME}"/.coomer/*; do
-    if [[ ! -L $link ]]; then
-        continue
-    fi
+    [[ ! -L $link ]] && continue
     fullpath=$(readlink ${link})
     IFS='/' read -ra components <<<"${fullpath}"
     usr="${components[$((${#components[@]}-2))]}"
