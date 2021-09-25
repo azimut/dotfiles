@@ -1,7 +1,11 @@
 https://w12.readonepunchman.net/rss manga
 
 # Let these manga accumulate before reading again
-https://fanfox.net/rss/legend_of_the_northern_blade.xml manga
+#https://fanfox.net/rss/chronicles_of_heavenly_demon.xml manga
+#https://fanfox.net/rss/path_of_the_shaman.xml manga
+#https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml manga
+#https://fanfox.net/rss/god_of_blackfield.xml manga
+#https://fanfox.net/rss/legend_of_the_northern_blade.xml manga
 https://fanfox.net/rss/omniscient_reader_s_viewpoint.xml manga
 https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml manga
 https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
@@ -51,7 +55,9 @@ https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_t
 
 https://rebelion.digital/rss argentina
 
-#https://boards.4channel.org/g/index.rss
+
+#"exec:curl -q -o - https://boards.4channel.org/g/index.rss"
+"exec:4chan-rss -b g -n 25 -p 2"
 
 https://wired-7.org/tech/index.rss
 
@@ -68,19 +74,19 @@ https://lainchan.org/%CE%94/index.rss
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
 #https://www.reddit.com/r/lua/top/.rss language "~/r/lua"
-https://www.reddit.com/r/elixir/top/.rss language "~/r/elixir"
+https://www.reddit.com/r/elixir/top/.rss?t=month language "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss language "~/r/erlang"
-https://www.reddit.com/r/haskell/top/.rss language "~/r/haskell"
+https://www.reddit.com/r/haskell/top/.rss?t=month language "~/r/haskell"
 #https://www.reddit.com/r/scheme/.rss language "~/r/scheme"
 https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
 https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
-https://www.reddit.com/r/Clojure/top/.rss language "~/r/Clojure"
-https://www.reddit.com/r/golang/top/.rss language "~/r/golang"
-https://www.reddit.com/r/rust/top/.rss language "~/r/rust"
+https://www.reddit.com/r/Clojure/top/.rss?t=month language "~/r/Clojure"
+https://www.reddit.com/r/golang/top/.rss?t=month language "~/r/golang"
+https://www.reddit.com/r/rust/top/.rss?t=month language "~/r/rust"
 #https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
 
 https://0x00sec.org/latest.rss sec
-https://www.reddit.com/r/netsec/top/.rss sec "~/r/netsec"
+https://www.reddit.com/r/netsec/top/.rss?t=month sec "~/r/netsec"
 
 #https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
 #https://www.reddit.com/r/oscp/top/.rss sec "~/r/oscp"
