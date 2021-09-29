@@ -1,24 +1,25 @@
 https://w12.readonepunchman.net/rss manga
 
 # Let these manga accumulate before reading again
+https://fanfox.net/rss/murim_login.xml manga
 #https://fanfox.net/rss/chronicles_of_heavenly_demon.xml manga
 #https://fanfox.net/rss/path_of_the_shaman.xml manga
 #https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml manga
 #https://fanfox.net/rss/god_of_blackfield.xml manga
 #https://fanfox.net/rss/legend_of_the_northern_blade.xml manga
-https://fanfox.net/rss/omniscient_reader_s_viewpoint.xml manga
-https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml manga
-https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
+#https://fanfox.net/rss/omniscient_reader_s_viewpoint.xml manga
+#https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml manga
+#https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
 https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
 https://fanfox.net/rss/the_beginning_after_the_end.xml manga
 https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml manga
 #https://fanfox.net/rss/dungeon_reset.xml manga
-https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
-https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
+#https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
+#https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
 https://fanfox.net/rss/talentless_nana.xml manga
 https://fanfox.net/rss/vinland_saga.xml manga
-https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
+#https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
 https://fanfox.net/rss/the_live_ant_studios.xml manga
 #https://fanfox.net/rss/i_am_the_sorcerer_king.xml manga
 
@@ -31,11 +32,11 @@ https://fanfox.net/rss/the_live_ant_studios.xml manga
 http://fanfox.net/rss/tower_of_god.xml
 #https://fanfox.net/rss/drifters.xml manga
 #https://mangadex.org/rss/z4MknbUmaqWewS5rcATh2guHGx6ZVRty/manga_id/28778?h=0 manga "~Skeleton Soldier"
-https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml
+#https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml
 #https://readshingekinokyojin.com/rss manga
 
-https://mangasee123.com/rss/To-You-The-Immortal.xml manga
-https://fanfox.net/rss/sousou_no_frieren.xml manga
+#https://mangasee123.com/rss/To-You-The-Immortal.xml manga
+#https://fanfox.net/rss/sousou_no_frieren.xml manga
 https://fanfox.net/rss/solo_leveling.xml manga
 https://fanfox.net/rss/peerless_dad.xml manga
 #https://fanfox.net/rss/onepunch_man.xml manga
@@ -45,8 +46,9 @@ https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
 https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
-"exec:gitorg-rss EpicGames"
-"exec:gitorg-rss NVIDIAGameWorks"
+"exec:gitorg-rss trailofbits"
+#"exec:gitorg-rss EpicGames"
+#"exec:gitorg-rss NVIDIAGameWorks"
 "exec:gitorg-rss Shirakumo"
 "exec:gitorg-rss tsoding"
 
@@ -83,7 +85,7 @@ https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
 https://www.reddit.com/r/Clojure/top/.rss?t=month language "~/r/Clojure"
 https://www.reddit.com/r/golang/top/.rss?t=month language "~/r/golang"
 https://www.reddit.com/r/rust/top/.rss?t=month language "~/r/rust"
-#https://www.reddit.com/r/embedded/top/.rss language "~/r/Embedded"
+https://www.reddit.com/r/embedded/top/.rss?t=month language "~/r/Embedded"
 
 https://0x00sec.org/latest.rss sec
 https://www.reddit.com/r/netsec/top/.rss?t=month sec "~/r/netsec"
@@ -110,7 +112,7 @@ https://slatestarcodex.com/feed/ politics
 #https://www.spreaker.com/user/7472853/episodes/feed sec
 #https://feeds.simplecast.com/2Ntuu3AF sec podcast
 https://sector035.nl/articles.atom sec
-
+https://lobste.rs/top/rss
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
