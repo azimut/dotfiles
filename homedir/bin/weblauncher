@@ -16,9 +16,6 @@ case "${URL,,}" in
                    --loop \
                    --osd-level=3 \
                    --player-operation-mode=pseudo-gui "${URL}" < /dev/null &;;
-    *news.ycombinator.com*)
-        HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *v.redd.it*)
         nohup 2>&1 mpv \
                    --loop \
@@ -45,6 +42,9 @@ case "${URL,,}" in
                    --af=@rb:rubberband \
                    --user-agent="${UA}" \
                    --player-operation-mode=pseudo-gui "${URL}" < /dev/null & ;;
+    *news.ycombinator.com*)
+        HTTP_PROXY="socks5://127.0.0.1:9050" \
+                  hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *twitter.com*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   twitterview -t 10s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
