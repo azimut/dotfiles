@@ -33,7 +33,7 @@ case "${URL,,}" in
             nohup 2>&1 torsocks feh "${URL}.jpg" < /dev/null &
         fi ;&
     *.jpg|*.png|*.jpeg)
-        nohup 2>&1 torsocks feh "${URL}" < /dev/null & ;;
+        ( nohup 2>&1 torsocks feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
     *.wav|*.mp3) # might be Download?
         nohup 2>&1 mpv  \
                    --player-operation-mode=pseudo-gui \
