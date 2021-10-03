@@ -85,8 +85,6 @@ case "${URL,,}" in
                    --ytdl-format='720' \
                    --ytdl-raw-options=all-subs= \
                    "${URL}" < /dev/null &;;
-    *0x00sec.org*)
-        w3m -o "user_agent=${UA}" "${URL}";;
     *)
         domain=${URL#*://}
         domain=${domain%%/*}
