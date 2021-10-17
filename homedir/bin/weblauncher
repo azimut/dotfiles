@@ -41,13 +41,13 @@ case "${URL,,}" in
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
     *imgflip*) # Does not accept TOR
-        nohup 2>&1 feh "${URL}" < /dev/null & ;;
+        nohup 2>&1 timeout 60 feh "${URL}" < /dev/null & ;;
     *imgur.com/*)
         if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
-            nohup 2>&1 torsocks feh "${URL}.jpg" < /dev/null &
+            nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" < /dev/null &
         fi ;&
-    *.jpg|*.png|*.jpeg)
-        ( nohup 2>&1 torsocks feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
+    *.jpg*|*.png*|*.jpeg*)
+        ( nohup 2>&1 torsocks timeout 60 feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
     *.gif)
         nohup 2>&1 torsocks mpv \
                    --loop \
