@@ -3,7 +3,8 @@
 set -exuo pipefail
 
 has_cloudflare() {
-    dig SOA +multiline  blog.cymulate.com | grep cloudflare
+    local url="${1}"
+    dig SOA +multiline "${url}" | grep cloudflare
     return $?
 }
 
@@ -22,7 +23,7 @@ mpv_site() {
 
 URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
-#  cvlc --preferred-resolution 720 --http-user-agent "${UA}" --quiet
+
 case "${URL,,}" in
     *news.ycombinator.com*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
