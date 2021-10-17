@@ -12,6 +12,5 @@
 (setq quickproject:*author* "azimut <azimut.github@protonmail.com>"
       quickproject:*license* "MIT"
       quickproject:*include-copyright* t)
-
-
+#+quicklisp
 (pushnew #P"/home/sendai/projects/cl" ql:*local-project-directories*)
