@@ -2,6 +2,7 @@
         name = azimut
         username = azimut
         email = azimut.github@protonmail.com
+	signingkey = 9007F54F3E62798A
 [alias]
         staple = subtree push --prefix doc origin gh-pages
 [github]
@@ -11,3 +12,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[commit]
+	gpgSign = true
