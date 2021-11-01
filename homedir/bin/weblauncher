@@ -13,6 +13,7 @@ mpv_site() {
     shift
     local OPTS=("${@}")
     nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
+               --sid=1 \
                --user-agent="${UA}" \
                --af=@rb:rubberband \
                --loop \
