@@ -1,0 +1,8 @@
+
+[Default Applications]
+x-scheme-handler/discord-378612438200877056=discord-378612438200877056.desktop
+text/html=firefox_firefox.desktop
+x-scheme-handler/http=firefox_firefox.desktop
+x-scheme-handler/https=firefox_firefox.desktop
+x-scheme-handler/about=firefox_firefox.desktop
+x-scheme-handler/unknown=firefox_firefox.desktop
