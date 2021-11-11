@@ -1,7 +1,8 @@
 https://w12.readonepunchman.net/rss manga
 
 # Let these manga accumulate before reading again
-https://fanfox.net/rss/murim_login.xml manga
+#https://fanfox.net/rss/murim_login.xml manga
+#http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml manga
 #http://fanfox.net/rss/the_second_coming_of_gluttony.xml manga
 #https://fanfox.net/rss/chronicles_of_heavenly_demon.xml manga
 #https://fanfox.net/rss/path_of_the_shaman.xml manga
@@ -14,11 +15,11 @@ https://fanfox.net/rss/murim_login.xml manga
 #https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
 https://fanfox.net/rss/the_beginning_after_the_end.xml manga
-https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml manga
+#https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml manga
 #https://fanfox.net/rss/dungeon_reset.xml manga
 #https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
 #https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
-https://fanfox.net/rss/talentless_nana.xml manga
+#https://fanfox.net/rss/talentless_nana.xml manga
 https://fanfox.net/rss/vinland_saga.xml manga
 #https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
 https://fanfox.net/rss/the_live_ant_studios.xml manga
@@ -76,6 +77,7 @@ https://lainchan.org/%CE%94/index.rss
 #https://www.reddit.com/r/Gentoo/.rss "~/r/Gentoo"
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
+https://erlangforums.com/top.rss
 #https://www.reddit.com/r/lua/top/.rss language "~/r/lua"
 https://www.reddit.com/r/elixir/top/.rss?t=month language "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss language "~/r/erlang"
@@ -114,12 +116,14 @@ https://slatestarcodex.com/feed/ politics
 #https://feeds.simplecast.com/2Ntuu3AF sec podcast
 https://sector035.nl/articles.atom sec
 https://lobste.rs/top/rss
+http://lambda-the-ultimate.org/rss.xml
+"exec:curl -q -o - https://tymoon.eu/api/reader/atom"
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 
-#https://forum.cabbageaudio.com/latest.rss csound
+https://forum.cabbageaudio.com/latest.rss csound
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
