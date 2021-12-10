@@ -26,6 +26,18 @@ URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
 case "${URL,,}" in
+    *imgflip*) # Does not accept TOR
+        nohup 2>&1 timeout 60 feh "${URL}" < /dev/null & ;;
+    *imgur.com/*)
+        if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
+            nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" < /dev/null &
+        fi ;&
+    *.jpg*|*.png*|*.jpeg*|*.webp*)
+        ( nohup 2>&1 torsocks timeout 60 feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
+    *.gif)
+        nohup 2>&1 torsocks mpv \
+                   --loop \
+                   --osd-level=3 "${URL}" < /dev/null &;;
     *news.ycombinator.com*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
@@ -42,18 +54,6 @@ case "${URL,,}" in
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
-    *imgflip*) # Does not accept TOR
-        nohup 2>&1 timeout 60 feh "${URL}" < /dev/null & ;;
-    *imgur.com/*)
-        if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
-            nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" < /dev/null &
-        fi ;&
-    *.jpg*|*.png*|*.jpeg*|*.webp*)
-        ( nohup 2>&1 torsocks timeout 60 feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
-    *.gif)
-        nohup 2>&1 torsocks mpv \
-                   --loop \
-                   --osd-level=3 "${URL}" < /dev/null &;;
     *.wav|*.mp3)
         mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
     *v.redd.it*)
