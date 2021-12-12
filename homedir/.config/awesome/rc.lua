@@ -104,19 +104,19 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 local theme = {}
 --theme.font = 'Terminus 10.5'
-theme.font = 'Monospace 12'
+theme.font = 'Monospace 16'
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
-theme.fg_normal = "#455142"
-theme.fg_focus = "#90947E"
+theme.fg_normal = "#6A8FA3"
+theme.fg_focus = "#B5D8DC"
 theme.fg_urgent     = "#ffffff"
-theme.fg_minimize = "#0F120B"
-theme.border_normal = "#0F120B"
-theme.border_focus = "#90947E"
+theme.fg_minimize = "#212F4C"
+theme.border_normal = "#212F4C"
+theme.border_focus = "#B5D8DC"
 theme.border_marked = "#91231c"
 
 local mytextclock = wibox.widget.textclock(
