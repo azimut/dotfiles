@@ -407,6 +407,9 @@ globalkeys = gears.table.join(
             "xclip -selection clipboard -o | xclip -selection primary") end,
       {description = "copy primary clipboard to secondary"}),
    --
+   awful.key({ modkey }, ".",
+      function () awesome.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
+      {description = "mute volume"}),
    awful.key({ modkey }, "+",
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ +1%", false) end,
       {description = "increase volume"}),
@@ -750,6 +753,7 @@ end
 
 run_once("mpd")
 run_once("mpdas")
+run_once("wmname LG3D")
 run_once("nm-applet")
 --run_once("urxvtd")
 run_once("keynav")
