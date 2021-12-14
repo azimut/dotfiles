@@ -56,6 +56,8 @@ case "${URL,,}" in
         torsocks rdrview -B w3m "${URL}" ;;
     *.wav|*.mp3)
         mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
+    *.webm|*.mp4)
+        mpv_site "${URL}";;
     *v.redd.it*)
         mpv_site "${URL}";;
     *tiktok.com*)
