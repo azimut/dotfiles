@@ -54,7 +54,7 @@ case "${URL,,}" in
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *github.com*)
         torsocks rdrview -B w3m "${URL}" ;;
-    *.wav|*.mp3)
+    *.wav|*.mp3|*.m4a)
         mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
     *.webm|*.mp4)
         mpv_site "${URL}";;
