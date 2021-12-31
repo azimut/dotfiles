@@ -47,36 +47,36 @@ case "${URL,,}" in
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   twitterview -t 10s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
     *lainchan.org*)
-                             HTTP_PROXY="socks5://127.0.0.1:9050" \
-                                       lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-                         *wired-7.org*)
-                             lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-                         *reddit.com/r/*)
-                             HTTP_PROXY="socks5://127.0.0.1:9050" \
-                                       redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-                         *github.com*)
-                             torsocks rdrview -B w3m "${URL}" ;;
-                         *.wav|*.mp3|*.m4a)
-                             mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
-                         *.webm|*.mp4)
-                             mpv_site "${URL}";;
-                         *v.redd.it*)
-                             mpv_site "${URL}";;
-                         *tiktok.com*)
-                             mpv_site "${URL}";;
-                         *streamable.com*)
-                             mpv_site "${URL}";;
-                         *youtube.com*|*youtu.be*)
-                             mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio';;
-                         *twitch.tv*)
-                             mpv_site "${URL}" --ytdl-format='720';;
-                         *)
-                             domain=${URL#*://}
-                             domain=${domain%%/*}
-                             if has_cloudflare "${domain}"; then
-                                 w3m -o "user_agent=${UA}" "${URL}"
-                             else
-                                 torsocks w3m -o "user_agent=${UA}" "${URL}"
-                             fi
+        HTTP_PROXY="socks5://127.0.0.1:9050" \
+                  lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
+    *wired-7.org*)
+        lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
+    *reddit.com/r/*)
+        HTTP_PROXY="socks5://127.0.0.1:9050" \
+                  redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
+    *github.com*)
+        torsocks rdrview -B w3m "${URL}" ;;
+    *.wav|*.mp3|*.m4a)
+        mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
+    *.webm|*.mp4)
+        mpv_site "${URL}";;
+    *v.redd.it*)
+        mpv_site "${URL}";;
+    *tiktok.com*)
+        mpv_site "${URL}";;
+    *streamable.com*)
+        mpv_site "${URL}";;
+    *youtube.com*|*youtu.be*)
+        mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio';;
+    *twitch.tv*)
+        mpv_site "${URL}" --ytdl-format='720';;
+    *)
+        domain=${URL#*://}
+        domain=${domain%%/*}
+        if has_cloudflare "${domain}"; then
+            w3m -o "user_agent=${UA}" "${URL}"
+        else
+            torsocks w3m -o "user_agent=${UA}" "${URL}"
+        fi
         ;;
 esac
