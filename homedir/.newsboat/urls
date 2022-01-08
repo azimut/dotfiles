@@ -2,10 +2,12 @@
 https://www.reddit.com/r/PeerlessDad/new/.rss manga "~/r/PeerlessDad"
 
 # Let these manga accumulate before reading again
+#https://fanfox.net/rss/heavenly_demon_instructor.xml manga
 #https://fanfox.net/rss/the_max_level_hero_has_returned.xml manga
 "exec:curl -q -o - https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 "exec:curl -q -o - https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
 "exec:curl -q -o - https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
+https://fanfox.net/rss/reincarnation_of_the_suicidal_battle_god.xml manga
 #https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml manga
 http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml manga
 #https://fanfox.net/rss/murim_login.xml manga
@@ -21,6 +23,7 @@ https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml manga
 #https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
 https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
 https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
+http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml manga
 https://fanfox.net/rss/the_beginning_after_the_end.xml manga
 #https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml manga
 #https://fanfox.net/rss/dungeon_reset.xml manga
@@ -44,14 +47,14 @@ https://fanfox.net/rss/the_live_ant_studios.xml manga
 #https://readshingekinokyojin.com/rss manga
 
 #https://fanfox.net/rss/sousou_no_frieren.xml manga
-https://fanfox.net/rss/solo_leveling.xml manga
+#https://fanfox.net/rss/solo_leveling.xml manga
 https://fanfox.net/rss/peerless_dad.xml manga
 https://fanfox.net/rss/onepunch_man.xml manga
 https://fanfox.net/rss/onepunch_man_one.xml manga
 https://fanfox.net/rss/goblin_slayer.xml manga
 https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml manga
-https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
-https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
+#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
+#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
 
 "exec:gitorg-rss trailofbits"
 #"exec:gitorg-rss EpicGames"
@@ -79,7 +82,7 @@ https://lainchan.org/%CE%94/index.rss
 
 #https://planet.lisp.org/github.atom
 
-https://www.reddit.com/r/Gentoo/top/.rss?t=month "~/r/Gentoo"
+#https://www.reddit.com/r/Gentoo/top/.rss?t=month "~/r/Gentoo"
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
 https://erlangforums.com/top.rss
@@ -91,11 +94,12 @@ https://www.reddit.com/r/haskell/top/.rss?t=month language "~/r/haskell"
 https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
 https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
 https://www.reddit.com/r/Clojure/top/.rss?t=month language "~/r/Clojure"
+https://www.reddit.com/r/racket/top/.rss?t=month language "~/r/racket"
 https://www.reddit.com/r/golang/top/.rss?t=month language "~/r/golang"
 https://www.reddit.com/r/rust/top/.rss?t=month language "~/r/rust"
 https://www.reddit.com/r/embedded/top/.rss?t=month language "~/r/Embedded"
 
-https://0x00sec.org/latest.rss sec
+"exec:curl -q -o - https://0x00sec.org/latest.rss" sec
 https://www.reddit.com/r/netsec/top/.rss?t=month sec "~/r/netsec"
 
 #https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
@@ -119,9 +123,9 @@ https://slatestarcodex.com/feed/ politics
 
 #https://www.spreaker.com/user/7472853/episodes/feed sec
 #https://feeds.simplecast.com/2Ntuu3AF sec podcast
-https://sector035.nl/articles.atom sec
+"exec:curl -q -o - https://sector035.nl/articles.atom" sec
 https://lobste.rs/top/rss
-http://lambda-the-ultimate.org/rss.xml
+"exec:curl -A Mozilla -q -o - http://lambda-the-ultimate.org/rss.xml"
 "exec:curl -q -o - https://tymoon.eu/api/reader/atom"
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
@@ -145,8 +149,9 @@ https://feeds2.feedburner.com/SecurityTube sec
 
 https://hnrss.org/best tech
 
+
 "exec:curl -q -o - https://feeds.fireside.fm/compositional/rss" podcast
-https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand podcast
+"exec:curl -q -o - https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
 https://anchor.fm/s/47fdfdbc/podcast/rss podcast
 https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
@@ -155,7 +160,7 @@ https://anchor.fm/s/2b386e88/podcast/rss podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
 #https://www.reddit.com/r/MartinShkreli/.rss eco "~/r/MartinShkreli"
-https://martinshkreli.com/blog/f.atom eco
+#https://martinshkreli.com/blog/f.atom eco
 
 #https://llllllll.co/latest.rss livecoding
 https://forum.toplap.org/latest.rss livecoding
@@ -168,3 +173,4 @@ exec:~/.newsboat/feeds/pragprog.sh books
 https://nostarch.com/feeds/newbooks.xml books
 "exec:~/.newsboat/feeds/crc.sh SCAR70" books
 "exec:~/.newsboat/feeds/crc.sh CGD" books
+https://github.com/dariubs/GoBooks/commits/master.atom books
