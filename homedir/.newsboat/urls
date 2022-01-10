@@ -1,72 +1,64 @@
-#https://w12.readonepunchman.net/rss manga
-https://www.reddit.com/r/PeerlessDad/new/.rss manga "~/r/PeerlessDad"
-
-# Let these manga accumulate before reading again
-#https://fanfox.net/rss/heavenly_demon_instructor.xml manga
-#https://fanfox.net/rss/the_max_level_hero_has_returned.xml manga
 "exec:curl -q -o - https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 "exec:curl -q -o - https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
 "exec:curl -q -o - https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
-https://fanfox.net/rss/reincarnation_of_the_suicidal_battle_god.xml manga
-#https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml manga
-http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml manga
-#https://fanfox.net/rss/murim_login.xml manga
-http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml manga
-#http://fanfox.net/rss/the_second_coming_of_gluttony.xml manga
-#https://fanfox.net/rss/chronicles_of_heavenly_demon.xml manga
-https://fanfox.net/rss/path_of_the_shaman.xml manga
-https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml manga
-#https://fanfox.net/rss/god_of_blackfield.xml manga
-#https://fanfox.net/rss/legend_of_the_northern_blade.xml manga
-#https://fanfox.net/rss/omniscient_reader_s_viewpoint.xml manga
-#https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml manga
-#https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml manga
-https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml manga
-https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml manga
-http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml manga
-https://fanfox.net/rss/the_beginning_after_the_end.xml manga
-#https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml manga
-#https://fanfox.net/rss/dungeon_reset.xml manga
-#https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml manga
-#https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml manga
-#https://fanfox.net/rss/talentless_nana.xml manga
-https://fanfox.net/rss/vinland_saga.xml manga
-#https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml manga
-https://fanfox.net/rss/the_live_ant_studios.xml manga
-#https://fanfox.net/rss/i_am_the_sorcerer_king.xml manga
-
+https://www.reddit.com/r/PeerlessDad/new/.rss                                manga "~/r/PeerlessDad"
+http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
+http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml  manga
+http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
+https://fanfox.net/rss/goblin_slayer.xml                                     manga
+https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml                 manga
+https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml                              manga
+https://fanfox.net/rss/mushoku_tensei_isekai_ittara_honki_dasu.xml           manga
+https://fanfox.net/rss/onepunch_man.xml                                      manga
+https://fanfox.net/rss/onepunch_man_one.xml                                  manga
+https://fanfox.net/rss/path_of_the_shaman.xml                                manga
+https://fanfox.net/rss/peerless_dad.xml                                      manga
+https://fanfox.net/rss/reincarnation_of_the_suicidal_battle_god.xml          manga
+https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml               manga
+https://fanfox.net/rss/the_beginning_after_the_end.xml                       manga
+https://fanfox.net/rss/the_live_ant_studios.xml                              manga
+https://fanfox.net/rss/vinland_saga.xml                                      manga
+#http://fanfox.net/rss/the_second_coming_of_gluttony.xml                                                 manga
+#http://fanfox.net/rss/tower_of_god.xml                                                                  manga
+#https://fanfox.net/rss/a_returner_s_magic_should_be_special.xml                                         manga
+#https://fanfox.net/rss/chronicles_of_heavenly_demon.xml                                                 manga
+#https://fanfox.net/rss/drifters.xml                                                                     manga
+#https://fanfox.net/rss/dungeon_reset.xml                                                                manga
+#https://fanfox.net/rss/god_of_blackfield.xml                                                            manga
+#https://fanfox.net/rss/heavenly_demon_instructor.xml                                                    manga
+#https://fanfox.net/rss/i_am_the_sorcerer_king.xml                                                       manga
+#https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml                                                    manga
+#https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml                                               manga
+#https://fanfox.net/rss/legend_of_the_northern_blade.xml                                                 manga
+#https://fanfox.net/rss/murim_login.xml                                                                  manga
+#https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml                                                  manga
+#https://fanfox.net/rss/omniscient_reader_s_viewpoint.xml                                                manga
+#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml  manga
+#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml                           manga
+#https://fanfox.net/rss/solo_leveling.xml                                                                manga
+#https://fanfox.net/rss/sousou_no_frieren.xml                                                            manga
+#https://fanfox.net/rss/talentless_nana.xml                                                              manga
+#https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml                                               manga
+#https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml                                      manga
+#https://fanfox.net/rss/the_max_level_hero_has_returned.xml                                              manga
+#https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
 #####https://fanfox.net/rss/hazure_waku_no_joutai_ijou_skill_de_saikyou_ni_natta_ore_ga_subete_wo_juurin_suru_made.xml manga
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
 #####https://fanfox.net/rss/dr_stone.xml manga
-
 #https://www.webtoons.com/en/action/gosu/rss?title_no=1099 manga
 #https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
-#http://fanfox.net/rss/tower_of_god.xml
-#https://fanfox.net/rss/drifters.xml manga
 #https://mangadex.org/rss/z4MknbUmaqWewS5rcATh2guHGx6ZVRty/manga_id/28778?h=0 manga "~Skeleton Soldier"
 #https://readshingekinokyojin.com/rss manga
 
-#https://fanfox.net/rss/sousou_no_frieren.xml manga
-#https://fanfox.net/rss/solo_leveling.xml manga
-https://fanfox.net/rss/peerless_dad.xml manga
-https://fanfox.net/rss/onepunch_man.xml manga
-https://fanfox.net/rss/onepunch_man_one.xml manga
-https://fanfox.net/rss/goblin_slayer.xml manga
-https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml manga
-#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml manga
-#https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml manga
-
-"exec:gitorg-rss trailofbits"
+#"exec:github-rss azimut"
 #"exec:gitorg-rss EpicGames"
 #"exec:gitorg-rss NVIDIAGameWorks"
+"exec:gitorg-rss trailofbits"
 "exec:gitorg-rss Shirakumo"
 "exec:gitorg-rss tsoding"
 
-#"exec:github-rss azimut"
-
-
 https://rebelion.digital/rss argentina
-
+https://blog.redpanal.org/rss argentina
 
 #"exec:curl -q -o - https://boards.4channel.org/g/index.rss"
 "exec:4chan-rss -b g -n 25 -p 2"
@@ -85,22 +77,35 @@ https://lainchan.org/%CE%94/index.rss
 #https://www.reddit.com/r/Gentoo/top/.rss?t=month "~/r/Gentoo"
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
-https://erlangforums.com/top.rss
-#https://www.reddit.com/r/lua/top/.rss language "~/r/lua"
-https://www.reddit.com/r/elixir/top/.rss?t=month language "~/r/elixir"
-https://www.reddit.com/r/erlang/.rss language "~/r/erlang"
-https://www.reddit.com/r/haskell/top/.rss?t=month language "~/r/haskell"
-#https://www.reddit.com/r/scheme/.rss language "~/r/scheme"
-https://www.reddit.com/r/lisp/.rss language "~/r/lisp"
-https://www.reddit.com/r/Common_Lisp/.rss language "~/r/Common_Lisp"
-https://www.reddit.com/r/Clojure/top/.rss?t=month language "~/r/Clojure"
-https://www.reddit.com/r/racket/top/.rss?t=month language "~/r/racket"
-https://www.reddit.com/r/golang/top/.rss?t=month language "~/r/golang"
-https://www.reddit.com/r/rust/top/.rss?t=month language "~/r/rust"
-https://www.reddit.com/r/embedded/top/.rss?t=month language "~/r/Embedded"
+https://erlangforums.com/top.rss                    programming
+#https://www.reddit.com/r/lua/top/.rss              programming "~/r/lua"
+#https://www.reddit.com/r/scheme/.rss               programming "~/r/scheme"
+https://www.reddit.com/r/elixir/top/.rss?t=month    programming "~/r/elixir"
+https://www.reddit.com/r/erlang/.rss                programming "~/r/erlang"
+https://www.reddit.com/r/haskell/top/.rss?t=month   programming "~/r/haskell"
+https://www.reddit.com/r/ocaml/top/.rss?t=month     programming "~/r/ocaml"
+https://www.reddit.com/r/lisp/.rss                  programming "~/r/lisp"
+https://www.reddit.com/r/Common_Lisp/.rss           programming "~/r/Common_Lisp"
+https://www.reddit.com/r/Clojure/top/.rss?t=month   programming "~/r/Clojure"
+https://www.reddit.com/r/racket/top/.rss?t=month    programming "~/r/racket"
+https://www.reddit.com/r/golang/top/.rss?t=month    programming "~/r/golang"
+https://www.reddit.com/r/rust/top/.rss?t=month      programming "~/r/rust"
+https://www.reddit.com/r/embedded/top/.rss?t=month  programming "~/r/Embedded"
+"exec:curl -A Mozilla -q -o - http://lambda-the-ultimate.org/rss.xml" programming
 
-"exec:curl -q -o - https://0x00sec.org/latest.rss" sec
-https://www.reddit.com/r/netsec/top/.rss?t=month sec "~/r/netsec"
+https://lobste.rs/top/rss tech
+https://hnrss.org/best    tech
+"exec:curl -q -o - https://tymoon.eu/api/reader/atom" tech
+
+"exec:curl -q -o - https://0x00sec.org/latest.rss"        sec
+"exec:curl -q -o - https://sector035.nl/articles.atom"    sec
+https://www.reddit.com/r/netsec/top/.rss?t=month          sec "~/r/netsec"
+http://feeds.feedburner.com/FluProject                    sec
+http://feeds.feedburner.com/NoticiasSeguridadInformatica  sec
+http://feeds.feedburner.com/hispasec/zCAd                 sec
+https://feeds2.feedburner.com/SecurityTube                sec
+#https://www.spreaker.com/user/7472853/episodes/feed sec
+#https://feeds.simplecast.com/2Ntuu3AF sec podcast
 
 #https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
 #https://www.reddit.com/r/oscp/top/.rss sec "~/r/oscp"
@@ -111,22 +116,10 @@ https://www.reddit.com/r/netsec/top/.rss?t=month sec "~/r/netsec"
 #https://www.reddit.com/r/argentina/top/.rss argentina "~/r/argentina"
 
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLP4CSgl7K7oo93I49tQa0TLB8qY3u7xuO music
-#https://www.youtube.com/feeds/videos.xml?playlist_id=PLytTJqkSQqtr7BqC1Jf4nv3g2yDfu7Xmd feminism
 #https://www.youtube.com/feeds/videos.xml?playlist_id=LLJTxEY8-lIbqJWk4ol5eThg
-
-http://feeds.feedburner.com/FluProject sec
-http://feeds.feedburner.com/NoticiasSeguridadInformatica sec
-http://feeds.feedburner.com/hispasec/zCAd sec
 
 https://slatestarcodex.com/feed/ politics
 #https://www.descifrandolaguerra.es/feed/ politics
-
-#https://www.spreaker.com/user/7472853/episodes/feed sec
-#https://feeds.simplecast.com/2Ntuu3AF sec podcast
-"exec:curl -q -o - https://sector035.nl/articles.atom" sec
-https://lobste.rs/top/rss
-"exec:curl -A Mozilla -q -o - http://lambda-the-ultimate.org/rss.xml"
-"exec:curl -q -o - https://tymoon.eu/api/reader/atom"
 
 #https://twitchrss.appspot.com/vod/GlitchGirl
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
@@ -136,19 +129,7 @@ https://forum.cabbageaudio.com/latest.rss csound
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
-exec:~/.newsboat/feeds/ekojobs.sh jobs
-
-https://blog.redpanal.org/rss argentina
-
-https://feeds2.feedburner.com/SecurityTube sec
-
-#http://www.bairesgirls.net/rssfeed/todas.php
-#https://selfiescorts.com/escorts/feed/
-
-#https://tools.kali.org/tools-listing/feed
-
-https://hnrss.org/best tech
-
+exec:~/.newsboat/feeds/ekojobs.sh       jobs
 
 "exec:curl -q -o - https://feeds.fireside.fm/compositional/rss" podcast
 "exec:curl -q -o - https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
@@ -159,18 +140,17 @@ https://anchor.fm/s/4d6c93f8/podcast/rss podcast
 https://anchor.fm/s/2b386e88/podcast/rss podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
-#https://www.reddit.com/r/MartinShkreli/.rss eco "~/r/MartinShkreli"
-#https://martinshkreli.com/blog/f.atom eco
 
 #https://llllllll.co/latest.rss livecoding
 https://forum.toplap.org/latest.rss livecoding
 
-https://feeds.feedburner.com/oreilly/newbooks books
-exec:~/.newsboat/feeds/apress.sh books
-exec:~/.newsboat/feeds/manning.sh books
-exec:~/.newsboat/feeds/packt.sh books
-exec:~/.newsboat/feeds/pragprog.sh books
-https://nostarch.com/feeds/newbooks.xml books
-"exec:~/.newsboat/feeds/crc.sh SCAR70" books
-"exec:~/.newsboat/feeds/crc.sh CGD" books
+https://feeds.feedburner.com/oreilly/newbooks          books
+https://nostarch.com/feeds/newbooks.xml                books
+exec:~/.newsboat/feeds/apress.sh                       books
+exec:~/.newsboat/feeds/manning.sh                      books
+exec:~/.newsboat/feeds/packt.sh                        books
+exec:~/.newsboat/feeds/pragprog.sh                     books
+"exec:~/.newsboat/feeds/crc.sh SCAR70"                 books
+"exec:~/.newsboat/feeds/crc.sh CGD"                    books
 https://github.com/dariubs/GoBooks/commits/master.atom books
+https://github.com/sger/RustBooks/commits/master.atom  books
