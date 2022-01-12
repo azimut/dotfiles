@@ -1,9 +1,11 @@
 #!/bin/bash
 
-TITLE='Discord Job Posts'
+set -euo pipefail
+
+TITLE='New Discord Jobs'
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 URL='https://discord.com/channels/@me'
-ID='discord:jobs'
+ID='discord:job'
 
 echo "<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns='http://www.w3.org/2005/Atom'>
@@ -12,13 +14,13 @@ echo "<?xml version='1.0' encoding='utf-8'?>
   <link href=\"${URL}\"></link>
   <updated>${DATE}</updated>"
 
-psql -X --csv -U postgres -d irclogs -f sql-to-rss.sql \
+psql -X --csv -U postgres -d irclogs -f "$(dirname "${BASH_SOURCE[0]}")"/sql2rss.sql \
     | csvjson \
     | jq -r '.[] as $li | "
 <entry>
   <title>\($li.msg | gsub("<br/>";"";"g") | .[0:80])</title>
-  <id>\($li.dt)</id>
-  <published>\($li.dt)</published>
+  <id>\($li.msg | .[0:30] )</id>
+  <published>\($li.dt | sub("-03";"") | strptime("%Y-%m-%d %H:%M:%S") | todate)</published>
   <link href=\"'${URL}'\">'${URL}'</link>
   <author><name>\($li.win)</name></author>
   <content>\($li.msg)</content>
