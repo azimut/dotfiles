@@ -20,7 +20,7 @@ psql -X --csv -U postgres -d irclogs -f "$(dirname "${BASH_SOURCE[0]}")"/sql2rss
 <entry>
   <title>\($li.msg | gsub("<br/>";"";"g") | .[0:80])</title>
   <id>\($li.msg | .[0:30] )</id>
-  <published>\($li.dt | sub("-03";"") | strptime("%Y-%m-%d %H:%M:%S") | todate)</published>
+  <published>\($li.dt)</published>
   <link href=\"'${URL}'\">'${URL}'</link>
   <author><name>\($li.win)</name></author>
   <content>\($li.msg)</content>
