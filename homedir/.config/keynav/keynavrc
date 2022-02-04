@@ -4,7 +4,11 @@ j cut-down          , grid 2x2
 k cut-up            , grid 2x2
 l cut-right         , grid 2x2
 c cursorzoom 300 300, grid 2x2
+
+1 click 1
+2 warp, click 3, end
 z click 1
 x warp, click 3, end
+
 i click 5
 o click 4
