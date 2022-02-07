@@ -131,12 +131,13 @@ https://slatestarcodex.com/feed/ politics
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 #https://twitchrss.appspot.com/vod/carlaesmeraldax
 
-https://forum.cabbageaudio.com/latest.rss csound
+#https://forum.cabbageaudio.com/latest.rss csound
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
 exec:~/.newsboat/feeds/ekojobs.sh       jobs
 exec:~/.newsboat/feeds/sql2rss          jobs
+"exec:~/.newsboat/feeds/twitch-rss -n 25 'Software and Game Development'"
 
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
@@ -146,6 +147,7 @@ https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
 https://anchor.fm/s/4d6c93f8/podcast/rss podcast
 https://anchor.fm/s/2b386e88/podcast/rss podcast
+https://www.sicpers.info/feed/podcast    podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
 

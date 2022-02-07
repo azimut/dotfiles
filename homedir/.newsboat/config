@@ -1,12 +1,17 @@
-auto-reload            yes
-suppress-first-reload  yes
-confirm-exit           yes
-cleanup-on-quit        no
-goto-next-feed         no
-browser                "weblauncher %u"
-cache-file             ~/.newsboat/cache.db
-error-log              ~/.newsboat/error.log
-scrolloff              2
+auto-reload             yes
+suppress-first-reload   yes
+confirm-exit            yes
+confirm-mark-feed-read  no
+cleanup-on-quit         no
+goto-next-feed          no
+browser                 "weblauncher %u"
+cache-file              ~/.newsboat/cache.db
+error-log               ~/.newsboat/error.log
+scrolloff               2
+
+ignore-mode    "display"
+ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 25 'Software and Game Development'" "(title !~ \"^/ES/\") and (title !~ \"lisp\") and (title !~ \"golang\") and (title !~ \"rust\") and (title !~ \"ocaml\") and (title !~ \"network\")"
+
 #
 # Bookmarking
 #
