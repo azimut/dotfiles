@@ -1,3 +1,5 @@
+https://www.reddit.com/r/manga/new/.rss manga "~/r/manga"
+
 "exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
@@ -5,9 +7,10 @@
 https://www.reddit.com/r/PeerlessDad/new/.rss                                manga "~/r/PeerlessDad"
 #https://fanfox.net/rss/the_dark_magician_transmigrates_after_66666_years.xml manga
 #https://fanfox.net/rss/weak_teacher.xml                                      manga
+https://fanfox.net/rss/heavenly_demon_cultivation_simulation.xml             manga
 http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
 http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml  manga
-http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
+#may#http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
 https://fanfox.net/rss/goblin_slayer.xml                                     manga
 https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml                 manga
 #https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml                              manga
@@ -137,7 +140,7 @@ https://slatestarcodex.com/feed/ politics
 https://www.industriavg.com.ar/rss/all/ jobs
 exec:~/.newsboat/feeds/ekojobs.sh       jobs
 exec:~/.newsboat/feeds/sql2rss          jobs
-"exec:~/.newsboat/feeds/twitch-rss -n 25 'Software and Game Development'"
+"exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
 
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
@@ -157,7 +160,7 @@ https://forum.toplap.org/latest.rss livecoding
 https://feeds.feedburner.com/oreilly/newbooks          books
 https://nostarch.com/feeds/newbooks.xml                books
 exec:~/.newsboat/feeds/apress.sh                       books
-#exec:~/.newsboat/feeds/manning.sh                      books
+exec:~/.newsboat/feeds/manning.sh                      books
 exec:~/.newsboat/feeds/packt.sh                        books
 exec:~/.newsboat/feeds/pragprog.sh                     books
 "exec:~/.newsboat/feeds/crc.sh SCAR70"                 books

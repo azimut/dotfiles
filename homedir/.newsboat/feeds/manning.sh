@@ -3,7 +3,7 @@ set -exuo pipefail
 
 TITLE='Manning New Releases'
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-URL=https://www.manning.com/catalog/sort/sort-by-date
+URL=https://www.manning.com/
 ID='manning:newreleases'
 
 echo "<?xml version='1.0' encoding='utf-8'?>
@@ -13,15 +13,17 @@ echo "<?xml version='1.0' encoding='utf-8'?>
   <link href=\"${URL}\"></link>
   <updated>${DATE}</updated>"
 
-curl -A Mozilla "${URL}" \
-    | pup 'div[data-section-title="2015 - present"] div.item-list a json{}' \
-    | jq -r '.[] as $li | "
+w3m -dump_source "${URL}" \
+    | gunzip - \
+    | pup 'div.recently-published-box a[data-edition=""]' \
+    | pup 'a[href^="/books/"] json{}' \
+    | jq -r '.[] as $a | "
 <entry>
-  <title>\($li["data-name"])</title>
-  <author><name>\($li.children[1].children[0].children[1].text)</name></author>
-  <link href=\"\($li.href)\">\($li.href)</link>
-  <id>\($li.href)</id>
-  <published>\($li.children[1].children[1].text | strptime("%B %Y") | todate)</published>
+  <title>\($a["data-name"])</title>
+  <author><name>\($a["data-category"])</name></author>
+  <link href=\"\($a.href)\">\($a.href)</link>
+  <id>\($a.href)</id>
+  <published>'${DATE}'</published>
 </entry>"' | sed 's;<link href="/;<link href="https://www.manning.com/;'
 
 echo
