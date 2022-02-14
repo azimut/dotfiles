@@ -122,7 +122,11 @@ theme.border_marked = "#91231c"
 local mytextclock = wibox.widget.textclock(
    markup.font(theme.font, markup(theme.fg_normal,'%a %d %b, %H:%M')))
 
-local myprogress = wibox.widget.textbox(math.floor(os.date("%j") / 365 * 100))
+local function year_progress()
+   return math.floor(os.date("%j") / 365 * 100)
+end
+local myprogress = wibox.widget.textbox(year_progress())
+gears.timer.start_new(60*60, function() myprogress:set_text(year_progress()) return true end)
 
 local mycal = lain.widget.cal({
       attach_to = { mytextclock },
@@ -768,7 +772,6 @@ awesome.spawn("amixer set Capture nocap", false) -- disable mic
 awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled", false) -- disable auto-mute
 -- awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 
-gears.timer.start_new(60*60, function() myprogress:set_text(math.floor(os.date("%j") / 365 * 100)) return true end)
 -- GC
 -- https://www.reddit.com/r/awesomewm/comments/iguwcj/memory_leaks/
 gears.timer.start_new(10, function() collectgarbage("step", 20000) return true end)
