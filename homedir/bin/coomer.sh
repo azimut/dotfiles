@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -exuo pipefail
+set -euo pipefail
 
 container_and_file() {
     for link in ~/.coomer/*jpg; do
