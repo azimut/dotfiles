@@ -128,15 +128,18 @@ end
 local myprogress = wibox.widget.textbox(year_progress())
 gears.timer.start_new(60*60, function() myprogress:set_text(year_progress()) return true end)
 
-local function hours_awake()
+local function stat_since(file)
    local now = os.time()
-   local f = io.popen("stat -c %Y " .. os.getenv("HOME") .. "/.cache/awaketime")
+   local f = io.popen("stat -c %Y " .. os.getenv("HOME") .. file)
    local before = f:read()
    local diff = before and (now-before)/60/60 or 0
    return math.floor( diff )
-   end
-local myawakeness = wibox.widget.textbox(hours_awake())
-gears.timer.start_new(60*30, function() myawakeness:set_text(hours_awake()) return true end)
+end
+local function awakeness()
+   return stat_since("/.cache/awaketime") .. "|" ..stat_since("/.cache/sleeptime")
+end
+local myawakeness = wibox.widget.textbox(awakeness())
+gears.timer.start_new(60*30, function() myawakeness:set_text(awakeness()) return true end)
 
 local mycal = lain.widget.cal({
       attach_to = { mytextclock },
