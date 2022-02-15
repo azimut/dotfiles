@@ -9,9 +9,9 @@ cache-file              ~/.newsboat/cache.db
 error-log               ~/.newsboat/error.log
 scrolloff               2
 
-ignore-mode    "display"
-ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'" "title !~ \"^/ES/\" and title !~ \"lisp\" and title !~ \"golang\" and title !~ \"rust\" and title !~ \"ocaml\" and title !~ \"network\" and title !~ \"devops\" and title !~ \"server\" and title !~ \"erlang\" and title !~ \"elixir\" and title !~ \"hack\" and title !~ \"crack\""
-ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"administrator\" and title !~ \"peerless\""
+ignore-mode    "download"
+ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'" "title !~ \"lisp\" and title !~ \"golang\" and title !~ \"rust\" and title !~ \"ocaml\" and title !~ \"network\" and title !~ \"devops\" and title !~ \"server\" and title !~ \"erlang\" and title !~ \"elixir\" and title !~ \"hack\" and title !~ \"crack\""
+ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"administrator\" and title !~ \"peerless\" and title !~ \"\[DISC\] one punch man\" and title !~ \"mushoku tensei\" and title !~ \"\[DISC\] Berserk\" and title !~ \"\[DISC\] Re:zero\" and title !~ \"the beggining after the end\""
 
 #
 # Bookmarking

@@ -63,8 +63,8 @@ https://fanfox.net/rss/sousou_no_frieren.xml                                    
 "exec:gitorg-rss Shirakumo"
 "exec:gitorg-rss tsoding"
 
-https://rebelion.digital/rss argentina
-https://blog.redpanal.org/rss argentina
+#https://rebelion.digital/rss argentina
+#https://blog.redpanal.org/rss argentina
 
 "exec:4chan-rss -b g -n 25 -p 2"
 
@@ -139,7 +139,7 @@ https://slatestarcodex.com/feed/ politics
 
 https://www.industriavg.com.ar/rss/all/ jobs
 exec:~/.newsboat/feeds/ekojobs.sh       jobs
-exec:~/.newsboat/feeds/sql2rss          jobs
+exec:~/.newsboat/feeds/sql2rss        jobs
 "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
 
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
