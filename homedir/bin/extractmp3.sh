@@ -1,22 +1,35 @@
 #!/bin/bash
 set -exuo pipefail
 
+N=5
 INPUT="$1"
 test -f "${INPUT}"
-output="$(basename "${INPUT}").mp3"
 
 div() { echo "$(</dev/stdin) / ${1}" | bc -l ; }
 round(){ printf "%.0f" "$(</dev/stdin)"; }
-video_to_seconds() {
+timestamp(){ date -u --date=@"${1}" +%H:%M:%S; }
+seconds() {
     ffprobe -loglevel error -hide_banner -of csv=p=0 -show_entries format=duration "${1}"
 }
-seconds_to_timestamp(){
-    date -u --date=@"$(</dev/stdin)" +%H:%M:%S
-}
 
-rm -f output.jpg
-ffmpeg -ss "$(video_to_seconds "${INPUT}" | div 2 | round | seconds_to_timestamp)" \
-       -hide_banner -y -i "${INPUT}" -frames:v 1 output.jpg
-test -s output.jpg
-ffmpeg -hide_banner -i "${INPUT}" -i output.jpg -ac 1 -c:v mjpeg -map 0:a -map 1:v "${output}"
-rm -f output.jpg
+output="$(basename "${INPUT}").mp3"
+step="$(seconds "${INPUT}" | div ${N} | round)"
+
+rm -f extract_tmp*jpg
+
+for ((i = 0 ; i < N ; i++)); do
+    ffmpeg -hide_banner -loglevel error \
+           -ss "$(timestamp $(( step * i )))" \
+           -i "${INPUT}" \
+           -frames:v 1 \
+           "extract_tmp${i}.jpg"
+done
+
+ffmpeg -hide_banner \
+       -i "${INPUT}" \
+       -i "$(ipickme ./extract_tmp*jpg)" \
+       -y \
+       -ac 1 -c:v mjpeg -map 0:a -map 1:v \
+       "${output}"
+
+rm -f extract_tmp*jpg
