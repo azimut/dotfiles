@@ -1,16 +1,18 @@
 https://www.reddit.com/r/manga/new/.rss manga "~/r/manga"
-
+https://fanfox.net/rss/return_of_the_mad_demon.xml manga
 "exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
 https://www.reddit.com/r/PeerlessDad/new/.rss                                manga "~/r/PeerlessDad"
+https://fanfox.net/rss/leveling_up_with_the_gods.xml                         manga
 #https://fanfox.net/rss/the_dark_magician_transmigrates_after_66666_years.xml manga
 #https://fanfox.net/rss/weak_teacher.xml                                      manga
 https://fanfox.net/rss/heavenly_demon_cultivation_simulation.xml             manga
 http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
 http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml  manga
 #may#http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
+#https://fanfox.net/rss/the_constellation_that_returned_from_hell.xml manga
 https://fanfox.net/rss/goblin_slayer.xml                                     manga
 https://fanfox.net/rss/goblin_slayer_side_story_year_one.xml                 manga
 #https://fanfox.net/rss/kumo_desu_ga_nani_ka.xml                              manga
@@ -21,7 +23,7 @@ https://fanfox.net/rss/path_of_the_shaman.xml                                man
 https://fanfox.net/rss/peerless_dad.xml                                      manga
 https://fanfox.net/rss/reincarnation_of_the_suicidal_battle_god.xml          manga
 https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml               manga
-#https://fanfox.net/rss/the_beginning_after_the_end.xml                       manga
+https://fanfox.net/rss/the_beginning_after_the_end.xml                       manga
 https://fanfox.net/rss/vinland_saga.xml                                      manga
 #http://fanfox.net/rss/the_second_coming_of_gluttony.xml                                                 manga
 #http://fanfox.net/rss/tower_of_god.xml                                                                  manga
@@ -47,8 +49,8 @@ https://fanfox.net/rss/sousou_no_frieren.xml                                    
 #https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml                                               manga
 #https://fanfox.net/rss/the_live_ant_studios.xml                              manga
 #https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml                                      manga
-#https://fanfox.net/rss/the_max_level_hero_has_returned.xml                                              manga
-#https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
+https://fanfox.net/rss/the_max_level_hero_has_returned.xml                                              manga
+https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
 #####https://fanfox.net/rss/hazure_waku_no_joutai_ijou_skill_de_saikyou_ni_natta_ore_ga_subete_wo_juurin_suru_made.xml manga
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
 #####https://fanfox.net/rss/dr_stone.xml manga
@@ -59,9 +61,10 @@ https://fanfox.net/rss/sousou_no_frieren.xml                                    
 #"exec:github-rss azimut"
 #"exec:gitorg-rss EpicGames"
 #"exec:gitorg-rss NVIDIAGameWorks"
-"exec:gitorg-rss trailofbits"
+#"exec:gitorg-rss trailofbits"
 "exec:gitorg-rss Shirakumo"
 "exec:gitorg-rss tsoding"
+#"exec:gitissue-rss https://github.com/edannenberg/kubler/issues/208"
 
 #https://rebelion.digital/rss argentina
 #https://blog.redpanal.org/rss argentina
@@ -106,6 +109,7 @@ https://hnrss.org/best    tech
 "exec:~/.newsboat/feeds/curl.sh https://tymoon.eu/api/reader/atom" tech
 
 "exec:~/.newsboat/feeds/curl.sh https://0x00sec.org/latest.rss"        sec
+#https://blog.underc0de.org/feed/ sec
 "exec:~/.newsboat/feeds/curl.sh https://sector035.nl/articles.atom"    sec
 https://www.reddit.com/r/netsec/top/.rss?t=month          sec "~/r/netsec"
 http://feeds.feedburner.com/FluProject                    sec
@@ -167,3 +171,4 @@ exec:~/.newsboat/feeds/pragprog.sh                     books
 "exec:~/.newsboat/feeds/crc.sh CGD"                    books
 https://github.com/dariubs/GoBooks/commits/master.atom books
 https://github.com/sger/RustBooks/commits/master.atom  books
+exec:~/.newsboat/feeds/test.sh
