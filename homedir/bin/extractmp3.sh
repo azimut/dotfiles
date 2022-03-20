@@ -27,7 +27,7 @@ done
 
 ffmpeg -hide_banner \
        -i "${INPUT}" \
-       -i "$(ipickme ./extract_tmp*jpg)" \
+       -i "$(ipickme -s 200 ./extract_tmp*jpg)" \
        -y \
        -ac 1 -c:v mjpeg -map 0:a -map 1:v \
        "${output}"
