@@ -10,6 +10,7 @@ https://fanfox.net/rss/leveling_up_with_the_gods.xml                         man
 #https://fanfox.net/rss/weak_teacher.xml                                      manga
 https://fanfox.net/rss/heavenly_demon_cultivation_simulation.xml             manga
 http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
+https://fanfox.net/rss/mushoku_no_tensei_eris_gaiden.xml                     manga
 http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml  manga
 #may#http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
 #https://fanfox.net/rss/the_constellation_that_returned_from_hell.xml manga
@@ -35,8 +36,9 @@ https://fanfox.net/rss/drifters.xml                                             
 #https://fanfox.net/rss/god_of_blackfield.xml                                                            manga
 #https://fanfox.net/rss/heavenly_demon_instructor.xml                                                    manga
 #https://fanfox.net/rss/i_am_the_sorcerer_king.xml                                                       manga
+#https://fanfox.net/rss/orc_eiyuu_monogatari_sontaku_retsuden.xml                                        manga
 #https://fanfox.net/rss/isekai_meikyuu_de_harem_o.xml                                                    manga
-#https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml                                               manga
+https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml                                               manga
 https://fanfox.net/rss/legend_of_the_northern_blade.xml                                                 manga
 #https://fanfox.net/rss/murim_login.xml                                                                  manga
 #https://fanfox.net/rss/nozomanu_fushi_no_boukensha.xml                                                  manga
@@ -161,6 +163,7 @@ https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
 #https://llllllll.co/latest.rss livecoding
 https://forum.toplap.org/latest.rss livecoding
 
+https://link.springer.com/search.rss?facet-discipline=%22Computer+Science%22&facet-language=%22En%22&facet-content-type=%22Book%22&sortOrder=newestFirst books "~Springer CS Books"
 https://feeds.feedburner.com/oreilly/newbooks          books
 https://nostarch.com/feeds/newbooks.xml                books
 exec:~/.newsboat/feeds/apress.sh                       books
