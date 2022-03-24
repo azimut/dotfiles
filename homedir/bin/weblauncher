@@ -2,81 +2,97 @@
 
 set -exuo pipefail
 
-has_cloudflare() {
-    local url="${1}"
-    dig SOA +multiline "${url}" | grep cloudflare
-    return $?
-}
-
-mpv_site() {
-    local URL="${1}"
-    shift
-    local OPTS=("${@}")
-    nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
-               --sid=1 \
-               --user-agent="${UA}" \
-               --af=@rb:rubberband \
-               --loop \
-               --volume=50 \
-               --osd-level=3 \
-               "${OPTS[@]}" "${URL}" < /dev/null &
-}
-
 URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
+has_cloudflare() {
+	local url="${1}"
+	dig SOA +multiline "${url}" | grep cloudflare
+	return $?
+}
+
+mpv_site() {
+	local URL="${1}"
+	shift
+	local OPTS=("${@}")
+	nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
+		--sid=1 \
+		--user-agent="${UA}" \
+		--af=@rb:rubberband \
+		--loop \
+		--volume=50 \
+		--osd-level=3 \
+		"${OPTS[@]}" "${URL}" </dev/null &
+}
+
 case "${URL,,}" in
-    *imgflip*) # Does not accept TOR
-        nohup 2>&1 timeout 60 feh "${URL}" < /dev/null & ;;
-    *imgur.com/*)
-        if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
-            nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" < /dev/null &
-        fi ;&
-    *.jpg*|*.png*|*.jpeg*|*.webp*)
-        ( nohup 2>&1 torsocks timeout 60 feh "${URL}" < /dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>" ) &;;
-    *.gif)
-        nohup 2>&1 mpv \
-                   --loop \
-                   --osd-level=3 "${URL}" < /dev/null &;;
-    *http*://gyazo.com*) # catch things without an extension and add one
-        torsocks timeout 60 feh "${URL}.jpg" < /dev/null & ;;
-    *news.ycombinator.com*)
-        HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *twitter.com*)
-        HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  twitterview -t 10s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *lainchan.org*)
-        HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *wired-7.org*)
-        lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *reddit.com/r/*)
-        HTTP_PROXY="socks5://127.0.0.1:9050" \
-                  redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *github.com*|*linkedin.com*|*lnkd.in*)
-        torsocks rdrview -B w3m "${URL}" ;;
-    *.wav|*.mp3|*.m4a)
-        mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
-    *.webm|*.mp4)
-        mpv_site "${URL}";;
-    *v.redd.it*)
-        mpv_site "${URL}";;
-    *tiktok.com*)
-        mpv_site "${URL}";;
-    *streamable.com*)
-        mpv_site "${URL}";;
-    *youtube.com*|*youtu.be*)
-        mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio';;
-    *twitch.tv*)
-        mpv_site "${URL}" --ytdl-format='720';;
-    *)
-        domain=${URL#*://}
-        domain=${domain%%/*}
-        if has_cloudflare "${domain}"; then
-            w3m -o "user_agent=${UA}" "${URL}"
-        else
-            torsocks w3m -o "user_agent=${UA}" "${URL}"
-        fi
-        ;;
+*imgflip*) # Does not accept TOR
+	nohup 2>&1 timeout 60 feh "${URL}" </dev/null & ;;
+*imgur.com/*)
+	if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
+		nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" </dev/null &
+	fi
+	;&
+*.jpg* | *.png* | *.jpeg* | *.webp*)
+	(nohup 2>&1 torsocks timeout 60 feh "${URL}" </dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>") &
+	;;
+*.gif)
+	nohup 2>&1 mpv \
+		--loop \
+		--osd-level=3 "${URL}" </dev/null &
+	;;
+*http*://gyazo.com*) # catch things without an extension and add one
+	torsocks timeout 60 feh "${URL}.jpg" </dev/null & ;;
+*news.ycombinator.com*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*twitter.com*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		twitterview -t 10s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*lainchan.org*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*wired-7.org*)
+	lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*reddit.com/r/*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*github.com* | *linkedin.com* | *lnkd.in*)
+	torsocks rdrview -B w3m "${URL}"
+	;;
+*.wav | *.mp3 | *.m4a)
+	mpv_site "${URL}" --player-operation-mode=pseudo-gui
+	;;
+*.webm | *.mp4)
+	mpv_site "${URL}"
+	;;
+*v.redd.it*)
+	mpv_site "${URL}"
+	;;
+*tiktok.com*)
+	mpv_site "${URL}"
+	;;
+*streamable.com*)
+	mpv_site "${URL}"
+	;;
+*youtube.com* | *youtu.be*)
+	mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio'
+	;;
+*twitch.tv*)
+	mpv_site "${URL}" --ytdl-format='720'
+	;;
+*)
+	domain=${URL#*://}
+	domain=${domain%%/*}
+	if has_cloudflare "${domain}"; then
+		w3m -o "user_agent=${UA}" "${URL}"
+	else
+		torsocks w3m -o "user_agent=${UA}" "${URL}"
+	fi
+	;;
 esac
