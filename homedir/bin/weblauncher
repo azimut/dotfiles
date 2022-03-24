@@ -54,7 +54,7 @@ case "${URL,,}" in
     *reddit.com/r/*)
         HTTP_PROXY="socks5://127.0.0.1:9050" \
                   redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -;;
-    *github.com*|*linkedin.com*)
+    *github.com*|*linkedin.com*|*lnkd.in*)
         torsocks rdrview -B w3m "${URL}" ;;
     *.wav|*.mp3|*.m4a)
         mpv_site "${URL}" --player-operation-mode=pseudo-gui;;
