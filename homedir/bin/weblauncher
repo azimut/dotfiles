@@ -37,9 +37,7 @@ case "${URL,,}" in
 	(nohup 2>&1 torsocks timeout 60 feh "${URL}" </dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>") &
 	;;
 *.gif)
-	nohup 2>&1 mpv \
-		--loop \
-		--osd-level=3 "${URL}" </dev/null &
+	nohup 2>&1 mpv --loop --osd-level=3 "${URL}" </dev/null &
 	;;
 *http*://gyazo.com*) # catch things without an extension and add one
 	torsocks timeout 60 feh "${URL}.jpg" </dev/null & ;;
@@ -68,16 +66,7 @@ case "${URL,,}" in
 *.wav | *.mp3 | *.m4a)
 	mpv_site "${URL}" --player-operation-mode=pseudo-gui
 	;;
-*.webm | *.mp4)
-	mpv_site "${URL}"
-	;;
-*v.redd.it*)
-	mpv_site "${URL}"
-	;;
-*tiktok.com*)
-	mpv_site "${URL}"
-	;;
-*streamable.com*)
+*.webm | *.mp4 | *tiktok.com* | *v.redd.it* | *streamable.com*)
 	mpv_site "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
