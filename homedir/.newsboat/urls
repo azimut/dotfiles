@@ -5,6 +5,7 @@ https://fanfox.net/rss/return_of_the_mad_demon.xml manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
 https://www.reddit.com/r/PeerlessDad/new/.rss                                manga "~/r/PeerlessDad"
+https://fanfox.net/rss/wo_zai_yi_jie_xiu_mo_fa.xml                           manga
 https://fanfox.net/rss/leveling_up_with_the_gods.xml                         manga
 #https://fanfox.net/rss/the_dark_magician_transmigrates_after_66666_years.xml manga
 #https://fanfox.net/rss/weak_teacher.xml                                      manga
@@ -52,6 +53,7 @@ https://fanfox.net/rss/sousou_no_frieren.xml                                    
 #https://fanfox.net/rss/the_live_ant_studios.xml                              manga
 #https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml                                      manga
 https://fanfox.net/rss/the_max_level_hero_has_returned.xml                                              manga
+https://fanfox.net/rss/fff_class_trashero.xml                                                           manga
 https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
 #####https://fanfox.net/rss/hazure_waku_no_joutai_ijou_skill_de_saikyou_ni_natta_ore_ga_subete_wo_juurin_suru_made.xml manga
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
@@ -174,4 +176,3 @@ exec:~/.newsboat/feeds/pragprog.sh                     books
 "exec:~/.newsboat/feeds/crc.sh CGD"                    books
 https://github.com/dariubs/GoBooks/commits/master.atom books
 https://github.com/sger/RustBooks/commits/master.atom  books
-exec:~/.newsboat/feeds/test.sh
