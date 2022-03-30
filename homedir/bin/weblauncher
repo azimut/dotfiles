@@ -18,7 +18,7 @@ download_and_show() {
 	local tmpfile
 	tmpfile="$(mktemp --dry-run)"
 	nohup 2>&1 bash <<<"
-    if ! ${cmd} -T 60 -O ${tmpfile} -U \"${UA}\" \"${url}\"; then
+    if ! ${cmd} -q -T 60 -O ${tmpfile} -U \"${UA}\" \"${url}\"; then
        notify-send -t 4000 'Error' \"${errormsg}\"
     fi
     feh --title=\"${url}\" ${tmpfile} </dev/null
