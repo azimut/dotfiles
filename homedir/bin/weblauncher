@@ -21,7 +21,7 @@ download_and_show() {
     if ! ${cmd} -T 60 -O ${tmpfile} -U \"${UA}\" \"${url}\"; then
        notify-send -t 4000 'Error' \"${errormsg}\"
     fi
-    feh ${tmpfile} </dev/null
+    feh --title=\"${url}\" ${tmpfile} </dev/null
     rm -f ${tmpfile}" &
 }
 
