@@ -11,8 +11,22 @@ has_cloudflare() {
 	return $?
 }
 
+download_and_show() {
+	local url="${1}"
+	local cmd="${2:-torsocks wget}"
+	local errormsg='<span font=\"20px\">feh failed</span>'
+	local tmpfile
+	tmpfile="$(mktemp --dry-run)"
+	nohup 2>&1 bash <<<"
+    if ! ${cmd} -T 60 -O ${tmpfile} -U \"${UA}\" \"${url}\"; then
+       notify-send -t 4000 'Error' \"${errormsg}\"
+    fi
+    feh ${tmpfile} </dev/null
+    rm -f ${tmpfile}" &
+}
+
 mpv_site() {
-	local URL="${1}"
+	local url="${1}"
 	shift
 	local OPTS=("${@}")
 	nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
@@ -22,25 +36,25 @@ mpv_site() {
 		--loop \
 		--volume=50 \
 		--osd-level=3 \
-		"${OPTS[@]}" "${URL}" </dev/null &
+		"${OPTS[@]}" "${url}" </dev/null &
 }
 
 case "${URL,,}" in
 *imgflip*) # Does not accept TOR
-	nohup 2>&1 timeout 60 feh "${URL}" </dev/null & ;;
+	download_and_show "${URL}" "wget" ;;
 *imgur.com/*)
 	if [[ ${URL} != *album* && ${URL} != *jpg && ${URL} != *jpeg && ${URL} != *png ]]; then
-		nohup 2>&1 torsocks timeout 60 feh "${URL}.jpg" </dev/null &
+		download_and_show "${URL}.jpg"
 	fi
 	;&
 *.jpg* | *.png* | *.jpeg* | *.webp*)
-	(nohup 2>&1 torsocks timeout 60 feh "${URL}" </dev/null || notify-send -t 4000 'Error' "<span font='20px'>feh failed</span>") &
+	download_and_show "${URL}"
 	;;
 *.gif)
 	nohup 2>&1 mpv --loop --osd-level=3 "${URL}" </dev/null &
 	;;
 *http*://gyazo.com*) # catch things without an extension and add one
-	torsocks timeout 60 feh "${URL}.jpg" </dev/null & ;;
+	download_and_show "${URL}.jpg" ;;
 *news.ycombinator.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
 		hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
