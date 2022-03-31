@@ -73,7 +73,7 @@ https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                 
 #https://rebelion.digital/rss argentina
 #https://blog.redpanal.org/rss argentina
 
-"exec:4chan-rss -b g -n 25 -p 2"
+"exec:4chan-rss -b g -n 25 -p 2" tech
 
 https://wired-7.org/tech/index.rss
 

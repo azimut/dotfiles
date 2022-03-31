@@ -11,7 +11,7 @@ scrolloff               2
 
 ignore-mode    "download"
 ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'" "title !~ \"lisp\" and title !~ \"ocaml\" and title !~ \"network\" and title !~ \"devops\" and title !~ \"server\" and title !~ \"erlang\" and title !~ \"elixir\" and title !~ \"hack\" and title !~ \"crack\" and title !~ \"haskell\" and title !~ \"prolog\""
-ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"administrator\" and title !~ \"peerless\" and title !~ \"\[DISC\] one punch man\" and title !~ \"mushoku tensei\" and title !~ \"\[DISC\] Berserk\" and title !~ \"\[DISC\] Re:zero\" and title !~ \"the beggining after the end\""
+ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"administrator\" and title !~ \"peerless\" and title !~ \"[DISC] one punch man\" and title !~ \"mushoku tensei\" and title !~ \"[DISC] Berserk\" and title !~ \"[DISC] Re:zero\" and title !~ \"the beggining after the end\""
 
 #
 # Bookmarking
