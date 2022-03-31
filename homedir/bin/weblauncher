@@ -31,12 +31,13 @@ mpv_site() {
 	local OPTS=("${@}")
 	nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
 		--sid=1 \
+		--no-terminal \
 		--user-agent="${UA}" \
 		--af=@rb:rubberband \
 		--loop \
 		--volume=50 \
 		--osd-level=3 \
-		"${OPTS[@]}" "${url}" </dev/null &
+		"${OPTS[@]}" "${url}" &
 }
 
 case "${URL,,}" in
@@ -51,7 +52,7 @@ case "${URL,,}" in
 	download_and_show "${URL}"
 	;;
 *.gif)
-	nohup 2>&1 mpv --loop --osd-level=3 "${URL}" </dev/null &
+	nohup 2>&1 mpv --no-terminal --loop --osd-level=3 "${URL}" &
 	;;
 *http*://gyazo.com*) # catch things without an extension and add one
 	download_and_show "${URL}.jpg" ;;
