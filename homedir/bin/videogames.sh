@@ -1,7 +1,6 @@
 #!/bin/bash
 
 SCRIPTS=(
-	"${HOME}/.config/mpv/autocrop.lua"
 	"${HOME}/.config/mpv/ignore.lua"
 )
 
