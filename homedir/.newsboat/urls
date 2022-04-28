@@ -1,4 +1,5 @@
 https://www.reddit.com/r/manga/new/.rss manga "~/r/manga"
+https://fanfox.net/rss/level_up_alone.xml manga
 https://fanfox.net/rss/return_of_the_mad_demon.xml manga
 "exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
@@ -9,6 +10,8 @@ https://fanfox.net/rss/wo_zai_yi_jie_xiu_mo_fa.xml                           man
 https://fanfox.net/rss/leveling_up_with_the_gods.xml                         manga
 #https://fanfox.net/rss/the_dark_magician_transmigrates_after_66666_years.xml manga
 #https://fanfox.net/rss/weak_teacher.xml                                      manga
+#https://fanfox.net/rss/i_am_a_humanoid_cultivation_pill.xml                  manga
+#https://fanfox.net/rss/swallow_the_whole_world.xml                           manga
 https://fanfox.net/rss/heavenly_demon_cultivation_simulation.xml             manga
 http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
 https://fanfox.net/rss/mushoku_no_tensei_eris_gaiden.xml                     manga
@@ -47,7 +50,7 @@ https://fanfox.net/rss/legend_of_the_northern_blade.xml                         
 #https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_daiyonshou_seiiki_to_gouyoku_no_majou.xml  manga
 #https://fanfox.net/rss/re_zero_kara_hajimeru_isekai_seikatsu_kenki_koiuta.xml                           manga
 #https://fanfox.net/rss/solo_leveling.xml                                                                manga
-https://fanfox.net/rss/sousou_no_frieren.xml                                                            manga
+#https://fanfox.net/rss/sousou_no_frieren.xml                                                            manga
 #https://fanfox.net/rss/talentless_nana.xml                                                              manga
 #https://fanfox.net/rss/tensei_shitara_slime_datta_ken.xml                                               manga
 #https://fanfox.net/rss/the_live_ant_studios.xml                              manga
@@ -151,6 +154,7 @@ exec:~/.newsboat/feeds/sql2rss        jobs
 "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
 
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
+"exec:~/.newsboat/feeds/curl.sh https://feeds.buzzsprout.com/1830936.rss" podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
 https://anchor.fm/s/47fdfdbc/podcast/rss podcast
