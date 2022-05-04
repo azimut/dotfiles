@@ -41,6 +41,12 @@ mpv_site() {
 }
 
 case "${URL,,}" in
+*.wav* | *.mp3* | *.m4a*)
+	mpv_site "${URL}" --player-operation-mode=pseudo-gui
+	;;
+*.mov* | *.webm* | *.mp4* | *tiktok.com* | *v.redd.it* | *streamable.com*)
+	mpv_site "${URL}"
+	;;
 *imgflip*) # Does not accept TOR
 	download_and_show "${URL}" "wget" ;;
 *imgur.com/*)
@@ -75,14 +81,8 @@ case "${URL,,}" in
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
 		redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
-*github.com* | *linkedin.com* | *lnkd.in*)
+*github.com* | *linkedin.com*)
 	torsocks rdrview -B w3m "${URL}"
-	;;
-*.wav | *.mp3 | *.m4a)
-	mpv_site "${URL}" --player-operation-mode=pseudo-gui
-	;;
-*.webm | *.mp4 | *tiktok.com* | *v.redd.it* | *streamable.com*)
-	mpv_site "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
 	mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio'
