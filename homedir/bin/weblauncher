@@ -44,7 +44,7 @@ case "${URL,,}" in
 *.wav* | *.mp3* | *.m4a*)
 	mpv_site "${URL}" --player-operation-mode=pseudo-gui
 	;;
-*.mov* | *.webm* | *.mp4* | *tiktok.com* | *v.redd.it* | *streamable.com*)
+*.mov* | *.webm* | *.mp4* | *tiktok.com* | *v.redd.it* | *streamable.com* | *streamja.com*)
 	mpv_site "${URL}"
 	;;
 *imgflip*) # Does not accept TOR
