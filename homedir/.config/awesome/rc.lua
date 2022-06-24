@@ -693,6 +693,12 @@ awful.rules.rules = {
         }
    }, properties = { floating = true }},
 
+   { rule_any = {
+        name = {
+           "Picture-in-Picture",
+        },
+   }, properties = { sticky = true, ontop = true }},
+
    -- Add titlebars to normal clients and dialogs
    -- { rule_any = {type = { "normal", "dialog" }
    --              }, properties = { titlebars_enabled = true }
