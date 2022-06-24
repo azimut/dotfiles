@@ -5,41 +5,39 @@
 
 set -exuo pipefail
 
-getID() {
-	xdotool search --class mpv ||
-		xdotool search --name picture-in-picture
+mul() { echo "$(</dev/stdin) * ${1}" | bc -l; }
+div() { echo "$(</dev/stdin) / ${1}" | bc -l; }
+round() { printf "%.0f" "$(</dev/stdin)"; }
+
+getTargetID() {
+	xdotool search --class mpv || xdotool search --name picture-in-picture
 }
 
 getScreenDimensions() {
-	xrandr |
-		grep -o 'current [[:digit:]]* x [[:digit:]]*' |
-		cut -f2,4 -d' '
+	xrandr | grep -o 'current [[:digit:]]* x [[:digit:]]*' | cut -f2,4 -d' '
 }
 
 getWindowWidth() {
 	local id="${1}"
-	xdotool getwindowgeometry --shell ${id} |
-		grep WIDTH |
-		cut -f2 -d'='
+	xdotool getwindowgeometry --shell "${id}" | grep WIDTH | cut -f2 -d'='
 }
-
-read -r -a SCREEN < <(getScreenDimensions)
 
 MULTIPLIER="${1:-1}"
 BAR_OFFSET=20
 
-ID="$(getID)"
+ID="$(getTargetID)"
 
-SCREEN_WIDTH="${SCREEN[0]}"
-SCREEN_HEIGHT="${SCREEN[1]}"
+read -r -a SCREEN_DIMENSIONS < <(getScreenDimensions)
 
-TARGET_WIDTH=$((200 * MULTIPLIER))
-TARGET_HEIGHT=$((100 * MULTIPLIER))
+TARGET_WIDTH="$(echo 200 | mul ${MULTIPLIER} | round)"
+TARGET_HEIGHT="$(echo 100 | mul ${MULTIPLIER} | round)"
 
-xdotool windowsize ${ID} "${TARGET_WIDTH}" "${TARGET_HEIGHT}"
+xdotool windowsize ${ID} \
+	"${TARGET_WIDTH}" \
+	"${TARGET_HEIGHT}"
 
 EFFECTIVE_WIDTH="$(getWindowWidth ${ID})"
 
 xdotool windowmove ${ID} \
-	$((SCREEN_WIDTH - EFFECTIVE_WIDTH)) \
+	$((SCREEN_DIMENSIONS[0] - EFFECTIVE_WIDTH)) \
 	$((0 + BAR_OFFSET))
