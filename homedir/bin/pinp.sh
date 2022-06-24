@@ -6,7 +6,6 @@
 set -exuo pipefail
 
 mul() { echo "$(</dev/stdin) * ${1}" | bc -l; }
-div() { echo "$(</dev/stdin) / ${1}" | bc -l; }
 round() { printf "%.0f" "$(</dev/stdin)"; }
 
 getTargetID() {
