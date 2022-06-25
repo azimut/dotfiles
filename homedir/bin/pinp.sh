@@ -3,7 +3,7 @@
 # TODO: option to pick a corner
 #       https://gist.github.com/andrewmcdonough/88246/81d540704fdd7b753083da7e5e718abc23b87467
 
-set -exuo pipefail
+set -euo pipefail
 
 mul() { echo "$(</dev/stdin) * ${1}" | bc -l; }
 round() { printf "%.0f" "$(</dev/stdin)"; }
@@ -32,7 +32,12 @@ read -r -a CURRENT_DIMENSIONS < <(getWindowDimensions ${ID})
 TARGET_WIDTH="$(echo ${CURRENT_DIMENSIONS[0]} | mul ${MULTIPLIER} | round)"
 TARGET_HEIGHT="$(echo ${CURRENT_DIMENSIONS[1]} | mul ${MULTIPLIER} | round)"
 
+printf "Current window dimensions %s x %s" ${CURRENT_DIMENSIONS[0]} ${CURRENT_DIMENSIONS[1]}
 xdotool windowsize ${ID} "${TARGET_WIDTH}" "${TARGET_HEIGHT}"
+printf "Resized window to target dimensions %s x %s" ${TARGET_WIDTH} ${TARGET_HEIGHT}
+
 xdotool windowmove ${ID} \
 	$((SCREEN_DIMENSIONS[0] - TARGET_WIDTH)) \
 	$((0 + BAR_OFFSET))
+
+printf "Done!"
