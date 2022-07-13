@@ -22,7 +22,7 @@ getWindowDimensions() {
 }
 
 MULTIPLIER="${1:-1}"
-BAR_OFFSET=20
+BAR_OFFSET="${2:-20}"
 
 ID="$(getTargetID)"
 
