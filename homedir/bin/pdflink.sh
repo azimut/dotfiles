@@ -32,5 +32,5 @@ pid="$(getFocusPid)"
 path="$(getOpenPDF "${pid}")"
 page="$(getPage "${path}")"
 
-printf 'file://%s#page=%s' "${path}" "${page}" | xclip
+printf 'file://%s#page=%s' "${path}" "${page}" | xclip -selection clipboard
 notify-send 'pdflink.sh' '<span color="#57dafd" font="26px">pdflink copied to clipboard</span>'
