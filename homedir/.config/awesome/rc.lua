@@ -461,6 +461,11 @@ globalkeys = gears.table.join(
       function () awesome.spawn("xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off", false) end,
       {description = "xrandr NOTEBOOK ONLY"}),
    --
+   awful.key({ modkey }, "F5",
+      function ()
+         awesome.spawn(os.getenv("HOME") .. "/bin/pdflink.sh", false)
+      end,
+      {description = "save pdf location"}),
    awful.key({ modkey }, "F6",
       function ()
          awesome.spawn("touch " .. os.getenv("HOME") .. "/.cache/foodtime", false)
@@ -772,7 +777,7 @@ end)
 -- timer to avoid arrange flood (by firefox fullscreen)
 local timer_flag = false
 gears.timer({
-      timeout   = 1,
+      timeout   = 2,
       call_now  = true,
       autostart = true,
       callback  = function()
