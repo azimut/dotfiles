@@ -64,7 +64,7 @@ case "${URL,,}" in
 	download_and_show "${URL}.jpg" ;;
 *news.ycombinator.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		hackerview -t 15s -A "${UA}" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		hackerview -l 100 -t 15s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *twitter.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
@@ -81,7 +81,10 @@ case "${URL,,}" in
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
 		redditviewer -t 20 -u "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
-*github.com* | *linkedin.com*)
+*linkedin.com*)
+	rdrview -B w3m "${URL}"
+	;;
+*github.com*)
 	torsocks rdrview -B w3m "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
