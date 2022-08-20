@@ -1,5 +1,6 @@
 https://www.reddit.com/r/manga/new/.rss manga "~/r/manga"
-https://fanfox.net/rss/level_up_alone.xml manga
+#https://fanfox.net/rss/level_up_alone.xml manga
+https://fanfox.net/rss/escort_warrior.xml          manga
 https://fanfox.net/rss/return_of_the_mad_demon.xml manga
 "exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
@@ -56,13 +57,14 @@ https://fanfox.net/rss/kaifuku_jutsushi_no_yarinaoshi.xml                       
 #https://fanfox.net/rss/the_live_ant_studios.xml                              manga
 #https://fanfox.net/rss/the_great_mage_returns_after_4000_years.xml                                      manga
 ##delete##https://fanfox.net/rss/the_max_level_hero_has_returned.xml                                              manga
-https://fanfox.net/rss/fff_class_trashero.xml                                                           manga
-https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
+#https://fanfox.net/rss/fff_class_trashero.xml                                                           manga
+#https://fanfox.net/rss/the_return_of_the_8th_class_magician.xml                                         manga
 #####https://fanfox.net/rss/hazure_waku_no_joutai_ijou_skill_de_saikyou_ni_natta_ore_ga_subete_wo_juurin_suru_made.xml manga
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
 #####https://fanfox.net/rss/dr_stone.xml manga
 https://www.webtoons.com/en/fantasy/the-ember-knight/rss?title_no=2886 manga
 https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
+#https://fanfox.net/rss/nano_machine.xml manga
 #https://www.webtoons.com/en/action/gosu/rss?title_no=1099 manga
 #https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
 #https://readshingekinokyojin.com/rss manga
@@ -73,6 +75,7 @@ https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
 #"exec:gitorg-rss trailofbits"
 "exec:gitorg-rss Shirakumo"
 "exec:gitorg-rss tsoding"
+"exec:gitorg-rss destinygg"
 #"exec:gitissue-rss https://github.com/edannenberg/kubler/issues/208"
 
 #https://rebelion.digital/rss argentina
@@ -94,6 +97,7 @@ https://lainchan.org/%CE%94/index.rss
 #https://www.reddit.com/r/Gentoo/top/.rss?t=month "~/r/Gentoo"
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
+https://medium.com/feed/@kaveh808 programming
 "exec:~/.newsboat/feeds/curl.sh http://lambda-the-ultimate.org/rss.xml" programming
 https://discuss.ocaml.org/top.rss                   programming
 https://erlangforums.com/top.rss                    programming
@@ -111,6 +115,7 @@ https://www.reddit.com/r/racket/top/.rss?t=month    programming "~/r/racket"
 https://www.reddit.com/r/golang/top/.rss?t=month    programming "~/r/golang"
 https://www.reddit.com/r/rust/top/.rss?t=month      programming "~/r/rust"
 https://www.reddit.com/r/scala/top/.rss?t=month     programming "~/r/scala"
+https://www.reddit.com/r/kotlin/top/.rss?t=month    programming "~/r/kotlin"
 https://www.reddit.com/r/embedded/top/.rss?t=month  programming "~/r/Embedded"
 
 https://lobste.rs/top/rss tech
@@ -155,6 +160,8 @@ exec:~/.newsboat/feeds/ekojobs.sh       jobs
 exec:~/.newsboat/feeds/sql2rss        jobs
 "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
 
+https://feeds.simplecast.com/oM_1xVen podcast
+https://feeds.pacific-content.com/commandlineheroes podcast
 https://link.chtbl.com/corecursive?platform=rss podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
 "exec:~/.newsboat/feeds/curl.sh https://feeds.buzzsprout.com/1830936.rss" podcast

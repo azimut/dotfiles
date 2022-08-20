@@ -11,7 +11,8 @@ scrolloff               2
 
 ignore-mode    "download"
 ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'" "title !~ \"lisp|ocaml|erlang|elixir|haskell|prolog|fsharp|f\#|scala|gentoo|guix\""
-ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"\[DISC\]\s+((administrator\s+kang\s+jin\s+lee)|(peerless\s+dad)|(one\s+punch\s+man)|(the\s+beggining\s+after\s+the\s+end)|(mushoku\s+tensei))\""
+ignore-article "https://www.reddit.com/r/manga/new/.rss" "title !~ \"\[DISC\] ((administrator kang jin lee)|(peerless dad)|(one punch man)|(the beggining after the end)|(mushoku tensei))\""
+ignore-article "exec:4chan-rss -b g -n 25 -p 2" "title =~ \"/pcbg/|/sqt/|/tpg/|/fglt/|/ptg/|/hpg/|/iemg/|/bst/\""
 
 #
 # Bookmarking
