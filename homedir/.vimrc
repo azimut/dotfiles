@@ -33,7 +33,8 @@ Bundle 'gmarik/vundle'
 " Plugins from github repos:
 Bundle "navicore/vissort.vim"
 Bundle "marijnh/tern_for_vim"
-Bundle 'Valloric/YouCompleteMe'
+Bundle "chrisbra/Colorizer"
+"Bundle 'Valloric/YouCompleteMe'
 " Arduino syntax FTW
 Bundle 'sudar/vim-arduino-syntax'
 " Arduino builder
@@ -82,6 +83,7 @@ Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'Shougo/neocomplete.vim'
 "" Snippets manager (SnipMate), dependencies, and snippets repo
 "Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'strboul/urlview.vim'
 "Bundle 'tomtom/tlib_vim'
 "Bundle 'honza/vim-snippets'
 "Bundle 'garbas/vim-snipmate'
@@ -156,7 +158,7 @@ set hlsearch
 syntax on
 
 " show line numbers
-set nu
+"set nu
 
 """ tab navigation mappings
 ""map tn :tabn<CR>
@@ -441,6 +443,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 "set expandtab
 
 noremap <Leader>s :update<CR>
+noremap <leader>u :w<Home>silent <End> !urlview<CR>
 
 
 

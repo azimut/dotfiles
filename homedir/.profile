@@ -35,6 +35,9 @@ export PATH=$HOME/.kerl/builds/22.1/release_22.1/bin/:$PATH
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
 #unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 #MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# GraalVM
+#PATH="${HOME}/Downloads/graalvm-ce-java17-21.3.0/bin:$PATH"
