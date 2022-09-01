@@ -564,6 +564,11 @@ clientkeys = gears.table.join(
     awful.key({ modkey,           }, "m",
        function (c)
           c.maximized = not c.maximized
+          if c.maximized then
+             c.border_width = 0
+          else
+             c.border_width = beautiful.border_width
+          end
           c:raise()
        end ,
        {description = "(un)maximize", group = "client"}),
@@ -770,37 +775,6 @@ client.connect_signal(
          },
          layout = wibox.layout.align.horizontal
                                 }
-end)
-
--- https://stackoverflow.com/questions/30324250/how-to-hide-borders-dynamically-from-windows-when-not-tiled-awesome-wm
--- remove border on maximized windows
--- timer to avoid arrange flood (by firefox fullscreen)
-local timer_flag = false
-gears.timer({
-      timeout   = 2,
-      call_now  = true,
-      autostart = true,
-      callback  = function()
-         timer_flag = true
-      end
-})
-
-screen.connect_signal(
-   "arrange",
-   function (s)
-      if timer_flag == true then
-         timer_flag = false
-         local max = s.selected_tag.layout.name == "max"
-         local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
-         -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
-         for _, c in pairs(s.clients) do
-            if (max or only_one) and not c.floating or c.maximized then
-               c.border_width = 0
-            else
-               c.border_width = beautiful.border_width
-            end
-         end
-      end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
