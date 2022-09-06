@@ -233,7 +233,6 @@ local mybattery = lain.widget.bat({
 })
 
 local mynet = lain.widget.net {
-   iface = {"wlo1"},
    settings = function()
       local rcv = string.format("%5d", math.ceil(net_now.received))
       local snt = string.format("%-2g", math.ceil(net_now.sent))
