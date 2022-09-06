@@ -175,12 +175,20 @@ local myfs = lain.widget.fs({
       end
 })
 
+local mycpu = lain.widget.cpu({
+   settings = function()
+         widget:set_markup(
+            markup.font(theme.font,
+                        markup(theme.fg_normal, cpu_now.usage .. "(cpu) ")))
+   end
+})
+
 local mymem = lain.widget.mem({
       timeout = 5,
       settings = function ()
          widget:set_markup(
             markup.font(theme.font,
-                        markup(theme.fg_normal, mem_now.perc .. "%")))
+                        markup(theme.fg_normal, mem_now.perc .. "(mem)")))
       end
 })
 
@@ -333,6 +341,7 @@ awful.screen.connect_for_each_screen(function(s)
          {
             layout = wibox.layout.fixed.horizontal,
             myfs.widget,
+            mycpu,
             mymem,
             mynet
          },
