@@ -340,6 +340,7 @@ awful.screen.connect_for_each_screen(function(s)
          {
             layout = wibox.layout.fixed.horizontal,
             myfs.widget,
+            mytemp,
             mycpu,
             mymem,
             mynet
@@ -348,7 +349,6 @@ awful.screen.connect_for_each_screen(function(s)
          {
             layout = wibox.layout.fixed.horizontal,
             myweather,
-            mytemp,
             mybattery,
             myvolume
          }
