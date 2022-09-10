@@ -480,6 +480,11 @@ globalkeys = gears.table.join(
          myawakeness:set_text(awakeness())
       end,
       {description = "touch FOODTIME"}),
+   awful.key({ modkey }, "F7",
+      function ()
+         awesome.spawn(os.getenv("HOME") .. "/bin/grabtimestamp.sh", false)
+      end,
+      {description = "grabtimestamp.sh"}),
  --
    awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
