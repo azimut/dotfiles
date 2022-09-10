@@ -23,12 +23,13 @@ getMPVPosition() {
 	local position hh mm ss
 	position="$(getMPVRawPosition)"
 	hh=$((position / 1000000 / 60 / 60))
-	mm=$((position / 1000000 / 60))
-	ss=$((position / 1000000 % 100))
+	mm=$((position / 1000000 / 60 % 60))
+	ss=$((position / 1000000 % 100 % 60))
 	printf "%02d:%02d:%02d" "${hh}" "${mm}" "${ss}"
 }
 
 main() {
-	printf "[[%s][%s]]" "$(getMPVFile)" "$(getMPVPosition)"
+	printf "[[%s][%s]]" "$(getMPVFile)" "$(getMPVPosition)" | xclip -selection clipboard
+	notify-send 'grabtimestamp.sh' "timestamp grabbed!!!"
 }
 main
