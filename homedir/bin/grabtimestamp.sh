@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Description: Copies to clipboard an ORG formatted link, of the current timestamp of mpv.
+# Requires: https://github.com/hoyon/mpv-mpris
+
 set -euo pipefail
 
 getMPVProp() {

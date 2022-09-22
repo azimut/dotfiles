@@ -1,6 +1,8 @@
+! Sxiv
 Sxiv.background: #000000
 Sxiv.foreground: #00C0FF
 Sxiv.font: Hack-9
+! Urxvt
 URxvt.keysym.C-Up:	font-size:increase
 URxvt.keysym.C-Down:	font-size:decrease
 URxvt.matcher.button:	0
@@ -12,17 +14,18 @@ URxvt*termName:	xterm-256color
 URxvt*font:	xft:Dejavu Sans Mono:size=13
 URxvt.perl-ext-common:	default,matcher,-searchable-scrollback
 URxvt*urgentOnBell:	true
-sxiv.background: #000000
 urxvt*depth:	32
 urxvt*lineSpace:	-1
 urxvt.saveLines:	4095
 urxvt.perl-ext:	notifyme
 urxvt*scrollBar:	false
 urxvt.iso14755:	false
+! xrenoise
 xrenoise.use_xcursors:	1
 xrenoise.display:	:0
 xrenoise.display_resource:	0x00,0x4B,0xC7,0x62,0x1C,0x6D,0xF7,0x5D
 xrenoise.executable_path:	/home/sendai/projects/lua/Renoise_3_2_0_Demo_Linux/renoise
+! misc
 *color12:	#bdbddb
 *foreground:	#d9e6f2
 *color8:	#262626
