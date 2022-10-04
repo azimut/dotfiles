@@ -3,6 +3,7 @@ Description=Proxy Libera through Tor
 
 [Service]
 ExecStart=/usr/bin/socat TCP4-LISTEN:4322,fork SOCKS4A:127.0.0.1:libera75jm6of4wxpxt4aynol3xjmbtxgfyjpu34ss4d7r7q2v5zrpyd.onion:6697,socksport=9050
+Restart=always
 
 [Install]
 WantedBy=default.target
