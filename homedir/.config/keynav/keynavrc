@@ -1,8 +1,14 @@
 ctrl+semicolon start, grid 1x1
-h cut-left          , grid 2x2
-j cut-down          , grid 2x2
-k cut-up            , grid 2x2
-l cut-right         , grid 2x2
+
+h cut-left             , grid 2x2
+j cut-down             , grid 2x2
+k cut-up               , grid 2x2
+l cut-right            , grid 2x2
+y cut-left  , cut-up   , grid 2x2
+u cut-right , cut-up   , grid 2x2
+b cut-left  , cut-down , grid 2x2
+n cut-right , cut-down , grid 2x2
+
 c cursorzoom 300 300, grid 2x2
 
 1 click 1
