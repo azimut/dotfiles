@@ -493,8 +493,15 @@ globalkeys = gears.table.join(
    awful.key({ modkey }, "b",
       function ()
          myscreen = awful.screen.focused()
-         --myscreen.mywibox.visible = not myscreen.mywibox.visible
-         myscreen.mywiboy.visible = not myscreen.mywiboy.visible
+         if myscreen.mywiboy.visible and myscreen.mywibox.visible then
+            myscreen.mywiboy.visible = false
+         elseif (not myscreen.mywiboy.visible) and (not myscreen.mywibox.visible) then
+            myscreen.mywiboy.visible = true
+            myscreen.mywibox.visible = true
+         else
+            myscreen.mywiboy.visible = false
+            myscreen.mywibox.visible = false
+         end
       end,
       {description = "toggle statusbar"}
    ),
