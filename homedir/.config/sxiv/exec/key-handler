@@ -14,28 +14,63 @@
 
 mkdir -p ~/.coomer/
 
+has_sudo() { sudo -n true; }
+
 rotate() {
 	degree="$1"
 	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
-	    case "$(file -b -i "$file")" in
+		case "$(file -b -i "$file")" in
 		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-		*)           mogrify  -rotate "$degree" "$file" ;;
-	    esac
+		*) mogrify -rotate "$degree" "$file" ;;
+		esac
 	done
 }
 
 case "$1" in
-    "C-x")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
-    "C-c")      while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
-    "C-e")      while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
-    "C-g")      tr '\n' '\0' | xargs -0 gimp & ;;
-    "C-k")      while read -r file; do
-                    rm -f "$file"
-                    echo 'PLACEHOLDER' > "$file"
-                done;;
-    "C-less")  rotate 270 ;;
-    "C-greater") rotate  90 ;;
-    "C-slash")  rotate 180 ;;
-    "C-p") while read -r file; do newfile=$(readlink -e $file); ln -s "$newfile" $HOME/.coomer/ & done ;;
-esac
+"C-x") xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+"C-c") while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
+"C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
+"C-g") tr '\n' '\0' | xargs -0 gimp & ;;
+"C-k")
+	if zenity --question --text="sudo?"; then
+		has_sudo || notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
+		while read -r image; do
+			sudo rm -fv "${image}"
+		done
+	else
+		while read -r image; do
+			rm -fv "${image}"
+		done
+	fi
+	;;
+"C-y")
+	CACHEFILE="${HOME}"/.cache/sxiv/copydir.tmp
+	if [[ -s ${CACHEFILE} ]]; then
+		target=$(zenity --file-selection --filename="$(cat ${CACHEFILE})" --directory)
+	else
+		target=$(zenity --file-selection --filename="${HOME}" --directory)
+	fi
 
+	[[ -z ${target} ]] && exit 1
+	[[ ! -d ${target} ]] && exit 1
+	echo "${target}" >${CACHEFILE}
+
+	if zenity --question --text="sudo?"; then
+		has_sudo || notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
+		while read -r image; do
+			sudo cp -vu "${image}" "${target}"
+		done
+	else
+		while read -r image; do
+			cp -vu "${image}" "${target}"
+		done
+	fi
+	;;
+"C-less") rotate 270 ;;
+"C-greater") rotate 90 ;;
+"C-slash") rotate 180 ;;
+"C-p") while read -r file; do
+	newfile=$(readlink -e $file)
+	ln -s "$newfile" $HOME/.coomer/ &
+done ;;
+esac
