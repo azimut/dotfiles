@@ -15,6 +15,9 @@
 mkdir -p ~/.coomer/
 
 has_sudo() { sudo -n true; }
+ask_for_password() {
+	notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
+}
 
 rotate() {
 	degree="$1"
@@ -32,16 +35,18 @@ case "$1" in
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 "C-g") tr '\n' '\0' | xargs -0 gimp & ;;
 "C-k")
-	if zenity --question --text="sudo?"; then
-		has_sudo || notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
-		while read -r image; do
-			sudo rm -fv "${image}"
-		done
-	else
-		while read -r image; do
+	skip_sudo=1
+	while read -r image; do
+		if [[ -O ${image} ]]; then
 			rm -fv "${image}"
-		done
-	fi
+		else
+			if [[ ${skip_sudo} -eq 1 ]]; then
+				has_sudo || ask_for_password
+				skip_sudo=0
+			fi
+			sudo rm -fv "${image}"
+		fi
+	done
 	;;
 "C-y")
 	CACHEFILE="${HOME}"/.cache/sxiv/copydir.tmp
@@ -55,8 +60,8 @@ case "$1" in
 	[[ ! -d ${target} ]] && exit 1
 	echo "${target}" >${CACHEFILE}
 
-	if zenity --question --text="sudo?"; then
-		has_sudo || notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
+	if [[ ! -O ${target} ]]; then
+		has_sudo || ask_for_password
 		while read -r image; do
 			sudo cp -vu "${image}" "${target}"
 		done
