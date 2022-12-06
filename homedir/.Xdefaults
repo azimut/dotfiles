@@ -1,6 +1,6 @@
 ! Sxiv
 Sxiv.background: #000000
-Sxiv.foreground: #00C0FF
+Sxiv.foreground: #C0C0C0
 Sxiv.font: Hack-9
 ! Urxvt
 URxvt.keysym.C-Up:	font-size:increase
