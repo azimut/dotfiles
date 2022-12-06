@@ -3,7 +3,7 @@
 set -euo pipefail
 
 container_and_file() {
-    for link in ~/.coomer/*jpg; do
+    for link in ~/.coomer/*jpg ~/.coomer/*png; do
         if [[ ! -L ${link} ]]; then
             continue
         fi
