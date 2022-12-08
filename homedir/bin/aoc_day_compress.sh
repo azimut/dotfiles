@@ -13,13 +13,15 @@ get_orientation() {
 }
 
 before="$(du -sh)"
+echo "mogrifying..."
+mogrify -fuzz 25% -trim +repage -format png ./*.png
 for i in ./*.png; do
 	[[ ! -f ${i} ]] && break
-	echo "${i}"
+	echo "maxing size of ${i}"
 	if [[ $(get_orientation "${i}") == 'horizontal' ]]; then
-		convert "${i}" -resize 1280x1024\> "${i/png/jpg}"
+		convert "${i}" -resize 1920x1080\> "${i/png/jpg}"
 	else
-		convert "${i}" -resize 1024x1280\> "${i/png/jpg}"
+		convert "${i}" -resize 1080x1920\> "${i/png/jpg}"
 	fi
 	rm -f "${i}"
 done
