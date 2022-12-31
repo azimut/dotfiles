@@ -104,6 +104,7 @@ https://discuss.ocaml.org/top.rss                   programming
 https://erlangforums.com/top.rss                    programming
 #https://www.reddit.com/r/lua/top/.rss              programming "~/r/lua"
 #https://www.reddit.com/r/scheme/.rss               programming "~/r/scheme"
+https://www.reddit.com/r/pascal/top/.rss?t=month    programming "~/r/pascal"
 https://www.reddit.com/r/elixir/top/.rss?t=month    programming "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss                programming "~/r/erlang"
 https://www.reddit.com/r/haskell/top/.rss?t=month   programming "~/r/haskell"
