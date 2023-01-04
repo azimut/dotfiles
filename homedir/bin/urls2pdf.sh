@@ -7,7 +7,7 @@ fetch() {
 		--incognito \
 		--headless \
 		--disable-gpu \
-		--print-to-pdf \
+		--print-to-pdf="${2}" \
 		"${1}"
 }
 
@@ -18,6 +18,5 @@ while read -r url; do
 	path="${path%/}"
 	name="$(echo "${path}" | tr '/' '-' | tr -dc 'a-zA-Z0-9-_')"
 	name=${name:-root}
-	fetch "${url}"
-	mv output.pdf "${name}".pdf
+	fetch "${url}" "${name}.pdf"
 done <"${1}"
