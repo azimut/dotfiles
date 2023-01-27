@@ -20,5 +20,6 @@ mpv --scripts="$(join ':' "${SCRIPTS[@]}")" \
 	--mute=yes \
 	--loop-file=yes \
 	--loop-playlist=yes \
+	--no-keepaspect-window \
 	--shuffle "${@}" \
 	.
