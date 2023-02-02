@@ -47,6 +47,17 @@ do
 end
 -- }}}
 
+local function run_once(cmd)
+   findme = cmd
+   firstspace = cmd:find(" ")
+   if firstspace then
+      findme = cmd:sub(0, firstspace-1)
+   end
+   awful.spawn.with_shell(
+      string.format("pgrep -u $USER -x %s > /dev/null || (%s)",
+                    findme, cmd))
+end
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -451,6 +462,9 @@ globalkeys = gears.table.join(
    awful.key({ modkey }, "-",
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%", false) end,
       {description = "decrease "}),
+   awful.key({ modkey }, "|",
+      function () run_once("boomer -d 0") end,
+      {description = "boomer zoom"}),
    --
    -- BOTH             xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary
    -- MONITOR ONLY     xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal
@@ -806,17 +820,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
-local function run_once(cmd)
-   findme = cmd
-   firstspace = cmd:find(" ")
-   if firstspace then
-      findme = cmd:sub(0, firstspace-1)
-   end
-   awful.spawn.with_shell(
-      string.format("pgrep -u $USER -x %s > /dev/null || (%s)",
-                    findme, cmd))
-end
 
 run_once("mpd")
 run_once("mpdas")
