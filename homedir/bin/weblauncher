@@ -60,6 +60,9 @@ case "${URL,,}" in
 *.gif)
 	nohup 2>&1 mpv --no-terminal --loop --osd-level=3 "${URL}" &
 	;;
+*.pdf)
+	nohup 2>&1 evince "${URL}" &
+	;;
 *http*://gyazo.com*) # catch things without an extension and add one
 	download_and_show "${URL}.jpg" ;;
 *news.ycombinator.com*)
