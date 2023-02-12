@@ -24,6 +24,8 @@ def progress_hook(count, block_size, total_size):
 def download(url):
     urlpath = urlparse(url).path
     _, filename = os.path.split(urlpath)
+    if os.path.exists(filename):
+        raise SystemExit("file `%s` already exists!" % filename)
     urlretrieve(url, filename, progress_hook)
     print("\ndone!", filename)
 
