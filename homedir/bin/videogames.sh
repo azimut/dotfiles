@@ -15,11 +15,10 @@ join() {
 	echo "$*"
 }
 
-mpv --scripts="$(join ':' "${SCRIPTS[@]}")" \
+find ~/disk2/zone2 ~/disk2/.zone -type f -size +1M -print0 | shuf -z | xargs -0 mpv \
+	--scripts="$(join ':' "${SCRIPTS[@]}")" \
 	--script-opts="$(join ',' "${SCRIPT_OPTS[@]}")" \
 	--mute=yes \
 	--loop-file=yes \
 	--loop-playlist=yes \
-	--no-keepaspect-window \
-	--shuffle "${@}" \
-	.
+	--no-keepaspect-window
