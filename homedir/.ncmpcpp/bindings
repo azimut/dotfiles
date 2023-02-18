@@ -44,3 +44,13 @@ def_key "Q"
     quit
 def_key "q"
     dummy
+
+def_key "f"
+    dummy
+def_key "b"
+     dummy
+
+def_key "right"
+ seek_forward
+def_key "left"
+ seek_backward
