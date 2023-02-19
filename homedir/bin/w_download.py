@@ -40,10 +40,13 @@ def main(url):
     for entry in entries:
         thumb_url = entry[0]
         file = "thumbs/"+entry[2]
+        if os.path.isfile(file):
+            print("already exists "+file)
+            continue
         try:
             download(thumb_url, file)
         except urllib.error.HTTPError:
-            print("skipping "+file)
+            print("error downloading "+file)
             pass
 
     with open('do.csv', 'w', newline='') as csvfile:
