@@ -28,8 +28,11 @@ def main():
     os.makedirs("final", exist_ok=True)
     file2url = load_csv()
     for image in os.listdir("thumbs"):
-        download(file2url[image], "final/"+image)
-
+        try:
+            download(file2url[image], "final/"+image)
+        except urllib.error.HTTPError:
+            print("skipping "+image)
+            pass
 
 if __name__ == '__main__':
     main()

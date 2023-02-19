@@ -43,6 +43,7 @@ def main(url):
         try:
             download(thumb_url, file)
         except urllib.error.HTTPError:
+            print("skipping "+file)
             pass
 
     with open('do.csv', 'w', newline='') as csvfile:
