@@ -33,7 +33,8 @@ def download(url):
 try:
     url = sys.argv[1]
 except IndexError:
-    raise SystemExit("Usage: %s <url>" % sys.argv[0])
+    raise SystemExit("Usage: %s [URL]..." % sys.argv[0])
 
 if __name__ == '__main__':
-    download(url)
+    for url in sys.argv[1:]:
+        download(url)
