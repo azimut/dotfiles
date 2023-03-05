@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.8
+"""Downloads url of a file, removes url parameters."""
 
 import sys
 import os.path
@@ -12,12 +13,13 @@ def progress_hook(count, block_size, total_size):
     if count == 0:
         start_time = time()
         return
-    duration = time() - start_time
+    seconds = time() - start_time
     progress_size = int(count * block_size)
-    speed = int(progress_size / (1024*duration))
+    progress_mb = progress_size / (1024*1024)
+    speed = int(progress_size / (1024*seconds))
     percent = int(count * block_size * 100 / total_size)
-    sys.stdout.write("\r...%d%%, %d MB, %d KB/s, %d seconds passed" %
-                     (percent, progress_size / (1024*1024), speed, duration))
+    msg = f"\r {percent}%%, {progress_mb} MB, {speed} KB/s, {seconds}s passed"
+    sys.stdout.write(msg)
     sys.stdout.flush()
 
 
@@ -25,7 +27,7 @@ def download(url):
     urlpath = urlparse(url).path
     _, filename = os.path.split(urlpath)
     if os.path.exists(filename):
-        raise SystemExit("file `%s` already exists!" % filename)
+        raise SystemExit(f"file {filename} already exists!")
     urlretrieve(url, filename, progress_hook)
     print("\ndone!", filename)
 
@@ -33,7 +35,7 @@ def download(url):
 try:
     url = sys.argv[1]
 except IndexError:
-    raise SystemExit("Usage: %s [URL]..." % sys.argv[0])
+    raise SystemExit(f"Usage: {sys.argv[0]} [URL]...")
 
 if __name__ == '__main__':
     for url in sys.argv[1:]:
