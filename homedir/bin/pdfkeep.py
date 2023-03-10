@@ -10,7 +10,6 @@ import psutil
 def process_of_pdfviewer():
     """Return the PID of a pdf viewer."""
     for p in psutil.process_iter(['pid', 'name']):
-        print(p)
         if p.info['name'] in ['evince', 'mupdf']:
             return p
     sys.exit("ERROR: pdf viewer not found!")
