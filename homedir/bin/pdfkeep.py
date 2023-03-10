@@ -8,7 +8,7 @@ import psutil
 
 
 def process_of_pdfviewer():
-    """Return the PID of a pdf viewer."""
+    """Return the Process of a pdf viewer."""
     for p in psutil.process_iter(['pid', 'name']):
         if p.info['name'] in ['evince', 'mupdf']:
             return p
@@ -30,7 +30,7 @@ def save_to_disk(srcfile):
     dstfile = f"{home}/Downloads/{filename}"
 
     if os.path.exists(dstfile):
-        sys.exit(f"ERROR: destination file ({dstfile}) already exists")
+        sys.exit(f"ERROR: destination file ({filename}) already exists")
 
     try:
         shutil.copyfile(srcfile, dstfile)
@@ -40,11 +40,7 @@ def save_to_disk(srcfile):
         raise
 
 
-def _main():
+if __name__ == '__main__':
     proc = process_of_pdfviewer()
     pdf = path_of_pdf(proc)
     save_to_disk(pdf)
-
-
-if __name__ == '__main__':
-    _main()
