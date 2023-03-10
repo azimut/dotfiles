@@ -21,11 +21,20 @@ ask_for_password() {
 
 rotate() {
 	degree="$1"
+	has_sudo || ask_for_password
 	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
-		case "$(file -b -i "$file")" in
-		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-		*) mogrify -rotate "$degree" "$file" ;;
-		esac
+		if [[ -O ${file} ]]; then
+			case "$(file -b -i "$file")" in
+			image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+			*) mogrify -rotate "$degree" "$file" ;;
+			esac
+		else
+			case "$(file -b -i "$file")" in
+			image/jpeg*) sudo jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+			*) sudo mogrify -rotate "$degree" "$file" ;;
+			esac
+		fi
+		printf "rotated %d°\n" "${degree}"
 	done
 }
 
