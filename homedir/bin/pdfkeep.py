@@ -17,26 +17,26 @@ def process_of_pdfviewer():
 
 def path_of_pdf(proc):
     """Return the path of the opened .pdf in the process."""
-    for procfile in proc.open_files():
-        if procfile.path.endswith('.pdf'):
-            return procfile.path
+    for f in proc.open_files():
+        if f.path.endswith('.pdf'):
+            return f.path
     sys.exit("ERROR: pdf not found in pid!")
 
 
-def save_to_disk(srcfile):
+def save_to_disk(srcpath):
     """Copy file to ~/Downloads/."""
     home = os.path.expanduser("~")
-    filename = os.path.basename(srcfile)
-    dstfile = f"{home}/Downloads/{filename}"
+    filename = os.path.basename(srcpath)
+    dstpath = f"{home}/Downloads/{filename}"
 
-    if os.path.exists(dstfile):
+    if os.path.exists(dstpath):
         sys.exit(f"ERROR: destination file ({filename}) already exists")
 
     try:
-        shutil.copyfile(srcfile, dstfile)
-        print(dstfile)
+        shutil.copyfile(srcpath, dstpath)
+        print(dstpath)
     except OSError:
-        os.remove(dstfile)
+        os.remove(dstpath)
         raise
 
 
