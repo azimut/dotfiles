@@ -21,21 +21,28 @@ export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 
 export TERM=xterm-256color
 
-export GOPATH=$HOME/go                # Go
-export PATH=$PATH:$HOME/go/bin        # Go
-export PATH=$PATH:$HOME/.local/bin    # Python
-export PATH=$PATH:$HOME/.cargo/bin    # Rust
-export PATH=$HOME/.luarocks/bin:$PATH # Lua
-
-# Erlang
-export ERL_AFLAGS="-kernel shell_history enabled"
-export PATH=$HOME/.cache/rebar3/bin:$PATH
-export PATH=$HOME/.kerl/builds/22.1/release_22.1/bin/:$PATH
+export GOPATH=$HOME/go                        # Go
+export PATH=$PATH:$HOME/go/bin                # Go
+export PATH=$PATH:$HOME/.local/bin            # Python
+export PATH=$PATH:$HOME/.cargo/bin            # Rust
+export PATH=$HOME/.luarocks/bin:$PATH         # Lua
+export PATH=/usr/local/nim-1.6.10/bin:$PATH   # Nim
+export PATH=$HOME/.nimble/bin:$PATH           # Nim
+export PATH=$HOME/.cache/rebar3/bin:$PATH     # Erlang
+export PATH=$HOME/kerl/19.2/bin:$PATH         # Erlang
+export ANDROID_HOME=$HOME/Android/Sdk         # Android
+export PATH=$PATH:$ANDROID_HOME/tools         # Android
+export JAVA_HOME=/usr/local/jdk-11.0.2        # Java
+export PATH=$JAVA_HOME/bin/:$PATH             # Java
+export PATH=/opt/apache-maven-3.8.6/bin:$PATH # Java
+export PATH=$HOME/.sbt_bin/bin:$PATH          # Scala
 
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH=/usr/local/lib/nodejs/bin:$PATH
+
 #unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 #MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
