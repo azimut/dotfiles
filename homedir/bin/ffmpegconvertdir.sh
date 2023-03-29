@@ -4,14 +4,13 @@
 #   used to reduce the size of a bunch of videos
 #   while keeping their directory structure
 #
-# TODO: assumes 16:9, horizontal
 
 set -euo pipefail
 
-[[ $# -ne 1 ]] && {
+[[ $# -eq 0 ]] && {
 	echo "ERROR: missing argument"
 	echo "Usage:"
-	echo "    $0 <SRCDIR>"
+	echo "    $0 <SRCDIR> <VIDEO_FILTER>"
 	exit 1
 }
 
@@ -21,6 +20,7 @@ set -euo pipefail
 }
 
 SRC="$(realpath "${1}")"
+FILTERS="${2:-scale=960:-1}"
 
 # Create DST directories
 find "${SRC}" -type d | tail -n+2 |
@@ -36,5 +36,5 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) |
 			echo "Skipping ${dstfile}..."
 			continue
 		}
-		ffmpeg -i "${srcfile}" -ac 1 -vf scale=960:-1 "${dstfile}" </dev/null
+		ffmpeg -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
 	done
