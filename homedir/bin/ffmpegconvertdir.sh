@@ -36,5 +36,5 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) |
 			echo "Skipping ${dstfile}..."
 			continue
 		}
-		ffmpeg -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
+		ffmpeg -hide_banner -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
 	done
