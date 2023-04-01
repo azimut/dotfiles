@@ -22,9 +22,9 @@ export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export TERM=xterm-256color
 
 export GOPATH=$HOME/go                        # Go
-export PATH=$PATH:$HOME/go/bin                # Go
-export PATH=$PATH:$HOME/.local/bin            # Python
-export PATH=$PATH:$HOME/.cargo/bin            # Rust
+export PATH=$HOME/go/bin:$PATH                # Go
+export PATH=$HOME/.local/bin:$PATH            # Python
+export PATH=$HOME/.cargo/bin:$PATH            # Rust
 export PATH=$HOME/.luarocks/bin:$PATH         # Lua
 export PATH=/usr/local/nim-1.6.10/bin:$PATH   # Nim
 export PATH=$HOME/.nimble/bin:$PATH           # Nim
