@@ -1,11 +1,11 @@
-#  ████     ██   ██████  ████     ████ ███████    ██████  ███████  ███████ 
+#  ████     ██   ██████  ████     ████ ███████    ██████  ███████  ███████
 # ░██░██   ░██  ██░░░░██░██░██   ██░██░██░░░░██  ██░░░░██░██░░░░██░██░░░░██
 # ░██░░██  ░██ ██    ░░ ░██░░██ ██ ░██░██   ░██ ██    ░░ ░██   ░██░██   ░██
-# ░██ ░░██ ░██░██       ░██ ░░███  ░██░███████ ░██       ░███████ ░███████ 
-# ░██  ░░██░██░██       ░██  ░░█   ░██░██░░░░  ░██       ░██░░░░  ░██░░░░  
-# ░██   ░░████░░██    ██░██   ░    ░██░██      ░░██    ██░██      ░██      
-# ░██    ░░███ ░░██████ ░██        ░██░██       ░░██████ ░██      ░██      
-# ░░      ░░░   ░░░░░░  ░░         ░░ ░░         ░░░░░░  ░░       ░░       
+# ░██ ░░██ ░██░██       ░██ ░░███  ░██░███████ ░██       ░███████ ░███████
+# ░██  ░░██░██░██       ░██  ░░█   ░██░██░░░░  ░██       ░██░░░░  ░██░░░░
+# ░██   ░░████░░██    ██░██   ░    ░██░██      ░░██    ██░██      ░██
+# ░██    ░░███ ░░██████ ░██        ░██░██       ░░██████ ░██      ░██
+# ░░      ░░░   ░░░░░░  ░░         ░░ ░░         ░░░░░░  ░░       ░░
 #
 # █▓▒░ Setup
 ncmpcpp_directory = "~/.ncmpcpp"
@@ -14,41 +14,45 @@ external_editor = "/usr/bin/vim"
 
 # █▓▒░ MPD Settings
 mpd_crossfade_time = "3"
-#mpd_music_dir = "~/music"
 mpd_host = "127.0.0.1"
-#mpd_host = "samsung"
 mpd_port = "6600"
 
 # █▓▒░ Visualizer
-#visualizer_look = "▒░"
-#visualizer_color = "cyan"
-#visualizer_in_stereo = "yes"
-#visualizer_fifo_path = "/home/sendai/.mpd/mpd.fifo"
-#visualizer_sync_interval = "1"
-#visualizer_output_name = "mpd spectrum"
-#visualizer_type = "frequency spectrum"
+visualizer_look         = ●▉
+## "▒░"
+visualizer_color        = "cyan"
+visualizer_in_stereo    = yes
+visualizer_data_source  = "~/.mpd/mpd.fifo"
+visualizer_type         = "wave"
+visualizer_autoscale    = yes
+# visualizer_spectrum_smooth_look = yes
 
 # █▓▒░ Display Settings
-##song_list_format = "{$7%a $1> $6}{%t$1$R$b} [{%l}]"
-##song_status_format = "$7%a $1$b> $6%t $1$b> $2%b$1"
-statusbar_color = "white"
-main_window_color = "cyan"
-#main_window_highlight_color = "magenta"
-##active_column_color = "black"
-header_visibility = "no"
-statusbar_visibility = "yes"
-colors_enabled = "yes"
-#now_playing_prefix = "> "
-#now_playing_suffix = ""
-autocenter_mode = "yes"
-centered_cursor = "yes"
-progressbar_color = "black"
-#progressbar_look = "▒▓░"
-##titles_visibility = "no"
-mouse_support = "no"
-discard_colors_if_item_is_selected = "yes"
-user_interface = "classic"
-playlist_display_mode = "columns"
+song_list_format = "{$7%a $1> $6}{%t$8$R$b} [{%l}]"
+song_status_format = "$7%a $1$b> $6%t $1$b> $2%b$1"
+#?# main_window_highlight_color = "magenta"
+#?# active_column_color = "black"
+
+ask_for_locked_screen_width_part   = no
+autocenter_mode                    = yes
+centered_cursor                    = yes
+colors_enabled                     = yes
+connected_message_on_startup       = no
+discard_colors_if_item_is_selected = yes
+header_visibility                  = no
+locked_screen_width_part           = 50
+main_window_color                  = "cyan"
+mouse_support                      = no
+now_playing_prefix                 = "--> "
+now_playing_suffix                 = " <--"
+playlist_disable_highlight_delay   = 0
+playlist_display_mode              = "columns"
+progressbar_color                  = "black"
+progressbar_look                   = "▒▓░"
+statusbar_color                    = "white"
+statusbar_visibility               = yes
+titles_visibility                  = no
+user_interface                     = "classic"
 
 # █▓▒░ cheat sheet
 # %l - length
@@ -77,7 +81,3 @@ playlist_display_mode = "columns"
 # $7 - cyan
 # $8 - white
 # $9 - end of current color
-ask_for_locked_screen_width_part = 	no
-locked_screen_width_part =		50
-
-

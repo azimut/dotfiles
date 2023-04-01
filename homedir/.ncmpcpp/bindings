@@ -1,4 +1,6 @@
+###############################
 # Movement
+###############################
 
 def_key "h"
     previous_column
@@ -33,7 +35,9 @@ def_key "alt-v"
 def_key "l"
   jump_to_parent_directory
 
+###############################
 # Find
+###############################
 
 def_key "n"
     next_found_item
@@ -54,3 +58,7 @@ def_key "right"
  seek_forward
 def_key "left"
  seek_backward
+def_key "}"
+ next
+def_key "{"
+ previous
