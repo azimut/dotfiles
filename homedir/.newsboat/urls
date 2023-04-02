@@ -82,7 +82,7 @@ https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
 #https://rebelion.digital/rss argentina
 #https://blog.redpanal.org/rss argentina
 
-"exec:4chan-rss -b g -n 25 -p 2" tech
+"exec:~/.newsboat/feeds/4chan-rss -b g -n 25 -p 2" tech
 
 https://wired-7.org/tech/index.rss
 
