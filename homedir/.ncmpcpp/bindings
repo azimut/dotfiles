@@ -159,3 +159,6 @@ def_key "9"
   push_characters "90"
   push_character "enter"
   jump_to_position_in_song
+
+def_key "0"
+  play_item
