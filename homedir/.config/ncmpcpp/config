@@ -8,7 +8,7 @@
 # ░░      ░░░   ░░░░░░  ░░         ░░ ░░         ░░░░░░  ░░       ░░
 #
 # █▓▒░ Setup
-ncmpcpp_directory = "~/.ncmpcpp"
+ncmpcpp_directory = "~/.config/ncmpcpp"
 lyrics_directory  = "~/.lyrics"
 mpd_music_dir     = "~/disk/music"
 external_editor   = "/usr/bin/vim"
@@ -23,7 +23,7 @@ visualizer_look         = "▒░"
 # visualizer_look         = "●▉"
 visualizer_color        = "cyan"
 visualizer_in_stereo    = yes
-visualizer_data_source  = "~/.mpd/mpd.fifo"
+visualizer_data_source  = "~/.config/mpd/mpd.fifo"
 visualizer_type         = "wave"
 visualizer_autoscale    = yes
 # visualizer_spectrum_smooth_look = yes
