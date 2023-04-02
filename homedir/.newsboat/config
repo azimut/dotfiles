@@ -36,8 +36,6 @@ use-proxy              yes
 #
 # Keybindings
 #
-unbind-key Q
-bind-key ESC hard-quit
 
 bind-key M-v pageup
 bind-key ^V pagedown
@@ -61,6 +59,8 @@ color info              default default #reverse
 color background        default default
 color article           default default
 
+feedlist-format     "%4i %n  %4U    %t"
+
 #
 # Macros
 #
@@ -75,4 +75,3 @@ macro 6 set browser "/snap/bin/firefox %u"; six   ; set browser "weblauncher %u"
 macro 7 set browser "/snap/bin/firefox %u"; seven ; set browser "weblauncher %u"
 macro 8 set browser "/snap/bin/firefox %u"; eight ; set browser "weblauncher %u"
 macro 9 set browser "/snap/bin/firefox %u"; nine  ; set browser "weblauncher %u"
-
