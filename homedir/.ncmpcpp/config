@@ -9,8 +9,9 @@
 #
 # █▓▒░ Setup
 ncmpcpp_directory = "~/.ncmpcpp"
-#lyrics_directory = /home/xero/.lyrics
-external_editor = "/usr/bin/vim"
+lyrics_directory  = "~/.lyrics"
+mpd_music_dir     = "~/disk/music"
+external_editor   = "/usr/bin/vim"
 
 # █▓▒░ MPD Settings
 mpd_crossfade_time = "3"
