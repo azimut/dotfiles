@@ -39,26 +39,123 @@ def_key "l"
 # Find
 ###############################
 
+def_key "alt-1"
+ show_playlist
+
+def_key "alt-2"
+ show_browser
+
+def_key "alt-2"
+ change_browse_mode
+
+def_key "alt-3"
+ show_search_engine
+
+def_key "alt-3"
+ reset_search_engine
+
+def_key "alt-4"
+ show_media_library
+
+def_key "alt-4"
+ toggle_media_library_columns_mode
+
+def_key "alt-5"
+ show_playlist_editor
+
+def_key "alt-6"
+ show_tag_editor
+
+def_key "alt-7"
+ show_outputs
+
+def_key "alt-8"
+ show_visualizer
+
 def_key "n"
     next_found_item
+
 def_key "N"
     previous_found_item
 
 def_key "Q"
     quit
+
 def_key "q"
     dummy
 
+###############################
+# Player
+###############################
+
 def_key "f"
-    dummy
+  dummy
+
 def_key "b"
-     dummy
+  dummy
 
 def_key "right"
- seek_forward
+  seek_forward
+
 def_key "left"
- seek_backward
+  seek_backward
+
 def_key "}"
- next
+  next
+
 def_key "{"
- previous
+  previous
+
+def_key "1"
+  require_runnable "jump_to_position_in_song"
+  push_characters "10"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "2"
+  require_runnable "jump_to_position_in_song"
+  push_characters "20"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "3"
+  require_runnable "jump_to_position_in_song"
+  push_characters "30"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "4"
+  require_runnable "jump_to_position_in_song"
+  push_characters "40"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "5"
+  require_runnable "jump_to_position_in_song"
+  push_characters "50"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "6"
+  require_runnable "jump_to_position_in_song"
+  push_characters "60"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "7"
+  require_runnable "jump_to_position_in_song"
+  push_characters "70"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "8"
+  require_runnable "jump_to_position_in_song"
+  push_characters "80"
+  push_character "enter"
+  jump_to_position_in_song
+
+def_key "9"
+  require_runnable "jump_to_position_in_song"
+  push_characters "90"
+  push_character "enter"
+  jump_to_position_in_song

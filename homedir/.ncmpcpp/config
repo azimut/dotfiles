@@ -18,8 +18,8 @@ mpd_host = "127.0.0.1"
 mpd_port = "6600"
 
 # █▓▒░ Visualizer
-visualizer_look         = ●▉
-## "▒░"
+visualizer_look         = "▒░"
+# visualizer_look         = "●▉"
 visualizer_color        = "cyan"
 visualizer_in_stereo    = yes
 visualizer_data_source  = "~/.mpd/mpd.fifo"
@@ -53,31 +53,3 @@ statusbar_color                    = "white"
 statusbar_visibility               = yes
 titles_visibility                  = no
 user_interface                     = "classic"
-
-# █▓▒░ cheat sheet
-# %l - length
-# %f - filename
-# %D - directory
-# %a - artist
-# %t - title
-# %b - album
-# %y - year
-# %n - track number (01/12 -> 01)
-# %N - full track info (01/12 -> 01/12)
-# %g - genre
-# %c - composer
-# %p - performer
-# %d - disc
-# %C - comment
-# $R - begin right alignment
-# █▓▒░ colors
-# $0 - default window color
-# $1 - black
-# $2 - red
-# $3 - green
-# $4 - yellow
-# $5 - blue
-# $6 - magenta
-# $7 - cyan
-# $8 - white
-# $9 - end of current color
