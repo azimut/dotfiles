@@ -58,11 +58,9 @@ color listfocus_unread  default default reverse bold
 color listnormal        default default
 color listnormal_unread default default
 
-articlelist-title-format " [%T] %>— [%U] "
-feedlist-format          "%4i %n  %4U    %t"
-feedlist-title-format    ""
-itemview-title-format    ""
-
+feedlist-format "%4i %n  %4U    %t"
+show-title-bar no
+show-keymap-hint no
 #
 # Macros
 #
