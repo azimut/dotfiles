@@ -48,15 +48,18 @@ bind-key j down      article
 bind-key k up        article
 
 #
-# Theme
+# Theme: universal color
 #
-color article           default default
-color background        default default
-color info              default default #reverse
-color listfocus         default default reverse bold
-color listfocus_unread  default default reverse bold
-color listnormal        default default
-color listnormal_unread default default
+color background         default default
+color listnormal         default default
+color listnormal_unread  color15 default bold
+color listfocus          green   default reverse
+color listfocus_unread   color10 default reverse bold
+color title              cyan    default reverse
+color info               magenta default reverse
+color hint-description   magenta default
+color article            default default
+color end-of-text-marker color8  default
 
 feedlist-format "%4i %n  %4U    %t"
 show-title-bar no
