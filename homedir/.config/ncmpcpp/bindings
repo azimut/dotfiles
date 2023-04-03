@@ -84,6 +84,9 @@ def_key "Q"
 def_key "q"
     dummy
 
+def_key "d"
+ delete_playlist_items
+
 ###############################
 # Player
 ###############################
