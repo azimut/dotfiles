@@ -40,6 +40,7 @@ centered_cursor                    = yes
 colors_enabled                     = yes
 connected_message_on_startup       = no
 discard_colors_if_item_is_selected = yes
+display_bitrate                    = yes
 header_visibility                  = no
 locked_screen_width_part           = 50
 main_window_color                  = "cyan"
