@@ -29,8 +29,8 @@ visualizer_autoscale    = yes
 # visualizer_spectrum_smooth_look = yes
 
 # █▓▒░ Display Settings
-song_list_format = "{$7%a $1> $6}{%t$8$R$b} [{%l}]"
-song_status_format = "$7%a $1$b> $6%t $1$b> $2%b$1"
+song_status_format = "$2%a $7• $4%t $7• $3%b {}$7• $5%y$7"
+
 #?# main_window_highlight_color = "magenta"
 #?# active_column_color = "black"
 
