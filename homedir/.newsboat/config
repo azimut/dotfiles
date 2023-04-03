@@ -50,16 +50,21 @@ bind-key k up        article
 #
 # Theme: universal color
 #
+color article            default default
 color background         default default
-color listnormal         default default
-color listnormal_unread  color15 default bold
+color end-of-text-marker color8  default
+color hint-description   magenta default
+color info               magenta default reverse
 color listfocus          green   default reverse
 color listfocus_unread   color10 default reverse bold
+color listnormal         default default dim
+color listnormal_unread  default default
 color title              cyan    default reverse
-color info               magenta default reverse
-color hint-description   magenta default
-color article            default default
-color end-of-text-marker color8  default
+
+highlight article " \\(link\\)$"   default default invis
+highlight article "https?://[^ ]+" default default
+highlight article "\\[[0-9]+\\]"   color10 default
+highlight article "^>.*"           color10 default
 
 feedlist-format "%4i %n  %4U    %t"
 show-title-bar no
