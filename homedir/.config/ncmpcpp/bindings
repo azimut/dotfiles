@@ -1,26 +1,48 @@
+def_key "Q"
+  quit
+
+def_key "q"
+  dummy
+
+def_key "d"
+ delete_playlist_items
+
+def_key "ctrl-c"
+  save_tag_changes
+
+def_key "U"
+ update_database
+
 ###############################
-# Movement
+# Navigation
 ###############################
 
 def_key "h"
-    previous_column
+  previous_column
 def_key "l"
-    next_column
+  next_column
 
 def_key "j"
-    scroll_down
+  scroll_down
+
 def_key "k"
-    scroll_up
+  scroll_up
+
 def_key "ctrl-n"
-    scroll_down
+  scroll_down
+
 def_key "ctrl-p"
-    scroll_up
+  scroll_up
 
 def_key "g"
   move_home
 
 def_key "G"
   move_end
+
+def_key "u"
+  scroll_up
+  select_item
 
 def_key "m"
   select_item
@@ -37,6 +59,16 @@ def_key "l"
 
 ###############################
 # Find
+###############################
+
+def_key "n"
+    next_found_item
+
+def_key "N"
+    previous_found_item
+
+###############################
+# Show
 ###############################
 
 def_key "alt-1"
@@ -71,21 +103,6 @@ def_key "alt-7"
 
 def_key "alt-8"
  show_visualizer
-
-def_key "n"
-    next_found_item
-
-def_key "N"
-    previous_found_item
-
-def_key "Q"
-    quit
-
-def_key "q"
-    dummy
-
-def_key "d"
- delete_playlist_items
 
 ###############################
 # Player
