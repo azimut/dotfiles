@@ -4,14 +4,26 @@ def_key "Q"
 def_key "q"
   dummy
 
-def_key "d"
- delete_playlist_items
-
 def_key "ctrl-c"
   save_tag_changes
 
 def_key "U"
  update_database
+
+###############################
+# Playlist Mods
+###############################
+
+def_key "d"
+ delete_playlist_items
+
+def_key "alt-up"
+  select_item
+  move_selected_items_up
+
+def_key "alt-down"
+  select_item
+  move_selected_items_down
 
 ###############################
 # Navigation
