@@ -10,7 +10,7 @@
 # █▓▒░ Setup
 ncmpcpp_directory = "~/.config/ncmpcpp"
 lyrics_directory  = "~/.lyrics"
-mpd_music_dir     = "~/disk/music"
+mpd_music_dir     = "~/Music/tapes"
 external_editor   = "/usr/bin/vim"
 
 # █▓▒░ MPD Settings
