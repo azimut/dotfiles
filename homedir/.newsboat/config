@@ -36,16 +36,13 @@ use-proxy              yes
 # Keybindings
 #
 
-bind-key M-v pageup
+bind-key g  home
+bind-key G  end
 bind-key ^V pagedown
-bind-key j down      feedlist
-bind-key k up        feedlist
-bind-key j next      articlelist
-bind-key k prev      articlelist
-bind-key J next-feed articlelist
-bind-key K prev-feed articlelist
-bind-key j down      article
-bind-key k up        article
+bind-key j  down
+bind-key k  up
+bind-key J  next-feed articlelist
+bind-key K  prev-feed articlelist
 
 #
 # Theme: universal color
@@ -63,12 +60,13 @@ color title              cyan    default reverse
 
 highlight article " \\(link\\)$"   default default invis
 highlight article "https?://[^ ]+" default default
-highlight article "\\[[0-9]+\\]"   color10 default
+highlight article "\\[[0-9]+\\]"   color11 default
 highlight article "^>.*"           color10 default
 
 feedlist-format "%4i %n  %4U    %t"
 show-title-bar no
 show-keymap-hint no
+
 #
 # Macros
 #
@@ -83,3 +81,4 @@ macro 6 set browser "/snap/bin/firefox %u"; six   ; set browser "weblauncher %u"
 macro 7 set browser "/snap/bin/firefox %u"; seven ; set browser "weblauncher %u"
 macro 8 set browser "/snap/bin/firefox %u"; eight ; set browser "weblauncher %u"
 macro 9 set browser "/snap/bin/firefox %u"; nine  ; set browser "weblauncher %u"
+macro 0 set browser "/snap/bin/firefox %u"; goto-url 10 ; set browser "weblauncher %u"
