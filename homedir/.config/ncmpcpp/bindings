@@ -17,11 +17,11 @@ def_key "U"
 def_key "d"
  delete_playlist_items
 
-def_key "alt-up"
+def_key "alt-p"
   select_item
   move_selected_items_up
 
-def_key "alt-down"
+def_key "alt-n"
   select_item
   move_selected_items_down
 
