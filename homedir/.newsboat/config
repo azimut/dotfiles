@@ -58,13 +58,16 @@ color listnormal         default default dim
 color listnormal_unread  default default
 color title              cyan    default reverse
 
-highlight article " \\(link\\)$"   default default invis
-highlight article "https?://[^ ]+" default default
-highlight article "\\[[0-9]+\\]"   color11 default
-highlight article "^>.*"           color10 default
+highlight article "https?://[^ ]+"          default  default
+highlight article "\\[[0-9]+\\]"            color190 default
+highlight article "^Title:.*$"              green    default reverse
+highlight article "^>.*"                    color10  default
+highlight article "^Links:.*$"              default  default invis
+highlight article " \\(link\\)$"            default  default invis
+highlight article "\\[image\\ [0-9]+:.*\\]" default  default invis
 
-feedlist-format "%4i %n  %4U    %t"
-show-title-bar no
+feedlist-format  "%4i %n  %4U    %t"
+show-title-bar   no
 show-keymap-hint no
 
 #
