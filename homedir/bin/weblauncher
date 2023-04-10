@@ -94,8 +94,6 @@ case "${URL,,}" in
 	mpv_site "${URL}" --ytdl-format='bestvideo[height<481]+bestaudio'
 	;;
 *twitch.tv*)
-	# NOTE: use streamlink to be able to pick worst quality,
-	#       and still fallback to 1080p if nothing else available, due a mpv(?) bug
 	nohup streamlink \
 		--player mpv \
 		--player-args '--no-terminal --af=@rb:rubberband --volume=50 --osd-level=3' \
