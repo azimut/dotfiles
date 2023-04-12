@@ -1,7 +1,7 @@
 quit          Q
 zoom_in       plus
 zoom_out      minus
-scroll_up     j
-scroll_down   k
+scroll_up     k
+scroll_down   j
 scroll_left   h
 scroll_right  l
