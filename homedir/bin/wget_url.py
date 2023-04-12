@@ -10,6 +10,7 @@ from urllib.request import urlretrieve
 
 
 def progress_hook(count, block_size, total_size):
+    """Show an animated progress bar."""
     global start_time
     if count == 0:
         start_time = time()
@@ -24,11 +25,9 @@ def progress_hook(count, block_size, total_size):
     sys.stdout.flush()
 
 
-def download(raw_url):
-    _, filename = os.path.split(urlparse(raw_url).path)
-    if os.path.exists(filename):
-        raise SystemExit(f"file {filename} already exists!")
-    final_url = re.sub(r"&bytestart=[0-9]&byteend=[0-9]+", "", raw_url)
+def download(url, filename):
+    """Download the url provided of a file into disk."""
+    final_url = re.sub(r"&bytestart=[0-9]&byteend=[0-9]+", "", url)
     urlretrieve(final_url, filename, progress_hook)
     print("\ndone!", filename)
 
@@ -40,4 +39,7 @@ except IndexError:
 
 if __name__ == '__main__':
     for url in sys.argv[1:]:
-        download(url)
+        _, filename = os.path.split(urlparse(url).path)
+        if os.path.exists(filename):
+            raise SystemExit(f"file {filename} already exists!")
+        download(url, filename)
