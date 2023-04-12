@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.8
 """Downloads url of a file, removes url parameters."""
 
+import re
 import sys
 import os.path
 from time import time
@@ -23,12 +24,12 @@ def progress_hook(count, block_size, total_size):
     sys.stdout.flush()
 
 
-def download(url):
-    urlpath = urlparse(url).path
-    _, filename = os.path.split(urlpath)
+def download(raw_url):
+    _, filename = os.path.split(urlparse(raw_url).path)
     if os.path.exists(filename):
         raise SystemExit(f"file {filename} already exists!")
-    urlretrieve(url, filename, progress_hook)
+    final_url = re.sub(r"&bytestart=[0-9]&byteend=[0-9]+", "", raw_url)
+    urlretrieve(final_url, filename, progress_hook)
     print("\ndone!", filename)
 
 
