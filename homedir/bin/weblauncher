@@ -100,6 +100,10 @@ case "${URL,,}" in
 		"${URL}" \
 		"480p,720p,1080p,worst" &
 	;;
+*boards.4channel.org*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		fourchanview "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
 *)
 	domain=${URL#*://}
 	domain=${domain%%/*}
