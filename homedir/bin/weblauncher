@@ -78,11 +78,15 @@ case "${URL,,}" in
 		lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *wired-7.org*)
-	lainviewer -t 25 -u "${URL}" -A=false | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *reddit.com/r/*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		redditview -t 20s "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		redditview -t 20s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	;;
+*boards.4channel.org*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" \
+		fourchanview "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *linkedin.com*)
 	rdrview -B w3m "${URL}"
@@ -99,10 +103,6 @@ case "${URL,,}" in
 		--player-args '--no-terminal --af=@rb:rubberband --volume=50 --osd-level=3' \
 		"${URL}" \
 		"480p,720p,1080p,worst" &
-	;;
-*boards.4channel.org*)
-	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		fourchanview "${URL}" | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *)
 	domain=${URL#*://}
