@@ -40,6 +40,15 @@ mpv_site() {
 		"${OPTS[@]}" "${url}" &
 }
 
+http_code() {
+	local url="${1}"
+	curl --user-agent "${UA}" \
+		--head --silent \
+		--output /dev/null \
+		--write-out '%{http_code}' \
+		"${url}"
+}
+
 case "${URL,,}" in
 *.wav* | *.mp3* | *.m4a*)
 	mpv_site "${URL}" --player-operation-mode=pseudo-gui
@@ -85,8 +94,13 @@ case "${URL,,}" in
 		redditview -t 20s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *boards.4channel.org*)
-	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		fourchanview "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	# TODO: only supports /g/
+	if [[ $(http_code "${URL}") -eq 404 ]]; then
+		w3m -o "user_agent=${UA}" "${URL/boards.4channel.org/desuarchive.org}"
+	else
+		HTTP_PROXY="socks5://127.0.0.1:9050" \
+			fourchanview "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	fi
 	;;
 *linkedin.com*)
 	rdrview -B w3m "${URL}"
