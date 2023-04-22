@@ -139,6 +139,43 @@ end
 local myprogress = wibox.widget.textbox(year_progress())
 gears.timer.start_new(60*60, function() myprogress:set_text(year_progress()) return true end)
 
+
+local function pretty_sprint(text, color)
+   return markup.font(theme.font, markup(color, text))
+end
+
+local function file_exists(name)
+   local f = io.open(name, "r")
+   if f ~= nil then
+      io.close(f)
+      return true
+   else
+      return false
+   end
+end
+
+local function keyboard_battery_status()
+   local status = "None" -- "Full" or "Critical" or ...
+
+   if file_exists("/sys/class/power_supply/hidpp_battery_0/capacity_level") then
+      local file = io.open("/sys/class/power_supply/hidpp_battery_0/capacity_level")
+      status = file:read("*line")
+      file:close()
+   elseif file_exists("/sys/class/power_supply/hidpp_battery_1/capacity_level") then
+      local file = io.open("/sys/class/power_supply/hidpp_battery_1/capacity_level")
+      status = file:read("*line")
+      file:close()
+   end
+
+   if status == "Critical" then
+      return pretty_sprint(status, theme.fg_urgent)
+   else
+      return pretty_sprint(status, theme.fg_normal)
+   end
+end
+local my_keyboard_battery_status = wibox.widget.textbox(keyboard_battery_status())
+gears.timer.start_new(60*60, function() my_keyboard_battery_status:set_text(keyboard_battery_status()) return true end)
+
 local function stat_since(file)
    local now = os.time()
    local f = io.popen("stat -c %Y " .. os.getenv("HOME") .. file)
@@ -187,11 +224,11 @@ local myfs = lain.widget.fs({
 })
 
 local mycpu = lain.widget.cpu({
-   settings = function()
+      settings = function()
          widget:set_markup(
-            markup.font(theme.font,
-                        markup(theme.fg_normal, cpu_now.usage .. "(cpu) ")))
-   end
+            pretty_sprint(string.format("%2d(cpu) ", cpu_now.usage),
+                          theme.fg_normal))
+      end
 })
 
 local mymem = lain.widget.mem({
@@ -354,7 +391,8 @@ awful.screen.connect_for_each_screen(function(s)
             mytemp,
             mycpu,
             mymem,
-            mynet
+            mynet,
+            my_keyboard_battery_status,
          },
          nil,
          {
