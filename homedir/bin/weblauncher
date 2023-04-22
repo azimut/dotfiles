@@ -76,7 +76,7 @@ case "${URL,,}" in
 	download_and_show "${URL}.jpg" ;;
 *news.ycombinator.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		hackerview -l 100 -t 15s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		hackerview -w "$(($(tput cols) - 10))" -l 100 -t 15s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *twitter.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
@@ -91,7 +91,7 @@ case "${URL,,}" in
 	;;
 *reddit.com/r/*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		redditview -t 20s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		redditview -w "$(($(tput cols) - 10))" -t 20s "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *boards.4channel.org*)
 	# TODO: only supports /g/
