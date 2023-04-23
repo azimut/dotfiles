@@ -84,10 +84,10 @@ case "${URL,,}" in
 	;;
 *lainchan.org*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
-		lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		vichanview -w "$(($(tput cols) - 10))" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *wired-7.org*)
-	lainviewer -t 25 -u "${URL}" -A=false 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+	vichanview -w "$(($(tput cols) - 10))" "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
 	;;
 *reddit.com/r/*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" \
