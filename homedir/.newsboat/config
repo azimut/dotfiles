@@ -41,6 +41,8 @@ bind-key G  end
 bind-key ^V pagedown
 bind-key j  down
 bind-key k  up
+bind-key ^N down
+bind-key ^P up
 bind-key J  next-feed articlelist
 bind-key K  prev-feed articlelist
 
