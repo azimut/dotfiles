@@ -155,7 +155,7 @@ local function file_exists(name)
 end
 
 local function keyboard_battery_status()
-   local status = "None" -- "Full" or "Critical" or ...
+   local status = "None" -- "Full" or "Normal" or "Critical"
 
    if file_exists("/sys/class/power_supply/hidpp_battery_0/capacity_level") then
       local file = io.open("/sys/class/power_supply/hidpp_battery_0/capacity_level")
@@ -174,7 +174,7 @@ local function keyboard_battery_status()
    end
 end
 local my_keyboard_battery_status = wibox.widget.textbox(keyboard_battery_status())
-gears.timer.start_new(60*60, function() my_keyboard_battery_status:set_text(keyboard_battery_status()) return true end)
+gears.timer.start_new(60*60, function() my_keyboard_battery_status:set_markup(keyboard_battery_status()) return true end)
 
 local function stat_since(file)
    local now = os.time()
