@@ -98,8 +98,8 @@ case "${URL,,}" in
 	if [[ $(http_code "${URL}") -eq 404 ]]; then
 		w3m -o "user_agent=${UA}" "${URL/boards.4channel.org/desuarchive.org}"
 	else
-		HTTP_PROXY="socks5://127.0.0.1:9050" \
-			fourchanview "${URL}" 2>&1 | /usr/share/vim/vim82/macros/less.sh -c 'ColorHighlight' -
+		SPAWNER=$HOME/bin/weblauncher HTTP_PROXY="socks5://127.0.0.1:9050" \
+			fourchanview -x "${URL}"
 	fi
 	;;
 *linkedin.com*)
@@ -121,10 +121,10 @@ case "${URL,,}" in
 *)
 	domain=${URL#*://}
 	domain=${domain%%/*}
-	if has_cloudflare "${domain}"; then
-		w3m -o "user_agent=${UA}" "${URL}"
+	if dig SOA +multiline "${domain}" | grep -q cloudflare; then
+		rdrview -B w3m "${URL}"
 	else
-		torsocks w3m -o "user_agent=${UA}" "${URL}"
+		torsocks rdrview -B w3m "${URL}"
 	fi
 	;;
 esac
