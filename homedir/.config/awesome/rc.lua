@@ -755,6 +755,7 @@ awful.rules.rules = {
            "Blueman-manager",
            "Gpick",
            "Kruler",
+           "fehi", -- ME: weblauncher images
            "MessageWin",  -- kalarm.
            --"Sxiv",
            "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
