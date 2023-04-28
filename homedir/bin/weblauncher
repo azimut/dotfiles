@@ -80,7 +80,7 @@ case "${URL,,}" in
 	;;
 *twitter.com*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
-		twitterview -t 10s -A "${UA}" "${URL}"
+		twitterview -x -t 10s -A "${UA}" "${URL}"
 	;;
 *lainchan.org*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
@@ -122,6 +122,10 @@ case "${URL,,}" in
 		--player-args '--no-terminal --af=@rb:rubberband --volume=50 --osd-level=3' \
 		"${URL}" \
 		"480p,720p,1080p,worst" &
+	;;
+*/t/*)
+	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
+		discourseview -x -t 20s "${URL}"
 	;;
 *)
 	domain=${URL#*://}
