@@ -84,11 +84,11 @@ case "${URL,,}" in
 	;;
 *lainchan.org*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
-		vichanview "${URL}"
+		vichanview -x "${URL}"
 	;;
 *wired-7.org*)
 	SPAWNER="$HOME/bin/weblauncher" \
-		vichanview "${URL}"
+		vichanview -x "${URL}"
 	;;
 *reddit.com/r/*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
