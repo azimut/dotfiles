@@ -125,7 +125,7 @@ https://lobste.rs/top/rss tech
 https://hnrss.org/best    tech
 "exec:~/.newsboat/feeds/curl.sh https://tymoon.eu/api/reader/atom" tech
 
-"exec:~/.newsboat/feeds/curl.sh https://0x00sec.org/latest.rss"        sec
+"exec:~/.newsboat/feeds/curl.sh https://0x00sec.org/top.rss"        sec
 #https://blog.underc0de.org/feed/ sec
 "exec:~/.newsboat/feeds/curl.sh https://sector035.nl/articles.atom"    sec
 https://www.reddit.com/r/netsec/top/.rss?t=month          sec "~/r/netsec"
@@ -179,8 +179,8 @@ https://www.sicpers.info/feed/podcast    podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
 
-#https://llllllll.co/latest.rss livecoding
-https://forum.toplap.org/latest.rss livecoding
+https://llllllll.co/top.rss livecoding
+https://forum.toplap.org/top.rss livecoding
 
 https://link.springer.com/search.rss?facet-discipline=%22Computer+Science%22&facet-language=%22En%22&facet-content-type=%22Book%22&sortOrder=newestFirst books "~Springer CS Books"
 https://feeds.feedburner.com/oreilly/newbooks          books
