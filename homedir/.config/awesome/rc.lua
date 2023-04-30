@@ -776,10 +776,12 @@ awful.rules.rules = {
         }
    }, properties = { floating = true }},
 
+   {
+      rule = { instance = "mpvFloating" },
+      properties = { sticky = true, ontop = true, floating = true },
+   },
    { rule_any = {
-        name = {
-           "Picture-in-Picture",
-        },
+        name = "Picture-in-Picture",
    }, properties = { sticky = true, ontop = true }},
 
    -- Add titlebars to normal clients and dialogs

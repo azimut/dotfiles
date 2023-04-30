@@ -31,6 +31,7 @@ mpv_site() {
 	local OPTS=("${@}")
 	nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
 		--sid=1 \
+		--x11-name=mpvFloating \
 		--no-terminal \
 		--user-agent="${UA}" \
 		--af=@rb:rubberband \
@@ -110,12 +111,12 @@ case "${URL,,}" in
 	torsocks rdrview -B w3m "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
-	mpv_site "${URL}" --ytdl-format='worstvideo[height>=360]+bestaudio'
+	mpv_site "${URL}" --autofit=400x400 --ytdl-format='worstvideo[height>=360]+bestaudio'
 	;;
 *twitch.tv*)
 	nohup streamlink \
 		--player mpv \
-		--player-args '--no-terminal --af=@rb:rubberband --volume=50 --osd-level=3' \
+		--player-args '--autofit=400x400 --no-terminal --af=@rb:rubberband --volume=50 --osd-level=3 --x11-name=mpvFloating' \
 		"${URL}" \
 		"480p,720p,1080p,worst" &
 	;;
