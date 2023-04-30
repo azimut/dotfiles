@@ -110,11 +110,7 @@ case "${URL,,}" in
 	torsocks rdrview -B w3m "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
-	nohup streamlink \
-		--player mpv \
-		--player-args '--no-terminal --af=@rb:rubberband --volume=50 --osd-level=3' \
-		"${URL}" \
-		"360p,480p,720p,1080p,worst" &
+	mpv_site "${URL}" --ytdl-format='worstvideo[height>=360]+bestaudio'
 	;;
 *twitch.tv*)
 	nohup streamlink \
