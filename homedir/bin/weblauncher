@@ -127,6 +127,7 @@ case "${URL,,}" in
 *)
 	domain=${URL#*://}
 	domain=${domain%%/*}
+	stty cols 80
 	if dig SOA +multiline "${domain}" | grep -q cloudflare; then
 		rdrview -B w3m "${URL}"
 	else
