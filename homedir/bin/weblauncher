@@ -111,7 +111,7 @@ case "${URL,,}" in
 	torsocks rdrview -B w3m "${URL}"
 	;;
 *youtube.com* | *youtu.be*)
-	mpv_site "${URL}" --autofit=400x400 --ytdl-format='worstvideo[height>=360]+bestaudio'
+	mpv_site "${URL}" --autofit=400x400 --ytdl-format='worst[height>=360]'
 	;;
 *twitch.tv*)
 	nohup streamlink \
