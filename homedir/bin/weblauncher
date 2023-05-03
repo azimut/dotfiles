@@ -98,6 +98,7 @@ case "${URL,,}" in
 *boards.4channel.org*)
 	# TODO: only supports /g/
 	if [[ $(http_code "${URL}") -eq 404 ]]; then
+		stty cols 80
 		w3m -o "user_agent=${UA}" "${URL/boards.4channel.org/desuarchive.org}"
 	else
 		HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
