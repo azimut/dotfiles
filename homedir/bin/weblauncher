@@ -102,8 +102,10 @@ case "${URL,,}" in
 *boards.4channel.org*)
 	# TODO: only supports /g/
 	if [[ $(http_code "${URL}") -eq 404 ]]; then
+		old_cols="$(tput cols)"
 		stty cols 80
 		w3m -o "user_agent=${UA}" "${URL/boards.4channel.org/desuarchive.org}"
+		stty cols "${old_cols}"
 	else
 		HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
 			fourchanview -x "${URL}"
@@ -132,11 +134,14 @@ case "${URL,,}" in
 *)
 	domain=${URL#*://}
 	domain=${domain%%/*}
+	old_cols="$(tput cols)"
+
 	stty cols 80
 	if dig SOA +multiline "${domain}" | grep -q cloudflare; then
 		rdrview -B w3m "${URL}"
 	else
 		torsocks rdrview -B w3m "${URL}"
 	fi
+	stty cols "${old_cols}"
 	;;
 esac
