@@ -91,6 +91,10 @@ case "${URL,,}" in
 	SPAWNER="$HOME/bin/weblauncher" \
 		vichanview -x "${URL}"
 	;;
+*lobste.rs*)
+	SPAWNER="$HOME/bin/weblauncher" \
+		lobstersview -x "${URL}"
+	;;
 *reddit.com/r/*)
 	HTTP_PROXY="socks5://127.0.0.1:9050" SPAWNER="$HOME/bin/weblauncher" \
 		redditview -x -t 20s "${URL}"
