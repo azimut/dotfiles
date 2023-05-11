@@ -11,15 +11,20 @@ if ! aconnect -i | grep "client 20: 'CH345'"; then
 fi
 
 if tmux has -t "${SESSION}"; then
-	tmux attach -t "${SESSION}"
+	echo "attaching session...${SESSION}"
+	if [[ -z $TMUX ]]; then
+		tmux attach -t "${SESSION}"
+	else
+		tmux switch-client -t "${SESSION}"
+	fi
 	exit 0
 fi
 
-tmux new -s "${SESSION}"
-
-tmux split-window -h midihack                                         # 130?
-tmux split-window -v fluidsynth "${OPTS[@]}" --gain 1 -a alsa "${SF}" # 131?
-tmux split-window -v zsh
+tmux new -d -s "${SESSION}" \; \
+	switch-client -t "${SESSION}" \; \
+	split-window -h midihack \; \
+	split-window -v fluidsynth "${OPTS[@]}" --gain 1 -a alsa "${SF}" \; \
+	select-pane -L
 
 aconnect 20:0 130:0  # piano    -> midihack
 sleep 2              # wait for fluidsynth to be ready
