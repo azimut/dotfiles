@@ -15,7 +15,7 @@ join() {
 	echo "$*"
 }
 
-find ~/disk2/zone2 ~/disk2/.zone -type f -size +1M -print0 | shuf -z | xargs -0 mpv \
+find ~/.zone ~/disk2/zone2 ~/disk2/.zone -type f -size +1M -print0 | shuf -z | xargs -0 mpv \
 	--no-input-terminal \
 	--scripts="$(join ':' "${SCRIPTS[@]}")" \
 	--script-opts="$(join ',' "${SCRIPT_OPTS[@]}")" \

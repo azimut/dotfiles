@@ -5,3 +5,6 @@ scroll_up     k
 scroll_down   j
 scroll_left   h
 scroll_right  l
+next_img braceright n Right space
+prev_img braceleft  p Left BackSpace
+toggle_pause P
