@@ -23,7 +23,7 @@ SRC="$(realpath "${1}")"
 FILTERS="${2:-scale=960:-1}"
 
 info() {
-	notify-send -t "$((2 * 1000))" -- \
+	notify-send -t "$((4 * 1000))" -- \
 		"$0" \
 		"<span color='#57dafd' font='20px'>${1}</span>"
 }
@@ -42,10 +42,10 @@ i=0
 find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) |
 	while read -r srcfile; do
 		dstfile=".${srcfile#${SRC}}"
-		info "${i}/${total}"
 		((++i))
+		info "${i}/${total}"
 		[[ -f ${dstfile} ]] && {
-			echo "Skipping ${dstfile}..."
+			info "Skipping ${dstfile}..."
 			continue
 		}
 		ffmpeg -hide_banner -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
