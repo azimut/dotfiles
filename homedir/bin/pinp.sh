@@ -9,7 +9,7 @@ mul() { echo "$(</dev/stdin) * ${1}" | bc -l; }
 round() { printf "%.0f" "$(</dev/stdin)"; }
 
 getTargetID() {
-	xdotool search --name "picture-in-picture" || xdotool search --class mpv
+	xdotool search --name "picture-in-picture" || xdotool search --onlyvisible --class mpv
 }
 
 getScreenDimensions() {
