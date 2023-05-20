@@ -39,7 +39,7 @@ total="$(find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | wc -l)"
 i=0
 
 # Convert videos
-find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) |
+find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 	while read -r srcfile; do
 		dstfile=".${srcfile#${SRC}}"
 		((++i))
