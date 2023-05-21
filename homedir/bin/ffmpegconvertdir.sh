@@ -45,7 +45,6 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		((++i))
 		info "${i}/${total}"
 		[[ -f ${dstfile} ]] && {
-			info "Skipping ${dstfile}..."
 			continue
 		}
 		ffmpeg -hide_banner -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
