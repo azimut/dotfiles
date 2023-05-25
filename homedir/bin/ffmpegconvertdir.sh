@@ -23,7 +23,7 @@ SRC="$(realpath "${1}")"
 FILTERS="${2:-scale=960:-1}"
 
 info() {
-	notify-send -t "$((4 * 1000))" -- \
+	notify-send -t "$((5 * 1000))" -- \
 		"$0" \
 		"<span color='#57dafd' font='20px'>${1}</span>"
 }
@@ -32,6 +32,16 @@ info() {
 find "${SRC}" -type d | tail -n+2 |
 	while read -r dir; do
 		mkdir -vp ".${dir#${SRC}}"
+	done
+
+# Copy non-video files
+find "${SRC}" -type f -not \( -iname \*.mp4 -o -iname \*.mkv \) |
+	while read -r srcfile; do
+		dstfile=".${srcfile#${SRC}}"
+		[[ -f ${dstfile} ]] && {
+			continue
+		}
+		cp "${srcfile}" "${dstfile}"
 	done
 
 # Counters
