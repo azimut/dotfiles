@@ -144,30 +144,23 @@ local function pretty_sprint(text, color)
    return markup.font(theme.font, markup(color, text))
 end
 
-local function file_exists(name)
-   local f = io.open(name, "r")
-   if f ~= nil then
-      io.close(f)
-      return true
-   else
-      return false
-   end
+local function file_exists(glob)
+   local f = io.popen('ls ' .. glob)
+   local found = f:lines()()
+   f:close()
+   return found
 end
 
 local function keyboard_battery_status()
    local status = "None" -- "Full" or "Normal" or "Critical"
-
-   if file_exists("/sys/class/power_supply/hidpp_battery_0/capacity_level") then
-      local file = io.open("/sys/class/power_supply/hidpp_battery_0/capacity_level")
-      status = file:read("*line")
-      file:close()
-   elseif file_exists("/sys/class/power_supply/hidpp_battery_1/capacity_level") then
-      local file = io.open("/sys/class/power_supply/hidpp_battery_1/capacity_level")
+   local cap_file = file_exists("/sys/class/power_supply/hidpp_battery_*/capacity_level")
+   if cap_file then
+      local file = io.open(cap_file)
       status = file:read("*line")
       file:close()
    end
 
-   if status == "Critical" then
+   if status == "Critical" or status == "Low" then
       return pretty_sprint(status, theme.fg_urgent)
    else
       return pretty_sprint(status, theme.fg_normal)
