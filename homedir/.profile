@@ -21,6 +21,8 @@ export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 
 export TERM=xterm-256color
 
+export SBCL_BIN=/usr/local/bin/sbcl
+export SBCL_HOME=/usr/local/lib/sbcl
 export GOPATH=$HOME/go                        # Go
 export PATH=$HOME/go/bin:$PATH                # Go
 export PATH=$HOME/.local/bin:$PATH            # Python
