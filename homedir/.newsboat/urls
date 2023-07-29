@@ -1,7 +1,11 @@
+"exec:~/.newsboat/feeds/curl.sh https://nocturnalscans.com/rss" manga
+"exec:~/.newsboat/feeds/curl.sh https://luminousscans.com/rss" manga
+"exec:~/.newsboat/feeds/curl.sh https://realmscans.xyz/rss" manga
 https://fanfox.net/rss/daesahyong_sonnyu.xml manga
+https://fanfox.net/rss/carsearin.xml         manga
 #https://fanfox.net/rss/level_up_alone.xml manga
-https://fanfox.net/rss/escort_warrior.xml          manga
-https://fanfox.net/rss/return_of_the_mad_demon.xml manga
+#https://fanfox.net/rss/escort_warrior.xml          manga
+#https://fanfox.net/rss/return_of_the_mad_demon.xml manga
 "exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
 #"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
@@ -14,7 +18,7 @@ https://www.reddit.com/r/PeerlessDad/new/.rss                                man
 #https://fanfox.net/rss/i_am_a_humanoid_cultivation_pill.xml                  manga
 #https://fanfox.net/rss/swallow_the_whole_world.xml                           manga
 https://fanfox.net/rss/heavenly_demon_cultivation_simulation.xml             manga
-http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
+#http://fanfox.net/rss/mushoku_tensei_depressed_magician.xml                  manga
 #https://fanfox.net/rss/mushoku_no_tensei_eris_gaiden.xml                     manga
 http://fanfox.net/rss/the_heavenly_demon_destroys_the_lich_king_s_murim.xml  manga
 #may#http://fanfox.net/rss/the_lazy_prince_becomes_a_genius.xml                   manga
@@ -100,6 +104,7 @@ https://lainchan.org/%CE%94/index.rss
 https://medium.com/feed/@kaveh808 programming
 "exec:~/.newsboat/feeds/curl.sh http://lambda-the-ultimate.org/rss.xml" programming
 https://discuss.ocaml.org/top.rss                   programming
+https://discourse.haskell.org/top/monthly.rss       programming
 https://erlangforums.com/top.rss                    programming
 #https://www.reddit.com/r/lua/top/.rss              programming "~/r/lua"
 #https://www.reddit.com/r/scheme/.rss               programming "~/r/scheme"
