@@ -1,6 +1,8 @@
 "exec:~/.newsboat/feeds/curl.sh https://nocturnalscans.com/rss" manga
 "exec:~/.newsboat/feeds/curl.sh https://luminousscans.com/rss" manga
+"exec:~/.newsboat/feeds/curl.sh https://flamescans.org/rss" manga
 "exec:~/.newsboat/feeds/curl.sh https://realmscans.xyz/rss" manga
+
 https://fanfox.net/rss/daesahyong_sonnyu.xml manga
 https://fanfox.net/rss/carsearin.xml         manga
 #https://fanfox.net/rss/level_up_alone.xml manga
