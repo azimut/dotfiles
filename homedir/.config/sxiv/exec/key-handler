@@ -15,25 +15,33 @@
 mkdir -p ~/.coomer/
 
 has_sudo() { sudo -n true; }
+notify() {
+	local msg
+	msg="${1}"
+	notify-send "${0}" "<span color='#57dafd' font='26px'>${msg}</span>"
+}
 ask_for_password() {
-	notify-send 'ok' "<span color='#57dafd' font='26px'>Enter the password on console...</span>"
+	notify 'Enter the password on console...'
+}
+
+rename() {
+	old_filename="$1"
+	old_basename="$(basename ${old_filename})"
+	old_dirname="$(dirname ${old_filename})"
+	new_basename="$(zenity --entry --text "Rename to?" --entry-text "${old_basename}")"
+	[[ -z ${new_basename} ]] && return 0
+	[[ ${new_basename} == "${old_basename}" ]] && return 0
+	mv -v ${old_filename} "${old_dirname}/${new_basename}"
 }
 
 rotate() {
 	degree="$1"
 	has_sudo || ask_for_password
 	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
-		if [[ -O ${file} ]]; then
-			case "$(file -b -i "$file")" in
-			image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-			*) mogrify -rotate "$degree" "$file" ;;
-			esac
-		else
-			case "$(file -b -i "$file")" in
-			image/jpeg*) sudo jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-			*) sudo mogrify -rotate "$degree" "$file" ;;
-			esac
-		fi
+		case "$(file -b -i "$file")" in
+		image/jpeg*) ~/bin/gksu.sh "${file}" jpegtran -rotate "$degree" -copy all -outfile "$file" ;;
+		*) ~/bin/gksu.sh "${file}" mogrify -rotate "$degree" ;;
+		esac
 		printf "rotated %d°\n" "${degree}"
 	done
 }
@@ -46,6 +54,7 @@ C-x|xclip copy path?
 C-c|xclip copy image
 C-e|urxvt?
 |
+C-r|rename
 C-k|rm -f
 C-y|cp
 C-p|coomer
@@ -61,17 +70,8 @@ EOF
 "C-c") while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 "C-k")
-	skip_sudo=1
 	while read -r image; do
-		if [[ -O ${image} ]]; then
-			rm -fv "${image}"
-		else
-			if [[ ${skip_sudo} -eq 1 ]]; then
-				has_sudo || ask_for_password
-				skip_sudo=0
-			fi
-			sudo rm -fv "${image}"
-		fi
+		~/bin/gksu.sh "${image}" rm -vf
 	done
 	;;
 "C-y")
@@ -89,17 +89,21 @@ EOF
 	if [[ ! -O ${target} ]]; then
 		has_sudo || ask_for_password
 		while read -r image; do
-			sudo cp -vu "${image}" "${target}"
+			sudo cp -vu "${image}" "${target}" || notify 'failed to cp'
 		done
 	else
 		while read -r image; do
-			cp -vu "${image}" "${target}"
+			cp -vu "${image}" "${target}" || notify 'failed to cp'
 		done
 	fi
 	;;
 "C-less") rotate 270 ;;
 "C-greater") rotate 90 ;;
 "C-slash") rotate 180 ;;
+"C-r")
+	read -r file
+	rename "$(readlink -e ${file})"
+	;;
 "C-p") while read -r file; do
 	newfile=$(readlink -e $file)
 	ln -s "$newfile" $HOME/.coomer/ &
