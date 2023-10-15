@@ -89,7 +89,7 @@ case "${URL,,}" in
 	;;
 *wired-7.org*)
 	SPAWNER="$HOME/bin/weblauncher" \
-		vichanview -x "${URL}"
+		vichanview -a=false -x "${URL}"
 	;;
 *lobste.rs*)
 	SPAWNER="$HOME/bin/weblauncher" \
