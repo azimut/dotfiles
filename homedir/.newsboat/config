@@ -11,7 +11,7 @@ scrolloff               2
 
 ignore-mode    "download"
 ignore-article "exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'" "title !~ \"lisp|ocaml|pascal|erlang|elixir|haskell|prolog|fsharp|f\#|scala|gentoo|guix|freebsd|openbsd|netbsd\""
-ignore-article "exec:~/.newsboat/feeds/4chan-rss -b g -n 25 -p 2" "title =~ \"/sdg/|/pcbg/|/sqt/|/tpg/|/fglt/|/ptg/|/hpg/|/iemg/|/bst/|/mkg/|/aicg/\""
+ignore-article "exec:~/.newsboat/feeds/4chan-rss -b g -n 25 -p 2" "title =~ \"/sdg/|/pcbg/|/sqt/|/tpg/|/fglt/|/ptg/|/hpg/|/iemg/|/bst/|/mkg/|/aicg/|/DE3/|/lmg/\""
 ignore-article "https://www.reddit.com/r/Destiny/.rss" "content =~ \"preview.redd.it|www.reddit.com/gallery/|b.thumbs.redditmedia.com\""
 
 ignore-article "exec:~/.newsboat/feeds/curl.sh https://realmscans.to/rss"         "title !~ \"(Villain Unrivaled)|(Chronicles Of The Martial)|(Death God)|(Administrator Kangjin Lee)|(Legends of the Swordsman Scholar)|(Infinite Level Up)\""
