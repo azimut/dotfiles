@@ -24,13 +24,9 @@ def path_of_pdf(proc):
 
 
 def save_to_disk(srcpath):
-    """Copy file to ~/Downloads/."""
-    home = os.path.expanduser("~")
+    """Copy file to CWD."""
     filename = os.path.basename(srcpath)
-    dstpath = f"{home}/Downloads/{filename}"
-
-    if os.path.exists(dstpath):
-        sys.exit(f"ERROR: destination file ({filename}) already exists")
+    dstpath = f"{os.curdir}/{filename}"
 
     try:
         shutil.copyfile(srcpath, dstpath)
