@@ -34,14 +34,6 @@ def_key "h"
 def_key "l"
   next_column
 
-def_key "p"
-  scroll_up
-  toggle_visualization_type
-
-def_key "n"
-  scroll_down
-  toggle_visualization_type
-
 def_key "j"
   scroll_down
 
@@ -131,7 +123,7 @@ def_key "alt-8"
 # Player
 ###############################
 
-def_key "space"
+def_key "p"
   pause
 
 def_key "f"
