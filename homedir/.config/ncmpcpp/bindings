@@ -36,9 +36,11 @@ def_key "l"
 
 def_key "p"
   scroll_up
+  toggle_visualization_type
 
 def_key "n"
   scroll_down
+  toggle_visualization_type
 
 def_key "j"
   scroll_down
@@ -129,6 +131,9 @@ def_key "alt-8"
 # Player
 ###############################
 
+def_key "space"
+  pause
+
 def_key "f"
   dummy
 
@@ -202,4 +207,7 @@ def_key "9"
   jump_to_position_in_song
 
 def_key "0"
-  play_item
+  require_runnable "jump_to_position_in_song"
+  push_characters "0"
+  push_character "enter"
+  jump_to_position_in_song
