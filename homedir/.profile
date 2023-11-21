@@ -21,23 +21,24 @@ export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 
 export TERM=xterm-256color
 
-export SBCL_BIN=/usr/local/bin/sbcl
-export SBCL_HOME=/usr/local/lib/sbcl
-export GOPATH=$HOME/go                        # Go
-export PATH=$HOME/go/bin:$PATH                # Go
-export PATH=$HOME/.local/bin:$PATH            # Python
-export PATH=$HOME/.cargo/bin:$PATH            # Rust
-export PATH=$HOME/.luarocks/bin:$PATH         # Lua
-export PATH=/usr/local/nim-1.6.10/bin:$PATH   # Nim
-export PATH=$HOME/.nimble/bin:$PATH           # Nim
-export PATH=$HOME/.cache/rebar3/bin:$PATH     # Erlang
-export PATH=$HOME/kerl/19.2/bin:$PATH         # Erlang
-export ANDROID_HOME=$HOME/Android/Sdk         # Android
-export PATH=$PATH:$ANDROID_HOME/tools         # Android
-export JAVA_HOME=/usr/local/jdk-17.0.8        # Java
-export PATH=$JAVA_HOME/bin/:$PATH             # Java
-export PATH=/opt/apache-maven-3.8.6/bin:$PATH # Java
-export PATH=$HOME/.sbt_bin/bin:$PATH          # Scala
+export SBCL_BIN=/usr/local/bin/sbcl               # Lisp
+export SBCL_HOME=/usr/local/lib/sbcl              # Lisp
+export GOPATH=$HOME/go                            # Go
+export PATH=$HOME/go/bin:$PATH                    # Go
+export PATH=$HOME/.local/bin:$PATH                # Python
+export PATH=$HOME/.cargo/bin:$PATH                # Rust
+export PATH=$HOME/.luarocks/bin:$PATH             # Lua
+export PATH=/usr/local/nim-1.6.10/bin:$PATH       # Nim
+export PATH=$HOME/.nimble/bin:$PATH               # Nim
+export ERL_AFLAGS="-kernel shell_history enabled" # Erlang
+export PATH=$HOME/.cache/rebar3/bin:$PATH         # Erlang
+export PATH=$HOME/kerl/19.2/bin:$PATH             # Erlang
+export ANDROID_HOME=$HOME/Android/Sdk             # Android
+export PATH=$PATH:$ANDROID_HOME/tools             # Android
+export JAVA_HOME=/usr/local/jdk-17.0.8            # Java
+export PATH=$JAVA_HOME/bin/:$PATH                 # Java
+export PATH=/opt/apache-maven-3.8.6/bin:$PATH     # Java
+export PATH=$HOME/.sbt_bin/bin:$PATH              # Scala
 
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
