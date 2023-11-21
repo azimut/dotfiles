@@ -1,7 +1,8 @@
+"exec:~/.newsboat/feeds/curl.sh https://rizzcomic.com/rss"      manga
 "exec:~/.newsboat/feeds/curl.sh https://nocturnalscans.com/rss" manga
 #"exec:~/.newsboat/feeds/curl.sh https://luminousscans.com/rss" manga
 "exec:~/.newsboat/feeds/curl.sh https://flamescans.org/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://realmscans.to/rss" manga
+#"exec:~/.newsboat/feeds/curl.sh https://realmscans.to/rss" manga
 "exec:~/.newsboat/feeds/curl.sh https://manhwafreak.com/rss" manga
 "exec:~/.newsboat/feeds/curl.sh https://1stkissmanga.me/manga/rss" manga
 
@@ -71,6 +72,7 @@ https://fanfox.net/rss/fff_class_trashero.xml                                   
 #####https://fanfox.net/rss/tate_no_yuusha_no_nariagari.xml manga
 #####https://fanfox.net/rss/dr_stone.xml manga
 https://www.webtoons.com/en/fantasy/the-ember-knight/rss?title_no=2886 manga
+https://www.webtoons.com/en/fantasy/corpse-knight-gunther/rss?title_no=5032 manga
 https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
 #https://fanfox.net/rss/nano_machine.xml manga
 #https://www.webtoons.com/en/action/gosu/rss?title_no=1099 manga
@@ -109,10 +111,11 @@ https://medium.com/feed/@kaveh808 programming
 "exec:~/.newsboat/feeds/curl.sh http://lambda-the-ultimate.org/rss.xml" programming
 https://discuss.ocaml.org/top.rss                   programming
 https://discourse.haskell.org/top/monthly.rss       programming
+https://discourse.elm-lang.org/top/monthly.rss      programming
 https://erlangforums.com/top.rss                    programming
 #https://www.reddit.com/r/lua/top/.rss              programming "~/r/lua"
 #https://www.reddit.com/r/scheme/.rss               programming "~/r/scheme"
-https://www.reddit.com/r/pascal/top/.rss?t=month    programming "~/r/pascal"
+#https://www.reddit.com/r/pascal/top/.rss?t=month    programming "~/r/pascal"
 https://www.reddit.com/r/nim/top/.rss?t=month       programming "~/r/nim"
 https://www.reddit.com/r/elixir/top/.rss?t=month    programming "~/r/elixir"
 https://www.reddit.com/r/erlang/.rss                programming "~/r/erlang"
@@ -130,6 +133,7 @@ https://www.reddit.com/r/kotlin/top/.rss?t=month    programming "~/r/kotlin"
 https://www.reddit.com/r/zig/top/.rss?t=month       programming "~/r/zig"
 https://www.reddit.com/r/embedded/top/.rss?t=month  programming "~/r/Embedded"
 https://www.reddit.com/r/tcl/top/.rss?t=month       programming "~/r/tcl"
+https://www.reddit.com/r/elm/top/.rss?t=month       programming "~/r/elm"
 
 https://lobste.rs/top/rss tech
 https://hnrss.org/best    tech
