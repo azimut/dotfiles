@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+fuzzing=${1:10}
+
 get_orientation() {
 	local width height
 	read -r width height < <(identify -format "%w %h" "${1}")
@@ -13,11 +15,12 @@ get_orientation() {
 }
 
 before="$(du -sh)"
-echo "mogrifying..."
-mogrify -fuzz 25% -trim +repage -format png ./*.png
+echo -n "mogrifying..."
+mogrify -fuzz ${fuzzing}% -trim +repage -format png ./*.png
+echo -en "\nmaxing size"
 for i in ./*.png; do
 	[[ ! -f ${i} ]] && break
-	echo "maxing size of ${i}"
+	printf '.'
 	if [[ $(get_orientation "${i}") == 'horizontal' ]]; then
 		convert "${i}" -resize 1920x1080\> "${i/png/jpg}"
 	else
