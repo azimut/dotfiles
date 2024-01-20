@@ -20,6 +20,7 @@ alias g1='git clone --depth=1'
 alias wine-cordless='sudo unshare -n sudo -u sendai wine'
 alias evince='firejail --nodbus --net=none evince'
 
+alias dud="find . -maxdepth 1 -xdev -type d \( -not -regex '\./\..+' -and -not -name '\./\.' \) | while read -r dir; do du -sh \"$dir\"; done"
 alias duh="find . -maxdepth 1 -type d -regex './\..+' -exec du -sh {} \;"
 alias oddf="find . -maxdepth 1 -type f -not -iname '*\.*'"
 
