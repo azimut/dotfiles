@@ -22,7 +22,8 @@ def path_of_opened_pdf():
     for p in psutil.process_iter(['pid', 'name']):
         if p.info['name'] in PDF_VIEWERS:
             for f in p.open_files():
-                if f.path.endswith('.pdf') and is_path_mounted(f.path):
+                if (f.path.endswith('.pdf') or f.path.endswith('.epub')) \
+                   and is_path_mounted(f.path):
                     return f.path
     sys.exit("ERROR: opened pdf not found!")
 
