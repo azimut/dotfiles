@@ -29,7 +29,7 @@ info() {
 }
 
 # Create DST directories
-find "${SRC}" -type d | tail -n+2 |
+find "${SRC}" -mindepth 1 -type d |
 	while read -r dir; do
 		mkdir -vp ".${dir#${SRC}}"
 	done
@@ -37,7 +37,7 @@ find "${SRC}" -type d | tail -n+2 |
 # Copy non-video files
 find "${SRC}" -type f -not \( -iname \*.mp4 -o -iname \*.mkv \) |
 	while read -r srcfile; do
-		dstfile=".${srcfile#${SRC}}"
+		dstfile=".${srcfile#"${SRC}"}"
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
@@ -51,7 +51,7 @@ i=0
 # Convert videos
 find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 	while read -r srcfile; do
-		dstfile=".${srcfile#${SRC}}"
+		dstfile=".${srcfile#"${SRC}"}"
 		((++i))
 		info "${i} of ${total}"
 		[[ -f ${dstfile} ]] && {
