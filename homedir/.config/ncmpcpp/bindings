@@ -52,6 +52,12 @@ def_key "g"
 def_key "G"
   move_end
 
+def_key "alt->"
+  move_end
+
+def_key "alt-<"
+  move_home
+
 def_key "u"
   scroll_up
   select_item
