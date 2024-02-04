@@ -46,7 +46,6 @@ find "${SRC}" -name '*.html' |
 	while read -r srcfile; do
 		dstfile=".${srcfile#"${SRC}"}"
 		dstfile="${dstfile%.html}.pdf"
-		fullpath="file://$(realpath "${srcfile}")"
 
 		((++i))
 		info "${i} of ${total}"
@@ -54,7 +53,7 @@ find "${SRC}" -name '*.html' |
 			continue
 		}
 
-		fetch "${fullpath}" tmp.pdf
+		fetch "file://$(realpath "${srcfile}")" tmp.pdf
 		pdfcrop --margins '-5 -5 -5 -5' tmp.pdf "${dstfile}"
 		rm -f tmp.pdf
 	done
