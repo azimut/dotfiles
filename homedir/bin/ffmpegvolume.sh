@@ -1,9 +1,8 @@
 #!/bin/bash
-#
-# Description: returns the volume loudness of the passed file
 
 if [[ ! -s $1 ]]; then
-	echo "ERROR: missing filename argument or files does not exists"
+	echo "Description: returns the volume loudness of the passed file."
+	echo -e "Usage:\n\t\$ ${0##*/} <FILENAME>"
 	exit 1
 fi
 
