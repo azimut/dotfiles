@@ -8,4 +8,4 @@ fi
 
 ffmpeg -i "$1" -af volumedetect -sn -dn -vn -f null /dev/null |&
 	awk -v filename="$(basename "$1")" \
-		'/mean_volume/ { printf "%-+.2f  %s\n", $5, filename }'
+		'/mean_volume/ { printf("%6s  %s\n", sprintf("%-+.2f", $5), filename) }'
