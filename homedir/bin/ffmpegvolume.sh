@@ -6,6 +6,6 @@ if [[ ! -s $1 ]]; then
 	exit 1
 fi
 
-ffmpeg -i "$1" -af volumedetect -sn -dn -vn -f null /dev/null 2>&1 |
+ffmpeg -i "$1" -af volumedetect -sn -dn -vn -f null /dev/null |&
 	awk -v filename="$(basename "$1")" \
 		'/mean_volume/ { printf "%-+.2f  %s\n", $5, filename }'
