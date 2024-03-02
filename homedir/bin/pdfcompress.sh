@@ -14,7 +14,7 @@ usage() {
 
 filename="$1"
 
-case "${2:-screen}" in
+case "${2:-ebook}" in
 screen) setting="screen" ;;
 ebook) setting="ebook" ;;
 prepress) setting="prepress" ;;
