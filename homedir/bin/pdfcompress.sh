@@ -23,7 +23,7 @@ default) setting="default" ;;
 *) err "invalid pdfsetting" && usage && exit 1 ;;
 esac
 
-echo -n "Converting \`${filename}\`..."
+echo -n "Converting \`$(basename "${filename}")\`..."
 gs -sDEVICE=pdfwrite \
 	-dPDFSETTINGS=/"${setting}" \
 	-dCompatibilityLevel=1.4 \
@@ -37,5 +37,5 @@ new_size="$(($(stat -c '%s' out.pdf) / 1024 / 1024))"
 mv out.pdf "${filename}"
 
 echo
-echo "Old size: ${old_size}"
-echo "New size: ${new_size}"
+echo "Old size: ${old_size}MB"
+echo "New size: ${new_size}MB"
