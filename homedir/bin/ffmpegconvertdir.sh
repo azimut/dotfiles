@@ -10,7 +10,7 @@ set -euo pipefail
 [[ $# -eq 0 ]] && {
 	echo "ERROR: missing argument"
 	echo "Usage:"
-	echo "    $0 <SRCDIR> <VIDEO_FILTER>"
+	echo "    $0 <SRCDIR> [VIDEO_FILTER]"
 	exit 1
 }
 
