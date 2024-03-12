@@ -20,6 +20,7 @@ ignore-article "exec:~/.newsboat/feeds/curl.sh https://nocturnalscans.com/rss"  
 ignore-article "exec:~/.newsboat/feeds/curl.sh https://flamescans.org/rss"        "title !~ \"(Sword Emperor)|(Nine Heavens)|(One Step for the Dark Lord)|(Helmut)\""
 ignore-article "exec:~/.newsboat/feeds/curl.sh https://manhwafreak.com/rss"       "title !~ \"(Escort Warrior)|(Leveling Up Alone)|(The Great Master)\""
 ignore-article "exec:~/.newsboat/feeds/curl.sh https://1stkissmanga.me/manga/rss" "title !~ \"(Evil Dragon)|(Carserian)|(Should be Special)\""
+ignore-article "exec:~/.newsboat/feeds/curl.sh https://freakscans.com/rss"        "title !~ \"(Overpowered Healer)\""
 
 #
 # Bookmarking

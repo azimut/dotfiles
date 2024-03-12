@@ -3,10 +3,7 @@
 set -euo pipefail
 
 container_and_file() {
-	for link in ~/.coomer/*jpg ~/.coomer/*png; do
-		if [[ ! -L ${link} ]]; then
-			continue
-		fi
+	for link in ./*; do
 		file=$(readlink ${link})
 		container=${file%/*}
 		container=${container##*/}

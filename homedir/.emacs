@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 143 :width normal))))
+ '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight regular :height 151 :width normal))))
  '(col-highlight ((t (:background "color-233"))))
  '(dap-ui-pending-breakpoint-face ((t (:background "dark gray" :foreground "black"))))
  '(dap-ui-verified-breakpoint-face ((t (:background "green" :foreground "black")))))
@@ -17,6 +17,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+ '(column-number-mode t)
  '(company-show-quick-access nil nil nil "Customized with use-package company")
  '(custom-enabled-themes '(doom-homage-black))
  '(custom-safe-themes
@@ -65,7 +66,6 @@
  '(pdf-view-midnight-colors '("#655370" . "#fbf8ef"))
  '(pos-tip-background-color "#2a2931")
  '(pos-tip-foreground-color "#d4d4d6")
- '(show-paren-mode t)
  '(show-trailing-whitespace t)
  '(tool-bar-mode nil))
 
