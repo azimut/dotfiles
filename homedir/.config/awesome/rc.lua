@@ -67,7 +67,8 @@ beautiful.border_focus = "#00AAAA"
 beautiful.border_width = 1
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+--terminal = "alacritty"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -209,7 +210,7 @@ local myfs = lain.widget.fs({
       notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = theme.font },
       showpopup = "off",
       settings = function()
-         local fsp = string.format(" %3.2f%s ", fs_now["/home"].free, fs_now["/home"].units)
+         local fsp = string.format(" %3.2f%s ", fs_now["/home/sendai"].free, fs_now["/home/sendai"].units)
          widget:set_markup(
             markup.font(theme.font,
                         markup(theme.fg_normal, fsp)))
@@ -285,8 +286,8 @@ local mynet = lain.widget.net {
 end}
 
 local myquake = lain.util.quake({
-      app = "alacritty",
-      argname = "--class %s",
+      app = "urxvtc",
+      argname = "+sb -name %s",
       height = 0.25,
       width = 1,
       vert = "bottom",
@@ -511,16 +512,16 @@ globalkeys = gears.table.join(
    -- MONITOR ONLY ROT xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left
    -- NOTEBOOK ONLY    xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off
    awful.key({ modkey }, "F1",
-      function () awesome.spawn("xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal", false) end,
+      function () awesome.spawn("xrandr --output eDP-1 --off --output HDMI-1 --mode 1600x900 --rotation normal", false) end,
       {description = "xrandr HDMI ONLY"}),
    awful.key({ modkey }, "F2",
-      function () awesome.spawn("xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary", false) end,
+      function () awesome.spawn("xrandr --output eDP-1 --mode 1366x768 --right-of HDMI-1  --output HDMI-1 --mode 1600x900 --rotation normal --primary", false) end,
       {description = "xrandr BOTH"}),
    awful.key({ modkey }, "F3",
-      function () awesome.spawn("xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation left", false) end,
+      function () awesome.spawn("xrandr --output eDP-1 --off --output HDMI-1 --mode 1600x900 --rotation left", false) end,
       {description = "xrandr HDMI ROTATED"}),
    awful.key({ modkey }, "F4",
-      function () awesome.spawn("xrandr --output eDP1 --mode 1366x768 --output HDMI1 --off", false) end,
+      function () awesome.spawn("xrandr --output eDP-1 --mode 1366x768 --output HDMI-1 --off", false) end,
       {description = "xrandr NOTEBOOK ONLY"}),
    --
    awful.key({ modkey }, "F5",
@@ -868,8 +869,8 @@ run_once("mpd")
 run_once("mpdas")
 run_once("wmname LG3D")
 run_once("nm-applet")
---run_once("urxvtd")
-run_once("keynav")
+run_once("urxvtd")
+run_once("keynav \"loadconfig ~/.config/keynav/keynavrc\"")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap", false)
 awesome.spawn("bash " .. os.getenv("HOME") .. "/.fehbg", false)
