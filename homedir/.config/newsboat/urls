@@ -1,24 +1,24 @@
 https://old.reddit.com/user/Sammwy/submitted/.rss
 
-"exec:~/.newsboat/feeds/curl.sh https://freakscans.com/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://rizzcomic.com/rss"      manga
-"exec:~/.newsboat/feeds/curl.sh https://nocturnalscans.com/rss" manga
-#"exec:~/.newsboat/feeds/curl.sh https://luminousscans.com/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://flamescans.org/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://flamecomics.org/rss" manga
-#"exec:~/.newsboat/feeds/curl.sh https://realmscans.to/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://manhwafreak.com/rss" manga
-"exec:~/.newsboat/feeds/curl.sh https://1stkissmanga.me/manga/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://freakscans.com/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://rizzcomic.com/rss"      manga
+"exec:~/.config/newsboat/feeds/curl.sh https://nocturnalscans.com/rss" manga
+#"exec:~/.config/newsboat/feeds/curl.sh https://luminousscans.com/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://flamescans.org/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://flamecomics.org/rss" manga
+#"exec:~/.config/newsboat/feeds/curl.sh https://realmscans.to/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://manhwafreak.com/rss" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://1stkissmanga.me/manga/rss" manga
 
 https://fanfox.net/rss/daesahyong_sonnyu.xml manga
 https://fanfox.net/rss/carsearin.xml         manga
 #https://fanfox.net/rss/level_up_alone.xml manga
 #https://fanfox.net/rss/escort_warrior.xml          manga
 #https://fanfox.net/rss/return_of_the_mad_demon.xml manga
-"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
-#"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
-#"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
-#"exec:~/.newsboat/feeds/curl.sh https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
+"exec:~/.config/newsboat/feeds/curl.sh https://mangasee123.com/rss/Hero-Has-Returned.xml" manga
+#"exec:~/.config/newsboat/feeds/curl.sh https://mangasee123.com/rss/Skeleton-Soldier-Couldnt-Protect-The-Dungeon.xml" manga
+#"exec:~/.config/newsboat/feeds/curl.sh https://mangasee123.com/rss/Return-of-the-Legendary-Spear-Knight.xml" manga
+#"exec:~/.config/newsboat/feeds/curl.sh https://mangasee123.com/rss/To-You-The-Immortal.xml" manga
 https://www.reddit.com/r/PeerlessDad/new/.rss                                manga "~/r/PeerlessDad"
 #https://fanfox.net/rss/wo_zai_yi_jie_xiu_mo_fa.xml                           manga
 ##delete?###https://fanfox.net/rss/leveling_up_with_the_gods.xml                         manga
@@ -97,7 +97,7 @@ https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
 #https://rebelion.digital/rss argentina
 #https://blog.redpanal.org/rss argentina
 
-"exec:~/.newsboat/feeds/4chan-rss -b g -n 25 -p 2" tech
+"exec:~/.config/newsboat/feeds/4chan-rss -b g -n 25 -p 2" tech
 
 https://wired-7.org/tech/index.rss
 
@@ -114,7 +114,7 @@ https://lainchan.org/%CE%94/index.rss
 #https://www.reddit.com/r/emacs/.rss "~/r/emacs"
 
 https://medium.com/feed/@kaveh808 programming
-"exec:~/.newsboat/feeds/curl.sh http://lambda-the-ultimate.org/rss.xml" programming
+"exec:~/.config/newsboat/feeds/curl.sh http://lambda-the-ultimate.org/rss.xml" programming
 https://discuss.ocaml.org/top.rss                   programming
 https://discourse.haskell.org/top/monthly.rss       programming
 https://discourse.elm-lang.org/top/monthly.rss      programming
@@ -143,11 +143,11 @@ https://www.reddit.com/r/elm/top/.rss?t=month       programming "~/r/elm"
 
 https://lobste.rs/top/rss tech
 https://hnrss.org/best    tech
-"exec:~/.newsboat/feeds/curl.sh https://tymoon.eu/api/reader/atom" tech
+"exec:~/.config/newsboat/feeds/curl.sh https://tymoon.eu/api/reader/atom" tech
 
-"exec:~/.newsboat/feeds/curl.sh https://0x00sec.org/top.rss"        sec
+"exec:~/.config/newsboat/feeds/curl.sh https://0x00sec.org/top.rss"        sec
 #https://blog.underc0de.org/feed/ sec
-"exec:~/.newsboat/feeds/curl.sh https://sector035.nl/articles.atom"    sec
+"exec:~/.config/newsboat/feeds/curl.sh https://sector035.nl/articles.atom"    sec
 https://www.reddit.com/r/netsec/top/.rss?t=month          sec "~/r/netsec"
 http://feeds.feedburner.com/FluProject                    sec
 http://feeds.feedburner.com/NoticiasSeguridadInformatica  sec
@@ -179,17 +179,17 @@ https://slatestarcodex.com/feed/ politics
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
 https://www.industriavg.com.ar/rss/all/ jobs
-exec:~/.newsboat/feeds/ekojobs.sh       jobs
-exec:~/.newsboat/feeds/sql2rss        jobs
-"exec:~/.newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
+exec:~/.config/newsboat/feeds/ekojobs.sh       jobs
+exec:~/.config/newsboat/feeds/sql2rss        jobs
+"exec:~/.config/newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
 
 https://feeds.simplecast.com/oM_1xVen podcast
 https://feeds.pacific-content.com/commandlineheroes podcast
 https://link.chtbl.com/corecursive?platform=rss podcast
-"exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
-"exec:~/.newsboat/feeds/curl.sh https://feeds.buzzsprout.com/1830936.rss" podcast
-"exec:~/.newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
-"exec:~/.newsboat/feeds/curl.sh https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
+"exec:~/.config/newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
+"exec:~/.config/newsboat/feeds/curl.sh https://feeds.buzzsprout.com/1830936.rss" podcast
+"exec:~/.config/newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
+"exec:~/.config/newsboat/feeds/curl.sh https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
 https://anchor.fm/s/47fdfdbc/podcast/rss podcast
 https://anchor.fm/s/13c26f60/podcast/rss podcast
 https://anchor.fm/s/34c6f190/podcast/rss podcast
@@ -205,11 +205,11 @@ https://forum.toplap.org/top.rss livecoding
 https://link.springer.com/search.rss?facet-discipline=%22Computer+Science%22&facet-language=%22En%22&facet-content-type=%22Book%22&sortOrder=newestFirst books "~Springer CS Books"
 https://feeds.feedburner.com/oreilly/newbooks          books
 https://nostarch.com/feeds/newbooks.xml                books
-exec:~/.newsboat/feeds/apress.sh                       books
-exec:~/.newsboat/feeds/manning.sh                      books
-exec:~/.newsboat/feeds/packt.sh                        books
-exec:~/.newsboat/feeds/pragprog.sh                     books
-"exec:~/.newsboat/feeds/crc.sh SCAR70"                 books
-"exec:~/.newsboat/feeds/crc.sh CGD"                    books
+exec:~/.config/newsboat/feeds/apress.sh                       books
+exec:~/.config/newsboat/feeds/manning.sh                      books
+exec:~/.config/newsboat/feeds/packt.sh                        books
+exec:~/.config/newsboat/feeds/pragprog.sh                     books
+"exec:~/.config/newsboat/feeds/crc.sh SCAR70"                 books
+"exec:~/.config/newsboat/feeds/crc.sh CGD"                    books
 https://github.com/dariubs/GoBooks/commits/master.atom books
 https://github.com/sger/RustBooks/commits/main.atom  books
