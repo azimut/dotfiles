@@ -480,13 +480,13 @@ globalkeys = gears.table.join(
       {description = "copy primary clipboard to secondary"}),
    --
    awful.key({ modkey }, "0",
-      function () awesome.spawn("amixer set Master 75%,75%", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,40%}", false) end, -- FIXME: I mean, fix the cable
       {description = "amixer stereo"}),
    awful.key({ modkey }, "'",
-      function () awesome.spawn("amixer set Master 75%,5%", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,5%}", false) end,
       {description = "amixer left"}),
    awful.key({ modkey }, "¿",
-      function () awesome.spawn("amixer set Master 5%,75%", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {%5,75%}", false) end,
       {description = "amixer right"}),
    awful.key({ modkey }, ".",
       function () awesome.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
