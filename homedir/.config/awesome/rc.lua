@@ -481,7 +481,10 @@ globalkeys = gears.table.join(
    --
    awful.key({ modkey }, "0",
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,40%}", false) end, -- FIXME: I mean, fix the cable
-      {description = "amixer stereo"}),
+      {description = "default volume for headphones"}),
+   awful.key({ modkey }, "F12",
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {50%,50%}", false) end,
+      {description = "default volume"}),
    awful.key({ modkey }, "'",
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,5%}", false) end,
       {description = "amixer left"}),
@@ -540,7 +543,7 @@ globalkeys = gears.table.join(
          awesome.spawn(os.getenv("HOME") .. "/bin/grabtimestamp.sh", false)
       end,
       {description = "grabtimestamp.sh"}),
- --
+   --
    awful.key({ modkey }, "ñ",
       function () myquake:toggle() end,
       {description = "quake toggle"}),
@@ -627,38 +630,38 @@ clientkeys = gears.table.join(
       {description="toggle sticky", group="client"}),
    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
       {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-       {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
-       function (c)
-          -- The client currently has the input focus, so it cannot be
-          -- minimized, since minimized clients can't have the focus.
-          c.minimized = true
-       end ,
-       {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-       function (c)
-          c.maximized = not c.maximized
-          if c.maximized then
-             c.border_width = 0
-          else
-             c.border_width = beautiful.border_width
-          end
-          c:raise()
-       end ,
-       {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
-       function (c)
-          c.maximized_vertical = not c.maximized_vertical
-          c:raise()
-       end ,
-       {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
-       function (c)
-          c.maximized_horizontal = not c.maximized_horizontal
-          c:raise()
-       end ,
-       {description = "(un)maximize horizontally", group = "client"})
+   awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+      {description = "toggle keep on top", group = "client"}),
+   awful.key({ modkey,           }, "n",
+      function (c)
+         -- The client currently has the input focus, so it cannot be
+         -- minimized, since minimized clients can't have the focus.
+         c.minimized = true
+      end ,
+      {description = "minimize", group = "client"}),
+   awful.key({ modkey,           }, "m",
+      function (c)
+         c.maximized = not c.maximized
+         if c.maximized then
+            c.border_width = 0
+         else
+            c.border_width = beautiful.border_width
+         end
+         c:raise()
+      end ,
+      {description = "(un)maximize", group = "client"}),
+   awful.key({ modkey, "Control" }, "m",
+      function (c)
+         c.maximized_vertical = not c.maximized_vertical
+         c:raise()
+      end ,
+      {description = "(un)maximize vertically", group = "client"}),
+   awful.key({ modkey, "Shift"   }, "m",
+      function (c)
+         c.maximized_horizontal = not c.maximized_horizontal
+         c:raise()
+      end ,
+      {description = "(un)maximize horizontally", group = "client"})
 )
 
 -- Bind all key numbers to tags.
