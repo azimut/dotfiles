@@ -85,14 +85,14 @@ https://fanfox.net/rss/tale_of_a_scribe_who_retires_to_the_countryside.xml manga
 #https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95 manga
 #https://readshingekinokyojin.com/rss manga
 
-#"exec:github-rss azimut"
-#"exec:gitorg-rss EpicGames"
-#"exec:gitorg-rss NVIDIAGameWorks"
-#"exec:gitorg-rss trailofbits"
-"exec:gitorg-rss Shirakumo"
-"exec:gitorg-rss tsoding"
-"exec:gitorg-rss destinygg"
-#"exec:gitissue-rss https://github.com/edannenberg/kubler/issues/208"
+#"exec:~/.config/newsboat/feeds/github-rss azimut"
+#"exec:~/.config/newsboat/feeds/gitorg-rss EpicGames"
+#"exec:~/.config/newsboat/feeds/gitorg-rss NVIDIAGameWorks"
+#"exec:~/.config/newsboat/feeds/gitorg-rss trailofbits"
+"exec:~/.config/newsboat/feeds/gitorg-rss Shirakumo"
+"exec:~/.config/newsboat/feeds/gitorg-rss tsoding"
+"exec:~/.config/newsboat/feeds/gitorg-rss destinygg"
+#"exec:~/.config/newsboat/feeds/gitissue-rss https://github.com/edannenberg/kubler/issues/208"
 
 #https://rebelion.digital/rss argentina
 #https://blog.redpanal.org/rss argentina
