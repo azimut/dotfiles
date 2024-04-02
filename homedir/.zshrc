@@ -100,7 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cat="batcat"
-alias t="tree -a"
+alias t="tree"
+alias rm="rm -v"
+alias cal="ncal -b"
 
 eval $(opam env)
 
