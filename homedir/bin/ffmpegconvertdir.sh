@@ -57,7 +57,7 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffmpeg -hide_banner -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" </dev/null
+		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}"
 	done
 
 info "done!"
