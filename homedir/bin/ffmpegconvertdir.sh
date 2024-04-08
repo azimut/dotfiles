@@ -7,6 +7,12 @@
 
 set -euo pipefail
 
+info() {
+	notify-send -t "$((5 * 1000))" -- \
+		"$0" \
+		"<span color='#57dafd' font='20px'>${1}</span>"
+}
+
 [[ $# -eq 0 ]] && {
 	echo "ERROR: missing argument"
 	echo "Usage:"
@@ -22,16 +28,12 @@ set -euo pipefail
 SRC="$(realpath "${1}")"
 FILTERS="${2:-scale=960:-1}"
 
-info() {
-	notify-send -t "$((5 * 1000))" -- \
-		"$0" \
-		"<span color='#57dafd' font='20px'>${1}</span>"
-}
+before="$(du -sh "${SRC}" | cut -f1)"
 
 # Create DST directories
 find "${SRC}" -mindepth 1 -type d |
 	while read -r dir; do
-		mkdir -vp ".${dir#${SRC}}"
+		mkdir -vp ".${dir#"${SRC}"}"
 	done
 
 # Copy non-video files
@@ -59,5 +61,8 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		}
 		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}"
 	done
+
+echo "Before: ${before}"
+echo "After:  $(du -sh . | cut -f1)"
 
 info "done!"
