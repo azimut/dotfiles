@@ -118,6 +118,7 @@ https://medium.com/feed/@kaveh808 programming
 https://discuss.ocaml.org/top.rss                   programming
 https://discourse.haskell.org/top/monthly.rss       programming
 https://discourse.elm-lang.org/top/monthly.rss      programming
+https://discourse.purescript.org/top/monthly.rss    programming
 https://erlangforums.com/top.rss                    programming
 #https://www.reddit.com/r/lua/top/.rss              programming "~/r/lua"
 #https://www.reddit.com/r/scheme/.rss               programming "~/r/scheme"
@@ -140,6 +141,7 @@ https://www.reddit.com/r/zig/top/.rss?t=month       programming "~/r/zig"
 https://www.reddit.com/r/embedded/top/.rss?t=month  programming "~/r/Embedded"
 https://www.reddit.com/r/tcl/top/.rss?t=month       programming "~/r/tcl"
 https://www.reddit.com/r/elm/top/.rss?t=month       programming "~/r/elm"
+https://www.reddit.com/r/purescript/top/.rss?t=month       programming "~/r/purescript"
 
 https://lobste.rs/top/rss tech
 https://hnrss.org/best    tech
@@ -155,7 +157,6 @@ http://feeds.feedburner.com/hispasec/zCAd                 sec
 https://feeds2.feedburner.com/SecurityTube                sec
 https://blog.trailofbits.com/feed/                        sec
 #https://www.spreaker.com/user/7472853/episodes/feed sec
-#https://feeds.simplecast.com/2Ntuu3AF sec podcast
 
 #https://www.reddit.com/r/securityCTF/top/.rss sec "~/r/securityCTF"
 #https://www.reddit.com/r/oscp/top/.rss sec "~/r/oscp"
@@ -178,24 +179,9 @@ https://slatestarcodex.com/feed/ politics
 #https://forum.cabbageaudio.com/latest.rss csound
 #http://csound.1045644.n5.nabble.com/Csound-f1093013.xml csound
 
-https://www.industriavg.com.ar/rss/all/ jobs
 exec:~/.config/newsboat/feeds/ekojobs.sh       jobs
 exec:~/.config/newsboat/feeds/sql2rss        jobs
 "exec:~/.config/newsboat/feeds/twitch-rss -n 50 'Software and Game Development'"
-
-https://feeds.simplecast.com/oM_1xVen podcast
-https://feeds.pacific-content.com/commandlineheroes podcast
-https://link.chtbl.com/corecursive?platform=rss podcast
-"exec:~/.config/newsboat/feeds/curl.sh https://feeds.fireside.fm/wtfsharp/rss" podcast
-"exec:~/.config/newsboat/feeds/curl.sh https://feeds.buzzsprout.com/1830936.rss" podcast
-"exec:~/.config/newsboat/feeds/curl.sh https://feeds.fireside.fm/compositional/rss" podcast
-"exec:~/.config/newsboat/feeds/curl.sh https://feeds.transistor.fm/thoughts-on-functional-programming-podcast-by-eric-normand" podcast
-https://anchor.fm/s/47fdfdbc/podcast/rss podcast
-https://anchor.fm/s/13c26f60/podcast/rss podcast
-https://anchor.fm/s/34c6f190/podcast/rss podcast
-https://anchor.fm/s/4d6c93f8/podcast/rss podcast
-https://anchor.fm/s/2b386e88/podcast/rss podcast
-https://www.sicpers.info/feed/podcast    podcast
 
 https://www.reddit.com/r/Destiny/.rss streamer "~/r/Destiny"
 
