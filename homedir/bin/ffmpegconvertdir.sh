@@ -28,8 +28,6 @@ info() {
 SRC="$(realpath "${1}")"
 FILTERS="${2:-scale=960:-1}"
 
-before="$(du -sh "${SRC}" | cut -f1)"
-
 # Create DST directories
 find "${SRC}" -mindepth 1 -type d |
 	while read -r dir; do
@@ -46,11 +44,13 @@ find "${SRC}" -type f -not \( -iname \*.mp4 -o -iname \*.mkv \) |
 		cp "${srcfile}" "${dstfile}"
 	done
 
-# Counters
+# Counter
 total="$(find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | wc -l)"
-i=0
+printf '\nNumber of file to convert: %d\n\n' "${total}"
 
 # Convert videos
+before="$(du -sh "${SRC}" | cut -f1)"
+i=0
 find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 	while read -r srcfile; do
 		dstfile=".${srcfile#"${SRC}"}"
@@ -62,7 +62,8 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}"
 	done
 
+echo
 echo "Before: ${before}"
 echo "After:  $(du -sh . | cut -f1)"
-
+echo
 info "done!"
