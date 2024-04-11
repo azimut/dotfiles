@@ -480,7 +480,7 @@ globalkeys = gears.table.join(
       {description = "copy primary clipboard to secondary"}),
    --
    awful.key({ modkey }, "0",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,40%}", false) end, -- FIXME: I mean, fix the cable
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {60%,40%}", false) end, -- FIXME: I mean, fix the cable
       {description = "default volume for headphones"}),
    awful.key({ modkey }, "F12",
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {50%,50%}", false) end,
@@ -489,7 +489,7 @@ globalkeys = gears.table.join(
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,5%}", false) end,
       {description = "amixer left"}),
    awful.key({ modkey }, "¿",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {%5,75%}", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {5%,75%}", false) end,
       {description = "amixer right"}),
    awful.key({ modkey }, ".",
       function () awesome.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
