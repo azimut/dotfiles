@@ -483,7 +483,7 @@ globalkeys = gears.table.join(
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {60%,40%}", false) end, -- FIXME: I mean, fix the cable
       {description = "default volume for headphones"}),
    awful.key({ modkey }, "F12",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {50%,50%}", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,75%}", false) end,
       {description = "default volume"}),
    awful.key({ modkey }, "'",
       function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,5%}", false) end,
