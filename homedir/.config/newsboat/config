@@ -14,7 +14,7 @@ ignore-article "exec:~/.config/newsboat/feeds/twitch-rss -n 50 'Software and Gam
 ignore-article "exec:~/.config/newsboat/feeds/4chan-rss -b g -n 25 -p 2" "title =~ \"/sdg/|/pcbg/|/sqt/|/tpg/|/fglt/|/ptg/|/hpg/|/iemg/|/bst/|/mkg/|/aicg/|/DE3/|/lmg/\""
 ignore-article "https://www.reddit.com/r/Destiny/.rss" "content =~ \"preview.redd.it|www.reddit.com/gallery/|b.thumbs.redditmedia.com\""
 
-ignore-article "exec:~/.config/newsboat/feeds/curl.sh https://rizzcomic.com/rss"         "title !~ \"(Villain Unrivaled)|(Chronicles Of The Martial)|(Death God)|(Administrator Kangjin Lee)|(Legends of the Swordsman Scholar)|(Infinite Level Up)\""
+ignore-article "exec:~/.config/newsboat/feeds/curl.sh https://rizzcomic.com/rss"         "title !~ \"(Villain Unrivaled)|(Chronicles Of The Martial)|(Death God)|(Administrator Kangjin Lee)|(Legends of the Swordsman Scholar)|(Infinite Level Up)|(Reborn As The Heavenly Demon)\""
 ignore-article "exec:~/.config/newsboat/feeds/curl.sh https://luminousscans.com/rss"     "title !~ \"(Peerless Dad)|(Magic Should Be Special)|(Martial Artist Lee Gwak)\""
 ignore-article "exec:~/.config/newsboat/feeds/curl.sh https://nocturnalscans.com/rss"    "title !~ \"(Demon in Mount Hua)\""
 ignore-article "exec:~/.config/newsboat/feeds/curl.sh https://flamescans.org/rss"        "title !~ \"(Sword Emperor)|(Nine Heavens)|(One Step for the Dark Lord)|(Helmut)\""
