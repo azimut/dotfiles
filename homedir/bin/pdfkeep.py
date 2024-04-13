@@ -7,13 +7,13 @@ import sys
 import psutil
 
 
-PDF_VIEWERS = ['evince', 'mupdf']
+PDF_VIEWERS = ['evince', 'mupdf', 'mupdf-x11']
 
 
 def is_path_mounted(srcpath):
     """Check if provided path is on a mounted device."""
     srcdir = os.path.dirname(srcpath)
-    homedir = os.getenv('HOME')
+    homedir = os.getenv('HOME') or "/"
     return os.statvfs(srcdir).f_bfree != os.statvfs(homedir).f_bfree
 
 
