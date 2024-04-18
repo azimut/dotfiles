@@ -105,6 +105,7 @@ alias cat="batcat"
 alias t="tree"
 alias rm="rm -v"
 alias cal="ncal -b"
+alias bc="bc -lq"
 
 eval $(opam env)
 
