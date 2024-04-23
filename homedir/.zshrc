@@ -63,6 +63,7 @@ ZSH_THEME="lambda"
 # HIST_STAMPS="mm/dd/yyyy"
 HISTSIZE=1000000
 SAVEHIST=1000000
+HISTORY_IGNORE="(ls|pwd)*" # cd?
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
