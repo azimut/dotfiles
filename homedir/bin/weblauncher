@@ -2,6 +2,7 @@
 
 set -exuo pipefail
 
+LOGFILE="${HOME}/weblauncher.log"
 URL="${1}"
 UA='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'
 
@@ -17,7 +18,7 @@ download_and_show() {
 	local errormsg='<span font=\"20px\">feh failed</span>'
 	local tmpfile
 	tmpfile="$(mktemp --dry-run)"
-	nohup 2>&1 bash <<<"
+	nohup >"${LOGFILE}" 2>&1 bash <<<"
     if ! ${cmd} -q -T 60 -O ${tmpfile} -U \"${UA}\" \"${url}\"; then
        notify-send -t 4000 'Error' \"${errormsg}\"
     fi
@@ -29,7 +30,7 @@ mpv_site() {
 	local url="${1}"
 	shift
 	local OPTS=("${@}")
-	nohup 2>&1 mpv --ytdl-raw-options=all-subs= \
+	nohup >"${LOGFILE}" 2>&1 mpv --ytdl-raw-options=all-subs= \
 		--sid=1 \
 		--x11-name=mpvFloating \
 		--no-terminal \
@@ -68,10 +69,10 @@ case "${URL,,}" in
 	download_and_show "${URL}"
 	;;
 *.gif)
-	nohup 2>&1 mpv --no-terminal --loop --osd-level=3 "${URL}" &
+	nohup >"${LOGFILE}" 2>&1 mpv --no-terminal --loop --osd-level=3 "${URL}" &
 	;;
 *.pdf)
-	nohup 2>&1 evince "${URL}" &
+	nohup >"${LOGFILE}" 2>&1 evince "${URL}" &
 	;;
 *http*://gyazo.com*) # catch things without an extension and add one
 	download_and_show "${URL}.jpg" ;;
@@ -122,7 +123,7 @@ case "${URL,,}" in
 	mpv_site "${URL}" --autofit=400x400 --ytdl-format='worst[height>=360]'
 	;;
 *twitch.tv*)
-	nohup streamlink \
+	nohup >"${LOGFILE}" 2>&1 streamlink \
 		--player mpv \
 		--player-args '--autofit=400x400 --no-terminal --af=@rb:rubberband --volume=50 --osd-level=3 --x11-name=mpvFloating' \
 		"${URL}" \
