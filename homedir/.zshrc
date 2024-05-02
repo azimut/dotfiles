@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cat="batcat"
+alias cat="batcat -p"
 alias t="tree"
 alias rm="rm -v"
 alias cal="ncal -b"
