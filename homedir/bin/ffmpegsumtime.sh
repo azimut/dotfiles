@@ -7,6 +7,5 @@ seconds_format() { date -d@"$(</dev/stdin)" -u +%H:%M:%S; }
 
 find . -xdev -name '*.mp4' -or -name '*.mp3' |
 	while read -r video; do
-		ffprobe -v quiet -show_format -hide_banner -print_format json -i "${video}" |
-			jq -r '.format.duration'
-	done | sum | seconds_format
+		ffprobe -v quiet -show_format -hide_banner -print_format json -i "${video}"
+	done | jq -r '.format.duration' | sum | seconds_format
