@@ -59,7 +59,10 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}"
+		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
+			rm -vf "${dstfile}"
+			exit 1
+		}
 	done
 
 echo
