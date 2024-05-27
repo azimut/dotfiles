@@ -13,20 +13,34 @@ info() {
 		"<span color='#57dafd' font='20px'>${1}</span>"
 }
 
-[[ $# -eq 0 ]] && {
-	echo "ERROR: missing argument"
+usage() {
 	echo "Usage:"
-	echo "    $0 <SRCDIR> [VIDEO_FILTER]"
+	echo "    $(basename $0) [-f <VIDEO_FILTER>] [-s <TIME_SKIP>] <SRCDIR>"
 	exit 1
 }
 
-[[ ! -d ${1} ]] && {
-	echo "ERROR: src does not exists"
-	exit 1
-}
+while getopts "hs:f:" arg; do
+	case $arg in
+	h) usage ;;
+	f) FILTERS="$OPTARG" ;;
+	s) SKIP="$OPTARG" ;;
+	*) usage ;;
+	esac
+done
+shift $((OPTIND - 1))
 
 SRC="$(realpath "${1}")"
-FILTERS="${2:-scale=960:-1}"
+FILTERS="${FILTERS:-scale=960:-1}"
+SKIP="${SKIP:-00:00:00}"
+
+[[ $# -ne 1 ]] && {
+	echo "ERROR: missing argument"
+	usage
+}
+[[ ! -d ${1} ]] && {
+	echo "ERROR: src does not exists"
+	usage
+}
 
 # Create DST directories
 find "${SRC}" -mindepth 1 -type d |
@@ -59,7 +73,7 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffbar -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
+		ffbar -ss "${SKIP}" -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
 			rm -vf "${dstfile}"
 			exit 1
 		}
