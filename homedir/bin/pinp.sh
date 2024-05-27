@@ -13,10 +13,7 @@ getTargetID() {
 }
 
 getScreenDimensions() { xrandr | awk '/current/{ print($8, int($10)) }'; }
-getWindowDimensions() {
-	local id="${1}"
-	xdotool getwindowgeometry --shell "${id}" | grep -E 'WIDTH|HEIGHT' | cut -f2 -d= | xargs
-}
+getWindowDimensions() { xdotool getwindowgeometry "$1" | awk '/Geometry/{ gsub("x"," "); print($2,$3) }'; }
 
 MULTIPLIER="${1:-1}"
 BAR_OFFSET="${2:-20}"
@@ -37,5 +34,3 @@ xdotool windowsize ${ID} "${TARGET_WIDTH}" "${TARGET_HEIGHT}"
 xdotool windowmove ${ID} \
 	$((SCREEN_DIMENSIONS[0] - TARGET_WIDTH)) \
 	$((0 + BAR_OFFSET))
-
-echo "Done!"
