@@ -29,10 +29,6 @@ while getopts ":hs:f:" arg; do
 done
 shift $((OPTIND - 1))
 
-SRC="$(realpath "${1}")"
-FILTERS="${FILTERS:-scale=960:-1}"
-SKIP="${SKIP:-00:00:00}"
-
 [[ $# -ne 1 ]] && {
 	echo "ERROR: missing argument"
 	usage
@@ -41,6 +37,10 @@ SKIP="${SKIP:-00:00:00}"
 	echo "ERROR: src does not exists"
 	usage
 }
+
+SRC="$(realpath "${1}")"
+FILTERS="${FILTERS:-scale=960:-1}"
+SKIP="${SKIP:-00:00:00}"
 
 # Create DST directories
 find "${SRC}" -mindepth 1 -type d |
