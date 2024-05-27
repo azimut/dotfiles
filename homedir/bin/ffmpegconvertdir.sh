@@ -9,17 +9,17 @@ set -euo pipefail
 
 info() {
 	notify-send -t "$((5 * 1000))" -- \
-		"$0" \
+		"$(basename $0)" \
 		"<span color='#57dafd' font='20px'>${1}</span>"
 }
 
 usage() {
 	echo "Usage:"
-	echo "    $(basename $0) [-f <VIDEO_FILTER>] [-s <TIME_SKIP>] <SRCDIR>"
+	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] SRCDIR"
 	exit 1
 }
 
-while getopts "hs:f:" arg; do
+while getopts ":hs:f:" arg; do
 	case $arg in
 	h) usage ;;
 	f) FILTERS="$OPTARG" ;;
