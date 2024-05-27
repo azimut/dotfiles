@@ -8,13 +8,11 @@ set -euo pipefail
 imul() { awk -v a="$1" -v b="$2" 'BEGIN { print(int(a*b)) }'; }
 
 getTargetID() {
-	xdotool search --name "picture-in-picture" || xdotool search --onlyvisible --class mpv
+	xdotool search --name 'picture-in-picture' ||
+		xdotool search --onlyvisible --class 'mpv'
 }
 
-getScreenDimensions() {
-	xrandr | grep -o 'current [[:digit:]]* x [[:digit:]]*' | cut -f2,4 -d' '
-}
-
+getScreenDimensions() { xrandr | awk '/current/{ print($8, int($10)) }'; }
 getWindowDimensions() {
 	local id="${1}"
 	xdotool getwindowgeometry --shell "${id}" | grep -E 'WIDTH|HEIGHT' | cut -f2 -d= | xargs
