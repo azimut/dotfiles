@@ -7,7 +7,7 @@ set -euo pipefail
 
 imul() { awk -v a="$1" -v b="$2" 'BEGIN { print(int(a*b)) }'; }
 
-getTargetID() {
+getWindowID() {
 	xdotool search --name 'picture-in-picture' ||
 		xdotool search --onlyvisible --class 'mpv'
 }
@@ -18,19 +18,19 @@ getWindowDimensions() { xdotool getwindowgeometry "$1" | awk '/Geometry/{ gsub("
 MULTIPLIER="${1:-1}"
 BAR_OFFSET="${2:-20}"
 
-ID="$(getTargetID)"
+ID="$(getWindowID)"
 
 read -r -a SCREEN_DIMENSIONS < <(getScreenDimensions)
-read -r -a CURRENT_DIMENSIONS < <(getWindowDimensions ${ID})
+read -r -a WINDOW_DIMENSIONS < <(getWindowDimensions ${ID})
 
-TARGET_WIDTH="$(imul "${CURRENT_DIMENSIONS[0]}" "${MULTIPLIER}")"
-TARGET_HEIGHT="$(imul "${CURRENT_DIMENSIONS[1]}" "${MULTIPLIER}")"
+NEW_WIDTH="$(imul "${WINDOW_DIMENSIONS[0]}" "${MULTIPLIER}")"
+NEW_HEIGHT="$(imul "${WINDOW_DIMENSIONS[1]}" "${MULTIPLIER}")"
 
 printf "%sx%s -> %sx%s\n" \
-	${CURRENT_DIMENSIONS[0]} ${CURRENT_DIMENSIONS[1]} \
-	${TARGET_WIDTH} ${TARGET_HEIGHT}
+	${WINDOW_DIMENSIONS[0]} ${WINDOW_DIMENSIONS[1]} \
+	${NEW_WIDTH} ${NEW_HEIGHT}
 
-xdotool windowsize ${ID} "${TARGET_WIDTH}" "${TARGET_HEIGHT}"
+xdotool windowsize ${ID} "${NEW_WIDTH}" "${NEW_HEIGHT}"
 xdotool windowmove ${ID} \
-	$((SCREEN_DIMENSIONS[0] - TARGET_WIDTH)) \
+	$((SCREEN_DIMENSIONS[0] - NEW_WIDTH)) \
 	$((0 + BAR_OFFSET))
