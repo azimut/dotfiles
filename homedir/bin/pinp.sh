@@ -12,9 +12,24 @@ getWindowID() {
 getScreenDimensions() { xrandr | awk '/current/{ print($8, int($10)) }'; }
 getWindowDimensions() { xdotool getwindowgeometry "$1" | awk '/Geometry/{ gsub("x"," "); print($2,$3) }'; }
 
-POSITION="${1:-TR}"
-MULTIPLIER="${2:-1}"
-BAR_OFFSET="${3:-20}"
+usage() {
+	echo -e "Usage:\n\t$(basename $0) [-p TR|TL|BR|BL] [-m MULTIPLIER] [-o OFFSET]"
+	exit 1
+}
+
+while getopts ":hp:m:o:" arg; do
+	case $arg in
+	h) usage ;;
+	p) POSITION="$OPTARG" ;;
+	m) MULTIPLIER="$OPTARG" ;;
+	o) BAR_OFFSET="$OPTARG" ;;
+	*) usage ;;
+	esac
+done
+
+POSITION="${POSITION:-TR}"
+MULTIPLIER="${MULTIPLIER:-1}"
+BAR_OFFSET="${BAR_OFFSET:-20}"
 
 ID="$(getWindowID)"
 
@@ -41,11 +56,11 @@ TL)
 	;;
 BL)
 	x=0
-	y=$((SCREEN_DIMENSIONS[1] - NEW_HEIGHT))
+	y=$((SCREEN_DIMENSIONS[1] - NEW_HEIGHT - BAR_OFFSET))
 	;;
 BR)
 	x=$((SCREEN_DIMENSIONS[0] - NEW_WIDTH))
-	y=$((SCREEN_DIMENSIONS[1] - NEW_HEIGHT))
+	y=$((SCREEN_DIMENSIONS[1] - NEW_HEIGHT - BAR_OFFSET))
 	;;
 *)
 	echo "ERROR: invalid position"
