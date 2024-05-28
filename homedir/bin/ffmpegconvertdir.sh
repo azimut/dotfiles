@@ -69,7 +69,7 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 	while read -r srcfile; do
 		dstfile=".${srcfile#"${SRC}"}"
 		((++i))
-		info "${i} of ${total}"
+		info "$((total - i)) remaining..."
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
