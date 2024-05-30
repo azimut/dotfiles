@@ -6,7 +6,7 @@ INPUT="$1"
 test -f "${INPUT}"
 
 div() { echo "$(</dev/stdin) / ${1}" | bc -l; }
-round() { printf "%.0f" "$(</dev/stdin)"; }
+round() { awk '{ print(int($0)) }'; }
 timestamp() { date -u --date=@"${1}" +%H:%M:%S; }
 seconds() {
 	ffprobe -loglevel error -hide_banner -of csv=p=0 -show_entries format=duration "${1}"
