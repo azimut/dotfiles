@@ -15,15 +15,16 @@ info() {
 
 usage() {
 	echo "Usage:"
-	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] SRCDIR"
+	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] [-r FPS] SRCDIR"
 	exit 1
 }
 
-while getopts ":hs:f:" arg; do
+while getopts ":hs:f:r:" arg; do
 	case $arg in
 	h) usage ;;
 	f) FILTERS="$OPTARG" ;;
 	s) SKIP="$OPTARG" ;;
+	r) RATE="$OPTARG" ;;
 	*) usage ;;
 	esac
 done
@@ -41,6 +42,7 @@ shift $((OPTIND - 1))
 SRC="$(realpath "${1}")"
 FILTERS="${FILTERS:-scale=960:-1}"
 SKIP="${SKIP:-00:00:00}"
+RATE="${RATE:-30}"
 
 # Create DST directories
 find "${SRC}" -mindepth 1 -type d |
@@ -73,7 +75,7 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffbar -ss "${SKIP}" -i "${srcfile}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
+		ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
 			rm -vf "${dstfile}"
 			exit 1
 		}
