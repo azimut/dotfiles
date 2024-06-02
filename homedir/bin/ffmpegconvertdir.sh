@@ -75,7 +75,7 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -vf "${FILTERS}" "${dstfile}" || {
+		ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
 			rm -vf "${dstfile}"
 			exit 1
 		}
