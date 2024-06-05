@@ -15,16 +15,21 @@ info() {
 
 usage() {
 	echo "Usage:"
-	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] [-r FPS] SRCDIR"
+	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] [-r FPS] [-t TRIM ] SRCDIR"
 	exit 1
 }
 
-while getopts ":hs:f:r:" arg; do
+getduration() { ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$1" | cut -f1 -d'.'; } # TODO: handle float
+time2sec() { date -d "1970-01-01T$* UTC" '+%s'; }
+sec2time() { date -d "@$*" -u '+%H:%M:%S'; }
+
+while getopts ":hs:f:r:t:" arg; do
 	case $arg in
 	h) usage ;;
 	f) FILTERS="$OPTARG" ;;
 	s) SKIP="$OPTARG" ;;
 	r) RATE="$OPTARG" ;;
+	t) TRIM="$OPTARG" ;;
 	*) usage ;;
 	esac
 done
@@ -74,10 +79,19 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
-			rm -vf "${dstfile}"
-			exit 1
-		}
+		if [[ -n $TRIM ]]; then
+			length="$(sec2time $(($(getduration "${srcfile}") - $(time2sec "${SKIP}") - $(time2sec "${TRIM}"))))"
+			ffbar -ss "${SKIP}" -t "${length}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
+				rm -vf "${dstfile}"
+				exit 1
+			}
+		else
+			ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
+				rm -vf "${dstfile}"
+				exit 1
+			}
+		fi
+
 	done
 
 echo
