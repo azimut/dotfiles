@@ -4,7 +4,6 @@
 
 find . -name '*.mp4' -or -name '*.mp3' |
 	while read -r video; do
-		ffprobe -v quiet -show_format -hide_banner -print_format json -i "${video}"
+		ffprobe -v error -show_entries format=duration -of default=nokey=1 "${video}"
 	done |
-	jq -r --unbuffered '.format.duration|tonumber' |
 	awk '{ t+=$1; printf("\033[10D"); printf("%s", strftime("%H:%M:%S", t, 1)); } END { print "" }'
