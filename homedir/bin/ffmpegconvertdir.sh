@@ -15,7 +15,7 @@ info() {
 
 usage() {
 	echo "Usage:"
-	echo "    $(basename $0) [-f VIDEO_FILTER] [-s TIME_SKIP] [-r FPS] [-t TRIM ] SRCDIR"
+	echo "    $(basename $0) [-f VIDEO_FILTER] [-r FPS] [-s TIME_SKIP] [-t TIME_TRIM] SRCDIR"
 	exit 1
 }
 
@@ -79,14 +79,14 @@ find "${SRC}" -type f \( -iname \*.mp4 -o -iname \*.mkv \) | sort |
 		[[ -f ${dstfile} ]] && {
 			continue
 		}
-		if [[ -n $TRIM ]]; then
-			length="$(sec2time $(($(getduration "${srcfile}") - $(time2sec "${SKIP}") - $(time2sec "${TRIM}"))))"
-			ffbar -ss "${SKIP}" -t "${length}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
+		if [[ -z ${TRIM+x} ]]; then
+			ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
 				rm -vf "${dstfile}"
 				exit 1
 			}
 		else
-			ffbar -ss "${SKIP}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
+			length="$(sec2time $(($(getduration "${srcfile}") - $(time2sec "${SKIP}") - $(time2sec "${TRIM}"))))"
+			ffbar -ss "${SKIP}" -t "${length}" -i "${srcfile}" -r "${RATE}" -ac 1 -ar 22050 -vf "${FILTERS}" "${dstfile}" || {
 				rm -vf "${dstfile}"
 				exit 1
 			}
