@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Description: sums up the reproduction time of all media under CWD
 
