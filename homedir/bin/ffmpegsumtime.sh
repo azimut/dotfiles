@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Sums up the reproduction time of all media under CWD
 find . -regextype egrep -iregex '.*(mp4|mp3|webm)' -print0 |
