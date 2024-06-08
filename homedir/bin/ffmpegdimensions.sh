@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Description: show dimensions of all .mp4 videos under
+
+set -euo pipefail
 
 getdimensions() {
 	video="$1"
