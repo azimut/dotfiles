@@ -43,15 +43,19 @@ Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner
   end
 end
 
+def getwindowgeometry(id)
+  `xdotool getwindowgeometry #{id}`
+    .scan(/(\d+)x(\d+)/)
+    .flatten
+    .map(&:to_i)
+end
+
 def make_target
   mpv = `xdotool search --class mpv`.chomp.to_i
   pip = `xdotool search --name picture-in-picture`.chomp.to_i
   if (id = [mpv, pip].find(&:positive?))
     swidth, sheight = `xrandr`.scan(/current (\d+) x (\d+)/).flatten.map(&:to_i)
-    width, height = `xdotool getwindowgeometry #{id}`
-                    .scan(/(\d+)x(\d+)/)
-                    .flatten
-                    .map(&:to_i)
+    width, height = getwindowgeometry(id)
     Window.new(id, swidth, sheight, width, height, :tr)
   end
 end
@@ -61,6 +65,7 @@ target.reposition
 
 loop do
   input = STDIN.getch
+  target.width, target.height = getwindowgeometry(target.id)
   case input
   when '+'
     target.scale(1.1)
