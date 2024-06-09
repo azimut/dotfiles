@@ -61,6 +61,12 @@ def make_target
 end
 
 target = make_target
+
+if !target then
+  puts "Oops! No available window available to work with..."
+  exit 1
+end
+
 target.reposition
 
 loop do
