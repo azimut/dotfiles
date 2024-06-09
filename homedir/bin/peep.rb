@@ -79,6 +79,8 @@ loop do
     target.move_left
   when 'l'
     target.move_right
+  when 'f'
+    _ = `xdotool key --window #{target.id} f`
   when 'q'
     break
   end
