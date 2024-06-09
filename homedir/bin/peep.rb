@@ -7,7 +7,6 @@ Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner
     self.height = (height.fdiv(width) * width * by).round
     self.width = (width * by).round
     _ = `xdotool windowsize #{id} #{width} #{height}`
-    reposition
   end
 
   def reposition
@@ -21,6 +20,26 @@ Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner
       y = screen_height - height
     end
     _ = `xdotool windowmove #{id} #{x or 0} #{y or 0}`
+  end
+
+  def move_up
+    self.corner = :tr if corner == :br
+    self.corner = :tl if corner == :bl
+  end
+
+  def move_down
+    self.corner = :br if corner == :tr
+    self.corner = :bl if corner == :tl
+  end
+
+  def move_left
+    self.corner = :tl if corner == :tr
+    self.corner = :bl if corner == :br
+  end
+
+  def move_right
+    self.corner = :tr if corner == :tl
+    self.corner = :br if corner == :bl
   end
 end
 
@@ -46,7 +65,16 @@ loop do
     target.scale(1.1)
   when '-'
     target.scale(0.9)
+  when 'k'
+    target.move_up
+  when 'j'
+    target.move_down
+  when 'h'
+    target.move_left
+  when 'l'
+    target.move_right
   when 'q'
     break
   end
+  target.reposition
 end
