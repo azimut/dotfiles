@@ -81,6 +81,16 @@ loop do
     target.move_right
   when 'f'
     _ = `xdotool key --window #{target.id} f`
+  when ',' # seek back
+    _ = `xdotool key --window #{target.id} Left`
+  when '.' # seek forward
+    _ = `xdotool key --window #{target.id} Right`
+  when 'K' # volume up
+    _ = `xdotool key --window #{target.id} Up`
+  when 'J' # volume down
+    _ = `xdotool key --window #{target.id} Down`
+  when ' ' # pause
+    _ = `xdotool key --window #{target.id} space`
   when 'q'
     break
   end
