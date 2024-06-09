@@ -52,11 +52,12 @@ def make_target
                     .scan(/(\d+)x(\d+)/)
                     .flatten
                     .map(&:to_i)
-    Window.new(id, swidth, sheight, width, height, :br)
+    Window.new(id, swidth, sheight, width, height, :tr)
   end
 end
 
 target = make_target
+target.reposition
 
 loop do
   input = STDIN.getch
