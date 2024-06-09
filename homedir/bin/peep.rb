@@ -1,27 +1,52 @@
+#!/usr/bin/env ruby
+
 require 'io/console'
 
-Window = Struct.new(:id, :width, :height)
+Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner) do
+  def scale(by)
+    self.height = (height.fdiv(width) * width * by).round
+    self.width = (width * by).round
+    _ = `xdotool windowsize #{id} #{width} #{height}`
+    reposition
+  end
 
-def make_screen
-  width, height = `xrandr`.scan(/current (\d+) x (\d+)/).flatten.map(&:to_i)
-  return Window.new(0, width, height)
+  def reposition
+    case corner
+    when :tr
+      x = screen_width - width
+    when :bl
+      y = screen_height - height
+    when :br
+      x = screen_width - width
+      y = screen_height - height
+    end
+    _ = `xdotool windowmove #{id} #{x or 0} #{y or 0}`
+  end
 end
 
 def make_target
   mpv = `xdotool search --class mpv`.chomp.to_i
   pip = `xdotool search --name picture-in-picture`.chomp.to_i
-  if (wid = [mpv,pip].find(&:positive?))
-    width, height = `xdotool getwindowgeometry #{wid}`.scan(/(\d+)x(\d+)/).flatten.map(&:to_i)
-    return Window.new(wid, width, height)
+  if (id = [mpv, pip].find(&:positive?))
+    swidth, sheight = `xrandr`.scan(/current (\d+) x (\d+)/).flatten.map(&:to_i)
+    width, height = `xdotool getwindowgeometry #{id}`
+                    .scan(/(\d+)x(\d+)/)
+                    .flatten
+                    .map(&:to_i)
+    Window.new(id, swidth, sheight, width, height, :br)
   end
 end
 
-screen = make_screen()
-target = make_target()
+target = make_target
 
-while 1
+loop do
   input = STDIN.getch
-  if input == "f"
+  case input
+  when '+'
+    target.scale(1.1)
+  when '-'
+    target.scale(0.9)
+  when 'q'
     break
   end
 end
