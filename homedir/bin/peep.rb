@@ -1,12 +1,18 @@
 #!/usr/bin/env ruby
 
+require 'pp'
 require 'io/console'
 
-Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner) do
+Window = Struct.new(:id, :screen_width, :screen_height, :width, :height, :corner, :mute?) do
   def scale(by)
     self.height = (height.fdiv(width) * width * by).round
     self.width = (width * by).round
     _ = `xdotool windowsize #{id} #{width} #{height}`
+  end
+
+  def toggle_mute
+    self[:mute?] = !mute?
+    _ = `xdotool key --window #{id} ctrl+#{mute? ? 'Down' : 'Up'}`
   end
 
   def reposition
@@ -62,8 +68,8 @@ end
 
 target = make_target
 
-if !target then
-  puts "Oops! No available window available to work with..."
+unless target
+  puts 'Oops! No available window to work with...'
   exit 1
 end
 
@@ -72,6 +78,7 @@ target.reposition
 loop do
   input = STDIN.getch
   target.width, target.height = getwindowgeometry(target.id)
+  print "\33[2K\r" # Clear line
   case input
   when '+'
     target.scale(1.1)
@@ -97,8 +104,12 @@ loop do
     _ = `xdotool key --window #{target.id} Down`
   when ' ' # pause
     _ = `xdotool key --window #{target.id} space`
+  when 'm'
+    target.toggle_mute
   when 'q'
+    puts 'Bye!'
     break
   end
   target.reposition
+  print PP.pp(input, '').chomp
 end
