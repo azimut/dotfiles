@@ -103,7 +103,7 @@ loop do
   when 'J' # volume down
     _ = `xdotool key --window #{target.id} Down`
   when ' ' # pause
-    _ = `xdotool key --window #{target.id} space`
+    _ = `qdbus $(qdbus | grep Player2) /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause`
   when 'm'
     target.toggle_mute
   when 'q'
