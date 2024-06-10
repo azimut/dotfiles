@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 require 'pp'
 require 'io/console'
@@ -70,7 +69,7 @@ end
 target = make_target
 
 unless target
-  puts 'Oops! No available window to work with...'
+  warn 'Oops! No available window to work with...'
   exit 1
 end
 
@@ -112,5 +111,5 @@ loop do
     break
   end
   target.reposition
-  print PP.pp(input, '').chomp
+  print PP.pp(input, "").chomp
 end
