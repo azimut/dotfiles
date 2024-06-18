@@ -10,17 +10,24 @@ def usage():
 
 def main():
     doc = pymupdf.open(sys.argv[1])
+    ulinks = set()
     for page in doc:
         for link in page.get_links():
             match link['kind']:
                 case 2:
-                    print(link['uri'])
+                    ulinks.add(link['uri'])
                 case 3:
-                    print(link['file'])
+                    ulinks.add(link['file'])
                 case 1|4|5:
                     continue
                 case _:
                     print("?????", link)
+    if len(ulinks) == 0:
+        print("No links found!")
+    else:
+        for link in ulinks:
+            print(link)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
