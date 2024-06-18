@@ -5,6 +5,7 @@ import sys
 
 
 def usage():
+    print("Lists all links found in pdf. NO OCR.")
     print("Usage:")
     print(f"\t{sys.argv[0]} PDF_FILE")
 
