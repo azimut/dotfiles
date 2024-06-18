@@ -14,6 +14,11 @@ getdimensions() {
 }
 export -f getdimensions
 
+[ $# -eq 1 ] && {
+	getdimensions "$1"
+	exit 0
+}
+
 find . -name '*.mp4' -print0 | sort -zn |
 	xargs -I{} -n1 -0 -P2 -r \
 		bash -c 'getdimensions "{}"'
