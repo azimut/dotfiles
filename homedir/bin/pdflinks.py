@@ -25,7 +25,7 @@ def main():
     if len(ulinks) == 0:
         print("No links found!")
     else:
-        for link in ulinks:
+        for link in sorted(ulinks):
             print(link)
 
 
