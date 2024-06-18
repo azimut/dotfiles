@@ -3,6 +3,7 @@
 import pymupdf
 import sys
 
+
 def usage():
     print("Usage:")
     print(f"\t{sys.argv[0]} PDF_FILE")
@@ -13,12 +14,12 @@ def main():
     ulinks = set()
     for page in doc:
         for link in page.get_links():
-            match link['kind']:
+            match link["kind"]:
                 case 2:
-                    ulinks.add(link['uri'])
+                    ulinks.add(link["uri"])
                 case 3:
-                    ulinks.add(link['file'])
-                case 1|4|5:
+                    ulinks.add(link["file"])
+                case 1 | 4 | 5:
                     continue
                 case _:
                     print("?????", link)
@@ -29,7 +30,7 @@ def main():
             print(link)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 2:
         usage()
         sys.exit(1)
