@@ -23,6 +23,7 @@ export TERM=xterm-256color
 
 export SBCL_BIN=/usr/local/bin/sbcl               # Lisp
 export SBCL_HOME=/usr/local/lib/sbcl              # Lisp
+export PATH=$HOME/.roswell/bin:$PATH              # Lisp
 export GOPATH=$HOME/go                            # Go
 export PATH=/usr/lib/go-1.21/bin:$PATH            # Go
 export PATH=$HOME/go/bin:$PATH                    # Go
