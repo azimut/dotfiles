@@ -53,3 +53,4 @@ export PATH=/usr/local/lib/nodejs/bin:$PATH
 
 # GraalVM
 #PATH="${HOME}/Downloads/graalvm-ce-java17-21.3.0/bin:$PATH"
+. "$HOME/.cargo/env"
