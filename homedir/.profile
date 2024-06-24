@@ -41,6 +41,7 @@ export JAVA_HOME=/usr/local/jdk-17.0.8            # Java
 export PATH=$JAVA_HOME/bin/:$PATH                 # Java
 export PATH=/opt/apache-maven-3.8.6/bin:$PATH     # Java
 export PATH=$HOME/.sbt_bin/bin:$PATH              # Scala
+export PATH=$HOME/projects/scripts:$PATH          # Custom Scripts
 
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
