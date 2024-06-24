@@ -108,8 +108,13 @@ alias rm="rm -v"
 alias cal="ncal -b"
 alias bc="bc -lq"
 
+PS1='%~/ $(git_prompt_info)%{$reset_color%}'
+
 eval $(opam env)
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # LAST LINE
+
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
