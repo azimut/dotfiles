@@ -57,8 +57,8 @@ def getwindowgeometry(id)
 end
 
 def make_target
-  mpv = `xdotool search --class mpv`.chomp.to_i
-  pip = `xdotool search --name picture-in-picture`.chomp.to_i
+  mpv = `xdotool search --onlyvisible --class mpv`.chomp.to_i
+  pip = `xdotool search --onlyvisible --name picture-in-picture`.chomp.to_i
   if (id = [mpv, pip].find(&:positive?))
     swidth, sheight = `xrandr`.scan(/current (\d+) x (\d+)/).flatten.map(&:to_i)
     width, height = getwindowgeometry(id)
