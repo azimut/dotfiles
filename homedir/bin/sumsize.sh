@@ -1,11 +1,12 @@
 #!/bin/sh
 
-[ $# -eq 1 ] && {
-	echo "Error: no file arguments given"
-	echo "Returns the total size of all the given files."
+[ $# -eq 0 ] && {
+	echo "ERROR: no file arguments given!"
+	echo "Returns the total size of all the files given."
 	echo "Usage:"
-	printf "\t%s FILES..." "$(basename $0)"
+	printf "\t%s FILES...\n" "$(basename $0)"
 	exit 1
 }
 
-stat --format='%s' "$@" | datamash sum 1 | numfmt --to='iec-i'
+printf 'files: %d\n' $#
+printf 'size: %s\n' "$(stat --format='%s' "$@" | datamash sum 1 | numfmt --to='iec-i')"
