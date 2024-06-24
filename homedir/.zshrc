@@ -107,8 +107,9 @@ alias t="tree"
 alias rm="rm -v"
 alias cal="ncal -b"
 alias bc="bc -lq"
+alias tailf="tail -f"
 
-PS1='%~/ $(git_prompt_info)%{$reset_color%}'
+PS1='%(?..[%?]) %~/ $(git_prompt_info)%{$reset_color%}'
 
 eval $(opam env)
 
