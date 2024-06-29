@@ -28,16 +28,12 @@ export PATH=$HOME/go/bin:$PATH                    # Go
 export PATH=$HOME/.local/bin:$PATH                # Python
 export PATH=$HOME/.cargo/bin:$PATH                # Rust
 export PATH=$HOME/.luarocks/bin:$PATH             # Lua
-export PATH=/usr/local/nim-1.6.10/bin:$PATH       # Nim
 export PATH=$HOME/.nimble/bin:$PATH               # Nim
 export ERL_AFLAGS="-kernel shell_history enabled" # Erlang
 export PATH=$HOME/.cache/rebar3/bin:$PATH         # Erlang
-export PATH=$HOME/kerl/19.2/bin:$PATH             # Erlang
 export ANDROID_HOME=$HOME/Android/Sdk             # Android
 export PATH=$PATH:$ANDROID_HOME/tools             # Android
-export JAVA_HOME=/usr/local/jdk-17.0.8            # Java
 export PATH=$JAVA_HOME/bin/:$PATH                 # Java
-export PATH=/opt/apache-maven-3.8.6/bin:$PATH     # Java
 export PATH=$HOME/.sbt_bin/bin:$PATH              # Scala
 export PATH=$HOME/projects/scripts:$PATH          # Custom Scripts
 
