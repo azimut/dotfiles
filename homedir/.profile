@@ -1,8 +1,6 @@
 . "${HOME}"/.bash_secret
 
 # Put your fun stuff here.
-export PATH=$PATH:$HOME/projects/scripts/scripts
-export PATH=$PATH:$HOME/.bin
 export PATH=$PATH:$HOME/bin
 
 export UA="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0"
