@@ -2,6 +2,7 @@
 
 # Put your fun stuff here.
 export PATH=$PATH:$HOME/bin
+export PATH=$HOME/projects/scripts:$PATH
 
 export UA="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0"
 
@@ -35,13 +36,12 @@ export ANDROID_HOME=$HOME/Android/Sdk             # Android
 export PATH=$PATH:$ANDROID_HOME/tools             # Android
 export PATH=$JAVA_HOME/bin/:$PATH                 # Java
 export PATH=$HOME/.sbt_bin/bin:$PATH              # Scala
-export PATH=$HOME/projects/scripts:$PATH          # Custom Scripts
 
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
-export PATH=/usr/local/lib/nodejs/bin:$PATH
+#export PATH=/usr/local/lib/nodejs/bin:$PATH
 
 #unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 #MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
