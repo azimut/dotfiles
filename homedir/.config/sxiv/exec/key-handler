@@ -39,8 +39,8 @@ rotate() {
 	has_sudo || ask_for_password
 	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
 		case "$(file -b -i "$file")" in
-		image/jpeg*) ~/bin/gksu.sh "${file}" jpegtran -rotate "$degree" -copy all -outfile "$file" ;;
-		*) ~/bin/gksu.sh "${file}" mogrify -rotate "$degree" ;;
+		image/jpeg*) gksu.rb "${file}" jpegtran -rotate "$degree" -copy all -outfile "$file" ;;
+		*) gksu.rb "${file}" mogrify -rotate "$degree" ;;
 		esac
 		printf "rotated %d°\n" "${degree}"
 	done
@@ -71,7 +71,7 @@ EOF
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 "C-k")
 	while read -r image; do
-		~/bin/gksu.sh "${image}" rm -vf
+		gksu.rb "${image}" rm -vf
 	done
 	;;
 "C-y")
