@@ -507,8 +507,8 @@ globalkeys = gears.table.join(
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%", false) end,
       {description = "decrease "}),
    awful.key({ modkey }, "|",
-      function () run_once("boomer -d 0") end,
-      {description = "boomer zoom"}),
+      function () awesome.spawn("flock -n /var/lock/horus.lock /home/sendai/bin/horus") end,
+      {description = "horus zoom"}),
    --
    -- BOTH             xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary
    -- MONITOR ONLY     xrandr --output eDP1 --off --output HDMI1 --mode 1600x900 --rotation normal
