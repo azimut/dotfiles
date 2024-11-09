@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cat="batcat -p"
-alias t="tree"
+alias t="tree --gitignore"
 alias rm="rm -v"
 alias cal="ncal -b"
 alias bc="bc -lq"
@@ -121,3 +121,9 @@ export FZF_DEFAULT_OPTS='--bind=ctrl-j:accept'
 
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
+
+htmlhead() {
+	curl "$1" | pup 'head' | cat -l html
+}
+
+[ -f "/home/sendai/.ghcup/env" ] && . "/home/sendai/.ghcup/env" # ghcup-env
