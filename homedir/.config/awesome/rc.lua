@@ -868,12 +868,13 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-run_once("mpd")
-run_once("mpdas")
-run_once("wmname LG3D")
+-- run_once("mpd")
+-- run_once("mpdas")
+-- run_once("wmname LG3D")
 run_once("nm-applet")
 run_once("urxvtd")
 run_once("keynav \"loadconfig ~/.config/keynav/keynavrc\"")
+run_once("/usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap", false)
 awesome.spawn("bash " .. os.getenv("HOME") .. "/.fehbg", false)
