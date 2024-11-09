@@ -43,7 +43,7 @@ https://fanfox.net/rss/path_of_the_shaman.xml                                man
 https://fanfox.net/rss/reincarnation_of_the_suicidal_battle_god.xml          manga
 https://fanfox.net/rss/return_of_the_flowery_mountain_sect.xml               manga
 https://fanfox.net/rss/the_beginning_after_the_end.xml                       manga
-#https://fanfox.net/rss/vinland_saga.xml                                      manga
+https://fanfox.net/rss/vinland_saga.xml                                      manga
 #http://fanfox.net/rss/the_second_coming_of_gluttony.xml                                                 manga
 #http://fanfox.net/rss/tower_of_god.xml                                                                  manga
 https://fanfox.net/rss/the_ultimate_of_all_ages.xml                                                      manga
@@ -142,6 +142,7 @@ https://www.reddit.com/r/zig/top/.rss?t=month       programming "~/r/zig"
 https://www.reddit.com/r/embedded/top/.rss?t=month  programming "~/r/Embedded"
 https://www.reddit.com/r/tcl/top/.rss?t=month       programming "~/r/tcl"
 https://www.reddit.com/r/elm/top/.rss?t=month       programming "~/r/elm"
+https://www.reddit.com/r/gleamlang/top/.rss?t=month programming "~/r/gleamlang"
 https://www.reddit.com/r/purescript/top/.rss?t=month       programming "~/r/purescript"
 
 https://lobste.rs/top/rss tech
