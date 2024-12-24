@@ -36,6 +36,7 @@ export ANDROID_HOME=$HOME/Android/Sdk             # Android
 export PATH=$PATH:$ANDROID_HOME/tools             # Android
 export PATH=$JAVA_HOME/bin/:$PATH                 # Java
 export PATH=$HOME/.sbt_bin/bin:$PATH              # Scala
+export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 # Node.js
 NPM_PACKAGES="${HOME}/.npm-packages"
