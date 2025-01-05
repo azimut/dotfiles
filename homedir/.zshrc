@@ -127,7 +127,7 @@ htmlhead() {
 }
 
 uncomment() {
-    sed '/^#/d;/^$/d' "${1:-/dev/stdin}"
+    sed '/^\s*#/d;/^$/d' "${1:-/dev/stdin}"
 }
 
 [ -f "/home/sendai/.ghcup/env" ] && . "/home/sendai/.ghcup/env" # ghcup-env
