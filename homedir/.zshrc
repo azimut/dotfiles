@@ -122,10 +122,6 @@ export FZF_DEFAULT_OPTS='--bind=ctrl-j:accept'
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
 
-htmlhead() {
-    curl "$1" | pup 'head' | batcat -l html
-}
-
 uncomment() {
     sed '/^\s*#/d;/^$/d' "${1:-/dev/stdin}"
 }
