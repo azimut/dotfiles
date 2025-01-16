@@ -122,8 +122,4 @@ export FZF_DEFAULT_OPTS='--bind=ctrl-j:accept'
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
 
-uncomment() {
-    sed '/^\s*#/d;/^$/d' "${1:-/dev/stdin}"
-}
-
 [ -f "/home/sendai/.ghcup/env" ] && . "/home/sendai/.ghcup/env" # ghcup-env
