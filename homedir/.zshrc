@@ -107,6 +107,7 @@ alias t="tree --gitignore"
 alias rm="rm -v"
 alias cal="ncal -b"
 alias bc="bc -lq"
+alias dc="rlwrap dc"
 alias tailf="tail -f"
 
 PS1='%(?..[%?]) %~/ %{$reset_color%}'
