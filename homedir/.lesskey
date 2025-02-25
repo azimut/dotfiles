@@ -1,2 +1,0 @@
-#env
-LESS = --incsearch --chop-long-lines --RAW-CONTROL-CHARS --jump-target=.5 +Gg
