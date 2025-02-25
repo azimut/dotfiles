@@ -11,7 +11,6 @@ export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
 
 export PAGER=less
-export LESS="-SR"
 export GREP_COLOR='1;30;42'
 
 # Ref: https://wiki.archlinux.org/index.php/GTK_(Espa%C3%B1ol)
