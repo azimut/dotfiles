@@ -110,6 +110,16 @@ alias bc="bc -lq"
 alias dc="rlwrap dc"
 alias tailf="tail -f"
 
+export LESS_TERMCAP_md=$(tput setaf 2)
+export LESS_TERMCAP_so=$(
+    tput setaf 0
+    tput setab 7
+)
+export LESS_TERMCAP_se=$(
+    tput rmso
+    tput sgr0
+)
+
 PS1='%(?..[%?]) %~/ %{$reset_color%}'
 
 eval $(opam env)
