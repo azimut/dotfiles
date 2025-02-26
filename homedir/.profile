@@ -10,7 +10,8 @@ export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
 
-export LESS='--incsearch --chop-long-lines --RAW-CONTROL-CHARS --jump-target=.5 +Gg'
+export LESS='--incsearch --chop-long-lines --RAW-CONTROL-CHARS --jump-target=.5'
+export MANPAGER='less +Gg'
 export MANLESS='$MAN_PN?pt  %pt\%?lt  %lt'
 export PAGER=less
 export GREP_COLOR='1;30;42'
