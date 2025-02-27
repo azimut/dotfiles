@@ -109,8 +109,22 @@ alias cal="ncal -b"
 alias bc="bc -lq"
 alias dc="rlwrap dc"
 alias tailf="tail -f"
+alias man="manjump.sh"
 
-export LESS_TERMCAP_md=$(tput setaf 2)
+# Bold
+export LESS_TERMCAP_md=$(
+    tput bold
+    tput setaf 255
+)
+
+# Italic
+export LESS_TERMCAP_us=$(tput setaf 153)
+export LESS_TERMCAP_ue=$(
+    tput rmul
+    tput sgr0
+)
+
+# Highlight
 export LESS_TERMCAP_so=$(
     tput setaf 0
     tput setab 7
