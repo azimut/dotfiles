@@ -102,14 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cat="batcat -p"
-alias t="tree --gitignore"
-alias rm="rm -v"
-alias cal="ncal -b"
-alias bc="bc -lq"
-alias dc="rlwrap dc"
-alias tailf="tail -f"
-alias man="manjump.sh"
+source ~/bashrc/aliasrc
 
 # Bold
 export LESS_TERMCAP_md=$(

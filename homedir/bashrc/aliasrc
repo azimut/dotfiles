@@ -1,28 +1,23 @@
-alias rm='rm -iv'
-alias ls='ls -p --color'
-alias cp='cp -i'
-alias mv='mv -i'
-alias ffmpeg='ffmpeg -hide_banner'
+alias git-fsless="GIT_LFS_SKIP_SMUDGE=1 git clone"
+alias git-grep="git rev-list --all | xargs git grep"
+alias g1="git clone --depth=1"
 
-# --no-playlist
-alias ytmp3='youtube-dl --no-post-overwrites -x -f bestaudio -i -k --audio-format mp3'
+# alias dud="find . -maxdepth 1 -xdev -type d \( -not -regex '\./\..+' -and -not -name '\./\.' \) | while read -r dir; do du -sh \"$dir\"; done"
+# alias duh="find . -maxdepth 1 -type d -regex './\..+' -exec du -sh {} \;"
+# alias oddf="find . -maxdepth 1 -type f -not -iname '*\.*'"
 
-alias emacs='XMODIFIERS= emacs'
-alias columnt='column -t'
+alias wine-cordless="sudo unshare -n sudo -u sendai wine"
+alias ffmpeg="ffmpeg -hide_banner"
 
-alias j="journalctl"
-alias s="sudo systemctl"
-alias t="tree"
-
-alias git-fsless='GIT_LFS_SKIP_SMUDGE=1 git clone'
-alias git-grep='git rev-list --all | xargs git grep'
-alias g1='git clone --depth=1'
-alias wine-cordless='sudo unshare -n sudo -u sendai wine'
-alias evince='firejail --nodbus --net=none evince'
-
-alias dud="find . -maxdepth 1 -xdev -type d \( -not -regex '\./\..+' -and -not -name '\./\.' \) | while read -r dir; do du -sh \"$dir\"; done"
-alias duh="find . -maxdepth 1 -type d -regex './\..+' -exec du -sh {} \;"
-alias oddf="find . -maxdepth 1 -type f -not -iname '*\.*'"
-
-alias tailf='tail -f'
-alias cat='batcat'
+alias ls="ls -p --color"
+alias cat="batcat -p"
+alias t="tree --gitignore"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -iv"
+alias cal="ncal -b"
+alias bc="bc -lq"
+alias dc="rlwrap dc"
+alias tailf="tail -f"
+alias columnt="column -t"
+alias man="manjump.sh"
