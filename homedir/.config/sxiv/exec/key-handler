@@ -24,6 +24,17 @@ ask_for_password() {
     notify 'Enter the password on console...'
 }
 
+qrdecode() {
+    local image="$1"
+    local decoded
+    decoded="$(zbarimg "${image}" 2>/dev/null)"
+    if [ -z "$decoded" ]; then
+        zenity --info --text="No QRCODE found!"
+    else
+        zenity --text-info --filename=<(echo "${decoded}")
+    fi
+}
+
 rename() {
     old_filename="$1"
     old_basename="$(basename ${old_filename})"
@@ -58,6 +69,7 @@ C-r|rename
 C-k|rm -f
 C-y|cp
 C-p|coomer
+C-q|find QRCODE with zbarimg
 |
 C-<|rotate left
 C->|rotate right
@@ -66,6 +78,7 @@ C-/|rotate 180
 EOF
     )
 ) ;;
+"C-q") while read -r file; do qrdecode "${file}"; done ;;
 "C-x") xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
 "C-c") while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
