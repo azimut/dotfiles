@@ -92,7 +92,7 @@ EOF
 ) ;;
 "C-o") while read -r file; do ocrdecode "${file}"; done ;;
 "C-q") while read -r file; do qrdecode "${file}"; done ;;
-"C-x") xclip -in -filter | tr '\n' ' ' | xargs readlink -f | xclip -in -selection clipboard ;;
+"C-x") xclip -in -filter | xargs -n1 readlink -f | xclip -in -selection clipboard ;;
 "C-c") while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 "C-k")
