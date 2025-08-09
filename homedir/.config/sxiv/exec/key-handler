@@ -112,19 +112,10 @@ EOF
     fi
 
     [[ -z ${target} ]] && exit 1
-    [[ ! -d ${target} ]] && exit 1
     echo "${target}" >"${CACHEFILE}"
 
-    if [[ ! -O ${target} ]]; then
-        has_sudo || ask_for_password
-        while read -r image; do
-            sudo cp -vu "${image}" "${target}" || notify 'failed to cp'
-        done
-    else
-        while read -r image; do
-            cp -vu "${image}" "${target}" || notify 'failed to cp'
-        done
-    fi
+    xargs --verbose -n1 -I '{}' \
+        gksu.rb "${target}" cp -vu '{}'
     ;;
 "C-less") rotate 270 ;;
 "C-greater") rotate 90 ;;
