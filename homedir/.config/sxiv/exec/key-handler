@@ -48,12 +48,12 @@ qrdecode() {
 
 rename() {
     old_filename="$1"
-    old_basename="$(basename ${old_filename})"
-    old_dirname="$(dirname ${old_filename})"
+    old_basename="$(basename "${old_filename}")"
+    old_dirname="$(dirname "${old_filename}")"
     new_basename="$(zenity --entry --text "Rename to?" --entry-text "${old_basename}")"
     [[ -z ${new_basename} ]] && return 0
     [[ ${new_basename} == "${old_basename}" ]] && return 0
-    mv -v ${old_filename} "${old_dirname}/${new_basename}"
+    mv -v "${old_filename}" "${old_dirname}/${new_basename}"
 }
 
 rotate() {
@@ -72,7 +72,7 @@ case "$1" in
 "C-h") zenity --text-info --filename=<(
     column -t -s '|' -o $'\t' <(
         cat <<EOF
-C-x|xclip copy path?
+C-x|xclip copy path
 C-c|xclip copy image
 C-e|urxvt?
 |
@@ -90,10 +90,13 @@ C-/|rotate 180
 EOF
     )
 ) ;;
-"C-o") while read -r file; do ocrdecode "${file}"; done ;;
-"C-q") while read -r file; do qrdecode "${file}"; done ;;
-"C-x") xclip -in -filter | xargs -n1 readlink -f | xclip -in -selection clipboard ;;
-"C-c") while read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
+"C-o") ocrdecode <(cat) ;;
+"C-q") qrdecode <(cat) ;;
+"C-x") xargs -n1 readlink -f | xclip -in ;;
+"C-c")
+    read -r file
+    xclip -selection clipboard -target "$(mimetype --output-format=%m "${file}")" "${file}"
+    ;;
 "C-e") while read -r file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 "C-k")
     while read -r image; do
@@ -103,14 +106,14 @@ EOF
 "C-y")
     CACHEFILE="${HOME}"/.cache/sxiv/copydir.tmp
     if [[ -s ${CACHEFILE} ]]; then
-        target=$(zenity --file-selection --filename="$(cat ${CACHEFILE})" --directory)
+        target=$(zenity --file-selection --filename="$(cat "${CACHEFILE}")" --directory)
     else
         target=$(zenity --file-selection --filename="${HOME}" --directory)
     fi
 
     [[ -z ${target} ]] && exit 1
     [[ ! -d ${target} ]] && exit 1
-    echo "${target}" >${CACHEFILE}
+    echo "${target}" >"${CACHEFILE}"
 
     if [[ ! -O ${target} ]]; then
         has_sudo || ask_for_password
@@ -128,10 +131,10 @@ EOF
 "C-slash") rotate 180 ;;
 "C-r")
     read -r file
-    rename "$(readlink -e ${file})"
+    rename "$(readlink -e "${file}")"
     ;;
 "C-p") while read -r file; do
-    newfile=$(readlink -e $file)
-    ln -s "$newfile" $HOME/.coomer/ &
+    newfile=$(readlink -e "${file}")
+    ln -s "${newfile}" "${HOME}/.coomer"/ &
 done ;;
 esac
