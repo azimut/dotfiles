@@ -21,6 +21,8 @@ require("awful.hotkeys_popup.keys")
 local lain = require("lain")
 local markup = lain.util.markup
 
+awful.util.shell = "sh"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -480,16 +482,16 @@ globalkeys = gears.table.join(
       {description = "copy primary clipboard to secondary"}),
    --
    awful.key({ modkey }, "0",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {50%,50%}", false) end, -- FIXME: I mean, fix the cable
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 50%", false) end, -- FIXME: I mean, fix the cable
       {description = "default volume for headphones"}),
    awful.key({ modkey }, "F12",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,75%}", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 75%%", false) end,
       {description = "default volume"}),
    awful.key({ modkey }, "'",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {75%,0%}", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 75% 0%", false) end,
       {description = "amixer left"}),
    awful.key({ modkey }, "¿",
-      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ {0%,75%}", false) end,
+      function () awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 0% 75%", false) end,
       {description = "amixer right"}),
    awful.key({ modkey }, ".",
       function () awesome.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
@@ -878,7 +880,7 @@ run_once("keynav \"loadconfig ~/.config/keynav/keynavrc\"")
 run_once("/usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap", false)
-awesome.spawn("bash " .. os.getenv("HOME") .. "/.fehbg", false)
+awesome.spawn("sh " .. os.getenv("HOME") .. "/.fehbg", false)
 awesome.spawn("xset -b", false)                  -- disable beep
 awesome.spawn("amixer set Capture nocap", false) -- disable mic
 awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled", false) -- disable auto-mute
