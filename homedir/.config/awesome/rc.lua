@@ -880,16 +880,19 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- run_once("mpd")
 -- run_once("mpdas")
 -- run_once("wmname LG3D")
-run_once("nm-applet")
+--run_once("nm-applet")
 run_once("urxvtd")
 run_once("keynav \"loadconfig ~/.config/keynav/keynavrc\"")
-run_once("/usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1")
+--run_once("/usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1")
+--run_once("picom --backend glx --blur-background --blur-strength 7 --blur-method dual_kawase")
 --run_once("compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -m 0.88 --invert-color-include 'class_g=\"Zeal\"'")
 awesome.spawn("xmodmap ~/.Xmodmap", false)
 awesome.spawn("sh " .. os.getenv("HOME") .. "/.fehbg", false)
 awesome.spawn("xset -b", false)                  -- disable beep
-awesome.spawn("amixer set Capture nocap", false) -- disable mic
-awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled", false) -- disable auto-mute
+--awesome.spawn("amixer set Capture nocap", false) -- disable MIC alsa
+awesome.spawn("pactl set-source-mute 1 on", false) --  MIC pulse mute
+awesome.spawn("pactl set-source-volume 1 0", false) -- MIC pulse volume 0
+--awesome.spawn("amixer -c 0 sset \"Auto-Mute Mode\" Disabled", false) -- disable auto-mute
 -- awful.util.spawn_with_shell("pgrep mpdas || mpdas &") -- scroll blogger
 
 -- GC
