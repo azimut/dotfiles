@@ -64,6 +64,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+beautiful.useless_gap = 2
+beautiful.gap_single_client = false
+
 -- azimut: custom theming
 beautiful.border_focus = "#00AAAA"
 beautiful.border_width = 1
