@@ -14,7 +14,7 @@ export LESS='--incsearch --chop-long-lines --RAW-CONTROL-CHARS --jump-target=.5'
 export MANPAGER='less +Gg'
 export MANLESS='$MAN_PN?pt  %pt\%?lt  %lt'
 export PAGER=less
-export GREP_COLOR='1;30;42'
+export GREP_COLORS='1;30;42'
 
 # Ref: https://wiki.archlinux.org/index.php/GTK_(Espa%C3%B1ol)
 export GTK_THEME=Adwaita:dark
