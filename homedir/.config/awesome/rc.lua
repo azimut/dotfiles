@@ -763,6 +763,7 @@ awful.rules.rules = {
         },
         class = {
            "Arandr",
+           "Tk",
            "Blueman-manager",
            "Gpick",
            "Kruler",
