@@ -173,7 +173,7 @@ local function keyboard_battery_status()
    end
 end
 local my_keyboard_battery_status = wibox.widget.textbox(keyboard_battery_status())
-gears.timer.start_new(60*60, function() my_keyboard_battery_status:set_markup(keyboard_battery_status()) return true end)
+--gears.timer.start_new(60*60, function() my_keyboard_battery_status:set_markup(keyboard_battery_status()) return true end)
 
 local function stat_since(file)
    local now = os.time()
@@ -393,7 +393,7 @@ awful.screen.connect_for_each_screen(function(s)
             mycpu,
             mymem,
             mynet,
-            my_keyboard_battery_status,
+            --my_keyboard_battery_status,
          },
          nil,
          {
