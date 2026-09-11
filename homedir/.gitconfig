@@ -2,7 +2,7 @@
         name = azimut
         username = azimut
         email = azimut.github@protonmail.com
-        signingkey = 501C25B47306130B
+        signingkey = C4E69841895D989A
 [alias]
         staple = subtree push --prefix doc origin gh-pages
 [github]
