@@ -10,7 +10,7 @@ alias wine-cordless="sudo unshare -n sudo -u sendai wine"
 alias ffmpeg="ffmpeg -hide_banner"
 
 alias ls="ls -p --color"
-alias cat="batcat -p"
+alias cat="bat -p"
 alias t="tree --gitignore"
 alias cp="cp -i"
 alias mv="mv -i"
