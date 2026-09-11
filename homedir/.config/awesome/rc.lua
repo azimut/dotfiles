@@ -293,8 +293,10 @@ end}
 local myquake = lain.util.quake({
       app = "urxvtc",
       argname = "+sb -name %s",
-      height = 0.25,
+      height = 0.3,
       width = 1,
+      overlap = true,
+      border = 1,
       vert = "bottom",
       settings = function(c) c.sticky = true end
 })
