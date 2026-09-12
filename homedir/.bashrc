@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ -e $HOME/.profile ]]; then
+    source $HOME/.profile
+fi
+
 source ~/.bash_secret
 
 source ~/bashrc/helpers.sh
