@@ -514,7 +514,7 @@ globalkeys = gears.table.join(
       function () awesome.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%", false) end,
       {description = "decrease "}),
    awful.key({ modkey }, "|", -- NOTE: fullpaths to avoid lag
-      function () awesome.spawn("/bin/flock --close --nonblock /var/lock/horus.lock /home/sendai/bin/horus") end,
+      function () awesome.spawn("/bin/flock --close --nonblock /home/sendai/bin/horus.lock /home/sendai/bin/horus") end,
       {description = "horus zoom"}),
    --
    -- BOTH             xrandr --output eDP1 --mode 1366x768 --right-of HDMI1  --output HDMI1 --mode 1600x900 --rotation normal --primary
