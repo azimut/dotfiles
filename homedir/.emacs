@@ -21,7 +21,7 @@
  '(auth-source-save-behavior nil)
  '(column-number-mode t)
  '(company-show-quick-access nil nil nil "Customized with use-package company")
- '(custom-enabled-themes '(doom-ayu-dark))
+ '(custom-enabled-themes '(modus-vivendi-deuteranopia))
  '(custom-safe-themes
    '("9b9d7a851a8e26f294e778e02c8df25c8a3b15170e6f9fd6965ac5f2544ef2a9"
      "166a2faa9dc5b5b3359f7a31a09127ebf7a7926562710367086fcc8fc72145da"
